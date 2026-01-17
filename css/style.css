@@ -1,3 +1,14 @@
+/* --- STILE GENERALE --- */
+.bg-unibo-red {
+    background-color: #ce6662;
+    color: white;
+}
+
+.bg-unibo-red a, .bg-unibo-red i {
+    color: white;
+    text-decoration: none;
+}
+
 body > header > a{
     margin: 0 1%;
     
@@ -25,8 +36,15 @@ body > main > form{
     padding: 30px 2% 30px;
 }
 
-body > header > a:hover, body > header > nav > a:hover, header > div > a:hover, body > nav > ul > li > a:hover{
-    transform: scale(1.03);
+body > header > nav > a:hover,
+body > nav > ul > li > a:hover{
+    transform: scale(1.01);
+    font-weight: bold;
+}
+
+body > header > a:hover,
+header > div > a:hover{
+    transform: scale(1.1);
     font-weight: bold;
 }
 
@@ -37,20 +55,54 @@ body > main > form > button:hover{
     transform: scale(1.03);
 }
 
-.bg-unibo-red {
-    background-color: #ce6662;
-    color: white;
+
+
+/* --- EFFETTI PULSANTI IN "segnalazione.html" --- */
+
+/* Pulsante prenota */
+.btn-prenota:hover {
+    transform: scale(1.08); 
+    background-color: transparent !important; 
+    color: #000 !important;
+    border-color: #000 !important;
 }
-/* Questo serve a rendere bianchi tutti i link e le icone sopra il rosso */
-.bg-unibo-red a, .bg-unibo-red i {
-    color: white;
-    text-decoration: none;
+
+/* Pulsante segnalazione */
+.btn-warning:hover{
+    transform: scale(1.08);
+    font-weight: bold;
 }
+
+/* Pulsante cuore */
+.btn-cuore:hover {
+    transform: scale(1.1);
+    color: #d9534f !important;
+}
+
+/* Filla il cuore di rosso */
+.btn-cuore:hover .heart-icon::before {
+    content: "\f415"; 
+}
+
+/* CLICCATO: resta rosso e pieno */
+.btn-cuore.active {
+    color: #d9534f !important;
+}
+
+.btn-cuore.active .heart-icon::before {
+    content: "\f415" !important; /* Resta pieno */
+}
+
+/* --- EFFETTO CARD --- */
+.card-annuncio-hover:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
+    background-color: #fdfdfd;
+}
+
 
 @media (max-width: 767px) {
     body {
-        /* Aggiungiamo spazio in fondo per non far coprire il contenuto dalla nav fissa */
-        /* 80px dovrebbero bastare per contenere le icone e i testi della nav */
+        /* spazio in fondo per non far coprire il contenuto dalla nav fissa */
         padding-bottom: 70px !important;
     }
 }
