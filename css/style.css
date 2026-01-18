@@ -94,10 +94,26 @@ body > main > form > button:hover{
     content: "\f415" !important; /* Resta pieno */
 }
 
-/* --- EFFETTO CARD --- */
+/* --- Su card --- */
 .card-annuncio-hover:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
     background-color: #fdfdfd;
+}
+
+/* --- EFFETTI PULSANTI IN "annuncio.html" --- */
+
+/* Pulsante prenota */
+.btn-prenota:hover{
+    transform: scale(1.00);
+    background-color: #0dcaf0 !important; 
+    color: white !important;
+    border-color: #0dcaf0 !important;
+}
+
+/* Link lista annunci */
+.link-lista:hover,
+.nome-utente:hover {
+    text-decoration: underline !important;
 }
 
 
