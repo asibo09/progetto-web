@@ -1,6 +1,6 @@
 /* --- STILE GENERALE --- */
 .bg-unibo-red {
-    background-color: #ce6662;
+    background-color: #bb2e29F2;
     color: white;
 }
 
@@ -50,8 +50,9 @@ header > div > a:hover{
 
 body > main > form > button:hover{
     cursor: pointer !important;
-    background-color: #b53d39 !important; 
-    border-color: #b53d39 !important; 
+    color: white !important;
+    background-color: #9b2e2a !important; 
+    border-color: #9b2e2a !important; 
     transform: scale(1.03);
 }
 
