@@ -75,30 +75,48 @@ body > main > form > button:hover{
     font-weight: bold;
 }
 
-/* Pulsante cuore */
-.btn-cuore:hover {
-    transform: scale(1.1);
-    color: #d9534f !important;
+/* --- FIX FINALE CUORE: CLICK E VISIBILITÀ --- */
+
+/* STATO BASE: rosso e vuoto */
+.btn-cuore {
+    color: #d9534f !important; /* Rosso Unibo */
+    position: relative;
+    z-index: 100 !important; /* Valore altissimo per stare sopra tutto */
+    transition: transform 0.2s ease;
+    text-decoration: none !important;
 }
 
-/* Filla il cuore di rosso */
-.btn-cuore:hover .heart-icon::before {
-    content: "\f415"; 
+/* Icona VUOTA (bordo rosso) */
+.btn-cuore .heart-icon::before {
+    content: "\f417" !important; /* bi-heart */
 }
 
-/* CLICCATO: resta rosso e pieno */
-.btn-cuore.active {
-    color: #d9534f !important;
-}
-
+/* 2. STATO ATTIVO (Salvato): icona piena */
 .btn-cuore.active .heart-icon::before {
-    content: "\f415" !important; /* Resta pieno */
+    content: "\f415" !important; /* bi-heart-fill */
+}
+
+/* HOVER: In questo modo, se si clicca e si svuota, lo si vede subito anche con il mouse sopra */
+.btn-cuore:hover {
+    color: #d9534f !important;
+}
+
+/* Rimuove l'alone azzurro di Bootstrap */
+.btn-cuore:focus, 
+.btn-cuore:active {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 /* --- Su card --- */
 .card-annuncio-hover:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
     background-color: #fdfdfd;
+    
+}
+
+.card-annuncio-hover:hover h3 {
+    text-decoration: underline !important;
 }
 
 /* --- EFFETTI PULSANTI IN "annuncio.html" --- */
