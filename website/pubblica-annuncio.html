@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <title>Pubblica Annuncio</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Desktop -->
+    <header class="d-none d-lg-flex justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
+        <a href="home.html">
+            <img src="../upload/logoUnibo.png" alt="Logo" style="height: 65px;">
+        </a>
+        <nav class="d-flex gap-5 fs-5">
+            <a href="home.html">Home</a>
+            <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="preferiti.html">Salvati</a>
+            <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a
+                href="pubblica-annuncio.html">Pubblica</a>
+            <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="tuoi-annunci.html">Annunci</a>
+        </nav>
+        <a href="profilo.html"><i class="bi bi-person-circle fs-2"></i></a>
+    </header>
+
+    <!-- Tablet -->
+    <header class="d-none d-md-flex d-lg-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
+        <a href="home.html">
+            <img src="../upload/logoUnibo.png" alt="Logo" style="height: 50px;">
+        </a>
+        <div class="d-flex gap-4">
+            <a href="salvati.html"><i class="bi bi-heart fs-4"></i></a>
+            <a href="pubblica-annuncio.html"><i class="bi bi-arrow-up-circle fs-4"></i></a>
+            <a href="tuoi-annunci.html"><i class="bi bi-pin fs-4"></i></a>
+            <a href="profilo.html"><i class="bi bi-person-circle fs-4"></i></a>
+        </div>
+    </header>
+
+    <!-- Mobile -->
+    <header class="d-flex d-md-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
+        <a href="home.html">
+            <img src="../upload/logoUnibo.png" alt="Logo" style="height: 50px;">
+        </a>
+        <a href="profilo.html">
+            <i class="bi bi-person-circle" style="font-size: 32px;"></i>
+        </a>
+    </header>
+
+    <main class="flex-grow-1 container-xl py-5">
+        <div class="mb-4">
+            <h1 class="h2 fw-bold">Il tuo annuncio</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-12 col-lg-4">
+                <div class="card shadow-sm border-0 rounded-4 overflow-hidden sticky-top" style="top: 20px;">
+                    <div class="bg-light p-4 text-center border-bottom">
+                        <div class="progress-circle mb-3 mx-auto">
+                            <span id="perc-progresso" class="fs-4 fw-bold text-primary">0%</span>
+                        </div>
+                        <h2 class="h6 fw-bold mb-1">Completato</h2>
+                    </div>
+
+                    <div class="list-group list-group-flush shadow-sm" id="step-menu">
+                        <button onclick="showSection('tipologia')"
+                            class="list-group-item list-group-item-action py-3 active" id="btn-tipologia">
+                            Tipologia <i class="bi bi-chevron-right float-end"></i>
+                        </button>
+                        <button onclick="showSection('localita')" class="list-group-item list-group-item-action py-3"
+                            id="btn-localita">
+                            Località <i class="bi bi-chevron-right float-end"></i>
+                        </button>
+                        <button onclick="showSection('caratteristiche')"
+                            class="list-group-item list-group-item-action py-3" id="btn-caratteristiche">
+                            Caratteristiche <i class="bi bi-chevron-right float-end"></i>
+                        </button>
+                        <button onclick="showSection('convivenza')" class="list-group-item list-group-item-action py-3"
+                            id="btn-convivenza">
+                            Convivenza <i class="bi bi-chevron-right float-end"></i>
+                        </button>
+                        <button onclick="showSection('prezzi')" class="list-group-item list-group-item-action py-3"
+                            id="btn-prezzi">
+                            Prezzo e costi <i class="bi bi-chevron-right float-end"></i>
+                        </button>
+                        <button onclick="showSection('descrizione')" class="list-group-item list-group-item-action py-3"
+                            id="btn-descrizione">
+                            Descrizione <i class="bi bi-chevron-right float-end"></i>
+                        </button>
+                        <button onclick="showSection('foto')" class="list-group-item list-group-item-action py-3"
+                            id="btn-foto">
+                            Foto <i class="bi bi-chevron-right float-end"></i>
+                        </button>
+                        <button onclick="showSection('contatti')" class="list-group-item list-group-item-action py-3"
+                            id="btn-contatti">
+                            Contatti <i class="bi bi-chevron-right float-end"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-8">
+                <div class="card shadow-sm border-0 p-4 p-md-5 rounded-4 bg-white">
+                    <form id="form-annuncio" action="#" method="POST" novalidate>
+                        <!-- sezione tipologia -->
+                        <div class="form-section" id="sec-tipologia">
+                            <h2 class="h4 fw-bold mb-4">Tipologia immobile</h2>
+                            <div class="d-grid gap-3 mb-5">
+                                <div class="form-check p-3 border rounded-3 hover-shadow">
+                                    <input class="form-check-input ms-0 me-3" type="radio" name="tipo" id="t1" required>
+                                    <label class="form-check-label fw-semibold text-dark" for="t1">Stanza in
+                                        appartamento</label>
+                                </div>
+                                <div class="form-check p-3 border rounded-3 hover-shadow">
+                                    <input class="form-check-input ms-0 me-3" type="radio" name="tipo" id="t2" required>
+                                    <label class="form-check-label fw-semibold text-dark" for="t2">Appartamento
+                                        intero</label>
+                                </div>
+                                <div class="form-check p-3 border rounded-3 hover-shadow">
+                                    <input class="form-check-input ms-0 me-3" type="radio" name="tipo" id="t3" required>
+                                    <label class="form-check-label fw-semibold text-dark" for="t3">Stanza in
+                                        villa</label>
+                                </div>
+                            </div>
+
+
+                            <h2 class="h4 fw-bold mb-4 mt-4">Caratteristiche immobile</h2>
+
+                            <div class="row mb-4">
+                                <div class="col-12 col-md-4">
+                                    <label class="form-label fw-semibold">Stanze in affitto *</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('stanze', -1)">-</button>
+                                        <input type="number" id="stanze" class="form-control text-center fw-bold"
+                                            value="1" min="0" required>
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('stanze', 1)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row g-4 mb-5">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Superficie totale (mq) *</label>
+                                    <input type="number" class="form-control rounded-3" placeholder="Es. 120" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Totale Piani Edificio *</label>
+                                    <input type="number" class="form-control rounded-3" placeholder="Es. 4" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold d-block">Con Ascensore? *</label>
+                                    <div class="form-check form-check-inline mt-2">
+                                        <input class="form-check-input" type="radio" name="ascensore" id="asc-si"
+                                            required>
+                                        <label class="form-check-label" for="asc-si">Sì</label>
+                                    </div>
+                                    <div class="form-check form-check-inline mt-2">
+                                        <input class="form-check-input" type="radio" name="ascensore" id="asc-no"
+                                            required>
+                                        <label class="form-check-label" for="asc-no">No</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold d-block">Riscaldamento *</label>
+                                    <div class="d-flex gap-3 mt-2 flex-wrap">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="riscaldamento"
+                                                id="risc-aut" required>
+                                            <label class="form-check-label" for="risc-aut">Autonomo</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="riscaldamento"
+                                                id="risc-cent" required>
+                                            <label class="form-check-label" for="risc-cent">Centralizzato</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="riscaldamento"
+                                                id="risc-no" required>
+                                            <label class="form-check-label" for="risc-no">Assente</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h2 class="h4 fw-bold mb-4 mt-4">Composizione immobile</h2>
+                            <div class="row g-4">
+                                <div class="col-6">
+                                    <label class="form-label small fw-semibold d-block">È presente la cucina?</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="toggleSiNo('cucina')">-</button>
+                                        <input type="text" id="cucina" class="form-control text-center bg-white fw-bold"
+                                            value="No" readonly required>
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="toggleSiNo('cucina')">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label small fw-semibold d-block">Nr. Camere letto</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('camere', -1)">-</button>
+                                        <input type="number" id="camere" class="form-control text-center fw-bold"
+                                            value="1" min="0" required>
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('camere', 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label small fw-semibold d-block">Nr. Locali totali</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('locali', -1)">-</button>
+                                        <input type="number" id="locali" class="form-control text-center fw-bold"
+                                            value="1" min="0" required>
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('locali', 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label small fw-semibold d-block">Nr. Bagni</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('bagni', -1)">-</button>
+                                        <input type="number" id="bagni" class="form-control text-center fw-bold"
+                                            value="1" min="0">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('bagni', 1)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- sezione localita -->
+                        <div class="form-section d-none" id="sec-localita">
+                            <h2 class="h4 fw-bold mb-4">Dove si trova?</h2>
+
+                            <div class="mb-4">
+                                <label for="comune" class="form-label fw-semibold">Inserisci il comune
+                                    (obbligatorio)</label>
+                                <input type="text" id="comune" class="form-control rounded-3 py-2"
+                                    placeholder="Es. Cesena" required>
+                            </div>
+
+                            <div class="row g-3 mb-4">
+                                <div class="col-8 col-md-9">
+                                    <label for="indirizzo" class="form-label fw-semibold">Inserisci l'indirizzo
+                                        (obbligatorio)</label>
+                                    <input type="text" id="indirizzo" class="form-control rounded-3 py-2"
+                                        placeholder="Es. Via Rossi" required>
+                                </div>
+                                <div class="col-4 col-md-3">
+                                    <label for="civico" class="form-label fw-semibold">N. civico *</label>
+                                    <input type="text" id="civico" class="form-control rounded-3 py-2 text-center"
+                                        placeholder="470" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold d-block">Zona:</label>
+                                <div class="d-flex flex-wrap gap-4 mt-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="z-campus" name="zona">
+                                        <label class="form-check-label" for="z-campus">Campus</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="z-centro" name="zona">
+                                        <label class="form-check-label" for="z-centro">Centro</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="z-stazione" name="zona">
+                                        <label class="form-check-label" for="z-stazione">Stazione</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="z-altro" name="zona">
+                                        <label class="form-check-label" for="z-altro">Altro</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- sezione caratteristiche -->
+                        <div class="form-section d-none" id="sec-caratteristiche">
+
+                            <div class="stanza-block mb-5">
+                                <h2 class="h4 fw-bold mb-4">Caratteristiche Stanza numero 1</h2>
+                                <div class="row g-4">
+                                    <div class="col-6">
+                                        <label for="mq-1" class="form-label small fw-semibold">Superficie stanza (mq)
+                                            *</label>
+                                        <input type="number" id="mq-1" class="form-control" placeholder="Es. 18" min="1"
+                                            required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="prezzo-1" class="form-label small fw-semibold">Prezzo per stanza (€)
+                                            *</label>
+                                        <input type="number" id="prezzo-1" class="form-control" placeholder="Es. 400"
+                                            min="1" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label small fw-semibold d-block">Letto Singolo</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="changeVal('letto-s-1', -1)">-</button>
+                                            <input type="number" id="letto-s-1" class="form-control text-center fw-bold"
+                                                value="0" min="0">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="changeVal('letto-s-1', 1)">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label small fw-semibold d-block">Letto Matrimoniale</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="changeVal('letto-m-1', -1)">-</button>
+                                            <input type="number" id="letto-m-1" class="form-control text-center fw-bold"
+                                                value="0" min="0">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="changeVal('letto-m-1', 1)">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label small fw-semibold d-block">Bagno *</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="toggleStrings('bagno-1', 'Condiviso', 'Indipendente')">-</button>
+                                            <input type="text" id="bagno-1"
+                                                class="form-control text-center bg-white fw-bold" value="Condiviso"
+                                                readonly>
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="toggleStrings('bagno-1', 'Condiviso', 'Indipendente')">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label small fw-semibold d-block">Balcone *</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="toggleSiNo('balcone-1')">-</button>
+                                            <input type="text" id="balcone-1"
+                                                class="form-control text-center bg-white fw-bold" value="No" readonly>
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="toggleSiNo('balcone-1')">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="my-5 opacity-25">
+
+                            <div class="stanza-block mb-4">
+                                <h2 class="h4 fw-bold mb-4">Caratteristiche Stanza numero 2</h2>
+                                <div class="row g-4">
+                                    <div class="col-6">
+                                        <label for="mq-2" class="form-label small fw-semibold">Superficie stanza (mq)
+                                            *</label>
+                                        <input type="number" id="mq-2" class="form-control" placeholder="Es. 22" min="1"
+                                            required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="prezzo-2" class="form-label small fw-semibold">Prezzo per stanza (€)
+                                            *</label>
+                                        <input type="number" id="prezzo-2" class="form-control" placeholder="Es. 450"
+                                            min="1" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label small fw-semibold d-block">Letto Singolo</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="changeVal('letto-s-2', -1)">-</button>
+                                            <input type="number" id="letto-s-2" class="form-control text-center fw-bold"
+                                                value="0" min="0">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="changeVal('letto-s-2', 1)">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label small fw-semibold d-block">Letto Matrimoniale</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="changeVal('letto-m-2', -1)">-</button>
+                                            <input type="number" id="letto-m-2" class="form-control text-center fw-bold"
+                                                value="0" min="0">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="changeVal('letto-m-2', 1)">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label small fw-semibold d-block">Bagno *</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="toggleStrings('bagno-2', 'Condiviso', 'Indipendente')">-</button>
+                                            <input type="text" id="bagno-2"
+                                                class="form-control text-center bg-white fw-bold" value="Condiviso"
+                                                readonly>
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="toggleStrings('bagno-2', 'Condiviso', 'Indipendente')">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label small fw-semibold d-block">Balcone *</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="toggleSiNo('balcone-2')">-</button>
+                                            <input type="text" id="balcone-2"
+                                                class="form-control text-center bg-white fw-bold" value="No" readonly>
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                onclick="toggleSiNo('balcone-2')">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- sezione convivenza -->
+                        <div class="form-section d-none" id="sec-convivenza">
+                            <h2 class="h4 fw-bold mb-4">Dettagli Convivenza</h2>
+
+                            <div class="row g-4">
+                                <div class="col-6">
+                                    <label class="form-label small fw-semibold d-block">Disponibile per (nr. persone)
+                                        *</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('disp-persone', -1)">-</button>
+                                        <input type="number" id="disp-persone" class="form-control text-center fw-bold"
+                                            value="1" min="1" required>
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('disp-persone', 1)">+</button>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label small fw-semibold d-block">Nr. attuale coinquilini
+                                        *</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('current-coinq', -1)">-</button>
+                                        <input type="number" id="current-coinq" class="form-control text-center fw-bold"
+                                            value="0" min="0" required>
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('current-coinq', 1)">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label small fw-semibold d-block mb-2">Genere inquilini
+                                        attuale</label>
+                                    <div class="d-flex flex-column gap-1">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="genere-inq" id="g-m"
+                                                required>
+                                            <label class="form-check-label small" for="g-m">Maschile</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="genere-inq" id="g-f">
+                                            <label class="form-check-label small" for="g-f">Femminile</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="genere-inq" id="g-e"
+                                                checked>
+                                            <label class="form-check-label small" for="g-e">Entrambi</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label small fw-semibold d-block mb-2">Occupazione inquilini
+                                        attuale</label>
+                                    <div class="d-flex flex-column gap-1">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="occ-inq" id="o-s" checked
+                                                required>
+                                            <label class="form-check-label small" for="o-s">Studenti</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="occ-inq" id="o-l">
+                                            <label class="form-check-label small" for="o-l">Lavoratori</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="occ-inq" id="o-e">
+                                            <label class="form-check-label small" for="o-e">Entrambi</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label small fw-semibold d-block">Il proprietario vive in casa?
+                                        *</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="toggleSiNo('prop-casa')">-</button>
+                                        <input type="text" id="prop-casa"
+                                            class="form-control text-center bg-white fw-bold" value="No" readonly
+                                            required>
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="toggleSiNo('prop-casa')">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label small fw-semibold d-block mb-2">Regole della casa</label>
+                                    <div class="row">
+                                        <div class="col-6 col-md-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="rule-anim">
+                                                <label class="form-check-label small" for="rule-anim">Animali
+                                                    accettati</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="rule-fum">
+                                                <label class="form-check-label small" for="rule-fum">Fumatori
+                                                    accettati</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="rule-coppie">
+                                                <label class="form-check-label small" for="rule-coppie">Coppie
+                                                    accettate</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- sezione prezzi -->
+                        <div class="form-section d-none" id="sec-prezzi">
+                            <h2 class="h4 fw-bold mb-4">Prezzo e costi</h2>
+
+                            <div class="row g-4">
+                                <div class="col-6">
+                                    <label for="canone" class="form-label small fw-semibold">Canone mensile (€/mese)
+                                        *</label>
+                                    <input type="number" id="canone" class="form-control" placeholder="Es. 450" min="1"
+                                        required>
+                                </div>
+                                <div class="col-6">
+                                    <label for="cauzione" class="form-label small fw-semibold">Cauzione (€) *</label>
+                                    <input type="number" id="cauzione" class="form-control" placeholder="Es. 900"
+                                        min="0" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label small fw-semibold d-block mb-2">Utenze incluse nel
+                                        canone:</label>
+                                    <div class="d-flex flex-wrap gap-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ut-acqua">
+                                            <label class="form-check-label small" for="ut-acqua">Acqua</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ut-internet">
+                                            <label class="form-check-label small" for="ut-internet">Internet</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ut-gas">
+                                            <label class="form-check-label small" for="ut-gas">Gas</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ut-luce">
+                                            <label class="form-check-label small" for="ut-luce">Elettricità</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <label for="costo-utenze" class="form-label small fw-semibold">Costo utenze
+                                        (€/mese)</label>
+                                    <input type="number" id="costo-utenze" class="form-control" placeholder="Es. 50"
+                                        min="0">
+                                </div>
+                                <div class="col-6">
+                                    <label for="disponibile-dal" class="form-label small fw-semibold">Disponibile dal
+                                        (mese/anno) *</label>
+                                    <input type="month" id="disponibile-dal" class="form-control" required>
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label small fw-semibold d-block">Permanenza minima (mesi)
+                                        *</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('perm-min', -1)">-</button>
+                                        <input type="number" id="perm-min" class="form-control text-center fw-bold"
+                                            value="12" min="1" required>
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            onclick="changeVal('perm-min', 1)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- sezione descrizione -->
+                        <div class="form-section d-none" id="sec-descrizione">
+                            <h2 class="h4 fw-bold mb-4">Descrizione</h2>
+                            <p class="small text-muted mb-2">Inserisci una descrizione di almeno 16 parole
+                                (obbligatorio)</p>
+                            <textarea class="form-control rounded-4" rows="6"
+                                placeholder="Descrivi l'immobile..." required></textarea>
+                        </div>
+
+                        <!-- sezione foto -->
+                        <div class="form-section d-none" id="sec-foto">
+                            <h2 class="h4 fw-bold mb-4">Foto</h2>
+
+                            <div class="upload-box text-center p-5 border border-2 border-dashed rounded-4 bg-light cursor-pointer"
+                                onclick="document.getElementById('input-foto').click()">
+                                <i class="bi bi-plus-lg display-1 text-danger"></i>
+                                <p class="mt-3 fw-bold mb-0">Caricate: <span id="foto-count">0</span> su 20</p>
+                                <input type="file" id="input-foto" class="d-none" multiple accept="image/*"
+                                    onchange="handleFiles(this)">
+                            </div>
+
+                            <div id="preview-container" class="row g-2 mt-4">
+                            </div>
+                        </div>
+
+                        <!-- sezione contatti -->
+                        <div class="form-section d-none" id="sec-contatti">
+                            <h2 class="h4 fw-bold mb-4">Contatti per l'annuncio</h2>
+
+                            <div class="row g-4 mb-5">
+                                <div class="col-12 col-md-6">
+                                    <label for="email-pubblica" class="form-label fw-semibold">Email di contatto
+                                        *</label>
+                                    <input type="email" id="email-pubblica" class="form-control fw-bold py-2"
+                                        value="roberto@example.com" required>
+                                    <div class="invalid-feedback">Inserisci un'email valida.</div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="tel-pubblica" class="form-label fw-semibold">Telefono di contatto
+                                        *</label>
+                                    <input type="tel" id="tel-pubblica" class="form-control fw-bold py-2"
+                                        value="333 1234567" required>
+                                    <div class="invalid-feedback">Il numero di telefono è obbligatorio.</div>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-info border-0 rounded-4 d-flex align-items-center mb-4"
+                                role="alert">
+                                <i class="bi bi-info-circle-fill fs-4 me-3"></i>
+                                <div class="small">Controlla di aver inserito correttamente tutti i dati prima di
+                                    procedere alla pubblicazione definitiva.</div>
+                            </div>
+
+                            <button type="submit"
+                                class="btn btn-success btn-lg w-100 rounded-pill fw-bold py-3 shadow border-0">
+                                <i class="bi bi-check2-circle me-2"></i> PUBBLICA ANNUNCIO ORA
+                            </button>
+                        </div>
+                        <div class="form-section d-none" id="sec-contatti">
+                            <h2 class="h4 fw-bold mb-4">Contatti per l'annuncio</h2>
+
+                            <div class="row g-4 mb-5">
+                                <div class="col-12 col-md-6">
+                                    <label for="email-pubblica" class="form-label fw-semibold">Email di contatto
+                                        *</label>
+                                    <input type="email" id="email-pubblica" class="form-control fw-bold py-2"
+                                        value="roberto@example.com" required>
+                                    <div class="invalid-feedback">Inserisci un'email valida.</div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="tel-pubblica" class="form-label fw-semibold">Telefono di contatto
+                                        *</label>
+                                    <input type="tel" id="tel-pubblica" class="form-control fw-bold py-2"
+                                        value="333 1234567" required>
+                                    <div class="invalid-feedback">Il numero di telefono è obbligatorio.</div>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-info border-0 rounded-4 d-flex align-items-center mb-4"
+                                role="alert">
+                                <i class="bi bi-info-circle-fill fs-4 me-3"></i>
+                                <div class="small">Controlla di aver inserito correttamente tutti i dati prima di
+                                    procedere alla pubblicazione definitiva.</div>
+                            </div>
+
+                            <button type="submit"
+                                class="btn btn-unibo-red btn-lg w-100 rounded-pill fw-bold py-3 shadow border-0">
+                                <i class="bi bi-check2-circle me-2"></i> PUBBLICA ANNUNCIO ORA
+                            </button>
+                        </div>
+
+                        <div id="nav-buttons" class="mt-5 pt-4 border-top d-flex justify-content-between">
+                            <button type="button" id="prevBtn"
+                                class="btn btn-outline-secondary px-4 rounded-pill d-none"
+                                onclick="nextPrev(-1)">Indietro</button>
+                            <button type="button" id="nextBtn" class="btn btn-unibo-red px-4 rounded-pill ms-auto"
+                                onclick="nextPrev(1)">Prosegui</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-unibo-red py-3 mt-auto">
+        <div class="container text-center text-white d-flex flex-column gap-1">
+            <p class="fw-bold mb-0" style="font-size: 14px;">Campus Housing - Università di Bologna</p>
+            <p class="mb-0" style="font-size: 13px;">Alma Mater Studiorum - Campus di Cesena</p>
+            <p class="mb-0 opacity-75" style="font-size: 12px;">© A.A. 2025-2026 Tecnologie Web - Aresu Marco, Fronzi
+                Andrea, Siboni Pietro</p>
+        </div>
+    </footer>
+
+    <nav class="fixed-bottom bg-white border-top shadow d-md-none">
+        <ul style="list-style: none; display: flex; justify-content: space-around; padding: 10px; margin: 0;">
+            <li style="text-align: center;">
+                <a href="home.html" style="text-decoration: none; color: black;">
+                    <i class="bi bi-house" style="font-size: 24px;"></i>
+                    <p style="margin: 0; font-size: 0.8rem;">Home</p>
+                </a>
+            </li>
+            <li style="text-align: center;">
+                <a href="preferiti.html" style="text-decoration: none; color: black;">
+                    <i class="bi bi-heart" style="font-size: 24px;"></i>
+                    <p style="margin: 0; font-size: 0.8rem;">Salvati</p>
+                </a>
+            </li>
+            <li style="text-align: center;">
+                <a href="pubblica-annuncio.html" style="text-decoration: none; color: black;">
+                    <i class="bi bi-plus-circle" style="font-size: 24px;"></i>
+                    <p style="margin: 0; font-size: 0.8rem;">Pubblica</p>
+                </a>
+            </li>
+            <li style="text-align: center;">
+                <a href="tuoi-annunci.html" style="text-decoration: none; color: black;">
+                    <i class="bi bi-pin" style="font-size: 24px;"></i>
+                    <p style="margin: 0; font-size: 0.8rem;">Annunci</p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+        function increment(id) {
+            let input = document.getElementById(id);
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decrement(id) {
+            let input = document.getElementById(id);
+            let val = parseInt(input.value);
+            if (val > 0) {
+                input.value = val - 1;
+            }
+        }
+
+        // Effetto click sul box foto
+        document.querySelector('.upload-box').onclick = function () {
+            document.getElementById('input-foto').click();
+        };
+
+
+    </script>
+
+    <script>
+        let currentStep = 0;
+        const steps = ["tipologia", "localita", "caratteristiche", "convivenza", "prezzi", "descrizione", "foto", "contatti"];
+
+        function showSection(id) {
+            // Nascondi tutte le sezioni
+            document.querySelectorAll('.form-section').forEach(s => s.classList.add('d-none'));
+            // Rimuovi active da tutti i bottoni
+            document.querySelectorAll('#step-menu .list-group-item').forEach(b => b.classList.remove('active'));
+
+            // Mostra quella selezionata
+            document.getElementById('sec-' + id).classList.remove('d-none');
+            document.getElementById('btn-' + id).classList.add('active');
+
+            // Aggiorna step corrente per i tasti Avanti/Indietro
+            currentStep = steps.indexOf(id);
+            updateNavButtons();
+        }
+
+        function nextPrev(n) {
+            currentStep += n;
+            if (currentStep >= steps.length) return false;
+            showSection(steps[currentStep]);
+        }
+
+        function updateNavButtons() {
+            document.getElementById('prevBtn').classList.toggle('d-none', currentStep === 0);
+            document.getElementById('nextBtn').classList.toggle('d-none', currentStep === steps.length - 1);
+
+            // Aggiorna percentuale (approssimativa)
+            let perc = Math.round(((currentStep + 1) / steps.length) * 100);
+            document.getElementById('perc-progresso').innerText = perc + "%";
+        }
+
+
+        function changeVal(id, delta) {
+            let el = document.getElementById(id);
+            // Se il campo è vuoto, lo consideriamo come 0
+            let currentVal = parseInt(el.value) || 0;
+            let newVal = currentVal + delta;
+
+            if (newVal >= 0) {
+                el.value = newVal;
+            }
+        }
+
+        // Funzione specifica per Sì/No tramite tasti +/-
+        function toggleSiNo(id) {
+            let el = document.getElementById(id);
+            el.value = (el.value === "Sì") ? "No" : "Sì";
+        }
+
+        // 3. Gestisce il toggle tra due parole specifiche (es. Condiviso/Indipendente)
+        function toggleStrings(id, s1, s2) {
+            let el = document.getElementById(id);
+            el.value = (el.value === s1) ? s2 : s1;
+        }
+
+        function handleFiles(input) {
+            const container = document.getElementById('preview-container');
+            const files = input.files;
+
+            for (let i = 0; i < files.length; i++) {
+                // Limite massimo di 20 foto
+                if (document.querySelectorAll('.preview-item').length >= 20) {
+                    alert("Puoi caricare al massimo 20 foto");
+                    break;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const div = document.createElement('div');
+                    div.className = 'col-4 col-md-3 preview-item position-relative';
+                    div.innerHTML = `
+                <div class="ratio ratio-1x1 rounded-3 overflow-hidden border shadow-sm">
+                    <img src="${e.target.result}" class="img-fit w-100 h-100" alt="Anteprima">
+                    <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0 m-1 p-0 d-flex align-items-center justify-content-center rounded-circle" 
+                            style="width:22px; height:22px;" onclick="removePhoto(this)">
+                        <i class="bi bi-x fs-6"></i>
+                    </button>
+                </div>
+            `;
+                    container.appendChild(div);
+                    updateFotoCount();
+                }
+                reader.readAsDataURL(files[i]);
+            }
+            // Resetta l'input per permettere di selezionare di nuovo lo stesso file
+            input.value = "";
+        }
+
+        function removePhoto(btn) {
+            btn.closest('.preview-item').remove();
+            updateFotoCount();
+        }
+
+        function updateFotoCount() {
+            const count = document.querySelectorAll('.preview-item').length;
+            document.getElementById('foto-count').innerText = count;
+        }
+
+    </script>
+
+    <script>
+    const form = document.getElementById('form-annuncio');
+
+    form.addEventListener('submit', function (event) {
+        // Impediamo sempre l'invio immediato per poter controllare
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (!form.checkValidity()) {
+            // Se ci sono errori, cerchiamo il primo campo non valido
+            const firstInvalid = form.querySelector(':invalid');
+            
+            if (firstInvalid) {
+                // Troviamo la sezione (.form-section) che contiene l'errore
+                const section = firstInvalid.closest('.form-section');
+                
+                if (section) {
+                    // Estraiamo l'ID della sezione (es. 'localita' da 'sec-localita')
+                    const sectionId = section.id.replace('sec-', '');
+                    
+                    // Forza l'apertura della sezione corretta
+                    showSection(sectionId);
+                    
+                    // Aspettiamo un attimo che la sezione sia visibile e mettiamo il focus
+                    setTimeout(() => {
+                        firstInvalid.focus();
+                        // Opzionale: scrolliamo leggermente per far vedere bene il campo
+                        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 300);
+                }
+            }
+        } else {
+            // Se tutto è compilato correttamente
+            alert("Ottimo! Tutti i campi sono corretti. L'annuncio è stato pubblicato.");
+            // Qui invieresti i dati al server
+        }
+        
+        // Applica le classi CSS di Bootstrap per colorare i campi di rosso
+        form.classList.add('was-validated');
+    }, false);
+</script>
+
+</body>
+
+</html>

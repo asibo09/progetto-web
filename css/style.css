@@ -353,6 +353,100 @@ body.modal-open {
     z-index: 6;
 }
 
+
+/* --- PAGINA pubblica-annuncio --- */
+
+/* Cerchio progresso nella sidebar */
+.progress-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 8px solid #f8f9fa;
+    border-top: 8px solid #bb2e29; /* Colore Unibo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Box caricamento foto */
+.upload-box {
+    cursor: pointer;
+    background-color: #fcfcfc;
+    border-color: #dee2e6 !important;
+    transition: all 0.2s ease;
+}
+
+.upload-box:hover {
+    background-color: #fff5f5;
+    border-color: #bb2e29 !important;
+}
+
+/* Bordi tratteggiati per l'upload */
+.border-dashed {
+    border-style: dashed !important;
+}
+
+/* Bottone Unibo */
+.btn-unibo-red {
+    background-color: #bb2e29;
+    color: white;
+    border: none;
+}
+.btn-unibo-red:hover {
+    background-color: #9b2e2a;
+    color: white;
+}
+
+#step-menu .list-group-item {
+    border: none;
+    border-left: 4px solid transparent;
+    font-weight: 500;
+}
+
+#step-menu .list-group-item.active {
+    background-color: #f8f9fa !important;
+    color: #bb2e29 !important; /* Rosso Unibo */
+    border-left: 4px solid #bb2e29 !important;
+}
+
+.border-dashed {
+    border-style: dashed !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Nasconde le freccette predefinite dei campi numerici */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Stile per i campi obbligatori non compilati */
+.was-validated .form-control:invalid {
+    border-color: #dc3545 !important;
+    background-image: none; /* Rimuoviamo l'icona di default per pulizia */
+}
+
+/* Se un campo è sbagliato, facciamo vibrare leggermente la card */
+.was-validated :invalid {
+    animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+
+
+
 /* --- CONFIGURAZIONE NAVBAR DESKTOP (Schermi grandi) --- */
 
 .custom-nav-annuncio .nav-link {
@@ -369,7 +463,6 @@ body.modal-open {
 .price-container .fw-bold {
     font-size: 18px !important;
 }
-
 
 
 /* --- CONFIGURAZIONE MOBILE E TABLET (Sotto i 991px) --- */
