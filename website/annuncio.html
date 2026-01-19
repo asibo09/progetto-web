@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <title>Annuncio</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Desktop -->
+    <header class="d-none d-lg-flex justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
+        <a href="home.html">
+            <img src="../upload/logoUnibo.png" alt="Logo" style="height: 65px;">
+        </a>
+        <nav class="d-flex gap-5 fs-5">
+            <a href="home.html">Home</a>
+            <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="preferiti.html">Salvati</a>
+            <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="richiedi.html">Richiedi</a>
+            <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a
+                href="prenotazioni.html">Prenotazioni</a>
+        </nav>
+        <a href="profilo.html"><i class="bi bi-person-circle fs-2"></i></a>
+    </header>
+
+    <!-- Tablet -->
+    <header class="d-none d-md-flex d-lg-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
+        <a href="home.html">
+            <img src="../upload/logoUnibo.png" alt="Logo" style="height: 50px;">
+        </a>
+        <div class="d-flex gap-4">
+            <a href="salvati.html"><i class="bi bi-heart fs-4"></i></a>
+            <a href="richiedi.html"><i class="bi bi-arrow-up-circle fs-4"></i></a>
+            <a href="prenotazioni.html"><i class="bi bi-calendar-event fs-4"></i></a>
+            <a href="profilo.html"><i class="bi bi-person-circle fs-4"></i></a>
+        </div>
+    </header>
+
+    <!-- Mobile -->
+    <header class="d-flex d-md-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
+        <a href="home.html">
+            <img src="../upload/logoUnibo.png" alt="Logo" style="height: 50px;">
+        </a>
+        <a href="profilo.html">
+            <i class="bi bi-person-circle" style="font-size: 32px;"></i>
+        </a>
+    </header>
+
+    <nav id="nav-annuncio" class="navbar navbar-light bg-white border-bottom sticky-top shadow-sm py-2">
+        <div class="container-xl">
+            <div class="d-flex align-items-center w-100 flex-wrap">
+
+                <div class="d-flex align-items-center border-end pe-3 me-3 price-container">
+                    <img src="../upload/esempio_alloggio.png" class="rounded-2 me-2"
+                        style="width: 45px; height: 45px; object-fit: cover;" alt="Thumbnail">
+                    <div class="fw-bold text-nowrap fs-5">€ 450.000</div>
+                </div>
+
+                <ul class="nav nav-pills custom-nav-annuncio gap-1 mb-0">
+                    <li class="nav-item"><a class="nav-link" href="#gallery-section">Foto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#descrizione-section">Descrizione</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#caratteristiche-section">Caratteristiche</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#prezzi-section">Prezzi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#convivenza-section">Convivenza</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stanze-section">Stanze</a></li>
+                    <li class="nav-item d-lg-none"><a class="nav-link" href="#utente-section">Proprietario</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow-1 container-xl py-4">
+        <nav aria-label="breadcrumb" class="mb-3">
+            <a href="lista-annunci.html" class="link-lista text-info small fw-bold text-decoration-none">
+                <i class="bi bi-chevron-left"></i> Lista Annunci
+            </a>
+        </nav>
+
+        <div class="row g-4">
+            <div class="col-12 col-lg-8">
+
+                <div id="gallery-section" class="gallery-container rounded-4 overflow-hidden shadow-sm mb-4 bg-white"
+                    style="height: 400px; position: relative;">
+                    <div class="row g-1 h-100">
+
+                        <div class="col-8 h-100 main-photo-wrapper position-relative">
+                            <div id="carouselAnnuncio" class="carousel slide h-100" data-bs-ride="false">
+                                <div class="carousel-inner h-100">
+                                    <div class="carousel-item active h-100">
+                                        <img src="../upload/esempio_alloggio.png" alt="Foto 1"
+                                            class="img-fit h-100 w-100">
+                                    </div>
+                                    <div class="carousel-item h-100">
+                                        <img src="../upload/esempio_alloggio2.png" alt="Foto 2"
+                                            class="img-fit h-100 w-100">
+                                    </div>
+                                </div>
+
+                                <button class="carousel-control-prev gallery-arrow" type="button"
+                                    data-bs-target="#carouselAnnuncio" data-bs-slide="prev">
+                                    <span class="arrow-circle"><i class="bi bi-chevron-left"></i></span>
+                                </button>
+                                <button class="carousel-control-next gallery-arrow" type="button"
+                                    data-bs-target="#carouselAnnuncio" data-bs-slide="next">
+                                    <span class="arrow-circle"><i class="bi bi-chevron-right"></i></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-4 h-100 d-flex flex-column gap-1">
+                            <div class="h-50 overflow-hidden">
+                                <img src="../upload/esempio_alloggio2.png" alt="Camera 1" class="img-fit h-100 w-100">
+                            </div>
+                            <div class="h-50 position-relative more-photos-trigger overflow-hidden">
+                                <img src="../upload/esempio_alloggio.png" alt="Camera 2" class="img-fit h-100 w-100">
+                                <a href="foto.html" class="more-photos-overlay text-decoration-none">
+                                    <span class="fw-bold fs-4">+15 foto</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-counter badge rounded-pill px-3 py-2">
+                        <span class="current-slide">1</span>/<span class="total-slides">17</span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-start mb-1">
+                    <div>
+                        <h1 class="fw-bold h2 mb-1">Quadrilocale via Mami 10</h1>
+                        <p class="text-muted mb-0"><i class="bi bi-geo-alt-fill me-1 text-danger"></i>San Rocco, Cesena
+                        </p>
+                    </div>
+                    <div class="text-end">
+                        <span class="text-danger fw-bold fs-2">450€</span>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-5 text-black fw-semibold">
+                    <div class="col-6 col-md-4"><i class="bi bi-door-open fs-4 me-2"></i>4 locali</div>
+                    <div class="col-6 col-md-4"><i class="bi bi-aspect-ratio fs-4 me-2"></i>176 m²</div>
+                    <div class="col-6 col-md-4"><i class="bi bi-badge-wc fs-4 me-2"></i>2 bagni</div>
+                    <div class="col-6 col-md-4"><i class="bi bi-layers fs-4 me-2"></i>Piano Terra</div>
+                    <div class="col-6 col-md-4"><i class="bi bi-arrows-vertical fs-4 me-2"></i>No Ascensore</div>
+                </div>
+
+                <section id="descrizione-section" class="anchor-section mb-5">
+                    <h2 class="h4 fw-bold border-bottom pb-2 mb-3">Descrizione</h2>
+                    <p>Splendido quadrilocale situato in zona tranquilla e strategica per il Campus di Cesena.
+                        L'appartamento offre ampi spazi comuni e finiture di pregio.</p>
+                </section>
+
+                <section id="caratteristiche-section" class="anchor-section mb-5">
+                    <h2 class="h4 fw-bold border-bottom pb-2 mb-4">Caratteristiche</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        <div class="col d-flex gap-3">
+                            <i class="bi bi-building fs-4 text-black"></i>
+                            <div>
+                                <div class="fw-semibold">Tipologia</div>
+                                <div class="small text-muted">Appartamento</div>
+                            </div>
+                        </div>
+                        <div class="col d-flex gap-3">
+                            <i class="bi bi-signpost fs-4 text-black"></i>
+                            <div>
+                                <div class="fw-semibold">Zona</div>
+                                <div class="small text-muted">Campus</div>
+                            </div>
+                        </div>
+                        <div class="col d-flex gap-3">
+                            <i class="bi bi-file-earmark-text fs-4 text-black"></i>
+                            <div>
+                                <div class="fw-semibold">Contratto</div>
+                                <div class="small text-muted">12 mesi</div>
+                            </div>
+                        </div>
+                        <div class="col d-flex gap-3">
+                            <i class="bi bi-thermometer-half fs-4 text-black"></i>
+                            <div>
+                                <div class="fw-semibold">Riscaldamento</div>
+                                <div class="small text-muted">Autonomo</div>
+                            </div>
+                        </div>
+                        <div class="col d-flex gap-3">
+                            <i class="bi bi-p-circle fs-4 text-black"></i>
+                            <div>
+                                <div class="fw-semibold">Posti auto</div>
+                                <div class="small text-muted">1 in garage</div>
+                            </div>
+                        </div>
+                        <div class="col d-flex gap-3">
+                            <i class="bi bi-bar-chart-steps fs-4 text-black"></i>
+                            <div>
+                                <div class="fw-semibold">Piani edificio</div>
+                                <div class="small text-muted">4</div>
+                            </div>
+                        </div>
+                        <div class="col d-flex gap-3">
+                            <i class="bi bi-cup-hot fs-4 text-black"></i>
+                            <div>
+                                <div class="fw-semibold">Cucina</div>
+                                <div class="small text-muted">1</div>
+                            </div>
+                        </div>
+                        <div class="col d-flex gap-3">
+                            <i class="bi bi-moon fs-4 text-black"></i>
+                            <div>
+                                <div class="fw-semibold">Camere da letto</div>
+                                <div class="small text-muted">3</div>
+                            </div>
+                        </div>
+                        <div class="col d-flex gap-3">
+                            <i class="bi bi-piggy-bank fs-4 text-black"></i>
+                            <div>
+                                <div class="fw-semibold">Cauzione</div>
+                                <div class="small text-muted">1000€</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="prezzi-section" class="anchor-section mb-5">
+                    <h2 class="h4 fw-bold border-bottom pb-2 mb-4">Prezzo e Costi</h2>
+                    <div class="row row-cols-1 row-cols-md-2 g-3 small">
+                        <div class="col"><strong>Canone mensile:</strong> 450€</div>
+                        <div class="col"><strong>Utenze:</strong> Escluse</div>
+                        <div class="col"><strong>Spese condominiali:</strong> 50€/mese</div>
+                        <div class="col"><strong>Cauzione:</strong> 1000€</div>
+                        <div class="col"><strong>Disponibile dal:</strong> 05/2026</div>
+                        <div class="col"><strong>Permanenza minima:</strong> 12 mesi</div>
+                    </div>
+                </section>
+
+                <section id="convivenza-section" class="anchor-section mb-5">
+                    <h2 class="h4 fw-bold border-bottom pb-2 mb-4">Convivenza</h2>
+                    <div class="row row-cols-1 row-cols-md-2 g-3 small">
+                        <div class="col"><strong>Disponibile per:</strong> 4 Persone</div>
+                        <div class="col"><strong>Inquilini in casa:</strong> 2 Studenti</div>
+                        <div class="col"><strong>Genere preferito:</strong> Qualsiasi</div>
+                        <div class="col"><strong>Proprietario vive in casa:</strong> No</div>
+                        <div class="col"><strong>Fumatori:</strong> Non ammessi</div>
+                        <div class="col"><strong>Animali:</strong> Da concordare</div>
+                        <div class="col"><strong>Coppie:</strong> Accettate</div>
+                    </div>
+                </section>
+
+                <section id="stanze-section" class="anchor-section mb-5">
+                    <h2 class="h4 fw-bold border-bottom pb-2 mb-4">Stanze disponibili</h2>
+                    <div class="card border rounded-3 p-3 shadow-sm mb-3 bg-white">
+
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                            <div>
+                                <div class="fw-bold">Stanza numero 1:</div>
+                                <div class="small text-muted">1 Letto singolo | 30 m² | Bagno indipendente | Balcone
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <div class="text-danger fw-bold mb-1 fs-5">500€</div>
+                                <button class="btn btn-prenota text-info btn-outline-info rounded-3 btn-sm fw-semibold">
+                                    Prenota questa stanza
+                                </button>
+                            </div>
+                        </div>
+
+                        <hr class="my-3 opacity-25">
+
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                            <div>
+                                <div class="fw-bold">Stanza numero 2:</div>
+                                <div class="small text-muted">1 Letto matrimoniale | 35 m² | Bagno condiviso</div>
+                            </div>
+                            <div class="text-end">
+                                <div class="text-danger fw-bold mb-1 fs-5">450€</div>
+                                <button class="btn btn-prenota text-info btn-outline-info rounded-3 btn-sm fw-semibold">
+                                    Prenota questa stanza
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+
+
+
+
+            <div class="col-12 col-lg-4">
+                <div id="utente-section" class="sticky-top anchor-section">
+                    <div class="card shadow-sm border-0 p-4 rounded-4 mb-3 bg-white">
+                        <h2 class="h5 fw-bold border-bottom mb-3">Pubblicato da:</h2>
+                        <a href="profilo-altro-utente.html"
+                            class="text-decoration-none text-dark d-flex align-items-center gap-2 mb-1">
+                            <i class="bi bi-person-circle fs-4 text-danger"></i>
+                            <span class="nome-utente fw-bold">Roberto Rossi</span>
+                        </a>
+                        <span class="text-dark small mb-4">Pubblicato il: 10/01/2026</span>
+                        <h2 class="h5 fw-bold border-bottom pb-2 mb-3">
+                            <i class="bi bi-envelope-at me-2 text-danger"></i>Contatti
+                        </h2>
+                        <p class="mb-2">
+                            <i class="bi bi-envelope me-2"></i><strong>Email:</strong>
+                            <a href="mailto:roberto@example.com" class="text-dark">roberto@example.com</a>
+                        </p>
+                        <p class="mb-0">
+                            <i class="bi bi-telephone me-2"></i><strong>Telefono:</strong>
+                            <a href="tel:1234567890" class="text-dark">123-456-7890</a>
+                        </p>
+                        <div class="d-grid gap-2 mt-3">
+                            <a href="prenotazioni.html"
+                                class="btn btn-prenota text-info btn-outline-info py-2 rounded-3 fw-bold shadow-sm">
+                                <i class="bi bi-calendar-check me-2"></i>Prenota
+                            </a>
+                            <button class="btn btn-outline-danger py-2 rounded-3 fw-bold"
+                                onclick="this.classList.toggle('active')">
+                                <i class="bi bi-heart me-2"></i>Salva
+                            </button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a href="segnalazione.html" class="btn btn-warning text-decoration-none">
+                            <i class="bi bi-exclamation-triangle-fill me-1"></i> Segnala annuncio
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-unibo-red py-3 mt-auto">
+        <div class="container text-center text-white d-flex flex-column gap-1">
+            <p class="fw-bold mb-0" style="font-size: 14px;">Campus Housing - Università di Bologna</p>
+            <p class="mb-0" style="font-size: 13px;">Alma Mater Studiorum - Campus di Cesena</p>
+            <p class="mb-0 opacity-75" style="font-size: 12px;">© A.A. 2025-2026 Tecnologie Web - Aresu Marco, Fronzi
+                Andrea, Siboni Pietro</p>
+        </div>
+    </footer>
+
+    <nav class="fixed-bottom bg-white border-top shadow d-md-none">
+        <ul style="list-style: none; display: flex; justify-content: space-around; padding: 10px; margin: 0;">
+            <li style="text-align: center;">
+                <a href="home.html" style="text-decoration: none; color: black;">
+                    <i class="bi bi-house" style="font-size: 24px;"></i>
+                    <p style="margin: 0; font-size: 0.8rem;">Home</p>
+                </a>
+            </li>
+            <li style="text-align: center;">
+                <a href="preferiti.html" style="text-decoration: none; color: black;">
+                    <i class="bi bi-heart" style="font-size: 24px;"></i>
+                    <p style="margin: 0; font-size: 0.8rem;">Salvati</p>
+                </a>
+            </li>
+            <li style="text-align: center;">
+                <a href="richiedi-delega.html" style="text-decoration: none; color: black;">
+                    <i class="bi bi-plus-circle" style="font-size: 24px;"></i>
+                    <p style="margin: 0; font-size: 0.8rem;">Richiedi</p>
+                </a>
+            </li>
+            <li style="text-align: center;">
+                <a href="prenotazioni.html" style="text-decoration: none; color: black;">
+                    <i class="bi bi-calendar-event" style="font-size: 24px;"></i>
+                    <p style="margin: 0; font-size: 0.8rem;">Prenotazioni</p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+</body>
+
+<script>
+    //selezioniamo tutti i caroselli nella pagina
+    document.querySelectorAll('.carousel').forEach(carousel => {
+        //seleziona il contenitore della galleria
+        const galleryContainer = carousel.closest('.gallery-container') || carousel;
+
+        const currentSpan = galleryContainer.querySelector('.current-slide');
+        const totalSpan = galleryContainer.querySelector('.total-slides');
+        const items = carousel.querySelectorAll('.carousel-item');
+
+        //imposta il totale delle slide
+        if (totalSpan) {
+            totalSpan.textContent = items.length;
+        }
+
+        //aggiorna numero quando cambia slide
+        carousel.addEventListener('slid.bs.carousel', function (event) {
+            if (currentSpan) {
+                currentSpan.textContent = event.to + 1;
+            }
+        });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</html>
