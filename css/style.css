@@ -268,6 +268,7 @@ html {
     transform: scale(1.02); 
     cursor: pointer;
 }
+
 /* --- STILE MODAL FOTO --- */
 /* sfondo dietro scuro */
 .modal-backdrop.show {
@@ -404,6 +405,21 @@ body.modal-open {
     }
 
     .img-gallery-full {
-        height: 180px; /* Riduce l'altezza su schermi piccoli */
+        height: 180px; /* Riduce altezza su schermi piccoli */
+    }
+
+    #modalImg {
+    width: auto;
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    display: block;
+    }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    .modal-galleria {
+        max-width: 70% !important;
     }
 }
