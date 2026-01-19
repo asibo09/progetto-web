@@ -249,8 +249,44 @@ html {
     z-index: 1000 !important; /* Più basso della barra */
 }
 
-/* --- EFFETTI IN "salvati.html" --- */
 
+/* --- STILE GALLERIA foto.html --- */
+.link-indietro:hover {
+    text-decoration: underline !important;
+    transform: scale(1) !important;
+    color: #0dcaf0; 
+}
+
+.img-gallery-full {
+    height: 300px; 
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.img-gallery-full:hover {
+    transform: scale(1.02); 
+    cursor: pointer;
+}
+/* --- STILE MODAL FOTO --- */
+/* sfondo dietro scuro */
+.modal-backdrop.show {
+    opacity: 0.9 !important;
+}
+
+/* evita lo scroll pagina quando foto aperta */
+body.modal-open {
+    overflow: hidden !important;
+}
+
+#modalImg {
+    /*anche foto molto piccole ingrandite per riempire la modal */
+    min-width: 50%; 
+    background-color: rgba(0,0,0,0.2);
+}
+
+
+/* --- EFFETTI IN "salvati.html" --- */
 
 /* per carousel */
 .custom-carousel-container {
@@ -334,8 +370,8 @@ html {
 }
 
 
-/* --- CONFIGURAZIONE MOBILE E TABLET (Sotto i 991px) --- */
 
+/* --- CONFIGURAZIONE MOBILE E TABLET (Sotto i 991px) --- */
 @media (max-width: 991px) {
     .price-container {
         width: auto; 
@@ -357,5 +393,17 @@ html {
 
     .price-container .fw-bold {
         font-size: 18px !important;
+    }
+}
+
+/* Ottimizzazione per mobile */
+@media (max-width: 767px) {
+    body {
+        /* assicura che ci sia sempre spazio per la barra fissa */
+        padding-bottom: 80px !important;
+    }
+
+    .img-gallery-full {
+        height: 180px; /* Riduce l'altezza su schermi piccoli */
     }
 }
