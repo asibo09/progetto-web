@@ -66,7 +66,6 @@ body > main > form >
 /* Hover / focus: la card si solleva e avvicina */
 .card:hover,
 .card:focus {
-    transform: translateY(-10px) translateZ(24px) scale(1.03);
     box-shadow: 0 22px 40px rgba(0,0,0,0.16);
     z-index: 10;
     cursor: pointer;
@@ -74,7 +73,6 @@ body > main > form >
 
 /* Pressed: effetto "premuto" */
 .card:active {
-    transform: translateY(-4px) translateZ(8px) scale(0.995);
     box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
@@ -87,14 +85,6 @@ body > main > form >
 
 
 /* --- EFFETTI PULSANTI IN "segnalazione.html" --- */
-
-/* Pulsante prenota */
-.btn-prenota:hover {
-    transform: scale(1.08); 
-    background-color: transparent !important; 
-    color: #000 !important;
-    border-color: #000 !important;
-}
 
 /* Pulsante segnalazione */
 .btn-warning:hover{
