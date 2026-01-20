@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="css/style.css">
 
-    <title>Segnalazione</title>
+    <title><?php echo $templateParams["titolo"]; ?></title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
 <!-- Desktop -->
 <header class="d-none d-lg-flex justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
-    <a href="index.html">
-        <img src="../upload/logoUnibo.png" alt="Logo" style="height: 65px;">
+    <a href="index.php">
+        <img src="upload/logoUnibo.png" alt="Logo" style="height: 65px;">
     </a>
     <nav class="d-flex gap-5 fs-5">
-        <a href="index.html">Home</a>
+        <a href="index.php">Home</a>
         <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="preferiti.html">Salvati</a>
         <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="richiedi.html">Richiedi</a>
         <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a
@@ -32,8 +30,8 @@
 
 <!-- Tablet -->
 <header class="d-none d-md-flex d-lg-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
-    <a href="index.html">
-        <img src="../upload/logoUnibo.png" alt="Logo" style="height: 50px;">
+    <a href="index.php">
+        <img src="upload/logoUnibo.png" alt="Logo" style="height: 50px;">
     </a>
     <div class="d-flex gap-4">
         <a href="salvati.html"><i class="bi bi-heart fs-4"></i></a>
@@ -45,40 +43,25 @@
 
 <!-- Mobile -->
 <header class="d-flex d-md-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
-    <a href="index.html">
-        <img src="../upload/logoUnibo.png" alt="Logo" style="height: 50px;">
+    <a href="index.php">
+        <img src="upload/logoUnibo.png" alt="Logo" style="height: 50px;">
     </a>
     <a href="profilo.html">
         <i class="bi bi-person-circle" style="font-size: 32px;"></i>
     </a>
 </header>
 
-<main class="flex-grow-1 container-xl py-5">
-    <div class="mb-4 mt-5 text-left px-3">
-        <h1 class="fw-bold">Nome, cosa stai cercando?</h1>
-        <p class="text-muted">Trova offerte per alloggi ovunque!</p>
-    </div>
-
-    <form action="#" method="POST" class="container-xl px-3">
-        <div class="mb-2">
-
-            <label for="alloggio" class="form-label fw-semibold fs-5">Per quale alloggio?</label>
-            <select class="form-select" id="alloggio" name="alloggio" required>
-                <option value="" selected disabled>Seleziona l'alloggio...</option>
-                <option value="1">alloggio 1</option>
-                <option value="2">alloggio 2</option>
-            </select>
-
-            <label for="messaggioProprietario" class="form-label fw-semibold fs-5 mt-3">Messaggio per il proprietario</label>
-            <input type="text" class="form-control" id="messaggioProprietario" name="messaggioProprietario" placeholder="Scrivi qui il tuo messaggio..." required>
-
-            <button type="submit" class="btn bg-unibo-red w-100 py-3 rounded-3 shadow-sm fw-bold fs-5">
-                <i class="bi bi-send-fill me-2"></i> INVIA
-            </button>
-
-        </div>
-    </form>
+    <main class="flex-grow-1 container-xl py-5">
+    <?php
+    if(isset($templateParams["nome"])){
+        require($templateParams["nome"]);
+    }
+    ?>
 </main>
+
+
+
+
 
 <footer class="bg-unibo-red py-3 mt-auto">
     <div class="container text-center text-white d-flex flex-column gap-1">
@@ -92,7 +75,7 @@
 <nav class="fixed-bottom bg-white border-top shadow d-md-none">
     <ul style="list-style: none; display: flex; justify-content: space-around; padding: 10px; margin: 0;">
         <li style="text-align: center;">
-            <a href="index.html" style="text-decoration: none; color: black;">
+            <a href="index.php" style="text-decoration: none; color: black;">
                 <i class="bi bi-house" style="font-size: 24px;"></i>
                 <p style="margin: 0; font-size: 0.8rem;">Home</p>
             </a>
