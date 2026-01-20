@@ -1,10 +1,8 @@
 <?php
 require_once("bootstrap.php");
 
-$templeteParams["titolo"] = "Unibo Affitti - Home";
+$templeteParams["titolo"] = "Nome, cosa stai cercando?";
 
-
-require_once("templete/base.php");
+//VALORI UTILIZZATI NELLA PAGINA
+require("templete/base.php");
 ?>
-
-//prepariamo template
