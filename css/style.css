@@ -36,6 +36,10 @@ body > main > form{
     padding: 30px 2% 30px;
 }
 
+body > main > form > div > input{
+    width: 100%;
+}
+
 body > header > nav > a:hover,
 body > nav > ul > li > a:hover{
     transform: scale(1.01);
@@ -49,7 +53,7 @@ header > div > a:hover{
     font-weight: bold;
 }
 
-body > main > form > button:hover{
+body > main > form button:hover{
     cursor: pointer !important;
     color: white !important;
     background-color: #9b2e2a !important; 
@@ -57,7 +61,28 @@ body > main > form > button:hover{
     transform: scale(1.03);
 }
 
+/* Effetto "viene verso di me" per le card */
 
+/* Hover / focus: la card si solleva e avvicina */
+.card:hover,
+.card:focus {
+    transform: translateY(-10px) translateZ(24px) scale(1.03);
+    box-shadow: 0 22px 40px rgba(0,0,0,0.16);
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* Pressed: effetto "premuto" */
+.card:active {
+    transform: translateY(-4px) translateZ(8px) scale(0.995);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+/* Accessibilità: bordo visibile quando si naviga via tastiera */
+.card:focus-visible {
+    outline: 3px solid rgba(187,46,41,0.16);
+    outline-offset: 4px;
+}
 
 /* --- EFFETTI PULSANTI IN "segnalazione.html" --- */
 
