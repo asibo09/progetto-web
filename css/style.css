@@ -356,18 +356,6 @@ body.modal-open {
 
 /* --- PAGINA pubblica-annuncio --- */
 
-/* Cerchio progresso nella sidebar */
-.progress-circle {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 8px solid #f8f9fa;
-    border-top: 8px solid #bb2e29; /* Colore Unibo */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 /* Box caricamento foto */
 .upload-box {
     cursor: pointer;
@@ -381,12 +369,12 @@ body.modal-open {
     border-color: #bb2e29 !important;
 }
 
-/* Bordi tratteggiati per l'upload */
+/* bordi tratteggiati per upload */
 .border-dashed {
     border-style: dashed !important;
 }
 
-/* Bottone Unibo */
+/* Bottone rosso unibo */
 .btn-unibo-red {
     background-color: #bb2e29;
     color: white;
@@ -409,13 +397,6 @@ body.modal-open {
     border-left: 4px solid #bb2e29 !important;
 }
 
-.border-dashed {
-    border-style: dashed !important;
-}
-
-.cursor-pointer {
-    cursor: pointer;
-}
 
 /* Nasconde le freccette predefinite dei campi numerici */
 input::-webkit-outer-spin-button,
@@ -432,19 +413,6 @@ input[type=number] {
     border-color: #dc3545 !important;
     background-image: none; /* Rimuoviamo l'icona di default per pulizia */
 }
-
-/* Se un campo è sbagliato, facciamo vibrare leggermente la card */
-.was-validated :invalid {
-    animation: shake 0.4s ease-in-out;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-}
-
-
 
 
 /* --- CONFIGURAZIONE NAVBAR DESKTOP (Schermi grandi) --- */
@@ -491,7 +459,7 @@ input[type=number] {
 }
 
 /* Ottimizzazione per mobile */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     body {
         /* assicura che ci sia sempre spazio per la barra fissa */
         padding-bottom: 80px !important;
@@ -508,6 +476,21 @@ input[type=number] {
     object-fit: contain;
     display: block;
     }
+
+    /* parte di riduzione pubblica-annuncio.html */
+    
+    
+    /* Rimpicciolisce testo della sidebar */
+    #step-menu .list-group-item {
+        font-size: 0.8rem;
+        padding: 10px 5px !important;
+    }
+
+    /* Rimpicciolisce le icone */
+    #step-menu .bi {
+        font-size: 0.8rem;
+    }
+
 }
 
 /* Desktop */
