@@ -1,61 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="it">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-
-    <title>Segnalazione</title>
-</head>
-
-<body class="d-flex flex-column min-vh-100">
-<!-- Desktop -->
-<header class="d-none d-lg-flex justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
-    <a href="home.html">
-        <img src="../upload/logoUnibo.png" alt="Logo" style="height: 65px;">
-    </a>
-    <nav class="d-flex gap-5 fs-5">
-        <a href="home.html">Home</a>
-        <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="preferiti.html">Salvati</a>
-        <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="richiedi.html">Richiedi</a>
-        <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a
-            href="prenotazioni.html">Prenotazioni</a>
-    </nav>
-    <a href="profilo.html"><i class="bi bi-person-circle fs-2"></i></a>
-</header>
-
-<!-- Tablet -->
-<header class="d-none d-md-flex d-lg-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
-    <a href="home.html">
-        <img src="../upload/logoUnibo.png" alt="Logo" style="height: 50px;">
-    </a>
-    <div class="d-flex gap-4">
-        <a href="salvati.html"><i class="bi bi-heart fs-4"></i></a>
-        <a href="richiedi.html"><i class="bi bi-arrow-up-circle fs-4"></i></a>
-        <a href="prenotazioni.html"><i class="bi bi-calendar-event fs-4"></i></a>
-        <a href="profilo.html"><i class="bi bi-person-circle fs-4"></i></a>
-    </div>
-</header>
-
-<!-- Mobile -->
-<header class="d-flex d-md-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
-    <a href="home.html">
-        <img src="../upload/logoUnibo.png" alt="Logo" style="height: 50px;">
-    </a>
-    <a href="profilo.html">
-        <i class="bi bi-person-circle" style="font-size: 32px;"></i>
-    </a>
-</header>
-
-    <main class="flex-grow-1 container-xl py-5">
-        <div class="mb-4 mt-5 text-left px-3">
+<div class="mb-4 mt-5 text-left px-3">
             <h1 class="fw-bold">Nome, cosa stai cercando?</h1>
             <p class="text-muted">Trova offerte per alloggi ovunque!</p>
         </div>
@@ -86,107 +29,70 @@
 
             <h2 class="fw-bold mb-3">Continua la ricerca...</h2>
 
-            <div class="row g-3"><div class="col-6"> <a href="#" class="card text-decoration-none text-dark shadow-sm h-100">
-                <div class="card-body p-2 d-flex align-items-center">
-                    <div class="bg-light rounded d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px;">
-                        <i class="bi bi-geo-alt fs-3 text-secondary"></i> </div>
-                    <div>
-                        <p class="mb-0 fw-bold">Cesena</p>
-                        <small class="text-muted" style="font-size: 0.75rem;">1 anno, 1 persona</small>
+            <ul class="row g-3 list-unstyled" role="list" aria-label="Ultime ricerche">
+                <?php foreach($templateParams["lastSearches"] as $search): ?>
+                <li class="col-6">
+                    <div class="d-flex flex-column gap-3">
+
+                <div class="card rounded-3 overflow-hidden shadow position-relative card-annuncio-hover">
+                    <div class="row g-0 align-items-stretch">
+                        <div class="col-4 border-end position-relative custom-carousel-container">
+                            <div id="carouselMyProp1" class="carousel slide h-100" data-bs-ride="false">
+                                <div class="carousel-counter badge">
+                                    <span class="current-slide">1</span>/<span class="total-slides">2</span>
+                                </div>
+                                <div class="carousel-inner h-100">
+                                    <div class="carousel-item active h-100">
+                                        <a href="annuncio.html" class="d-block h-100">
+                                            <img src="../upload/esempio_alloggio.png" class="img-fit"
+                                                alt="Foto Stanza 1">
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item h-100">
+                                        <a href="annuncio.html" class="d-block h-100">
+                                            <img src="../upload/esempio_alloggio2.png" class="img-fit"
+                                                alt="Foto Stanza 2">
+                                        </a>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev custom-arrow" type="button"
+                                    data-bs-target="#carouselMyProp1" data-bs-slide="prev">
+                                    <span class="arrow-circle"><i class="bi bi-chevron-left"></i></span>
+                                </button>
+                                <button class="carousel-control-next custom-arrow" type="button"
+                                    data-bs-target="#carouselMyProp1" data-bs-slide="next">
+                                    <span class="arrow-circle"><i class="bi bi-chevron-right"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body p-4">
+                                <a href="annuncio.html" class="stretched-link text-decoration-none text-dark">
+                                    <h3 class="h5 fw-bold mb-1">Stanza singola</h3>
+                                </a>
+                                <p class="text-muted small mb-1"><i class="bi bi-geo-alt-fill me-1 text-danger"></i>Via
+                                    del Campus, 10 - Cesena</p>
+                                <p class="small mb-3 text-secondary">2 km dal Campus, 10 km dal centro</p>
+
+                                <div class="d-flex align-items-center gap-3">
+                                    <span class="fw-bold fs-5">800€</span>
+                                    <a href="#"
+                                        class="btn btn-modifica btn-outline-primary rounded-pill d-flex gap-2 align-items-center fw-semibold ms-auto position-relative z-2">
+                                        <i class="bi bi-pencil"></i>Modifica
+                                    </a>
+                                    <a href="#"
+                                        class="btn btn-outline-danger rounded-pill d-flex gap-2 align-items-center fw-semibold position-relative z-2">
+                                        <i class="bi bi-trash"></i>Elimina
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </a>
-            </div>
-
-                <div class="col-6">
-                    <a href="#" class="card text-decoration-none text-dark shadow-sm h-100">
-                        <div class="card-body p-2 d-flex align-items-center">
-                            <div class="bg-light rounded d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px;">
-                                <i class="bi bi-geo-alt fs-3 text-secondary"></i>
-                            </div>
-                            <div>
-                                <p class="mb-0 fw-bold">Cesena</p>
-                                <small class="text-muted" style="font-size: 0.75rem;">1 anno, 5 persone</small>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-6">
-                    <a href="#" class="card text-decoration-none text-dark shadow-sm h-100">
-                        <div class="card-body p-2 d-flex align-items-center">
-                            <div class="bg-light rounded d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px;">
-                                <i class="bi bi-geo-alt fs-3 text-secondary"></i>
-                            </div>
-                            <div>
-                                <p class="mb-0 fw-bold">Cesena</p>
-                                <small class="text-muted" style="font-size: 0.75rem;">6 mesi, 1 persona</small>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-6">
-                    <a href="#" class="card text-decoration-none text-dark shadow-sm h-100">
-                        <div class="card-body p-2 d-flex align-items-center">
-                            <div class="bg-light rounded d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px;">
-                                <i class="bi bi-geo-alt fs-3 text-secondary"></i>
-                            </div>
-                            <div>
-                                <p class="mb-0 fw-bold">Cesena</p>
-                                <small class="text-muted" style="font-size: 0.75rem;">1 mese, 1 persona</small>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
             </div>
         </div>
+                </li>
+            </ul>
+            <?php endforeach; ?>
 
-
-    </main>
-
-
-
-
-
-<footer class="bg-unibo-red py-3 mt-auto">
-    <div class="container text-center text-white d-flex flex-column gap-1">
-        <p class="fw-bold mb-0" style="font-size: 14px;">Campus Housing - Università di Bologna</p>
-        <p class="mb-0" style="font-size: 13px;">Alma Mater Studiorum - Campus di Cesena</p>
-        <p class="mb-0 opacity-75" style="font-size: 12px;">© A.A. 2025-2026 Tecnologie Web - Aresu Marco, Fronzi
-            Andrea, Siboni Pietro</p>
-    </div>
-</footer>
-
-<nav class="fixed-bottom bg-white border-top shadow d-md-none">
-    <ul style="list-style: none; display: flex; justify-content: space-around; padding: 10px; margin: 0;">
-        <li style="text-align: center;">
-            <a href="home.html" style="text-decoration: none; color: black;">
-                <i class="bi bi-house" style="font-size: 24px;"></i>
-                <p style="margin: 0; font-size: 0.8rem;">Home</p>
-            </a>
-        </li>
-        <li style="text-align: center;">
-            <a href="preferiti.html" style="text-decoration: none; color: black;">
-                <i class="bi bi-heart" style="font-size: 24px;"></i>
-                <p style="margin: 0; font-size: 0.8rem;">Salvati</p>
-            </a>
-        </li>
-        <li style="text-align: center;">
-            <a href="richiedi-delega.html" style="text-decoration: none; color: black;">
-                <i class="bi bi-plus-circle" style="font-size: 24px;"></i>
-                <p style="margin: 0; font-size: 0.8rem;">Richiedi</p>
-            </a>
-        </li>
-        <li style="text-align: center;">
-            <a href="prenotazioni.html" style="text-decoration: none; color: black;">
-                <i class="bi bi-calendar-event" style="font-size: 24px;"></i>
-                <p style="margin: 0; font-size: 0.8rem;">Prenotazioni</p>
-            </a>
-        </li>
-    </ul>
-</nav>
-
-</body>
-</html>
+        </div>
