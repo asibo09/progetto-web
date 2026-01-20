@@ -18,11 +18,11 @@
 <body class="d-flex flex-column min-vh-100">
 <!-- Desktop -->
 <header class="d-none d-lg-flex justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
-    <a href="home.html">
+    <a href="index.php">
         <img src="../upload/logoUnibo.png" alt="Logo" style="height: 65px;">
     </a>
     <nav class="d-flex gap-5 fs-5">
-        <a href="home.html">Home</a>
+        <a href="index.php">Home</a>
         <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="preferiti.html">Salvati</a>
         <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="richiedi.html">Richiedi</a>
         <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a
@@ -33,7 +33,7 @@
 
 <!-- Tablet -->
 <header class="d-none d-md-flex d-lg-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
-    <a href="home.html">
+    <a href="index.php">
         <img src="../upload/logoUnibo.png" alt="Logo" style="height: 50px;">
     </a>
     <div class="d-flex gap-4">
@@ -46,7 +46,7 @@
 
 <!-- Mobile -->
 <header class="d-flex d-md-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
-    <a href="home.html">
+    <a href="index.php">
         <img src="../upload/logoUnibo.png" alt="Logo" style="height: 50px;">
     </a>
     <a href="profilo.html">
@@ -162,7 +162,7 @@
 <nav class="fixed-bottom bg-white border-top shadow d-md-none">
     <ul style="list-style: none; display: flex; justify-content: space-around; padding: 10px; margin: 0;">
         <li style="text-align: center;">
-            <a href="home.html" style="text-decoration: none; color: black;">
+            <a href="index.php" style="text-decoration: none; color: black;">
                 <i class="bi bi-house" style="font-size: 24px;"></i>
                 <p style="margin: 0; font-size: 0.8rem;">Home</p>
             </a>
