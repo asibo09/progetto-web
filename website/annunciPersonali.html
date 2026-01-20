@@ -9,7 +9,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Le mie case</title>
+    <title>I miei annunci</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -51,40 +51,92 @@
         </a>
     </header>
 
-    <main class="flex-grow-1">
-        <div class="mb-4 mt-5 text-left px-3">
-            <h1 class="fw-bold"><i class="bi bi-house"></i>Annunci Personali</h1>
-            <p class="text-muted">In questa sezione puoi navigare i tuoi annunci caricati nel sito</p>
-        </div>
-        <div class="d-flex align-items-center gap-2 px-3 mb-4">
-            <p class="mb-0 flex-grow-1 bg-info rounded-3 py-2 px-3">Pubblica subito il tuo annuncio per rendere
-                affittabile il tuo immobile</p>
-            <a class="btn btn-primary fw-bold py-2 px-3" href="">Pubblica annuncio</a>
-        </div>
-        <section class="d-flex card">
-            <!-- Annuncio singolo -->
-            <div class="m-2">
-                <div class="row g-0">
-                    <div class="col-md-5">
-                        <img src="" alt="" class="">
+
+    <main class="flex-grow-1 container-xl py-5">
+
+        <h1 class="fw-bold mb-5"><i class="bi bi-house"></i> I miei annunci</h1>
+
+        <div class="bg-white shadow-sm border p-4 rounded-3 h-100">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="fw-semibold fs-5">2 annunci pubblicati</h2>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <label for="sort" class="text-muted">Ordina per:</label>
+                        <select id="sort" class="form-select border-0 bg-transparent fw-semibold w-auto">
+                            <option value="1">Più recenti</option>
+                            <option value="2">Prezzo (basso-alto)</option>
+                            <option value="3">Prezzo (alto-basso)</option>
+                        </select>
                     </div>
-                    <div class="col-md-7">
-                        <div class="card-body py-3">
-                            <h2 class="card-title mb-1">
-                                <a href="#" class="text-decoration-none text-primary">Stanza singola, via xxx</a>
-                            </h2>
-                            <p class="card-text small mb-1">Lorem Ipsum
-                                mnbfdnbfdnbfdnbfdnbfdnbfdnbfdnbfdnbfdnbfdnbfdnbfdnbfdnbfdnbfd</p>
-                            <p class="card-text"><small class="text-muted">2 km dal Campus, 1 km dal centro</small></p>
-                            <div class="d-flex gap-2">
-                                <span class="fw-bold fs-5 me-auto">800€</span>
-                                <a href="#" class="btn btn-primary btn-sm">Modifica</a>
-                                <a href="#" class="btn btn-primary btn-sm">Elimina</a>
+                    <a class="btn btn-primary fw-bold py-2 px-3 rounded-pill d-flex align-items-center gap-2"
+                        href="pubblica-annuncio.html">
+                        <i class="bi bi-plus-circle"></i> Nuovo annuncio
+                    </a>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column gap-3">
+
+                <div class="card rounded-3 overflow-hidden shadow position-relative card-annuncio-hover">
+                    <div class="row g-0 align-items-stretch">
+                        <div class="col-4 border-end position-relative custom-carousel-container">
+                            <div id="carouselMyProp1" class="carousel slide h-100" data-bs-ride="false">
+                                <div class="carousel-counter badge">
+                                    <span class="current-slide">1</span>/<span class="total-slides">2</span>
+                                </div>
+                                <div class="carousel-inner h-100">
+                                    <div class="carousel-item active h-100">
+                                        <a href="annuncio.html" class="d-block h-100">
+                                            <img src="../upload/esempio_alloggio.png" class="img-fit"
+                                                alt="Foto Stanza 1">
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item h-100">
+                                        <a href="annuncio.html" class="d-block h-100">
+                                            <img src="../upload/esempio_alloggio2.png" class="img-fit"
+                                                alt="Foto Stanza 2">
+                                        </a>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev custom-arrow" type="button"
+                                    data-bs-target="#carouselMyProp1" data-bs-slide="prev">
+                                    <span class="arrow-circle"><i class="bi bi-chevron-left"></i></span>
+                                </button>
+                                <button class="carousel-control-next custom-arrow" type="button"
+                                    data-bs-target="#carouselMyProp1" data-bs-slide="next">
+                                    <span class="arrow-circle"><i class="bi bi-chevron-right"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body p-4">
+                                <a href="annuncio.html" class="stretched-link text-decoration-none text-dark">
+                                    <h3 class="h5 fw-bold mb-1">Stanza singola</h3>
+                                </a>
+                                <p class="text-muted small mb-1"><i class="bi bi-geo-alt-fill me-1 text-danger"></i>Via
+                                    del Campus, 10 - Cesena</p>
+                                <p class="small mb-3 text-secondary">2 km dal Campus, 10 km dal centro</p>
+
+                                <div class="d-flex align-items-center gap-3">
+                                    <span class="fw-bold fs-5">800€</span>
+                                    <a href="#"
+                                        class="btn btn-outline-primary rounded-pill d-flex gap-2 align-items-center fw-semibold ms-auto">
+                                        <i class="bi bi-pencil"></i><span>Modifica</span>
+                                    </a>
+                                    <a href="#"
+                                        class="btn btn-outline-danger rounded-pill d-flex gap-2 align-items-center fw-semibold">
+                                        <i class="bi bi-trash"></i><span>Elimina</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-        </section>
+            </div>
+        </div>
     </main>
 
     <footer class="bg-unibo-red py-3 mt-auto">
