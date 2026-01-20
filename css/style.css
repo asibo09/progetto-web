@@ -36,9 +36,7 @@ body > main > form{
     padding: 30px 2% 30px;
 }
 
-body > main > form > div > input{
-    width: 100%;
-}
+
 
 body > header > nav > a:hover,
 body > nav > ul > li > a:hover{
@@ -61,12 +59,13 @@ body > main > form button:hover{
     transform: scale(1.03);
 }
 
+body > main > form >
+
 /* Effetto "viene verso di me" per le card */
 
 /* Hover / focus: la card si solleva e avvicina */
 .card:hover,
 .card:focus {
-    transform: translateY(-10px) translateZ(24px) scale(1.03);
     box-shadow: 0 22px 40px rgba(0,0,0,0.16);
     z-index: 10;
     cursor: pointer;
@@ -74,7 +73,6 @@ body > main > form button:hover{
 
 /* Pressed: effetto "premuto" */
 .card:active {
-    transform: translateY(-4px) translateZ(8px) scale(0.995);
     box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
@@ -84,15 +82,9 @@ body > main > form button:hover{
     outline-offset: 4px;
 }
 
-/* --- EFFETTI PULSANTI IN "segnalazione.html" --- */
 
-/* Pulsante prenota */
-.btn-prenota:hover {
-    transform: scale(1.08); 
-    background-color: transparent !important; 
-    color: #000 !important;
-    border-color: #000 !important;
-}
+
+/* --- EFFETTI PULSANTI IN "segnalazione.html" --- */
 
 /* Pulsante segnalazione */
 .btn-warning:hover{
@@ -274,8 +266,45 @@ html {
     z-index: 1000 !important; /* Più basso della barra */
 }
 
-/* --- EFFETTI IN "salvati.html" --- */
 
+/* --- STILE GALLERIA foto.html --- */
+.link-indietro:hover {
+    text-decoration: underline !important;
+    transform: scale(1) !important;
+    color: #0dcaf0; 
+}
+
+.img-gallery-full {
+    height: 300px; 
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.img-gallery-full:hover {
+    transform: scale(1.02); 
+    cursor: pointer;
+}
+
+/* --- STILE MODAL FOTO --- */
+/* sfondo dietro scuro */
+.modal-backdrop.show {
+    opacity: 0.9 !important;
+}
+
+/* evita lo scroll pagina quando foto aperta */
+body.modal-open {
+    overflow: hidden !important;
+}
+
+#modalImg {
+    /*anche foto molto piccole ingrandite per riempire la modal */
+    min-width: 50%; 
+    background-color: rgba(0,0,0,0.2);
+}
+
+
+/* --- EFFETTI IN "salvati.html" --- */
 
 /* per carousel */
 .custom-carousel-container {
@@ -341,6 +370,68 @@ html {
     z-index: 6;
 }
 
+
+/* --- PAGINA pubblica-annuncio --- */
+
+/* Box caricamento foto */
+.upload-box {
+    cursor: pointer;
+    background-color: #fcfcfc;
+    border-color: #dee2e6 !important;
+    transition: all 0.2s ease;
+}
+
+.upload-box:hover {
+    background-color: #fff5f5;
+    border-color: #bb2e29 !important;
+}
+
+/* bordi tratteggiati per upload */
+.border-dashed {
+    border-style: dashed !important;
+}
+
+/* Bottone rosso unibo */
+.btn-unibo-red {
+    background-color: #bb2e29;
+    color: white;
+    border: none;
+}
+.btn-unibo-red:hover {
+    background-color: #9b2e2a;
+    color: white;
+}
+
+#step-menu .list-group-item {
+    border: none;
+    border-left: 4px solid transparent;
+    font-weight: 500;
+}
+
+#step-menu .list-group-item.active {
+    background-color: #f8f9fa !important;
+    color: #bb2e29 !important; /* Rosso Unibo */
+    border-left: 4px solid #bb2e29 !important;
+}
+
+
+/* Nasconde le freccette predefinite dei campi numerici */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Stile per i campi obbligatori non compilati */
+.was-validated .form-control:invalid {
+    border-color: #dc3545 !important;
+    background-image: none; /* Rimuoviamo l'icona di default per pulizia */
+}
+
+
 /* --- CONFIGURAZIONE NAVBAR DESKTOP (Schermi grandi) --- */
 
 .custom-nav-annuncio .nav-link {
@@ -360,7 +451,6 @@ html {
 
 
 /* --- CONFIGURAZIONE MOBILE E TABLET (Sotto i 991px) --- */
-
 @media (max-width: 991px) {
     .price-container {
         width: auto; 
@@ -382,5 +472,47 @@ html {
 
     .price-container .fw-bold {
         font-size: 18px !important;
+    }
+}
+
+/* Ottimizzazione per mobile */
+@media (max-width: 768px) {
+    body {
+        /* assicura che ci sia sempre spazio per la barra fissa */
+        padding-bottom: 80px !important;
+    }
+
+    .img-gallery-full {
+        height: 180px; /* Riduce altezza su schermi piccoli */
+    }
+
+    #modalImg {
+    width: auto;
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    display: block;
+    }
+
+    /* parte di riduzione pubblica-annuncio.html */
+    
+    
+    /* Rimpicciolisce testo della sidebar */
+    #step-menu .list-group-item {
+        font-size: 0.8rem;
+        padding: 10px 5px !important;
+    }
+
+    /* Rimpicciolisce le icone */
+    #step-menu .bi {
+        font-size: 0.8rem;
+    }
+
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    .modal-galleria {
+        max-width: 70% !important;
     }
 }
