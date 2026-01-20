@@ -56,7 +56,7 @@
 
     <main class="flex-grow-1 container-xl py-5">
         <div class="mb-4 mt-5 text-left px-3">
-            <h1 class="fw-bold">Nome, cosa stai cercando?</h1>
+            <h1 class="fw-bold"><?php echo $templeteParams["titolo"]; ?></h1>
             <p class="text-muted">Trova offerte per alloggi ovunque!</p>
         </div>
 
