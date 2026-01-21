@@ -61,6 +61,18 @@
         $stmt->close();
         return $results;
     }
+
+    public function insertAffittuario($email, $nome, $cognome, $cellulare, $password, $eta) {
+        $query = "INSERT INTO Affittuario (email, nome, cognome, cellulare, password, eta) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        if (!$stmt) {
+            return false;
+        }
+        $stmt->bind_param("sssssi", $email, $nome, $cognome, $cellulare, $password, $eta);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+    }
  }
 
 
