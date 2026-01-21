@@ -132,7 +132,8 @@ body > main > form >
     
 }
 
-.card-annuncio-hover:hover h3 {
+.card-annuncio-hover:hover .h5,
+.card-annuncio-hover:hover .title-hover-effect {
     text-decoration: underline !important;
 }
 

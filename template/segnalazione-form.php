@@ -1,3 +1,23 @@
+<?php if(isset($_GET["success"]) && $_GET["success"] == 1): ?>
+    <div class="alert alert-success alert-dismissible fade show mx-3 mt-3" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <strong>Segnalazione inviata!</strong> La tua segnalazione è stata ricevuta correttamente ed è ora in attesa di revisione.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php endif; ?>
+<?php if($templateParams["errore_dati"]): ?>
+    <div class="alert alert-warning mx-3 mt-5 shadow-sm border-start border-4 border-warning" role="alert">
+        <div class="d-flex">
+            <i class="bi bi-exclamation-triangle-fill fs-2 me-3"></i>
+            <div>
+                <h4 class="alert-heading fw-bold">Dati insufficienti</h4>
+                <p>Non è stato possibile identificare l'annuncio o l'utente che desideri segnalare.</p>
+                <hr>
+                <p class="mb-0">Torna alla <a href="index.php" class="fw-bold text-decoration-none">Home</a> o all'annuncio originale per riprovare.</p>
+            </div>
+        </div>
+    </div>
+<?php else: ?>
 <div class="mb-4 mt-5 text-left px-3">
     <h1 class="fw-bold"><i class="bi bi-exclamation-triangle text-danger me-2"></i>Invia una segnalazione</h1>
     <p class="text-muted">
@@ -30,3 +50,4 @@
         INVIA SEGNALAZIONE
     </button>
 </form>
+<?php endif; ?>
