@@ -6,7 +6,7 @@ if(!isset($_GET["id"])){
     header("location: index.php");
     exit();
 }
-
+$idUtente = $_SESSION["id_utente"] ?? 3;
 $idAlloggio = $_GET["id"];
 
 // Recuperiamo i dati dell'alloggio (per prezzo e miniatura nella barra)
@@ -21,6 +21,7 @@ if (!$annuncio) {
 
 $templateParams["titolo"] = "Galleria Foto";
 $templateParams["nome"] = "template/foto-content.php";
+$templateParams["utente"] = $dbh->getUserById($idUtente);
 $templateParams["annuncio"] = $annuncio;
 $templateParams["foto"] = $foto;
 

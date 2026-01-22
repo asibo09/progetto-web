@@ -1,3 +1,13 @@
+<?php if(isset($templateParams["messaggio_successo"])): ?>
+    <div class="container-xl mt-3">
+        <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 rounded-4" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            <strong>Fatto!</strong> <?php echo htmlspecialchars($templateParams["messaggio_successo"]); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+<?php endif; ?>
+
 <div class="mb-4 mt-5 text-left px-3">
             <h1 class="fw-bold">Nome, cosa stai cercando?</h1>
             <p class="text-muted">Trova offerte per alloggi ovunque!</p>

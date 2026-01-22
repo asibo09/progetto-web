@@ -8,7 +8,7 @@ if(!isset($_GET["id"])){
 
 $id = $_GET["id"];
 $idStanza = $_GET["id"]; // O recuperato dai dettagli dell'alloggio
-$idUtente = 3; // Da sostituire con $_SESSION["id_utente"] dopo il login
+$idUtente = $_SESSION["id_utente"] ?? 3;
 
 // Salviamo la pagina di provenienza per il link "Indietro", a meno che non venga da foto.php
 if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'foto.php') === false) {
@@ -29,6 +29,7 @@ if (!$annuncio) {
 $templateParams["back_link"] = $backLink;
 $templateParams["titolo"] = "Annuncio - " . $annuncio["indirizzo"];
 $templateParams["nome"] = "template/annuncio-content.php";
+$templateParams["utente"] = $dbh->getUserById($idUtente);
 $templateParams["annuncio"] = $annuncio;
 $templateParams["stanze"] = $stanze;
 $templateParams["foto"] = $foto;

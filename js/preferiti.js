@@ -4,19 +4,19 @@ document.addEventListener("DOMContentLoaded", function () {
     heartButtons.forEach(btn => {
         btn.addEventListener('click', function (e) {
             e.preventDefault();
-            e.stopPropagation(); // Evita che il click apra l'annuncio
+            e.stopPropagation();
 
             const alloggioId = this.getAttribute('data-id');
             const pulsante = this;
 
             const formData = new FormData();
-            formData.append('id_alloggio', alloggioId); // Cambiato da id_stanza a id_alloggio
+            formData.append('id_alloggio', alloggioId);
 
             fetch('api-preferiti.php', {
                 method: 'POST',
                 body: formData
             })
-                .then(response => response.json()) // Ci aspettiamo un JSON dal server
+                .then(response => response.json())
                 .then(data => {
                     if (data.stato === "aggiunto") {
                         pulsante.classList.add('active');

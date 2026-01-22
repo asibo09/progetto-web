@@ -43,7 +43,6 @@
 
             <div class="d-flex flex-column gap-3">
                 <?php foreach($templateParams["annunci"] as $annuncio): 
-                    // Rendiamo l'ID unico combinando il testo con l'ID reale dal DB
                     $cID = "carouselProp" . $annuncio["id_alloggio"]; 
                     $foto = $annuncio["lista_foto"];
                 ?>
@@ -82,16 +81,9 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-danger fw-bold fs-5"><?php echo (int)$annuncio["prezzo_mensile_alloggio"]; ?>€</span>
                                     <div class="d-flex gap-2 align-items-center" style="position: relative; z-index: 50;">
-                                        <?php if($annuncio["disponibile"]): ?>
-    <a href="prenotazioni.php?id=<?php echo $annuncio["id_alloggio"]; ?>" 
-       class="btn btn-prenota text-info btn-outline-info rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold">
-        <i class="bi bi-calendar-check"></i><span>Prenota</span>
-    </a>
-<?php else: ?>
-    <button class="btn btn-secondary rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold opacity-50" disabled>
-        <i class="bi bi-calendar-x"></i><span>Esaurito</span>
-    </button>
-<?php endif; ?>
+                                        <a href="prenotazioni.php?id=<?php echo $annuncio["id_alloggio"]; ?>" class="btn btn-prenota text-info btn-outline-info rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold">
+                                            <i class="bi bi-calendar-check"></i><span>Prenota</span>
+                                        </a>
                                         <button type="button" class="btn btn-link p-2 btn-cuore active" data-id="<?php echo $annuncio["id_alloggio"]; ?>">
                                             <i class="bi heart-icon fs-4"></i>
                                         </button>
@@ -114,7 +106,7 @@
 </div>
 
 <script>
-    // Inizializza il contatore slide (es. 1/2) per ogni carousel dinamico
+    //contatore per ogni carousel
     document.querySelectorAll('.carousel').forEach(carousel => {
         const currentSpan = carousel.querySelector('.current-slide');
         carousel.addEventListener('slid.bs.carousel', function (event) {

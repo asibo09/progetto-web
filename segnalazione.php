@@ -1,6 +1,8 @@
 <?php
 require_once("bootstrap.php");
 
+$idUtente = $_SESSION["id_utente"] ?? 3;
+
 //Recupero dati iniziali (da GET o da POST)
 $tipo = $_GET["tipo"] ?? "";
 $id = $_GET["id"] ?? "";
@@ -25,8 +27,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["categoria"])){
     $result = $dbh->insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_target, $categoria, $descrizione);
 
     if($result){
-        // Redirect con parametri per mantenere il contesto e mostrare il successo
-        header("location: segnalazione.php?tipo=$tipo&id=$id&success=1");
+        $msg = "Annuncio pubblicato con successo!";
+        header("location: index.php?msg=" . urlencode($msg));
     } else {
         header("location: segnalazione.php?tipo=$tipo&id=$id&error=1");
     }
@@ -35,10 +37,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["categoria"])){
 
 $templateParams["titolo"] = "Campus Housing - Segnalazione";
 $templateParams["nome"] = "template/segnalazione-form.php";
+$templateParams["utente"] = $dbh->getUserById($idUtente);
 $templateParams["tipo"] = $tipo;
 $templateParams["id_bersaglio"] = $id;
 
-// FLAG ERRORE: se non abbiamo tipo o id e non siamo appena reduci da un successo
+// FLAG ERRORE: se non abbiamo tipo o id
 $templateParams["errore_dati"] = (empty($tipo) || empty($id));
 
 require_once("template/base.php");

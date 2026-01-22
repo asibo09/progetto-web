@@ -60,15 +60,14 @@
                                     
                                     <div class="d-flex gap-3 align-items-center" style="position: relative; z-index: 100;">
                                         <?php if($annuncio["disponibile"]): ?>
-    <a href="prenotazioni.php?id=<?php echo $annuncio["id_alloggio"]; ?>" 
-       class="btn btn-prenota text-info btn-outline-info rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold">
-        <i class="bi bi-calendar-check"></i><span>Prenota</span>
-    </a>
-<?php else: ?>
-    <button class="btn btn-secondary rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold opacity-50" disabled>
-        <i class="bi bi-calendar-x"></i><span>Esaurito</span>
-    </button>
-<?php endif; ?>
+                                            <a href="prenotazioni.php?id=<?php echo $annuncio["id_alloggio"]; ?>" class="btn btn-prenota text-info btn-outline-info rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold">
+                                                <i class="bi bi-calendar-check"></i><span>Prenota</span>
+                                            </a>
+                                        <?php else: ?>
+                                            <button class="btn btn-secondary rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold opacity-50" disabled>
+                                                <i class="bi bi-calendar-x"></i><span>Esaurito</span>
+                                            </button>
+                                        <?php endif; ?>
                                         <button type="button" class="btn btn-link p-2 btn-cuore active" data-id="<?php echo $annuncio["id_alloggio"]; ?>">
                                             <i class="bi heart-icon fs-4"></i>
                                         </button>
@@ -87,7 +86,7 @@
 </div>
 
 <script>
-    // Logica per aggiornare i contatori dei caroselli (es. 1/3)
+    //aggiorna i contatori caroselli
     document.querySelectorAll('.carousel').forEach(carousel => {
         const currentSpan = carousel.querySelector('.current-slide');
         carousel.addEventListener('slid.bs.carousel', function (event) {

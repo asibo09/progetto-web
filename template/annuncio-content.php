@@ -240,7 +240,7 @@
 </main>
 
 <script>
-    // Inizializza i contatori dei caroselli
+    //contatore caroselli
     document.querySelectorAll('.carousel').forEach(carousel => {
         const galleryContainer = carousel.closest('.gallery-container') || carousel;
         const currentSpan = galleryContainer.querySelector('.current-slide');
