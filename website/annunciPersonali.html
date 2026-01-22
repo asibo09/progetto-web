@@ -4,179 +4,203 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    
     <title>I miei annunci</title>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
-    <!-- Desktop -->
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+    <!-- ================= HEADER ================= -->
+    
+    <!-- Desktop Header -->
     <header class="d-none d-lg-flex justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
         <a href="home.html">
-            <img src="../upload/logoUnibo.png" alt="Logo" style="height: 65px;">
+            <img src="../upload/logoUnibo.png" alt="Logo Unibo" style="height: 65px;">
         </a>
-        <nav class="d-flex gap-5 fs-5">
-            <a href="home.html">Home</a>
-            <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="preferiti.html">Salvati</a>
-            <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="richiedi.html">Richiedi</a>
-            <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a
-                href="prenotazioni.html">Prenotazioni</a>
+        <nav class="d-flex gap-5 fs-5 align-items-center">
+            <a href="home.html" class="text-white text-decoration-none hover-underline">Home</a>
+            <div class="vr bg-white opacity-100" style="height: 30px;"></div>
+            <a href="preferiti.html" class="text-white text-decoration-none hover-underline">Salvati</a>
+            <div class="vr bg-white opacity-100" style="height: 30px;"></div>
+            <a href="richiedi.html" class="text-white text-decoration-none hover-underline">Richiedi</a>
+            <div class="vr bg-white opacity-100" style="height: 30px;"></div>
+            <a href="prenotazioni.html" class="text-white text-decoration-none hover-underline">Prenotazioni</a>
         </nav>
-        <a href="profilo.html"><i class="bi bi-person-circle fs-2"></i></a>
+        <a href="profilo.html" class="text-white" aria-label="Profilo">
+            <i class="bi bi-person-circle fs-2"></i>
+        </a>
     </header>
 
-    <!-- Tablet -->
+    <!-- Tablet Header -->
     <header class="d-none d-md-flex d-lg-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
         <a href="home.html">
-            <img src="../upload/logoUnibo.png" alt="Logo" style="height: 50px;">
+            <img src="../upload/logoUnibo.png" alt="Logo Unibo" style="height: 50px;">
         </a>
         <div class="d-flex gap-4">
-            <a href="salvati.html"><i class="bi bi-heart fs-4"></i></a>
-            <a href="richiedi.html"><i class="bi bi-arrow-up-circle fs-4"></i></a>
-            <a href="prenotazioni.html"><i class="bi bi-calendar-event fs-4"></i></a>
-            <a href="profilo.html"><i class="bi bi-person-circle fs-4"></i></a>
+            <a href="salvati.html" class="text-white"><i class="bi bi-heart fs-4"></i></a>
+            <a href="richiedi.html" class="text-white"><i class="bi bi-arrow-up-circle fs-4"></i></a>
+            <a href="prenotazioni.html" class="text-white"><i class="bi bi-calendar-event fs-4"></i></a>
+            <a href="profilo.html" class="text-white"><i class="bi bi-person-circle fs-4"></i></a>
         </div>
     </header>
 
-    <!-- Mobile -->
+    <!-- Mobile Header -->
     <header class="d-flex d-md-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
         <a href="home.html">
-            <img src="../upload/logoUnibo.png" alt="Logo" style="height: 50px;">
+            <img src="../upload/logoUnibo.png" alt="Logo Unibo" style="height: 50px;">
         </a>
-        <a href="profilo.html">
+        <a href="profilo.html" class="text-white">
             <i class="bi bi-person-circle" style="font-size: 32px;"></i>
         </a>
     </header>
 
-
+    <!-- ================= MAIN CONTENT ================= -->
     <main class="flex-grow-1 container-xl py-5">
 
-        <h1 class="fw-bold mb-5"><i class="bi bi-house"></i> I miei annunci</h1>
+        <h1 class="fw-bold mb-5"><i class="bi bi-house me-2"></i>I miei annunci</h1>
 
         <div class="bg-white shadow-sm border p-4 rounded-3 h-100">
 
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <div>
-                    <h2 class="fw-semibold fs-5">2 annunci pubblicati</h2>
-                </div>
-                <div class="d-flex align-items-center gap-3">
-                    <div class="d-flex align-items-center gap-2">
-                        <label for="sort" class="text-muted">Ordina per:</label>
-                        <select id="sort" class="form-select border-0 bg-transparent fw-semibold w-auto">
+            <!-- Toolbar: Sort & Add New -->
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                <h2 class="fw-semibold fs-5 m-0">2 annunci pubblicati</h2>
+                
+                <div class="d-flex align-items-center gap-5">
+                    <form class="d-flex align-items-center gap-2" action="">
+                        <label for="sort" class="text-muted text-nowrap">Ordina per:</label>
+                        <select id="sort" class="form-select border-0 bg-transparent fw-semibold w-auto shadow-none cursor-pointer">
                             <option value="1">Più recenti</option>
                             <option value="2">Prezzo (basso-alto)</option>
                             <option value="3">Prezzo (alto-basso)</option>
                         </select>
-                    </div>
-                    <a class="btn btn-primary fw-bold py-2 px-3 rounded-pill d-flex align-items-center gap-2"
+                    </form>
+                    <a class="btn btn-primary fw-bold py-2 px-3 rounded-pill d-flex align-items-center gap-2 text-nowrap"
                         href="pubblica-annuncio.html">
                         <i class="bi bi-plus-circle"></i> Nuovo annuncio
                     </a>
                 </div>
             </div>
 
+            <!-- Listings Container -->
             <div class="d-flex flex-column gap-3">
 
-                <div class="card rounded-3 overflow-hidden shadow position-relative card-annuncio-hover">
+                <!-- Single Card Item -->
+                <div class="card rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover border-0 bg-light-subtle">
                     <div class="row g-0 align-items-stretch">
-                        <div class="col-4 border-end position-relative custom-carousel-container">
-                            <div id="carouselMyProp1" class="carousel slide h-100" data-bs-ride="false">
+                        
+                        <!-- Carousel Column -->
+                        <div class="col-12 col-md-4 border-end position-relative custom-carousel-container" style="min-height: 220px; height: auto !important;">
+                            <div id="carouselMyProp1" class="carousel slide position-absolute top-0 start-0 w-100 h-100" data-bs-ride="false">
                                 <div class="carousel-counter badge">
                                     <span class="current-slide">1</span>/<span class="total-slides">2</span>
                                 </div>
                                 <div class="carousel-inner h-100">
                                     <div class="carousel-item active h-100">
-                                        <a href="annuncio.html" class="d-block h-100">
-                                            <img src="../upload/esempio_alloggio.png" class="img-fit"
-                                                alt="Foto Stanza 1">
-                                        </a>
+                                        <img src="../upload/esempio_alloggio.png" class="img-fit" alt="Foto Stanza 1">
                                     </div>
                                     <div class="carousel-item h-100">
-                                        <a href="annuncio.html" class="d-block h-100">
-                                            <img src="../upload/esempio_alloggio2.png" class="img-fit"
-                                                alt="Foto Stanza 2">
-                                        </a>
+                                        <img src="../upload/esempio_alloggio2.png" class="img-fit" alt="Foto Stanza 2">
                                     </div>
                                 </div>
                                 <button class="carousel-control-prev custom-arrow" type="button"
                                     data-bs-target="#carouselMyProp1" data-bs-slide="prev">
-                                    <span class="arrow-circle"><i class="bi bi-chevron-left"></i></span>
+                                    <span class="arrow-circle bg-white text-dark rounded-circle p-1 shadow-sm"><i class="bi bi-chevron-left"></i></span>
+                                    <span class="visually-hidden">Precedente</span>
                                 </button>
                                 <button class="carousel-control-next custom-arrow" type="button"
                                     data-bs-target="#carouselMyProp1" data-bs-slide="next">
-                                    <span class="arrow-circle"><i class="bi bi-chevron-right"></i></span>
+                                    <span class="arrow-circle bg-white text-dark rounded-circle p-1 shadow-sm"><i class="bi bi-chevron-right"></i></span>
+                                    <span class="visually-hidden">Successivo</span>
                                 </button>
                             </div>
                         </div>
-                        <div class="col-8">
-                            <div class="card-body p-4">
-                                <a href="annuncio.html" class="stretched-link text-decoration-none text-dark">
-                                    <h3 class="h5 fw-bold mb-1">Stanza singola</h3>
-                                </a>
-                                <p class="text-muted small mb-1"><i class="bi bi-geo-alt-fill me-1 text-danger"></i>Via
-                                    del Campus, 10 - Cesena</p>
-                                <p class="small mb-3 text-secondary">2 km dal Campus, 10 km dal centro</p>
+                        
+                        <!-- Details Column -->
+                        <div class="col-12 col-md-8">
+                            <div class="card-body p-4 d-flex flex-column h-100">
+                                <div class="mb-auto">
+                                    <a href="annuncio.html" class="stretched-link text-decoration-none text-dark">
+                                        <h3 class="h5 fw-bold mb-2">Stanza singola</h3>
+                                    </a>
+                                    <p class="text-muted small mb-1">
+                                        <i class="bi bi-geo-alt-fill me-1 text-danger"></i>Via del Campus, 10 - Cesena
+                                    </p>
+                                    <p class="small text-secondary mb-3">2 km dal Campus, 10 km dal centro</p>
+                                </div>
 
-                                <div class="d-flex align-items-center gap-3">
-                                    <span class="fw-bold fs-5">800€</span>
-                                    <a href="#"
-                                        class="btn btn-modifica btn-outline-primary rounded-pill d-flex gap-2 align-items-center fw-semibold ms-auto position-relative z-2">
-                                        <i class="bi bi-pencil"></i>Modifica
-                                    </a>
-                                    <a href="#"
-                                        class="btn btn-outline-danger rounded-pill d-flex gap-2 align-items-center fw-semibold position-relative z-2">
-                                        <i class="bi bi-trash"></i>Elimina
-                                    </a>
+                                <div class="d-flex align-items-center flex-wrap gap-3 mt-3">
+                                    <span class="fw-bold fs-4 text-primary">800€</span>
+                                    
+                                    <div class="ms-auto d-flex gap-2 position-relative z-2">
+                                        <a href="#" class="btn btn-outline-primary rounded-pill d-flex gap-2 align-items-center fw-semibold btn-sm px-3">
+                                            <i class="bi bi-pencil"></i> Modifica
+                                        </a>
+                                        <a href="#" class="btn btn-outline-danger rounded-pill d-flex gap-2 align-items-center fw-semibold btn-sm px-3">
+                                            <i class="bi bi-trash"></i> Elimina
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- End Single Card Item -->
+
             </div>
         </div>
     </main>
 
-    <footer class="bg-unibo-red py-3 mt-auto">
-        <div class="container text-center text-white d-flex flex-column gap-1">
-            <p class="fw-bold mb-0" style="font-size: 14px;">Campus Housing - Università di Bologna</p>
-            <p class="mb-0" style="font-size: 13px;">Alma Mater Studiorum - Campus di Cesena</p>
-            <p class="mb-0 opacity-75" style="font-size: 12px;">© A.A. 2025-2026 Tecnologie Web - Aresu Marco, Fronzi
-                Andrea, Siboni Pietro</p>
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-unibo-red py-3 mt-auto text-white">
+        <div class="container text-center d-flex flex-column gap-1">
+            <p class="fw-bold mb-0 small">Campus Housing - Università di Bologna</p>
+            <p class="mb-0 small opacity-75">Alma Mater Studiorum - Campus di Cesena</p>
+            <p class="mb-0 opacity-50" style="font-size: 0.75rem;">© A.A. 2025-2026 Tecnologie Web - Aresu Marco, Fronzi Andrea, Siboni Pietro</p>
         </div>
     </footer>
 
+    <!-- ================= MOBILE NAV ================= -->
     <nav class="fixed-bottom bg-white border-top shadow d-md-none">
-        <ul style="list-style: none; display: flex; justify-content: space-around; padding: 10px; margin: 0;">
-            <li style="text-align: center;">
-                <a href="home.html" style="text-decoration: none; color: black;">
-                    <i class="bi bi-house" style="font-size: 24px;"></i>
-                    <p style="margin: 0; font-size: 0.8rem;">Home</p>
+        <ul class="list-unstyled d-flex justify-content-around align-items-center mb-0 py-2">
+            <li class="flex-fill text-center">
+                <a href="home.html" class="text-decoration-none text-dark d-flex flex-column align-items-center">
+                    <i class="bi bi-house fs-4"></i>
+                    <span class="small">Home</span>
                 </a>
             </li>
-            <li style="text-align: center;">
-                <a href="preferiti.html" style="text-decoration: none; color: black;">
-                    <i class="bi bi-heart" style="font-size: 24px;"></i>
-                    <p style="margin: 0; font-size: 0.8rem;">Salvati</p>
+            <li class="flex-fill text-center">
+                <a href="preferiti.html" class="text-decoration-none text-dark d-flex flex-column align-items-center">
+                    <i class="bi bi-heart fs-4"></i>
+                    <span class="small">Salvati</span>
                 </a>
             </li>
-            <li style="text-align: center;">
-                <a href="richiedi-delega.html" style="text-decoration: none; color: black;">
-                    <i class="bi bi-plus-circle" style="font-size: 24px;"></i>
-                    <p style="margin: 0; font-size: 0.8rem;">Richiedi</p>
+            <li class="flex-fill text-center">
+                <a href="richiedi-delega.html" class="text-decoration-none text-dark d-flex flex-column align-items-center">
+                    <i class="bi bi-plus-circle fs-4"></i>
+                    <span class="small">Richiedi</span>
                 </a>
             </li>
-            <li style="text-align: center;">
-                <a href="prenotazioni.html" style="text-decoration: none; color: black;">
-                    <i class="bi bi-calendar-event" style="font-size: 24px;"></i>
-                    <p style="margin: 0; font-size: 0.8rem;">Prenotazioni</p>
+            <li class="flex-fill text-center">
+                <a href="prenotazioni.html" class="text-decoration-none text-dark d-flex flex-column align-items-center">
+                    <i class="bi bi-calendar-event fs-4"></i>
+                    <span class="small">Prenota</span>
                 </a>
             </li>
         </ul>
     </nav>
 
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

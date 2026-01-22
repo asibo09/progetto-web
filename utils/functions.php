@@ -8,3 +8,12 @@ function isActive($pagename){
 function getIdFromName($name){
     return preg_replace("/[^a-z]/", '', strtolower($name));
 }
+
+function registerLoggedUser($user){
+    $_SESSION["email"] = $user["email"];
+    $_SESSION["password"] = $user["password"];
+}
+
+function isUserLoggedIn(){
+    return !empty($_SESSION['email']);
+}
