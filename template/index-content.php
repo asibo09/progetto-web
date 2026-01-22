@@ -32,7 +32,7 @@
 
         <div class="container-xl px-3 mt-5">
 
-            <h2 class="fw-bold mb-3">Continua la ricerca...</h2>
+            <h2 class="fw-bold mb-3"><?php echo $templateParams['isLogged']; ?></h2>
 
             <ul class="row g-3 list-unstyled" role="list" aria-label="Ultime ricerche">
                 <?php foreach($templateParams["lastSearches"] as $search): ?>
