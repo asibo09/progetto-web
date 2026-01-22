@@ -45,3 +45,9 @@
         <i class="bi bi-person-plus-fill me-2"></i> REGISTRATI
     </button>
 </form>
+
+<div class="text-center mt-4">
+    <p class="text-muted">Hai già un account? 
+        <a href="login.php" class="text-danger fw-bold text-decoration-none">Accedi qui</a>
+    </p>
+</div>
