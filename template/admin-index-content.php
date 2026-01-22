@@ -106,7 +106,6 @@
                                 <td class="text-center">
                                     <div class="btn-group btn-group-sm">
                                         <a href="annuncio.php?id=<?php echo $a["id_alloggio"]; ?>" class="btn btn-outline-primary" title="Vedi"><i class="bi bi-eye"></i></a>
-                                        <a href="modifica-annuncio.php?id=<?php echo $a["id_alloggio"]; ?>" class="btn btn-outline-dark" title="Modifica"><i class="bi bi-pencil"></i></a>
                                         <a href="admin-index.php?action=delete_alloggio&id=<?php echo $a["id_alloggio"]; ?>" 
                                             class="btn btn-outline-danger" 
                                             onclick="return confirm('Sei sicuro di voler eliminare definitivamente questo annuncio?')">
