@@ -77,7 +77,6 @@ class DatabaseHelper
         try {
             $result = $stmt->execute();
         } catch (Exception $e) {
-            // Log dell'errore se necessario, o gestiscilo
             $result = false;
         }
 
@@ -87,7 +86,7 @@ class DatabaseHelper
 
     public function checkLogin($email, $password)
     {
-        $query = "SELECT email, password FROM Utente WHERE email = ? AND password = ?";
+        $query = "SELECT * FROM Utente WHERE email = ? AND password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $email, $password);
         $stmt->execute();
@@ -118,6 +117,21 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function insertMessage($id_utente, $testo)
+    {
+
+        $query = "INSERT INTO Notifica (id_utente, testo, letta, data_invio) VALUES (?, ?, 0, CURRENT_TIMESTAMP)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('is', $id_utente, $testo);
+        try {
+            $result = $stmt->execute();
+        } catch (Exception $e) {
+            $result = false;
+        }
+        $stmt->close();
+        return $result;
     }
 }
 

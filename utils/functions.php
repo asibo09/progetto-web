@@ -12,6 +12,7 @@ function getIdFromName($name){
 function registerLoggedUser($user){
     $_SESSION["email"] = $user["email"];
     $_SESSION["password"] = $user["password"];
+    $_SESSION["id_utente"] = $user["id_utente"];
 }
 
 function isUserLoggedIn(){

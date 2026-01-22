@@ -1,6 +1,4 @@
 <?php
-session_start();
-session_unset();
 require_once("bootstrap.php");
 
 if (
@@ -20,9 +18,8 @@ if (
         //Registrazione fallita
         $templateParams["erroreRegistrazione"] = "Errore! Controllare i dati inseriti!";
     } else {
-        $logRegistedUser["email"] = $_POST["email"];
-        $logRegistedUser["password"] = $_POST["password"];
-        registerLoggedUser($logRegistedUser);
+        $logRegistedUser = $dbh->checkLogin($_POST["email"], $_POST["password"]);
+        registerLoggedUser($logRegistedUser[0]);
     }
 }
 

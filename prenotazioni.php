@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once("bootstrap.php");
 
 $templateParams["titolo"] = "I miei appartamenti affittati";

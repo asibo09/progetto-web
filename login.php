@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 require_once("bootstrap.php");
 
 if (isset($_POST["email"]) && isset($_POST["password"])) {
@@ -12,7 +10,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         registerLoggedUser($login_result[0]);
     }
 }
-
+var_dump($login_result);
 if (isUserLoggedIn()) {
     header("Location: index.php");
     exit();
