@@ -31,7 +31,7 @@ class DatabaseHelper
         $stmt->close();
         return [];
     }
-
+        
     public function search($luogo, $nmesi, $npersone, $prezzo_max = null, $tipologia = [], $zona = [], $extra_filters = [])
     {
         $query = "SELECT * FROM Alloggio WHERE comune LIKE ? AND permanenza_minima_mesi <= ? AND max_persone >= ?";
@@ -186,5 +186,74 @@ class DatabaseHelper
         $stmt->bind_param("si", $stato, $id_richiesta);
         $stmt->execute();
     }
+    public function insertUser($nome, $cognome, $email, $password, $cellulare, $eta, $ruolo)
+    {
+        $query = "INSERT INTO Utente (nome, cognome, email, password, cellulare, eta, ruolo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        if (!$stmt) {
+            return false;
+        }
+        $stmt->bind_param("sssssis", $nome, $cognome, $email, $password, $cellulare, $eta, $ruolo);
+
+        try {
+            $result = $stmt->execute();
+        } catch (Exception $e) {
+            $result = false;
+        }
+
+        $stmt->close();
+        return $result;
+    }
+
+    public function checkLogin($email, $password)
+    {
+        $query = "SELECT * FROM Utente WHERE email = ? AND password = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss', $email, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function myApartments($email)
+    {
+        $query = "SELECT a.* FROM Utente u JOIN Alloggio a ON u.id_utente = a.id_proprietario WHERE email = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function myApartamentsRented($email)
+    {
+        $query = "SELECT a.* 
+                  FROM Utente u 
+                  JOIN Prenotazione p ON u.id_utente = p.id_affittuario 
+                  JOIN Stanza s ON p.id_stanza = s.id_stanza 
+                  JOIN Alloggio a ON s.id_alloggio = a.id_alloggio 
+                  WHERE u.email = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function insertMessage($id_utente, $testo)
+    {
+
+        $query = "INSERT INTO Notifica (id_utente, testo, letta, data_invio) VALUES (?, ?, 0, CURRENT_TIMESTAMP)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('is', $id_utente, $testo);
+        try {
+            $result = $stmt->execute();
+        } catch (Exception $e) {
+            $result = false;
+        }
+        $stmt->close();
+        return $result;
+    }
 }
+
 ?>

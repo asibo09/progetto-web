@@ -1,62 +1,60 @@
 /* --- STILE GENERALE --- */
 .bg-unibo-red {
-    background-color: #bb2e29F2;
-    color: white;
+  background-color: #bb2e29f2;
+  color: white;
 }
 
-.bg-unibo-red a, .bg-unibo-red i {
-    color: white;
-    text-decoration: none;
+.bg-unibo-red a,
+.bg-unibo-red i {
+  color: white;
+  text-decoration: none;
 }
 
-body > header > a{
-    margin: 0 1%;
-    
+body > header > a {
+  margin: 0 1%;
 }
-body > header > nav > a{
-    text-decoration: none;
-    color: #d9534f;
-}
-
-body > main{
-    margin: 0 5%;
+body > header > nav > a {
+  text-decoration: none;
+  color: #d9534f;
 }
 
-body > main > h1{
-    margin-top: 40px;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 38px;
+body > main {
+  margin: 0 5%;
 }
 
-body > main > form{
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-    margin-top: 40px;
-    padding: 30px 2% 30px;
+body > main > h1 {
+  margin-top: 40px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 38px;
 }
 
-
+body > main > form {
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  margin-top: 40px;
+  padding: 30px 2% 30px;
+}
 
 body > header > nav > a:hover,
-body > nav > ul > li > a:hover{
-    transform: scale(1.01);
-    font-weight: bold;
-    text-decoration: underline;
+body > nav > ul > li > a:hover {
+  transform: scale(1.01);
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 body > header > a:hover,
-header > div > a:hover{
-    transform: scale(1.1);
-    font-weight: bold;
+header > div > a:hover {
+  transform: scale(1.1);
+  font-weight: bold;
 }
 
-body > main > form button:hover{
-    cursor: pointer !important;
-    color: white !important;
-    background-color: #9b2e2a !important; 
-    border-color: #9b2e2a !important; 
-    transform: scale(1.03);
+body > main > form button:hover {
+  cursor: pointer !important;
+  color: white !important;
+  background-color: #9b2e2a !important;
+  border-color: #9b2e2a !important;
+  transform: scale(1.03);
 }
 
 body > main > form >
@@ -66,456 +64,448 @@ body > main > form >
 /* Hover / focus: la card si solleva e avvicina */
 .card:hover,
 .card:focus {
-    box-shadow: 0 22px 40px rgba(0,0,0,0.16);
-    z-index: 10;
-    cursor: pointer;
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.16);
+  z-index: 10;
+  cursor: pointer;
 }
 
 /* Pressed: effetto "premuto" */
 .card:active {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
 /* Accessibilità: bordo visibile quando si naviga via tastiera */
 .card:focus-visible {
-    outline: 3px solid rgba(187,46,41,0.16);
-    outline-offset: 4px;
+  outline: 3px solid rgba(187, 46, 41, 0.16);
+  outline-offset: 4px;
 }
-
-
 
 /* --- EFFETTI PULSANTI IN "segnalazione.html" --- */
 
 /* Pulsante segnalazione */
-.btn-warning:hover{
-    transform: scale(1.08);
-    font-weight: bold;
+.btn-warning:hover {
+  transform: scale(1.08);
+  font-weight: bold;
 }
 
 /* --- FIX FINALE CUORE: CLICK E VISIBILITÀ --- */
 
 /* STATO BASE: rosso e vuoto */
 .btn-cuore {
-    color: #d9534f !important; /* Rosso Unibo */
-    position: relative;
-    z-index: 100 !important; /* Valore altissimo per stare sopra tutto */
-    transition: transform 0.2s ease;
-    text-decoration: none !important;
+  color: #d9534f !important; /* Rosso Unibo */
+  position: relative;
+  z-index: 100 !important; /* Valore altissimo per stare sopra tutto */
+  transition: transform 0.2s ease;
+  text-decoration: none !important;
 }
 
 /* Icona VUOTA (bordo rosso) */
 .btn-cuore .heart-icon::before {
-    content: "\f417" !important; /* bi-heart */
+  content: "\f417" !important; /* bi-heart */
 }
 
 /* 2. STATO ATTIVO (Salvato): icona piena */
 .btn-cuore.active .heart-icon::before {
-    content: "\f415" !important; /* bi-heart-fill */
+  content: "\f415" !important; /* bi-heart-fill */
 }
 
 /* HOVER: In questo modo, se si clicca e si svuota, lo si vede subito anche con il mouse sopra */
 .btn-cuore:hover {
-    color: #d9534f !important;
+  color: #d9534f !important;
 }
 
 /* Rimuove l'alone azzurro di Bootstrap */
-.btn-cuore:focus, 
+.btn-cuore:focus,
 .btn-cuore:active {
-    outline: none !important;
-    box-shadow: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* --- Su card --- */
 .card-annuncio-hover:hover {
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
-    background-color: #fdfdfd;
-    
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+  background-color: #fdfdfd;
 }
 
 .card-annuncio-hover:hover h3 {
-    text-decoration: underline !important;
+  text-decoration: underline !important;
 }
 
 /* --- EFFETTI PULSANTI IN "annuncio.html" --- */
 
 /* Pulsante prenota */
-.btn-prenota:hover{
-    transform: scale(1.00);
-    background-color: #0dcaf0 !important; 
-    color: white !important;
-    border-color: #0dcaf0 !important;
+.btn-prenota:hover {
+  transform: scale(1);
+  background-color: #0dcaf0 !important;
+  color: white !important;
+  border-color: #0dcaf0 !important;
 }
 
 /* Link lista annunci */
 .link-lista:hover,
 .nome-utente:hover {
-    text-decoration: underline !important;
+  text-decoration: underline !important;
 }
 
 /* --- NUOVA GALLERIA ANNUNCIO.HTML --- */
 
 .img-fit {
-    object-fit: cover !important;
+  object-fit: cover !important;
 }
 
 /* Overlay "+15 foto" */
 .more-photos-overlay {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    color: white !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 5;
 }
 
 .more-photos-overlay:hover {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .more-photos-overlay:hover span {
-    text-decoration: underline !important;
-    text-underline-offset: 5px;
+  text-decoration: underline !important;
+  text-underline-offset: 5px;
 }
 
 /* --- FRECCE CAROSELLO GALLERIA (Solo su foto grande) --- */
 
 /* Posizionamento specifico per le frecce dentro la foto grande */
 .main-photo-wrapper .custom-arrow.gallery-arrow {
-    opacity: 0 !important; /* Invisibili di base */
-    transition: opacity 0.3s ease !important;
-    z-index: 10 !important;
-    /* Centratura verticale manuale perché ora sono dentro la colonna */
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    width: 15% !important;
-    bottom: auto !important; /* Reset di bootstrap */
+  opacity: 0 !important; /* Invisibili di base */
+  transition: opacity 0.3s ease !important;
+  z-index: 10 !important;
+  /* Centratura verticale manuale perché ora sono dentro la colonna */
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 15% !important;
+  bottom: auto !important; /* Reset di bootstrap */
 }
 
 /* Fix per posizionare le frecce ai bordi della foto grande */
-.main-photo-wrapper .carousel-control-prev.gallery-arrow { left: 0; }
-.main-photo-wrapper .carousel-control-next.gallery-arrow { right: 0; }
+.main-photo-wrapper .carousel-control-prev.gallery-arrow {
+  left: 0;
+}
+.main-photo-wrapper .carousel-control-next.gallery-arrow {
+  right: 0;
+}
 
 /* TRIGGER: Le frecce appaiono SOLO quando il mouse è sulla FOTO GRANDE */
 .main-photo-wrapper:hover .custom-arrow.gallery-arrow {
-    opacity: 1 !important;
+  opacity: 1 !important;
 }
 
 /* --- CONTATORE --- */
 /* Riposizionamento contatore per la griglia */
 .gallery-container .carousel-counter {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background-color: rgba(33, 37, 41, 0.8) !important;
-    z-index: 15;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(33, 37, 41, 0.8) !important;
+  z-index: 15;
 }
 
 /* --- FIX NAV ANNUNCIO --- */
 
 /* Stato base per tutti i link */
 .custom-nav-annuncio .nav-link {
-    color: #495057 !important;
-    font-weight: 500;
-    padding: 8px 20px;
-    border-radius: 50px;
-    background-color: transparent !important; /* Forza lo sfondo trasparente di base */
-    transition: all 0.2s ease;
-    border: none !important;
+  color: #495057 !important;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 50px;
+  background-color: transparent !important; /* Forza lo sfondo trasparente di base */
+  transition: all 0.2s ease;
+  border: none !important;
 }
 
 /* Effetto Hover universale (funzionerà anche su "Foto") */
 .custom-nav-annuncio .nav-link:hover {
-    background-color: #f2f2f2 !important; /* Cerchio grigino */
-    color: #212529 !important;
+  background-color: #f2f2f2 !important; /* Cerchio grigino */
+  color: #212529 !important;
 }
 
 /* Rimuoviamo gli stili "Active" di Bootstrap che creano conflitti visivi */
 .custom-nav-annuncio .nav-link.active {
-    background-color: transparent !important;
-    color: #495057 !important;
-    font-weight: 600; 
+  background-color: transparent !important;
+  color: #495057 !important;
+  font-weight: 600;
 }
 
 /* --- FIX PUNTO DI ATTERRAGGIO --- */
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 .anchor-section {
-    /* Aumentato a 120px per fermarsi prima del titolo e non "mangiarlo" */
-    scroll-margin-top: 120px !important; 
+  /* Aumentato a 120px per fermarsi prima del titolo e non "mangiarlo" */
+  scroll-margin-top: 120px !important;
 }
 
 /* --- FIX OVERLAP BARRA E SIDEBAR --- */
 
 /* 1. La barra secondaria deve stare SOPRA a tutto */
 #nav-annuncio {
-    z-index: 1050 !important; /* Più alto della sidebar */
-    top: 0;
+  z-index: 1050 !important; /* Più alto della sidebar */
+  top: 0;
 }
 
 /* 2. La sidebar deve stare SOTTO la barra e distanziata */
 .col-lg-4 .sticky-top {
-    /* La barra è alta circa 70px + 20px di margine = 90px */
-    top: 90px !important; 
-    z-index: 1000 !important; /* Più basso della barra */
+  /* La barra è alta circa 70px + 20px di margine = 90px */
+  top: 90px !important;
+  z-index: 1000 !important; /* Più basso della barra */
 }
-
 
 /* --- STILE GALLERIA foto.html --- */
 .link-indietro:hover {
-    text-decoration: underline !important;
-    transform: scale(1) !important;
-    color: #0dcaf0; 
+  text-decoration: underline !important;
+  transform: scale(1) !important;
+  color: #0dcaf0;
 }
 
 .img-gallery-full {
-    height: 300px; 
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
 .img-gallery-full:hover {
-    transform: scale(1.02); 
-    cursor: pointer;
+  transform: scale(1.02);
+  cursor: pointer;
 }
 
 /* --- STILE MODAL FOTO --- */
 /* sfondo dietro scuro */
 .modal-backdrop.show {
-    opacity: 0.9 !important;
+  opacity: 0.9 !important;
 }
 
 /* evita lo scroll pagina quando foto aperta */
 body.modal-open {
-    overflow: hidden !important;
+  overflow: hidden !important;
 }
 
 #modalImg {
-    /*anche foto molto piccole ingrandite per riempire la modal */
-    min-width: 50%; 
-    background-color: rgba(0,0,0,0.2);
+  /*anche foto molto piccole ingrandite per riempire la modal */
+  min-width: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
 }
-
 
 /* --- EFFETTI IN "salvati.html" --- */
 
 /* per carousel */
 .custom-carousel-container {
-    position: relative;
-    z-index: 5; 
-    height: 180px !important;
-    overflow: hidden;
-    background-color: #f8f9fa;
+  position: relative;
+  z-index: 5;
+  height: 180px !important;
+  overflow: hidden;
+  background-color: #f8f9fa;
 }
 
 /* Centratura e riempimento immagine */
 .img-fit {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
 }
 
 /* FRECCETTE: Invisibili di base su tutta l'area */
 .custom-arrow {
-    opacity: 0 !important;
-    transition: opacity 0.3s ease-in-out !important;
-    width: 20% !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease-in-out !important;
+  width: 20% !important;
 }
 
 /* su foto */
 .custom-carousel-container:hover .custom-arrow {
-    opacity: 0.7 !important;
+  opacity: 0.7 !important;
 }
 
 /* sulla freccetta */
 .custom-arrow:hover {
-    opacity: 1 !important;
+  opacity: 1 !important;
 }
 
 .custom-arrow:hover .arrow-circle {
-    background-color: #ffffff !important; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transform: scale(1.1);
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
 }
 
 /* Stile cerchio base */
 .arrow-circle {
-    background-color: rgba(255, 255, 255, 0.4);
-    color: #0d6efd;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: #0d6efd;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* mostra contatore */
 .carousel-counter {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background-color: rgba(33, 37, 41, 0.8) !important;
-    color: white !important;
-    padding: 3px 10px;
-    font-size: 0.75rem;
-    z-index: 6;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(33, 37, 41, 0.8) !important;
+  color: white !important;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  z-index: 6;
 }
-
 
 /* --- PAGINA pubblica-annuncio --- */
 
 /* Box caricamento foto */
 .upload-box {
-    cursor: pointer;
-    background-color: #fcfcfc;
-    border-color: #dee2e6 !important;
-    transition: all 0.2s ease;
+  cursor: pointer;
+  background-color: #fcfcfc;
+  border-color: #dee2e6 !important;
+  transition: all 0.2s ease;
 }
 
 .upload-box:hover {
-    background-color: #fff5f5;
-    border-color: #bb2e29 !important;
+  background-color: #fff5f5;
+  border-color: #bb2e29 !important;
 }
 
 /* bordi tratteggiati per upload */
 .border-dashed {
-    border-style: dashed !important;
+  border-style: dashed !important;
 }
 
 /* Bottone rosso unibo */
 .btn-unibo-red {
-    background-color: #bb2e29;
-    color: white;
-    border: none;
+  background-color: #bb2e29;
+  color: white;
+  border: none;
 }
 .btn-unibo-red:hover {
-    background-color: #9b2e2a;
-    color: white;
+  background-color: #9b2e2a;
+  color: white;
 }
 
 #step-menu .list-group-item {
-    border: none;
-    border-left: 4px solid transparent;
-    font-weight: 500;
+  border: none;
+  border-left: 4px solid transparent;
+  font-weight: 500;
 }
 
 #step-menu .list-group-item.active {
-    background-color: #f8f9fa !important;
-    color: #bb2e29 !important; /* Rosso Unibo */
-    border-left: 4px solid #bb2e29 !important;
+  background-color: #f8f9fa !important;
+  color: #bb2e29 !important; /* Rosso Unibo */
+  border-left: 4px solid #bb2e29 !important;
 }
-
 
 /* Nasconde le freccette predefinite dei campi numerici */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
-input[type=number] {
-    -moz-appearance: textfield;
-    -webkit-appearance: textfield;
-    color: #212529 !important; /* forza colore testo */
-    -webkit-text-fill-color: currentColor !important;
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 /* Stile per i campi obbligatori non compilati */
 .was-validated .form-control:invalid {
-    border-color: #dc3545 !important;
-    background-image: none; /* Rimuoviamo l'icona di default per pulizia */
+  border-color: #dc3545 !important;
+  background-image: none; /* Rimuoviamo l'icona di default per pulizia */
 }
-
 
 /* --- CONFIGURAZIONE NAVBAR DESKTOP (Schermi grandi) --- */
 
 .custom-nav-annuncio .nav-link {
-    color: #495057 !important;
-    font-weight: 500;
-    /* Font generoso per Desktop */
-    font-size: 17px !important; 
-    padding: 10px 20px !important;
-    border-radius: 50px;
-    transition: background-color 0.2s;
+  color: #495057 !important;
+  font-weight: 500;
+  /* Font generoso per Desktop */
+  font-size: 17px !important;
+  padding: 10px 20px !important;
+  border-radius: 50px;
+  transition: background-color 0.2s;
 }
 
 /* Prezzo su Desktop */
 .price-container .fw-bold {
-    font-size: 18px !important;
+  font-size: 18px !important;
 }
-
 
 /* --- CONFIGURAZIONE MOBILE E TABLET (Sotto i 991px) --- */
 @media (max-width: 991px) {
-    .price-container {
-        width: auto; 
-        margin-bottom: 0 !important;
-        border-right: 1px solid #dee2e6 !important;
-    }
+  .price-container {
+    width: auto;
+    margin-bottom: 0 !important;
+    border-right: 1px solid #dee2e6 !important;
+  }
 
-    .custom-nav-annuncio {
-        flex: 1; 
-        gap: 4px 4px !important;
-        margin-left: 15px !important; /* Spazio dai link al prezzo */
-    }
+  .custom-nav-annuncio {
+    flex: 1;
+    gap: 4px 4px !important;
+    margin-left: 15px !important; /* Spazio dai link al prezzo */
+  }
 
-    /* Ridimensioniamo solo qui per far stare tutto in 3 righe */
-    .custom-nav-annuncio .nav-link {
-        font-size: 14px !important; 
-        padding: 4px 10px !important;
-    }
+  /* Ridimensioniamo solo qui per far stare tutto in 3 righe */
+  .custom-nav-annuncio .nav-link {
+    font-size: 14px !important;
+    padding: 4px 10px !important;
+  }
 
-    .price-container .fw-bold {
-        font-size: 18px !important;
-    }
+  .price-container .fw-bold {
+    font-size: 18px !important;
+  }
 }
 
 /* Ottimizzazione per mobile */
 @media (max-width: 768px) {
-    body {
-        /* assicura che ci sia sempre spazio per la barra fissa */
-        padding-bottom: 80px !important;
-    }
+  body {
+    /* assicura che ci sia sempre spazio per la barra fissa */
+    padding-bottom: 80px !important;
+  }
 
-    .img-gallery-full {
-        height: 180px; /* Riduce altezza su schermi piccoli */
-    }
+  .img-gallery-full {
+    height: 180px; /* Riduce altezza su schermi piccoli */
+  }
 
-    #modalImg {
+  #modalImg {
     width: auto;
     max-width: 100%;
     max-height: 85vh;
     object-fit: contain;
     display: block;
-    }
+  }
 
-    /* parte di riduzione pubblica-annuncio.html */
-    
-    
-    /* Rimpicciolisce testo della sidebar */
-    #step-menu .list-group-item {
-        font-size: 0.8rem;
-        padding: 10px 5px !important;
-    }
+  /* parte di riduzione pubblica-annuncio.html */
 
-    /* Rimpicciolisce le icone */
-    #step-menu .bi {
-        font-size: 0.8rem;
-    }
+  /* Rimpicciolisce testo della sidebar */
+  #step-menu .list-group-item {
+    font-size: 0.8rem;
+    padding: 10px 5px !important;
+  }
 
+  /* Rimpicciolisce le icone */
+  #step-menu .bi {
+    font-size: 0.8rem;
+  }
 }
 
 /* Desktop */
 @media (min-width: 992px) {
-    .modal-galleria {
-        max-width: 70% !important;
-    }
+  .modal-galleria {
+    max-width: 70% !important;
+  }
 }
