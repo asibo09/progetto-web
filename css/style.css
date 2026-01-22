@@ -423,6 +423,9 @@ input::-webkit-inner-spin-button {
 }
 input[type=number] {
     -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    color: #212529 !important; /* forza colore testo */
+    -webkit-text-fill-color: currentColor !important;
 }
 
 /* Stile per i campi obbligatori non compilati */
