@@ -1,3 +1,16 @@
+<?php 
+    $isProprietario = false; 
+    $isAdmin = false; 
+    $isLoggato = false;
+    
+    if (isset($templateParams["utente"]) && !is_null($templateParams["utente"])) {
+        $isLoggato = true;
+        $ruolo = strtolower($templateParams["utente"]["ruolo"]);
+        $isProprietario = ($ruolo == "proprietario");
+        $isAdmin = ($ruolo == "admin"); // Controllo ruolo admin
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -73,6 +86,8 @@
         </ul>
     </nav>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/preferiti.js"></script>
 </body>
 
 </html>

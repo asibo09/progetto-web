@@ -10,13 +10,13 @@
 <form action="#" method="POST">
     <div class="mb-4">
         <label for="email" class="form-label fw-semibold fs-5">Email</label>
-        <input class="form-control" type="email" id="email" name="email"
-            placeholder="Inserisci la tua email">
+        <input class="form-control" type="email" class="" id="email" name="email"
+            placeholder="Inserisci la tua email" require></input>
     </div>
     <div class="mb-4">
         <label for="password" class="form-label fw-semibold fs-5">Password</label>
-        <input class="form-control" type="password" id="password" name="password"
-            placeholder="Inserisci la tua password">
+        <input class="form-control" type="password" class="" id="password" name="password"
+            placeholder="Inserisci la tua password" required></input>
     </div>
     <button type="submit" class="btn bg-unibo-red w-100 py-3 rounded-3 shadow-sm fw-bold fs-5">
         <i class="bi bi-box-arrow-in-right me-2"></i> ACCEDI
