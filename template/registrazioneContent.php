@@ -10,33 +10,33 @@
 <form action="#" method="POST">
     <div class="mb-4">
         <label for="nome" class="form-label fw-semibold fs-5">Nome</label>
-        <input class="form-control" type="text" class="" id="nome" name="nome" placeholder="Inserisci nome"></input>
+        <input class="form-control" type="text" class="" id="nome" name="nome" placeholder="Inserisci nome" required></input>
     </div>
     <div class="mb-4">
         <label for="cognome" class="fw-bold">Cognome</label>
-        <input type="text" class="form-control" id="cognome" name="cognome" placeholder="Inserisci cognome"></input>
+        <input type="text" class="form-control" id="cognome" name="cognome" placeholder="Inserisci cognome" required></input>
     </div>
     <div class="mb-4">
         <label for="email" class="form-label fw-semibold fs-5">Email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Inserisci email"></input>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Inserisci email" required></input>
     </div>
     <div class="mb-4">
         <label for="password" class="form-label fw-semibold fs-5">Password</label>
         <input type="password" class="form-control" id="password" name="password"
-            placeholder="Inserisci password"></input>
+            placeholder="Inserisci password" required></input>
     </div>
     <div class="mb-4">
         <label for="cellulare" class="form-label fw-semibold fs-5">Cellulare</label>
         <input type="text" class="form-control" id="cellulare" name="cellulare"
-            placeholder="Inserisci cellulare"></input>
+            placeholder="Inserisci cellulare" required></input>
     </div>
     <div class="mb-4">
         <label for="eta" class="form-label fw-semibold fs-5">Eta</label>
-        <input type="number" class="form-control" id="eta" name="eta" placeholder="Inserisci eta"></input>
+        <input type="number" class="form-control" id="eta" name="eta" placeholder="Inserisci eta" required></input>
     </div>
     <div class="mb-4">
         <label for="ruolo" class="form-label fw-semibold fs-5">Ruolo</label>
-        <select class="form-select" id="ruolo" name="ruolo">
+        <select class="form-select" id="ruolo" name="ruolo" required>
             <option value="studente">Affittuario</option>
             <option value="proprietario">Proprietario</option>
         </select>

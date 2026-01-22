@@ -6,14 +6,11 @@ function parseBool($val) {
 }
 
 $idProprietario = $_SESSION["id_utente"] ?? 2;
-
-// FIX per i radio button senza attributo 'value' nell'HTML
 $riscaldamento = ($_POST["riscaldamento"] == "on") ? "Autonomo" : ($_POST["riscaldamento"] ?? "Assente");
-// Invece di accedere direttamente, usa ?? per definire un default
+//definisce un default
 $genere = $_POST["genere-inq"] ?? "Non presenti";
 $occupazione = $_POST["occ-inq"] ?? "Non presenti";
-
-// Se arriva "on" (perché manca il value nell'HTML), sistemalo:
+// mappa valori "on" a quelli corretti del database
 if($genere === "on") $genere = "Entrambi";
 if($occupazione === "on") $occupazione = "Studenti";
 
@@ -74,11 +71,10 @@ if($idAlloggio) {
                 "size"     => $files["size"][$key]
             ];
             
-            // uploadImage sposta fisicamente il file e restituisce il nuovo nome
             list($result, $msg) = uploadImage(UPLOAD_DIR, $currentFile);
             
-            if($result == 1) { // 1 significa successo
-                // Se è la prima immagine del ciclo, impostala come copertina (1), altrimenti (0)
+            if($result == 1) {
+                // prima immagine = copertina(1), altre=0
                 $isCopertina = ($key == 0) ? 1 : 0;
                 $dbh->inserisciFoto($idAlloggio, $msg, $isCopertina);
             }

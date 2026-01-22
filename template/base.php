@@ -1,7 +1,13 @@
 <?php 
-    // Definiamo una variabile booleana per semplificare i controlli nel codice
-    // Modifica il controllo in base a come il tuo DB identifica il proprietario (es. id 1 o stringa 'Proprietario')
-    $isProprietario = ($templateParams["utente"]["ruolo"] == "proprietario"); 
+    $isProprietario = false; 
+    $isLoggato = false;
+    
+    if (isset($templateParams["utente"]) && !is_null($templateParams["utente"])) {
+        $isLoggato = true;
+        // Se l'utente è loggato, controlliamo se è proprietario
+        $isProprietario = (strtolower($templateParams["utente"]["ruolo"]) == "proprietario");
+    }
+    // Se non è loggato, $isProprietario resta false e vedrà i menu studente di default
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +23,7 @@
 
 <body class="d-flex flex-column min-vh-100">
 
+<!-- Desktop Header -->
 <header class="d-none d-lg-flex justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
     <a href="index.php">
         <img src="upload/logoUnibo.png" alt="Logo" style="height: 65px;">
@@ -37,33 +44,48 @@
             <a <?php isActive("prenotazioni.php");?> href="prenotazioni.php">Prenotazioni</a>
         <?php endif; ?>
     </nav>
-    <a <?php isActive("profilo.php");?> href="profilo.php"><i class="bi bi-person-circle fs-2"></i></a>
+    <?php if($isLoggato): ?>
+        <a <?php isActive("profilo.php");?> href="profilo.php" class="text-white">
+            <i class="bi bi-person-circle fs-2"></i>
+        </a>
+    <?php else: ?>
+        <div class="d-flex gap-2">
+            <a href="registrazione.php" class="btn btn-outline-light rounded-3 px-3 py-1 fw-semibold">Register</a>
+            <a href="login.php" class="btn btn-outline-light rounded-3 px-3 py-1 fw-semibold">Sign in</a>
+        </div>
+    <?php endif; ?>
 </header>
 
+<!-- Tablet Header -->
 <header class="d-none d-md-flex d-lg-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
     <a href="index.php">
         <img src="upload/logoUnibo.png" alt="Logo" style="height: 50px;">
     </a>
-    <div class="d-flex gap-4">
-        <a <?php isActive("preferiti.php");?> href="preferiti.php"><i class="bi bi-heart fs-4"></i></a>
-        <?php if($isProprietario): ?>
-            <a <?php isActive("pubblica.php");?> href="pubblica.php"><i class="bi bi-plus-circle fs-4"></i></a>
-            <a <?php isActive("miei-annunci.php");?> href="miei-annunci.php"><i class="bi bi-pin-angle fs-4"></i></a>
+    <div class="d-flex gap-4 align-items-center">
+        <?php if($isLoggato): ?>
+            <a <?php isActive("profilo.php");?> href="profilo.php" class="text-white">
+                <i class="bi bi-person-circle fs-4"></i>
+            </a>
         <?php else: ?>
-            <a <?php isActive("richiedi.php");?> href="richiedi.php"><i class="bi bi-arrow-up-circle fs-4"></i></a>
-            <a <?php isActive("prenotazioni.php");?> href="prenotazioni.php"><i class="bi bi-calendar-event fs-4"></i></a>
+            <a href="registrazione.php" class="btn btn-sm btn-outline-light rounded-pill px-3">Register</a>
+            <a href="login.php" class="btn btn-sm btn-outline-light rounded-pill px-3">Sign in</a>
         <?php endif; ?>
-        <a <?php isActive("profilo.php");?> href="profilo.php"><i class="bi bi-person-circle fs-4"></i></a>
     </div>
 </header>
 
+<!-- Mobile Header -->
 <header class="d-flex d-md-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
     <a href="index.php">
         <img src="upload/logoUnibo.png" alt="Logo" style="height: 50px;">
     </a>
-    <a <?php isActive("profilo.php");?> href="profilo.php">
-        <i class="bi bi-person-circle" style="font-size: 32px;"></i>
-    </a>
+    <?php if($isLoggato): ?>
+        <a <?php isActive("profilo.php");?> href="profilo.php" class="text-white">
+            <i class="bi bi-person-circle" style="font-size: 32px;"></i>
+        </a>
+    <?php else: ?>
+        <a href="registrazione.php" class="btn btn-sm btn-outline-light rounded-pill px-3">Register</a>
+        <a href="login.php" class="btn btn-sm btn-outline-light rounded-pill px-3">Sign in</a>
+    <?php endif; ?>
 </header>
 
 <main class="flex-grow-1 container-xl py-5">

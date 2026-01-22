@@ -1,18 +1,13 @@
 <?php
-session_start();
-require_once("bootstrap.php");
+require_once 'bootstrap.php';
 
-/* 1. GESTIONE LOGIN / SESSIONE */
-// Quando avrai il sistema di login, userai una funzione come isUserLoggedIn()
-// Per ora simuliamo: se vuoi testare come "non loggato", commenta la riga sotto.
-$idUtente = 3; // ID di test (Luca Bianchi)
+/* 1. GESTIONE LOGIN / SESSIONE REALE */
+// Recuperiamo l'ID solo se esiste, altrimenti mettiamo null
+$idUtenteLoggato = $_SESSION["id_utente"] ?? null;
 
-
-if (isset($idUtente)) {
-    // Se c'è un ID, recuperiamo l'utente per far funzionare il menu in base.php
-    $templateParams["utente"] = $dbh->getUserById($idUtente);
+if ($idUtenteLoggato) {
+    $templateParams["utente"] = $dbh->getUserById($idUtenteLoggato);
 } else {
-    // Se non è loggato, l'utente sarà null e base.php mostrerà il menu "studente"
     $templateParams["utente"] = null;
 }
 

@@ -182,6 +182,9 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
     
     return $stmt->execute();
 }
+
+
+
     public function lastFourSearch($userEmail)
     {
         $query = "SELECT A.*, R.data_ricerca

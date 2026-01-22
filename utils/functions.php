@@ -55,6 +55,13 @@ function uploadImage($path, $image){
         }
     }
     return array($result, $msg);
+
+}
+
+function isUserLoggedInWithID() {
+    return isset($_SESSION["id_utente"]);
+}
+
 function registerLoggedUser($user){
     $_SESSION["email"] = $user["email"];
     $_SESSION["password"] = $user["password"];
@@ -63,3 +70,4 @@ function registerLoggedUser($user){
 function isUserLoggedIn(){
     return !empty($_SESSION['email']);
 }
+
