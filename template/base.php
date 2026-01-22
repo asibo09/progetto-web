@@ -20,37 +20,7 @@
         <a href="index.php">
             <img src="upload/logoUnibo.png" alt="Logo" style="height: 65px;">
         </a>
-        <nav class="d-flex gap-5 fs-5">
-            <a href="index.php">Home</a>
-            <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="preferiti.html">Salvati</a>
-            <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a href="richiedi.html">Richiedi</a>
-            <div class="vr bg-white" style="height: 30px; opacity: 1;"></div><a
-                href="prenotazioni.html">Prenotazioni</a>
-        </nav>
         <a href="utente.php"><i class="bi bi-person-circle fs-2"></i></a>
-    </header>
-
-    <!-- Tablet -->
-    <header class="d-none d-md-flex d-lg-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
-        <a href="index.php">
-            <img src="upload/logoUnibo.png" alt="Logo" style="height: 50px;">
-        </a>
-        <div class="d-flex gap-4">
-            <a href="salvati.html"><i class="bi bi-heart fs-4"></i></a>
-            <a href="richiedi.html"><i class="bi bi-arrow-up-circle fs-4"></i></a>
-            <a href="prenotazioni.html"><i class="bi bi-calendar-event fs-4"></i></a>
-            <a href="utente.php"><i class="bi bi-person-circle fs-4"></i></a>
-        </div>
-    </header>
-
-    <!-- Mobile -->
-    <header class="d-flex d-md-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
-        <a href="index.php">
-            <img src="upload/logoUnibo.png" alt="Logo" style="height: 50px;">
-        </a>
-        <a href="utente.php">
-            <i class="bi bi-person-circle" style="font-size: 32px;"></i>
-        </a>
     </header>
 
     <main class="flex-grow-1 container-xl py-5">
