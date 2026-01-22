@@ -39,59 +39,70 @@
 
             <h2 class="fw-bold mb-3">Continua la ricerca...</h2>
 
-            <div class="row g-3"><div class="col-6"> <a href="#" class="card text-decoration-none text-dark shadow-sm h-100">
-                <div class="card-body p-2 d-flex align-items-center">
-                    <div class="bg-light rounded d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px;">
-                        <i class="bi bi-geo-alt fs-3 text-secondary"></i> </div>
-                    <div>
-                        <p class="mb-0 fw-bold">Cesena</p>
-                        <small class="text-muted" style="font-size: 0.75rem;">1 anno, 1 persona</small>
+            <ul class="row g-3 list-unstyled" role="list" aria-label="Ultime ricerche">
+                <?php foreach($templateParams["lastSearches"] as $search): ?>
+                <li class="col-6">
+                    <div class="d-flex flex-column gap-3">
+
+                <div class="card rounded-3 overflow-hidden shadow position-relative card-annuncio-hover">
+                    <div class="row g-0 align-items-stretch">
+                        <div class="col-4 border-end position-relative custom-carousel-container">
+                            <div id="carouselMyProp1" class="carousel slide h-100" data-bs-ride="false">
+                                <div class="carousel-counter badge">
+                                    <span class="current-slide">1</span>/<span class="total-slides">2</span>
+                                </div>
+                                <div class="carousel-inner h-100">
+                                    <div class="carousel-item active h-100">
+                                        <a href="annuncio.html" class="d-block h-100">
+                                            <img src="../upload/esempio_alloggio.png" class="img-fit"
+                                                alt="Foto Stanza 1">
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item h-100">
+                                        <a href="annuncio.html" class="d-block h-100">
+                                            <img src="../upload/esempio_alloggio2.png" class="img-fit"
+                                                alt="Foto Stanza 2">
+                                        </a>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev custom-arrow" type="button"
+                                    data-bs-target="#carouselMyProp1" data-bs-slide="prev">
+                                    <span class="arrow-circle"><i class="bi bi-chevron-left"></i></span>
+                                </button>
+                                <button class="carousel-control-next custom-arrow" type="button"
+                                    data-bs-target="#carouselMyProp1" data-bs-slide="next">
+                                    <span class="arrow-circle"><i class="bi bi-chevron-right"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body p-4">
+                                <a href="annuncio.html" class="stretched-link text-decoration-none text-dark">
+                                    <h3 class="h5 fw-bold mb-1">Stanza singola</h3>
+                                </a>
+                                <p class="text-muted small mb-1"><i class="bi bi-geo-alt-fill me-1 text-danger"></i>Via
+                                    del Campus, 10 - Cesena</p>
+                                <p class="small mb-3 text-secondary">2 km dal Campus, 10 km dal centro</p>
+
+                                <div class="d-flex align-items-center gap-3">
+                                    <span class="fw-bold fs-5">800€</span>
+                                    <a href="#"
+                                        class="btn btn-modifica btn-outline-primary rounded-pill d-flex gap-2 align-items-center fw-semibold ms-auto position-relative z-2">
+                                        <i class="bi bi-pencil"></i>Modifica
+                                    </a>
+                                    <a href="#"
+                                        class="btn btn-outline-danger rounded-pill d-flex gap-2 align-items-center fw-semibold position-relative z-2">
+                                        <i class="bi bi-trash"></i>Elimina
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </a>
             </div>
+        </div>
+                </li>
+            </ul>
+            <?php endforeach; ?>
 
-                <div class="col-6">
-                    <a href="#" class="card text-decoration-none text-dark shadow-sm h-100">
-                        <div class="card-body p-2 d-flex align-items-center">
-                            <div class="bg-light rounded d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px;">
-                                <i class="bi bi-geo-alt fs-3 text-secondary"></i>
-                            </div>
-                            <div>
-                                <p class="mb-0 fw-bold">Cesena</p>
-                                <small class="text-muted" style="font-size: 0.75rem;">1 anno, 5 persone</small>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-6">
-                    <a href="#" class="card text-decoration-none text-dark shadow-sm h-100">
-                        <div class="card-body p-2 d-flex align-items-center">
-                            <div class="bg-light rounded d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px;">
-                                <i class="bi bi-geo-alt fs-3 text-secondary"></i>
-                            </div>
-                            <div>
-                                <p class="mb-0 fw-bold">Cesena</p>
-                                <small class="text-muted" style="font-size: 0.75rem;">6 mesi, 1 persona</small>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-6">
-                    <a href="#" class="card text-decoration-none text-dark shadow-sm h-100">
-                        <div class="card-body p-2 d-flex align-items-center">
-                            <div class="bg-light rounded d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px;">
-                                <i class="bi bi-geo-alt fs-3 text-secondary"></i>
-                            </div>
-                            <div>
-                                <p class="mb-0 fw-bold">Cesena</p>
-                                <small class="text-muted" style="font-size: 0.75rem;">1 mese, 1 persona</small>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
         </div>

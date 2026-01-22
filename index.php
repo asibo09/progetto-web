@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("bootstrap.php");
 
 /* 1. GESTIONE LOGIN / SESSIONE */

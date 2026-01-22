@@ -55,4 +55,11 @@ function uploadImage($path, $image){
         }
     }
     return array($result, $msg);
+function registerLoggedUser($user){
+    $_SESSION["email"] = $user["email"];
+    $_SESSION["password"] = $user["password"];
+}
+
+function isUserLoggedIn(){
+    return !empty($_SESSION['email']);
 }
