@@ -6,10 +6,11 @@ if(!isset($_GET["id"])){
     header("location: index.php");
     exit();
 }
-$idUtente = $_SESSION["id_utente"] ?? 3;
+checkLogin();
+$idUtente = $_SESSION["id_utente"];
 $idAlloggio = $_GET["id"];
 
-// Recuperiamo i dati dell'alloggio (per prezzo e miniatura nella barra)
+// Recuperiamo i dati dell'alloggio
 $annuncio = $dbh->getFullAnnuncioById($idAlloggio);
 // Recuperiamo tutte le foto dell'alloggio
 $foto = $dbh->getFotoByAlloggioId($idAlloggio);

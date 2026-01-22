@@ -293,6 +293,89 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+
+
+// Recupera segnalazioni incluse le categorie
+public function getSegnalazioniDettagliate() {
+    $query = "SELECT S.*, 
+              U1.email as email_segnalatore, 
+              U2.email as email_segnalato,
+              A.indirizzo as indirizzo_alloggio
+              FROM Segnalazione S
+              JOIN Utente U1 ON S.id_utente_segnalatore = U1.id_utente
+              LEFT JOIN Utente U2 ON S.id_utente_segnalato = U2.id_utente
+              LEFT JOIN Alloggio A ON S.id_alloggio_segnalato = A.id_alloggio
+              ORDER BY S.data_segnalazione DESC";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
+// Recupera tutti gli annunci del sito per la gestione admin
+public function getAllAnnunciAdmin() {
+    $query = "SELECT A.*, U.email as email_proprietario 
+              FROM Alloggio A 
+              JOIN Utente U ON A.id_proprietario = U.id_utente 
+              ORDER BY A.data_pubblicazione DESC";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
+public function inviaBroadcast($testo) {
+    // Inserisce una riga in Notifica per ogni id_utente trovato nella tabella Utente
+    $query = "INSERT INTO Notifica (id_utente, testo, letta) 
+              SELECT id_utente, ?, 0 FROM Utente";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("s", $testo);
+    return $stmt->execute();
+}
+
+//Recupera le ultime notifiche inviate
+public function getStoricoBroadcast($limit = 5) {
+    $query = "SELECT testo, data_invio FROM Notifica 
+              GROUP BY testo, data_invio 
+              ORDER BY data_invio DESC LIMIT ?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("i", $limit);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
+public function getCoverByAlloggioId($idAlloggio) {
+    // Cerchiamo l'immagine che ha is_copertina = 1
+    $stmt = $this->db->prepare("SELECT percorso_immagine FROM Foto WHERE id_alloggio = ? AND is_copertina = 1 LIMIT 1");
+    $stmt->bind_param("i", $idAlloggio);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_assoc();
+    
+    // Se non esiste una copertina, restituiamo un'immagine di default
+    return $result ? $result['percorso_immagine'] : "esempio_alloggio.png"; 
+}
+
+public function eliminaAlloggio($idAlloggio) {
+    $query = "DELETE FROM Alloggio WHERE id_alloggio = ?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("i", $idAlloggio);
+    return $stmt->execute();
+}
+
+// Azione: Elimina Utente (cancella l'account e i suoi annunci se proprietario)
+public function eliminaUtente($idUtente) {
+    $query = "DELETE FROM Utente WHERE id_utente = ?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("i", $idUtente);
+    return $stmt->execute();
+}
+
+// Ignora una segnalazione (la elimina dalla coda senza cancellare l'oggetto segnalato)
+public function eliminaSegnalazione($idSegnalazione) {
+    $stmt = $this->db->prepare("DELETE FROM Segnalazione WHERE id_segnalazione = ?");
+    $stmt->bind_param("i", $idSegnalazione);
+    return $stmt->execute();
+}
+
 }
 
 ?>

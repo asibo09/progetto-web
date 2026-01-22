@@ -214,11 +214,11 @@
                                     <label class="form-label small fw-semibold d-block">Distanza dal Campus (km)</label>
                                     <div class="input-group">
                                         <button class="btn btn-outline-secondary" type="button"
-                                            onclick="changeVal('dist-campus', -0.5)">-</button>
+                                            onclick="changeVal('dist-campus', -1)">-</button>
                                         <input type="number" id="dist-campus" name="dist-campus" class="form-control text-center fw-bold"
                                             value="0" min="0" required>
                                         <button class="btn btn-outline-secondary" type="button"
-                                            onclick="changeVal('dist-campus', 0.5)">+</button>
+                                            onclick="changeVal('dist-campus', 1)">+</button>
                                     </div>
                                 </div>
                                 <div class="col-6">

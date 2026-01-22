@@ -1,13 +1,14 @@
 <?php 
     $isProprietario = false; 
+    $isAdmin = false; 
     $isLoggato = false;
     
     if (isset($templateParams["utente"]) && !is_null($templateParams["utente"])) {
         $isLoggato = true;
-        // Se l'utente è loggato, controlliamo se è proprietario
-        $isProprietario = (strtolower($templateParams["utente"]["ruolo"]) == "proprietario");
+        $ruolo = strtolower($templateParams["utente"]["ruolo"]);
+        $isProprietario = ($ruolo == "proprietario");
+        $isAdmin = ($ruolo == "admin"); // Controllo ruolo admin
     }
-    // Se non è loggato, $isProprietario resta false e vedrà i menu studente di default
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +43,10 @@
             <a <?php isActive("richiedi.php");?> href="richiedi.php">Richiedi</a>
             <div class="vr bg-white" style="height: 30px; opacity: 1;"></div>
             <a <?php isActive("prenotazioni.php");?> href="prenotazioni.php">Prenotazioni</a>
+        <?php endif; ?>
+        <?php if($isAdmin): ?>
+            <div class="vr bg-white" style="height: 30px; opacity: 1;"></div>
+            <a <?php isActive("admin-index.php");?> href="admin-index.php" class="fw-bold text-warning">Admin Panel</a>
         <?php endif; ?>
     </nav>
     <?php if($isLoggato): ?>
@@ -93,11 +98,13 @@
 </main>
 
 <footer class="bg-unibo-red py-3 mt-auto">
-    <div class="container text-center text-white d-flex flex-column gap-1">
-        <p class="fw-bold mb-0" style="font-size: 14px;">Campus Housing - Università di Bologna</p>
-        <p class="mb-0 opacity-75" style="font-size: 12px;">© A.A. 2025-2026 Tecnologie Web</p>
-    </div>
-</footer>
+        <div class="container text-center text-white d-flex flex-column gap-1">
+            <p class="fw-bold mb-0" style="font-size: 14px;">Campus Housing - Università di Bologna</p>
+            <p class="mb-0" style="font-size: 13px;">Alma Mater Studiorum - Campus di Cesena</p>
+            <p class="mb-0 opacity-75" style="font-size: 12px;">© A.A. 2025-2026 Tecnologie Web - Aresu Marco, Fronzi
+                Andrea, Siboni Pietro</p>
+        </div>
+    </footer>
 
 <nav class="fixed-bottom bg-white border-top shadow d-md-none">
     <ul style="list-style: none; display: flex; justify-content: space-around; padding: 10px; margin: 0;">
