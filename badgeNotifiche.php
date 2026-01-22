@@ -18,7 +18,7 @@ $templateParams['titolo'] = "Le tue notifiche";
 $templateParams['nome'] = "template/badgeNotifiche-content.php";
 
 $templateParams['notifiche'] = $dbh->notifiche();
-$templateParams['richiesteSubaffitto'] = $dbh->richieste_subaffitto("luigi.prop@email.com");
+$templateParams['richiesteSubaffitto'] = $dbh->richieste_subaffitto($_SESSION['email']);
 
 require_once("template/base.php");
 ?>

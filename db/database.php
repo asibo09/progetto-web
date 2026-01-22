@@ -34,7 +34,7 @@ class DatabaseHelper
         
     public function search($luogo, $nmesi, $npersone, $prezzo_max = null, $tipologia = [], $zona = [], $extra_filters = [])
     {
-        $query = "SELECT * FROM Alloggio WHERE comune LIKE ? AND permanenza_minima_mesi <= ? AND max_persone >= ?";
+        $query = "SELECT * FROM Alloggio WHERE comune LIKE ? AND permanenza_minima_mesi <= ? AND max_persone <= ?";
         // Use CONCAT to allow partial matches for location
         $luogo_param = "%" . $luogo . "%";
         $params = ['sii', $luogo_param, $nmesi, $npersone];

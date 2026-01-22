@@ -38,7 +38,7 @@
                         <i class="bi bi-bell fs-1 mb-2"></i>
                         <h3 class="h5 fw-bold">NOTIFICHE</h3>
                         <p class="text-muted small mb-0">Rimani aggiornato su messaggi e novità</p>
-                        <a href="#" class="stretched-link"></a>
+                        <a href="badgeNotifiche.php" class="stretched-link"></a>
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@
                         <i class="bi bi-arrow-left-right fs-1 mb-2"></i>
                         <h3 class="h5 fw-bold">RICHIESTE SUBAFFITTO</h3>
                         <p class="text-muted small mb-0">Gestisci le proposte di subaffitto ricevute</p>
-                        <a href="#" class="stretched-link"></a>
+                        <a href="richiestaSubaffitto.php" class="stretched-link"></a>
                     </div>
                 </div>
 
