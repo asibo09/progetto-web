@@ -109,7 +109,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Colonna Risultati della Ricerca -->
         <div class="col-lg-9">
             <div class="d-flex flex-column gap-3">
@@ -129,7 +128,7 @@
                                              <div id="carousel-<?php echo $search['id_alloggio']; ?>" class="carousel slide position-absolute top-0 start-0 w-100 h-100" data-bs-ride="false">
                                                 <div class="carousel-inner h-100">
                                                     <?php 
-                                                        $fotos = $dbh->fotoAlloggio($search['id_alloggio']);
+                                                        $fotos = $dbh->fotoAlloggio($search['id_alloggio']);    
                                                         $isFirst = true;
                                                         foreach ($fotos as $foto): 
                                                     ?>
