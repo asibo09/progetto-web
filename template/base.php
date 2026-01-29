@@ -29,11 +29,11 @@
 
 <body class="d-flex flex-column min-vh-100">
     <!-- Desktop -->
-    <header class="d-none d-lg-flex justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
+    <header class=" d-lg-flex justify-content-between align-items-center p-3 bg-unibo-red shadow-sm">
         <a href="index.php">
             <img src="upload/logoUnibo.png" alt="Logo" style="height: 65px;">
         </a>
-        <a href="utente.php"><i class="bi bi-person-circle fs-2"></i></a>
+        <a href="utente.php"><i class="bi text bi-person-circle fs-2"></i></a>
     </header>
 
     <main class="flex-grow-1 container-xl py-5">
