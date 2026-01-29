@@ -55,10 +55,14 @@
                                         <?php endif; ?>
                                         
                                         <a href="admin-index.php?action=delete&target=<?php echo $s['id_alloggio_segnalato'] ? 'alloggio' : 'utente'; ?>&id=<?php echo $s['id_alloggio_segnalato'] ?? $s['id_utente_segnalato']; ?>" 
-                                           class="btn btn-outline-danger" onclick="return confirm('Eliminare definitivamente?')"><i class="bi bi-trash"></i></a>
+                                            class="btn btn-outline-danger" 
+                                            title="<?php echo $s['id_alloggio_segnalato'] ? 'Elimina annuncio' : 'Elimina profilo utente'; ?>" 
+                                            onclick="return confirm('Sei sicuro di voler procedere con l\'eliminazione definitiva?')">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
                                         
                                         <a href="admin-index.php?action=ignore&id=<?php echo $s['id_segnalazione']; ?>" 
-                                           class="btn btn-outline-secondary" title="Ignora"><i class="bi bi-x-circle"></i></a>
+                                           class="btn btn-outline-secondary" title="Ignora segnalazione"><i class="bi bi-x-circle"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -107,7 +111,7 @@
                                     <div class="btn-group btn-group-sm">
                                         <a href="annuncio.php?id=<?php echo $a["id_alloggio"]; ?>" class="btn btn-outline-primary" title="Vedi"><i class="bi bi-eye"></i></a>
                                         <a href="admin-index.php?action=delete_alloggio&id=<?php echo $a["id_alloggio"]; ?>" 
-                                            class="btn btn-outline-danger" 
+                                            class="btn btn-outline-danger" title="Elimina annuncio"
                                             onclick="return confirm('Sei sicuro di voler eliminare definitivamente questo annuncio?')">
                                             <i class="bi bi-trash"></i>
                                         </a>
