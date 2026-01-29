@@ -190,37 +190,48 @@
             <section id="stanze-section" class="anchor-section mb-5">
                 <h2 class="h4 fw-bold border-bottom pb-2 mb-4">Stanze disponibili</h2>
                 <div class="card border rounded-3 p-3 shadow-sm mb-3 bg-white">
-                    <?php foreach($stanze as $index => $s): ?>
+                    <?php 
+                    $idLoggato = $_SESSION["id_utente"] ?? -1;
+                    $ruoloLoggato = $_SESSION["ruolo"] ?? '';
+        
+                    foreach($stanze as $index => $s): ?>
                         <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
                             <div>
                                 <div class="fw-bold">Stanza numero <?php echo $index+1; ?>:</div>
-                            <div class="small text-muted">
-                        <?php echo $s["nr_letti_singoli"]; ?> Singoli | <?php echo $s["nr_letti_matrimoniali"]; ?> Matrimoniali | <?php echo $s["metratura_stanza"]; ?> m² | Bagno <?php echo $s["tipo_bagno"]; ?>
-                        </div>
+                                <div class="small text-muted">
+                                <?php echo $s["nr_letti_singoli"]; ?> Singoli | <?php echo $s["nr_letti_matrimoniali"]; ?> Matrimoniali | <?php echo $s["metratura_stanza"]; ?> m² | Bagno <?php echo $s["tipo_bagno"]; ?>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <div class="text-danger fw-bold mb-1 fs-5"><?php echo (int)$s["prezzo_stanza"]; ?>€</div>
+                    
+                                    <?php if($s["stato"] == 'Disponibile'): ?>
+                                        <?php 
+                                        // Controllo: Solo chi NON è proprietario e NON è admin può prenotare
+                                        if($templateParams["annuncio"]["id_proprietario"] != $idLoggato && $ruoloLoggato != 'admin'): ?>
+                                            <form action="processa-prenotazione.php" method="POST" class="d-inline" 
+                                                onsubmit="return confirm('Sei sicuro di voler prenotare la Stanza <?php echo $index + 1; ?>?');">
+                                                <input type="hidden" name="id_stanza" value="<?php echo $s["id_stanza"]; ?>">
+                                                <input type="hidden" name="id_alloggio" value="<?php echo $templateParams["annuncio"]["id_alloggio"]; ?>">
+                                                <button type="submit" class="btn btn-prenota text-info btn-outline-info rounded-3 btn-sm fw-semibold">
+                                                    Prenota questa stanza
+                                                </button>
+                                            </form>
+                                        <?php else: ?>
+                                            <button class="btn btn-outline-success rounded-3 btn-sm fw-semibold opacity-75" disabled style="cursor: default;">
+                                                Stanza disponibile
+                                            </button>
+                                        <?php endif; ?>
+                                    <?php else: ?>
+                                        <button class="btn btn-secondary rounded-3 btn-sm fw-semibold opacity-50" disabled>
+                                            Stanza non disponibile
+                                        </button>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <?php if($index < count($stanze)-1) echo '<hr class="my-3 opacity-25">'; ?>
+                    <?php endforeach; ?>
                     </div>
-                    <div class="text-end">
-                        <div class="text-danger fw-bold mb-1 fs-5"><?php echo (int)$s["prezzo_stanza"]; ?>€</div>
-                            <?php if($s["stato"] == 'Disponibile'): ?>
-                            <form action="processa-prenotazione.php" method="POST" class="d-inline" 
-                                onsubmit="return confirm('Sei sicuro di voler prenotare la Stanza <?php echo $index + 1; ?>?');">
-            
-                                <input type="hidden" name="id_stanza" value="<?php echo $s["id_stanza"]; ?>">
-                                <input type="hidden" name="id_alloggio" value="<?php echo $templateParams["annuncio"]["id_alloggio"]; ?>">
-            
-                                <button type="submit" class="btn btn-prenota text-info btn-outline-info rounded-3 btn-sm fw-semibold">
-                                    Prenota questa stanza
-                                </button>
-                            </form>
-                            <?php else: ?>
-                            <button class="btn btn-secondary rounded-3 btn-sm fw-semibold opacity-50" disabled>
-                                Stanza non disponibile
-                            </button>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                        <?php if($index < count($stanze)-1) echo '<hr class="my-3 opacity-25">'; ?>
-                        <?php endforeach; ?>
-                </div>
             </section>
         </div>
 
@@ -239,30 +250,37 @@
                     <p class="mb-0"><i class="bi bi-telephone me-2"></i><strong>Telefono:</strong> <a href="tel:<?php echo $a["cellulare"]; ?>" class="text-dark"><?php echo $a["cellulare"]; ?></a></p>
                     
                     <div class="d-grid gap-2 mt-3">
-                        <?php if($almenoUnaDisponibile): ?>
-                            <a href="javascript:void(0)" 
-                                class="btn btn-prenota text-info btn-outline-info py-2 rounded-3 fw-bold shadow-sm btn-apri-prenota"
-                                data-id="<?php echo $a["id_alloggio"]; ?>" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#modalPrenotazione"
-                                role="button">
-                                <i class="bi bi-calendar-check me-2"></i>Prenota
-                            </a>
-                        <?php else: ?>
-                            <button class="btn btn-secondary py-2 rounded-3 fw-bold shadow-sm opacity-50" disabled>
-                                <i class="bi bi-calendar-x me-2"></i>Non disponibile
+                        <?php
+                        $idLoggato = $_SESSION["id_utente"] ?? -1;
+                        if($annuncio["id_proprietario"] != $idLoggato && isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] != 'admin'): 
+                        
+                            if($almenoUnaDisponibile): ?>
+                                <a href="javascript:void(0)" 
+                                    class="btn btn-prenota text-info btn-outline-info py-2 rounded-3 fw-bold shadow-sm btn-apri-prenota"
+                                    data-id="<?php echo $a["id_alloggio"]; ?>" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#modalPrenotazione"
+                                    role="button">
+                                    <i class="bi bi-calendar-check me-2"></i>Prenota
+                                </a>
+                            <?php else: ?>
+                                <button class="btn btn-secondary py-2 rounded-3 fw-bold shadow-sm opacity-50" disabled>
+                                    <i class="bi bi-calendar-x me-2"></i>Non disponibile
+                                </button>
+                            <?php endif; ?>
+                            <button class="btn btn-outline-danger py-2 rounded-3 fw-bold btn-cuore <?php echo $isFav ? 'active' : ''; ?>" data-id="<?php echo $annuncio["id_alloggio"]; ?>">
+                                <i class="bi heart-icon me-2"></i>Salva
                             </button>
                         <?php endif; ?>
-                        <button class="btn btn-outline-danger py-2 rounded-3 fw-bold btn-cuore <?php echo $isFav ? 'active' : ''; ?>" data-id="<?php echo $annuncio["id_alloggio"]; ?>">
-                            <i class="bi heart-icon me-2"></i>Salva
-                        </button>
                     </div>
                 </div>
+                <?php if($annuncio["id_proprietario"] != $idLoggato && isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] != 'admin'): ?>
                 <div class="text-center">
                     <a href="segnalazione.php?tipo=annuncio&id=<?php echo $a["id_alloggio"]; ?>" class="btn btn-warning text-decoration-none">
                         <i class="bi bi-exclamation-triangle-fill me-1"></i> Segnala annuncio
                     </a>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

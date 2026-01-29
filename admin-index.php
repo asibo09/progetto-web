@@ -11,17 +11,21 @@ if (isset($_GET["action"]) && isset($_GET["id"])) {
     if ($action == "delete") {
         if ($target == "alloggio") {
             $dbh->eliminaAlloggio($id);
+            $msg = "Alloggio rimosso con successo.";
         } elseif ($target == "utente") {
             $dbh->eliminaUtente($id);
+            $msg = "Profilo utente e relativi annunci eliminati.";
         }
     } elseif ($action == "ignore") {
         $dbh->eliminaSegnalazione($id);
+        $msg = "Segnalazione ignorata correttamente.";
     } elseif ($action == "delete_alloggio") { // Per la tab Gestione Annunci
         $dbh->eliminaAlloggio($id);
+        $msg = "Annuncio rimosso definitivamente.";
     }
 
     // Ricarica la pagina per vedere le modifiche
-    header("location: admin-index.php?msg=Operazione+eseguita");
+    header("location: admin-index.php?msg=" . urlencode($msg));
     exit();
 }
 
@@ -46,7 +50,8 @@ if(isset($_POST["testo_broadcast"])) {
     if(!empty(trim($testo))) {
         // Chiama la funzione che popola la tabella per tutti gli utenti
         $dbh->inviaBroadcast($idUtente, $testo);
-        header("location: admin-index.php?msg=Notifica+inviata+a+tutti+gli+utenti");
+        $msg = "Messaggio broadcast inviato.";
+        header("location: admin-index.php?msg=" . urlencode($msg));
         exit();
     }
 }

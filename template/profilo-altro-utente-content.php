@@ -79,42 +79,42 @@
                                 <p class="text-muted small mb-1"><i class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $annuncio["indirizzo"]; ?>, <?php echo $annuncio["civico"]; ?> - <?php echo $annuncio["comune"]; ?></p>
                                 <p class="small mb-3 text-secondary"><?php echo $annuncio["distanza_campus_km"]; ?> km dal Campus, <?php echo $annuncio["distanza_centro_km"]; ?> km dal centro</p>
                                 <div class="d-flex justify-content-between align-items-center">
-    <span class="text-danger fw-bold fs-5"><?php echo (int)$annuncio["prezzo_mensile_alloggio"]; ?>€</span>
-    <div class="d-flex gap-2 align-items-center" style="position: relative; z-index: 50;">
+                                    <span class="text-danger fw-bold fs-5"><?php echo (int)$annuncio["prezzo_mensile_alloggio"]; ?>€</span>
+                                    <div class="d-flex gap-2 align-items-center" style="position: relative; z-index: 50;">
         
-        <?php 
-        $idLoggato = $_SESSION["id_utente"] ?? -1;
-        // 1. Controllo: Non mostrare il tasto prenota se l'alloggio è dell'utente stesso
-        if($annuncio["id_proprietario"] != $idLoggato): 
+                                        <?php 
+                                        $idLoggato = $_SESSION["id_utente"] ?? -1;
+                                        // 1. Controllo: Non mostrare il tasto prenota se l'alloggio è dell'utente stesso o è admin
+                                        if($annuncio["id_proprietario"] != $idLoggato && isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] != 'admin'):
             
-            // 2. Controllo disponibilità stanze
-            if($annuncio["disponibile"]): ?>
-                <a href="javascript:void(0)" 
-                   class="btn btn-prenota text-info btn-outline-info rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold btn-apri-prenota"
-                   data-id="<?php echo $annuncio["id_alloggio"]; ?>"
-                   data-bs-toggle="modal" 
-                   data-bs-target="#modalPrenotazione">
-                    <i class="bi bi-calendar-check"></i><span>Prenota</span>
-                </a>
-            <?php else: ?>
-                <button class="btn btn-secondary rounded-pill px-3 py-1 btn-sm fw-semibold opacity-50" disabled>
-                    <i class="bi bi-calendar-x me-2"></i>Esaurito
-                </button>
-            <?php endif; ?>
+                                            // 2. Controllo disponibilità stanze
+                                            if($annuncio["disponibile"]): ?>
+                                                <a href="javascript:void(0)" 
+                                                    class="btn btn-prenota text-info btn-outline-info rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold btn-apri-prenota"
+                                                    data-id="<?php echo $annuncio["id_alloggio"]; ?>"
+                                                    data-bs-toggle="modal" 
+                                                    data-bs-target="#modalPrenotazione">
+                                                    <i class="bi bi-calendar-check"></i><span>Prenota</span>
+                                                </a>
+                                            <?php else: ?>
+                                                <button class="btn btn-secondary rounded-pill px-3 py-1 btn-sm fw-semibold opacity-50" disabled>
+                                                    <i class="bi bi-calendar-x me-2"></i>Esaurito
+                                                </button>
+                                            <?php endif; ?>
 
-        <?php endif; ?>
+                                        <?php endif; ?>
 
-        <?php if($annuncio["id_proprietario"] != $idLoggato): ?>
-    <?php $isFav = in_array($annuncio["id_alloggio"], $templateParams["preferiti_ids"]); ?>
-    <button type="button" 
-            class="btn btn-link p-2 btn-cuore <?php echo $isFav ? 'active' : ''; ?>" 
-            data-id="<?php echo $annuncio["id_alloggio"]; ?>">
-        <i class="bi <?php echo $isFav ? 'bi-heart-fill' : 'bi-heart'; ?> fs-4"></i>
-    </button>
-<?php endif; ?>
+                                        <?php if($annuncio["id_proprietario"] != $idLoggato && isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] != 'admin'): ?>
+                                            <?php $isFav = in_array($annuncio["id_alloggio"], $templateParams["preferiti_ids"]); ?>
+                                            <button type="button" 
+                                                class="btn btn-link p-2 btn-cuore <?php echo $isFav ? 'active' : ''; ?>" 
+                                                data-id="<?php echo $annuncio["id_alloggio"]; ?>">
+                                                <i class="bi <?php echo $isFav ? 'bi-heart-fill' : 'bi-heart'; ?> fs-4"></i>
+                                            </button>
+                                        <?php endif; ?>
         
-    </div>
-</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -125,11 +125,13 @@
     </div>
 </div>
 
-<div class="text-left mt-4">
-    <a class="btn btn-warning fw-semibold py-2 px-4 rounded-3 shadow-sm" href="segnalazione.php?tipo=utente&id=<?php echo $u["id_utente"]; ?>" role="button">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i> Segnala Utente
-    </a>
-</div>
+<?php if($annuncio["id_proprietario"] != $idLoggato && isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] != 'admin'): ?>
+    <div class="text-left mt-4">
+        <a class="btn btn-warning fw-semibold py-2 px-4 rounded-3 shadow-sm" href="segnalazione.php?tipo=utente&id=<?php echo $u["id_utente"]; ?>" role="button">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i> Segnala Utente
+        </a>
+    </div>
+<?php endif; ?>
 
 <script>
     //contatore per ogni carousel

@@ -1,4 +1,11 @@
 <div class="container">
+    <?php if(isset($_GET["msg"])): ?>
+        <div class="alert alert-success alert-dismissible fade show rounded-3 shadow-sm border-0 mb-4" role="alert">
+            <i class="bi bi-check-all me-2"></i>
+            <strong>Successo:</strong> <?php echo htmlspecialchars($_GET["msg"]); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
     <h2 class="mb-4 fw-bold text-unibo-red">Pannello di Amministrazione</h2>
 
     <ul class="nav nav-tabs mb-4" id="adminTab" role="tablist">
@@ -38,7 +45,11 @@
                             <tr>
                                 <td><small><?php echo $s["email_segnalatore"]; ?></small></td>
                                 <td><span class="badge bg-secondary"><?php echo $s["categoria"]; ?></span></td>
-                                <td class="text-truncate" style="max-width: 200px;"><?php echo $s["descrizione"]; ?></td>
+                                <td style="min-width: 250px; max-width: 400px;">
+                                    <div style="white-space: normal; word-wrap: break-word;">
+                                    <?php echo $s["descrizione"]; ?>
+                                    </div>
+                                </td>
                                 <td>
                                     <?php if($s["id_alloggio_segnalato"]): ?>
                                         <span class="text-danger"><i class="bi bi-house-door me-1"></i>Alloggio #<?php echo $s["id_alloggio_segnalato"]; ?></span>
@@ -156,3 +167,16 @@
         </div>
     </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Se nell'URL è presente il parametro 'msg'
+    if (window.location.search.includes('msg=')) {
+        // Creiamo un nuovo URL senza il parametro msg
+        const url = new URL(window.location.href);
+        url.searchParams.delete('msg');
+        
+        // Sostituiamo l'URL nella cronologia del browser senza ricaricare la pagina
+        window.history.replaceState({}, document.title, url.pathname + url.search);
+    }
+});
+</script>
