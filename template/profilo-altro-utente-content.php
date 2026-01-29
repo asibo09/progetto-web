@@ -125,7 +125,7 @@
     </div>
 </div>
 
-<?php if($annuncio["id_proprietario"] != $idLoggato && isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] != 'admin'): ?>
+<?php if(isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] != 'admin'): ?>
     <div class="text-left mt-4">
         <a class="btn btn-warning fw-semibold py-2 px-4 rounded-3 shadow-sm" href="segnalazione.php?tipo=utente&id=<?php echo $u["id_utente"]; ?>" role="button">
             <i class="bi bi-exclamation-triangle-fill me-2"></i> Segnala Utente
