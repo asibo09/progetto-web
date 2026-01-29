@@ -66,7 +66,7 @@
                     <div class="col-12 col-md-8">
                         <div class="card-body p-4 d-flex flex-column h-100">
                             <div class="mb-auto">
-                                <a href="annuncio.html" class="stretched-link text-decoration-none text-dark">
+                                <a href="annuncio.php" class="stretched-link text-decoration-none text-dark">
                                     <h3 class="h5 fw-bold mb-2"><?php echo $alloggio["tipo_immobile"]?></h3>
                                 </a>
                                 <p class="text-muted small mb-1">

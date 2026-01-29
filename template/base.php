@@ -86,8 +86,36 @@
         </ul>
     </nav>
 
+<div class="modal fade" id="modalPrenotazione" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-unibo-red text-white">
+                <h5 class="modal-title">Prenota una Stanza</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="processa-prenotazione.php" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" id="modal-id-alloggio" name="id_alloggio">
+                    
+                    <div class="mb-3">
+                        <label for="stanzaSelect" class="form-label fw-bold">Seleziona la stanza:</label>
+                        <select class="form-select" id="stanzaSelect" name="id_stanza" required>
+                            <option value="">Caricamento stanze...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    <button type="submit" id="btn-conferma-prenota" class="btn btn-unibo-red text-white fw-bold" disabled>Conferma Prenotazione</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/preferiti.js"></script>
+<script src="js/prenotazione.js"></script> </body>
 </body>
 
 </html>

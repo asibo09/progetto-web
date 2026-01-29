@@ -1,3 +1,19 @@
+<?php if(isset($_GET["msg"])): ?>
+    <div class="alert alert-success alert-dismissible fade show rounded-3 shadow-sm border-0 mb-4" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <?php echo htmlspecialchars($_GET["msg"]); ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php endif; ?>
+
+<?php if(isset($_GET["error"])): ?>
+    <div class="alert alert-danger alert-dismissible fade show rounded-3 shadow-sm border-0 mb-4" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <?php echo htmlspecialchars($_GET["error"]); ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php endif; ?>
+
 <?php 
     $a = $templateParams["annuncio"];
     $stanze = $templateParams["stanze"];
@@ -184,13 +200,21 @@
                     </div>
                     <div class="text-end">
                         <div class="text-danger fw-bold mb-1 fs-5"><?php echo (int)$s["prezzo_stanza"]; ?>€</div>
-                    
                             <?php if($s["stato"] == 'Disponibile'): ?>
-                                <a href="prenotazioni.php?alloggio=<?php echo $a["id_alloggio"]; ?>&stanza=<?php echo $s["id_stanza"]; ?>" class="btn btn-prenota text-info btn-outline-info rounded-3 btn-sm fw-semibold">Prenota questa stanza</a>
-                            <?php else: ?>
-                                <button class="btn btn-secondary rounded-3 btn-sm fw-semibold opacity-50" disabled>
-                                    Stanza non disponibile
+                            <form action="processa-prenotazione.php" method="POST" class="d-inline" 
+                                onsubmit="return confirm('Sei sicuro di voler prenotare la Stanza <?php echo $index + 1; ?>?');">
+            
+                                <input type="hidden" name="id_stanza" value="<?php echo $s["id_stanza"]; ?>">
+                                <input type="hidden" name="id_alloggio" value="<?php echo $templateParams["annuncio"]["id_alloggio"]; ?>">
+            
+                                <button type="submit" class="btn btn-prenota text-info btn-outline-info rounded-3 btn-sm fw-semibold">
+                                    Prenota questa stanza
                                 </button>
+                            </form>
+                            <?php else: ?>
+                            <button class="btn btn-secondary rounded-3 btn-sm fw-semibold opacity-50" disabled>
+                                Stanza non disponibile
+                            </button>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -216,7 +240,12 @@
                     
                     <div class="d-grid gap-2 mt-3">
                         <?php if($almenoUnaDisponibile): ?>
-                            <a href="prenotazioni.php?id=<?php echo $a["id_alloggio"]; ?>" class="btn btn-prenota text-info btn-outline-info py-2 rounded-3 fw-bold shadow-sm">
+                            <a href="javascript:void(0)" 
+                                class="btn btn-prenota text-info btn-outline-info py-2 rounded-3 fw-bold shadow-sm btn-apri-prenota"
+                                data-id="<?php echo $a["id_alloggio"]; ?>" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#modalPrenotazione"
+                                role="button">
                                 <i class="bi bi-calendar-check me-2"></i>Prenota
                             </a>
                         <?php else: ?>

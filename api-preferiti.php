@@ -1,7 +1,6 @@
 <?php
 require_once 'bootstrap.php';
-$idUtente = 3; // Temporaneo
-// dopo il login usare $_SESSION["id_utente"];
+$idUtente = $_SESSION["id_utente"];
 
 if(isset($_POST["id_alloggio"])) {
     $idAlloggio = $_POST["id_alloggio"];

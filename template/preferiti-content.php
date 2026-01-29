@@ -59,15 +59,27 @@
                                     <span class="text-danger fw-bold fs-4"><?php echo (int)$annuncio["prezzo_mensile_alloggio"]; ?>€</span>
                                     
                                     <div class="d-flex gap-3 align-items-center" style="position: relative; z-index: 100;">
-                                        <?php if($annuncio["disponibile"]): ?>
-                                            <a href="prenotazioni.php?id=<?php echo $annuncio["id_alloggio"]; ?>" class="btn btn-prenota text-info btn-outline-info rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold">
-                                                <i class="bi bi-calendar-check"></i><span>Prenota</span>
-                                            </a>
-                                        <?php else: ?>
-                                            <button class="btn btn-secondary rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold opacity-50" disabled>
-                                                <i class="bi bi-calendar-x"></i><span>Esaurito</span>
-                                            </button>
-                                        <?php endif; ?>
+                                        <?php 
+        $idLoggato = $_SESSION["id_utente"] ?? -1;
+        // 1. Controllo: Non mostrare il tasto prenota se l'alloggio è dell'utente stesso
+        if($annuncio["id_proprietario"] != $idLoggato): 
+            
+            // 2. Controllo disponibilità stanze
+            if($annuncio["disponibile"]): ?>
+                <a href="javascript:void(0)" 
+                   class="btn btn-prenota text-info btn-outline-info rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold btn-apri-prenota"
+                   data-id="<?php echo $annuncio["id_alloggio"]; ?>"
+                   data-bs-toggle="modal" 
+                   data-bs-target="#modalPrenotazione">
+                    <i class="bi bi-calendar-check"></i><span>Prenota</span>
+                </a>
+            <?php else: ?>
+                <button class="btn btn-secondary rounded-pill px-3 py-1 btn-sm fw-semibold opacity-50" disabled>
+                    <i class="bi bi-calendar-x me-2"></i>Esaurito
+                </button>
+            <?php endif; ?>
+
+        <?php endif; ?>
                                         <button type="button" class="btn btn-link p-2 btn-cuore active" data-id="<?php echo $annuncio["id_alloggio"]; ?>">
                                             <i class="bi heart-icon fs-4"></i>
                                         </button>

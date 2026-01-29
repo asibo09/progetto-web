@@ -496,6 +496,37 @@ public function eliminaSegnalazione($idSegnalazione) {
     return $stmt->execute();
 }
 
+// Recupera solo le stanze disponibili per un determinato alloggio
+public function getStanzeDisponibiliByAlloggio($idAlloggio) {
+    $stmt = $this->db->prepare("SELECT * FROM Stanza WHERE id_alloggio = ? AND stato = 'Disponibile'");
+    $stmt->bind_param("i", $idAlloggio);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
+public function prenotaStanza($idUtente, $idStanza) {
+    // Inizia una transazione per sicurezza
+    $this->db->begin_transaction();
+    try {
+        // 1. Inserisci la prenotazione
+        $stmt1 = $this->db->prepare("INSERT INTO Prenotazione (id_affittuario, id_stanza, stato) VALUES (?, ?, 'In attesa')");
+        $stmt1->bind_param("ii", $idUtente, $idStanza);
+        $stmt1->execute();
+
+        // 2. Aggiorna lo stato della stanza (come da tua richiesta)
+        $stmt2 = $this->db->prepare("UPDATE Stanza SET stato = 'Non disponibile' WHERE id_stanza = ?");
+        $stmt2->bind_param("i", $idStanza);
+        $stmt2->execute();
+
+        $this->db->commit();
+        return true;
+    } catch (Exception $e) {
+        $this->db->rollback();
+        return false;
+    }
+}
+
+
 }
 
 ?>

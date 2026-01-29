@@ -1,9 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 
-// Recupero dell'ID utente (Valore temporaneo per ID 3 - Luca Bianchi)
-$idUtente = 3; 
-/* $idUtente = $_SESSION["id_utente"]; // DA USARE IN SEGUITO dopo il login */
+$idUtente = $_SESSION["id_utente"];
 
 $utente = $dbh->getUserById($idUtente);
 

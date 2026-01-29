@@ -6,7 +6,6 @@ if(!isset($_GET["id"])){
     header("location: index.php");
     exit();
 }
-checkLogin();
 $idUtente = $_SESSION["id_utente"];
 $idAlloggio = $_GET["id"];
 
