@@ -1,4 +1,9 @@
 <?php $u = $templateParams["utente"]; ?>
+<nav aria-label="breadcrumb" class="mb-3">
+    <a href="<?php echo $templateParams["back_link"]; ?>" class="link-lista large text-info fw-bold text-decoration-none">
+        <i class="bi bi-chevron-left"></i> Indietro
+    </a>
+</nav>
 <h1 class="fw-bold mb-5">Profilo utente di <?php echo $u["nome"]; ?></h1>
 
 <div class="row g-4">

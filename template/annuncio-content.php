@@ -51,7 +51,7 @@
 
 <main class="flex-grow-1 container-xl py-4">
     <nav aria-label="breadcrumb" class="mb-3">
-        <a href="<?php echo $templateParams["back_link"]; ?>" class="link-lista text-info small fw-bold text-decoration-none">
+        <a href="<?php echo $templateParams["back_link"]; ?>" class="link-lista text-info fw-bold text-decoration-none">
             <i class="bi bi-chevron-left"></i> Indietro
         </a>
     </nav>

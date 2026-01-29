@@ -1,9 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 
-// 1. Recupero l'ID dell'utente di cui stiamo guardando il profilo
-// Se c'è un ID nell'URL lo prendiamo, altrimenti usiamo il 2 come default (temporaneo)
-$idProfiloDaVedere = $_GET["id"] ?? 2; 
+$idProfiloDaVedere = $_GET["id"]; 
 
 $utente = $dbh->getUserById($idProfiloDaVedere);
 
@@ -12,7 +10,17 @@ if (!$utente) {
     exit();
 }
 
-// 2. Recupero gli annunci del proprietario
+// Salviamo la pagina di provenienza per il link "Indietro", a meno che non venga da foto.php
+if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'profilo-altro-utente.php') === false) {
+    $_SESSION['previous_list_page'] = $_SERVER['HTTP_REFERER'];
+}
+
+// Se non c'è una pagina precedente valida, di default torna alla home
+$defaultHome = (isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] == 'admin') ? "admin-index.php" : "index.php";
+$backLink = $_SESSION['previous_list_page'] ?? $defaultHome;
+$templateParams["back_link"] = $backLink;
+
+// Recupero gli annunci del proprietario
 $annunci_raw = $dbh->getAnnunciByUserId($idProfiloDaVedere);
 $annunci_formattati = [];
 
@@ -29,8 +37,8 @@ foreach($annunci_raw as $annuncio) {
     $annunci_formattati[] = $annuncio;
 }
 
-// 3. RECUPERO PREFERITI UTENTE LOGGATO (per colorare i cuori correttamente)
-$idUtenteLoggato = $_SESSION["id_utente"] ?? -1;
+// Recupero preferiti utente loggato
+$idUtenteLoggato = $_SESSION["id_utente"];
 $preferitiUtente = $dbh->getPreferitiByUserId($idUtenteLoggato);
 // Creiamo un array semplice con solo gli ID degli alloggi preferiti
 $templateParams["preferiti_ids"] = array_column($preferitiUtente, 'id_alloggio');
