@@ -442,15 +442,19 @@ public function getAllAnnunciAdmin() {
     $stmt->execute();
     return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 }
-
-public function inviaBroadcast($testo) {
-    // Inserisce una riga in Notifica per ogni id_utente trovato nella tabella Utente
-    $query = "INSERT INTO Notifica (id_utente, testo, letta) 
-              SELECT id_utente, ?, 0 FROM Utente";
-    $stmt = $this->db->prepare($query);
-    $stmt->bind_param("s", $testo);
-    return $stmt->execute();
-}
+public function inviaBroadcast($id_utente, $testo)
+    {
+        $query = "INSERT INTO Notifica (id_utente, testo, letta, data_invio) VALUES (?, ?, 0, CURRENT_TIMESTAMP)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('is', $id_utente, $testo);
+        try {
+            $result = $stmt->execute();
+        } catch (Exception $e) {
+            $result = false;
+        }
+        $stmt->close();
+        return $result;
+    }
 
 //Recupera le ultime notifiche inviate
 public function getStoricoBroadcast($limit = 5) {

@@ -1,7 +1,7 @@
 <?php 
     $a = $templateParams["annuncio"];
     $foto = $templateParams["foto"];
-    $copertina = count($foto) > 0 ? "upload/" . $foto[0]["percorso_immagine"] : "upload/default.png";
+    $copertina = count($foto) > 0 ? $foto[0]["percorso_immagine"] : "upload/default.png";
 ?>
 
 <nav id="nav-annuncio" class="navbar navbar-light bg-white border-bottom sticky-top shadow-sm mb-5 py-2">
@@ -24,7 +24,7 @@
             <?php foreach($foto as $f): ?>
             <div class="col">
                 <div class="rounded-3 overflow-hidden shadow-sm bg-white border">
-                    <img src="upload/<?php echo $f['percorso_immagine']; ?>" class="w-100 img-gallery-full" style="cursor: pointer; object-fit: cover; height: 250px;" alt="Foto Alloggio" onclick="apriFoto(this.src)">
+                    <img src="<?php echo $f['percorso_immagine']; ?>" class="w-100 img-gallery-full" style="cursor: pointer; object-fit: cover; height: 250px;" alt="Foto Alloggio" onclick="apriFoto(this.src)">
                 </div>
             </div>
             <?php endforeach; ?>

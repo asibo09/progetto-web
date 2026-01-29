@@ -45,7 +45,7 @@ if(isset($_POST["testo_broadcast"])) {
     $testo = $_POST["testo_broadcast"];
     if(!empty(trim($testo))) {
         // Chiama la funzione che popola la tabella per tutti gli utenti
-        $dbh->inviaBroadcast($testo);
+        $dbh->inviaBroadcast($idUtente, $testo);
         header("location: admin-index.php?msg=Notifica+inviata+a+tutti+gli+utenti");
         exit();
     }

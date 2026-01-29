@@ -11,8 +11,13 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
     }
 }
 
+if(isUserLoggedIn() && $login_result[0]['ruolo'] == "admin"){
+    header("Location: admin-index.php");
+    exit();
+}
+
 if (isUserLoggedIn()) {
-    //header("Location: index.php");
+    header("Location: index.php");
     exit();
 } else {
     $templateParams["titolo"] = "Login";

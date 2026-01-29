@@ -2,7 +2,7 @@
     $a = $templateParams["annuncio"];
     $stanze = $templateParams["stanze"];
     $foto = $templateParams["foto"];
-    $firstFoto = count($foto) > 0 ? "upload/" . $foto[0]["percorso_immagine"] : "upload/default.png";
+    $firstFoto = count($foto) > 0 ? $foto[0]["percorso_immagine"] : "upload/default.png";
     $isFav = $dbh->isFavorite($idUtente, $idStanza);
     // verifica se esiste almeno una stanza disponibile
     $almenoUnaDisponibile = false;
@@ -50,7 +50,7 @@
                             <div class="carousel-inner h-100">
                                 <?php foreach($foto as $idx => $f): ?>
                                 <div class="carousel-item <?php echo $idx == 0 ? 'active' : ''; ?> h-100">
-                                    <img src="upload/<?php echo $f['percorso_immagine']; ?>" alt="Foto <?php echo $idx + 1; ?>" class="img-fit h-100 w-100">
+                                    <img src="<?php echo $f['percorso_immagine']; ?>" alt="Foto <?php echo $idx + 1; ?>" class="img-fit h-100 w-100">
                                 </div>
                                 <?php endforeach; ?>
                             </div>
@@ -66,11 +66,11 @@
 
                     <div class="col-4 h-100 d-flex flex-column gap-1">
                         <div class="h-50 overflow-hidden">
-                            <img src="<?php echo isset($foto[1]) ? 'upload/'.$foto[1]['percorso_immagine'] : $firstFoto; ?>" class="img-fit h-100 w-100" alt="Anteprima 1">
+                            <img src="<?php echo isset($foto[1]) ? $foto[1]['percorso_immagine'] : $firstFoto; ?>" class="img-fit h-100 w-100" alt="Anteprima 1">
                         </div>
                         
                         <div class="h-50 position-relative more-photos-trigger overflow-hidden">
-                            <img src="<?php echo isset($foto[2]) ? 'upload/'.$foto[2]['percorso_immagine'] : $firstFoto; ?>" class="img-fit h-100 w-100" alt="Anteprima 2">
+                            <img src="<?php echo isset($foto[2]) ? $foto[2]['percorso_immagine'] : $firstFoto; ?>" class="img-fit h-100 w-100" alt="Anteprima 2">
                             
                             <a href="foto.php?id=<?php echo $a['id_alloggio']; ?>" class="more-photos-overlay text-decoration-none">
                                 <span class="fw-bold fs-4 text-center px-2">
