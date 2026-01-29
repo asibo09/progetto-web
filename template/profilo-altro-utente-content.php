@@ -6,8 +6,8 @@
 </nav>
 <h1 class="fw-bold mb-5">Profilo utente di <?php echo $u["nome"]; ?></h1>
 
-<div class="row g-4">
-    <div class="col-12 col-lg-5">
+<div class="row g-4 <?php echo ($u["ruolo"] == 'studente') ? 'justify-content-center' : ''; ?>">
+    <div class="col-12 <?php echo ($u["ruolo"] == 'studente') ? 'col-lg-8' : 'col-lg-5'; ?>">
         <div class="d-flex flex-column gap-4">
             <div class="card shadow-sm border-0 p-4 rounded-3">
                 <h2 class="h4 fw-bold border-bottom pb-2 mb-3">
@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-
+    <?php if($u["ruolo"] == 'proprietario'): ?>
     <div class="col-12 col-lg-7">
         <div class="card shadow-sm border-0 p-4 rounded-3 h-100">
             <h2 class="h4 fw-bold border-bottom pb-2 mb-3">
@@ -128,6 +128,7 @@
             </div>
         </div>
     </div>
+    <?php endif; ?>
 </div>
 
 <?php if(isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] != 'admin'): ?>
