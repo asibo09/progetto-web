@@ -95,34 +95,34 @@
     <?php if(isUserLoggedInID() && $_SESSION["ruolo"] != 'admin'): ?>
     <ul style="list-style: none; display: flex; justify-content: space-around; padding: 10px; margin: 0;">
         <li style="text-align: center;">
-            <a <?php isActive("index.php");?> href="index.php" class="text-dark text-decoration-none text-center d-block" aria-label="Home">
+            <a href="index.php" class="text-dark text-decoration-none text-center d-block" aria-label="Home">
                 <em class="bi bi-house fs-4"></em><p class="m-0 small">Home</p>
             </a>
         </li>
         <li style="text-align: center;">
-            <a <?php isActive("preferiti.php");?> href="preferiti.php" class="text-dark text-decoration-none text-center d-block" aria-label="Salvati">
+            <a href="preferiti.php" class="text-dark text-decoration-none text-center d-block" aria-label="Salvati">
                 <em class="bi bi-heart fs-4"></em><p class="m-0 small">Salvati</p>
             </a>
         </li>
         <?php if($_SESSION["ruolo"] == 'studente'): ?>
             <li style="text-align: center;">
-                <a <?php isActive("richiestaSubaffitto.php");?> href="richiestaSubaffitto.php" class="text-dark text-decoration-none text-center d-block" aria-label="Richiedi subaffitto">
+                <a href="richiestaSubaffitto.php" class="text-dark text-decoration-none text-center d-block" aria-label="Richiedi subaffitto">
                     <em class="bi bi-plus-circle fs-4"></em><p class="m-0 small">Richiedi</p>
                 </a>
             </li>
             <li style="text-align: center;">
-                <a <?php isActive("prenotazioni.php");?> href="prenotazioni.php" class="text-dark text-decoration-none text-center d-block" aria-label="Le tue prenotazioni">
+                <a href="prenotazioni.php" class="text-dark text-decoration-none text-center d-block" aria-label="Le tue prenotazioni">
                     <em class="bi bi-calendar-event fs-4"></em><p class="m-0 small">Prenotazioni</p>
                 </a>
             </li>
         <?php else: ?>
             <li style="text-align: center;">
-                <a <?php isActive("pubblica-annuncio.php");?> href="pubblica-annuncio.php" class="text-dark text-decoration-none text-center d-block" aria-label="Pubblica annuncio">
+                <a href="pubblica-annuncio.php" class="text-dark text-decoration-none text-center d-block" aria-label="Pubblica annuncio">
                     <em class="bi bi-plus-circle fs-4"></em><p class="m-0 small">Pubblica</p>
                 </a>
             </li>
             <li style="text-align: center;">
-                <a <?php isActive("iMieiAnnunci.php");?> href="iMieiAnnunci.php" class="text-dark text-decoration-none text-center d-block" aria-label="I tuoi annunci">
+                <a href="iMieiAnnunci.php" class="text-dark text-decoration-none text-center d-block" aria-label="I tuoi annunci">
                     <em class="bi bi-pin fs-4"></em><p class="m-0 small">Annunci</p>
                 </a>
             </li>
@@ -135,7 +135,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-unibo-red text-white">
-                <h5 class="modal-title">Prenota una Stanza</h5>
+                <h2 class="modal-title h5">Prenota una Stanza</h2>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="processa-prenotazione.php" method="POST">
