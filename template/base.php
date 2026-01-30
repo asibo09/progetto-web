@@ -45,7 +45,7 @@
             <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold">Registrati</a>
             <a href="login.php" class="btn btn-light btn-sm fw-bold text-danger">Login</a>
         <?php else: ?>
-            <a <?php isActive("utente.php");?> href="utente.php" class="text-white"><i class="bi bi-person-circle fs-2"></i></a>
+            <a <?php isActive("utente.php");?> href="utente.php" class="text-white" title="Vai al tuo profilo"><em class="bi bi-person-circle fs-2"></em></a>
         <?php endif; ?>
     </div>
 </header>
@@ -56,15 +56,15 @@
     <div class="d-flex gap-4 align-items-center">
         <?php if(isUserLoggedInID()): ?>
             <?php if($_SESSION["ruolo"] == 'studente'): ?>
-                <a <?php isActive("preferiti.php");?> href="preferiti.php"><i class="bi bi-heart fs-4"></i></a>
-                <a <?php isActive("richiestaSubaffitto.php");?> href="richiestaSubaffitto.php"><i class="bi bi-arrow-up-circle fs-4"></i></a>
-                <a <?php isActive("prenotazioni.php");?> href="prenotazioni.php"><i class="bi bi-calendar-event fs-4"></i></a>
+                <a <?php isActive("preferiti.php");?> href="preferiti.php"><em class="bi bi-heart fs-4"></em></a>
+                <a <?php isActive("richiestaSubaffitto.php");?> href="richiestaSubaffitto.php"><em class="bi bi-arrow-up-circle fs-4"></em></a>
+                <a <?php isActive("prenotazioni.php");?> href="prenotazioni.php"><em class="bi bi-calendar-event fs-4"></em></a>
             <?php elseif($_SESSION["ruolo"] == 'proprietario'): ?>
-                <a <?php isActive("preferiti.php");?> href="preferiti.php"><i class="bi bi-heart fs-4"></i></a>
-                <a <?php isActive("pubblica-annuncio.php");?> href="pubblica-annuncio.php"><i class="bi bi-plus-circle fs-4"></i></a>
-                <a <?php isActive("iMieiAnnunci.php");?> href="iMieiAnnunci.php"><i class="bi bi-pin fs-4"></i></a>
+                <a <?php isActive("preferiti.php");?> href="preferiti.php"><em class="bi bi-heart fs-4"></em></a>
+                <a <?php isActive("pubblica-annuncio.php");?> href="pubblica-annuncio.php"><em class="bi bi-plus-circle fs-4"></em></a>
+                <a <?php isActive("iMieiAnnunci.php");?> href="iMieiAnnunci.php"><em class="bi bi-pin fs-4"></em></a>
             <?php endif; ?>
-            <a <?php isActive("utente.php");?> href="utente.php"><i class="bi bi-person-circle fs-4 text-white"></i></a>
+            <a <?php isActive("utente.php");?> href="utente.php" title="Vai al tuo profilo"><em class="bi bi-person-circle fs-4 text-white"></em></a>
         <?php else: ?>
             <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold">Registrati</a>
             <a href="login.php" class="btn btn-light btn-sm fw-bold text-danger">Login</a>
@@ -77,8 +77,8 @@
     <a href="<?php echo $homeUrl; ?>"><img src="upload/logoUnibo.png" alt="Logo" style="height: 45px;"></a>
     <div class="d-flex align-items-center gap-2"> 
         <?php if(isUserLoggedInID()): ?>
-            <a <?php isActive("utente.php");?> href="utente.php">
-                <i class="bi bi-person-circle fs-2 text-white"></i>
+            <a <?php isActive("utente.php");?> href="utente.php" title="Vai al tuo profilo">
+                <em class="bi bi-person-circle fs-2 text-white"></em>
             </a>
         <?php else: ?>
             <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold">Registrati</a>
@@ -96,34 +96,34 @@
     <ul style="list-style: none; display: flex; justify-content: space-around; padding: 10px; margin: 0;">
         <li style="text-align: center;">
             <a <?php isActive("index.php");?> href="index.php" class="text-dark text-decoration-none text-center d-block">
-                <i class="bi bi-house fs-4"></i><p class="m-0 small">Home</p>
+                <em class="bi bi-house fs-4"></em><p class="m-0 small">Home</p>
             </a>
         </li>
         <li style="text-align: center;">
             <a <?php isActive("preferiti.php");?> href="preferiti.php" class="text-dark text-decoration-none text-center d-block">
-                <i class="bi bi-heart fs-4"></i><p class="m-0 small">Salvati</p>
+                <em class="bi bi-heart fs-4"></em><p class="m-0 small">Salvati</p>
             </a>
         </li>
         <?php if($_SESSION["ruolo"] == 'studente'): ?>
             <li style="text-align: center;">
                 <a <?php isActive("richiestaSubaffitto.php");?> href="richiestaSubaffitto.php" class="text-dark text-decoration-none text-center d-block">
-                    <i class="bi bi-plus-circle fs-4"></i><p class="m-0 small">Richiedi</p>
+                    <em class="bi bi-plus-circle fs-4"></em><p class="m-0 small">Richiedi</p>
                 </a>
             </li>
             <li style="text-align: center;">
                 <a <?php isActive("prenotazioni.php");?> href="prenotazioni.php" class="text-dark text-decoration-none text-center d-block">
-                    <i class="bi bi-calendar-event fs-4"></i><p class="m-0 small">Prenota</p>
+                    <em class="bi bi-calendar-event fs-4"></em><p class="m-0 small">Prenota</p>
                 </a>
             </li>
         <?php else: ?>
             <li style="text-align: center;">
                 <a <?php isActive("pubblica-annuncio.php");?> href="pubblica-annuncio.php" class="text-dark text-decoration-none text-center d-block">
-                    <i class="bi bi-plus-circle fs-4"></i><p class="m-0 small">Pubblica</p>
+                    <em class="bi bi-plus-circle fs-4"></em><p class="m-0 small">Pubblica</p>
                 </a>
             </li>
             <li style="text-align: center;">
                 <a <?php isActive("iMieiAnnunci.php");?> href="iMieiAnnunci.php" class="text-dark text-decoration-none text-center d-block">
-                    <i class="bi bi-pin fs-4"></i><p class="m-0 small">Annunci</p>
+                    <em class="bi bi-pin fs-4"></em><p class="m-0 small">Annunci</p>
                 </a>
             </li>
         <?php endif; ?>

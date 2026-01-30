@@ -187,7 +187,7 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
 
     public function lastFourSearch($id_studente)
     {
-        $query = "SELECT A.descrizione
+        $query = "SELECT A.descrizione, A.comune
                   FROM Ricerca_alloggio R JOIN Alloggio A ON R.id_alloggio = A.id_alloggio
                   WHERE R.id_studente = ?
                   ORDER BY R.data_ricerca DESC

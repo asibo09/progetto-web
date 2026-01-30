@@ -1,7 +1,7 @@
 <div class="container">
     <?php if(isset($_GET["msg"])): ?>
         <div class="alert alert-success alert-dismissible fade show rounded-3 shadow-sm border-0 mb-4" role="alert">
-            <i class="bi bi-check-all me-2"></i>
+            <em class="bi bi-check-all me-2"></em>
             <strong>Successo:</strong> <?php echo htmlspecialchars($_GET["msg"]); ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -52,28 +52,28 @@
                                 </td>
                                 <td>
                                     <?php if($s["id_alloggio_segnalato"]): ?>
-                                        <span class="text-danger"><i class="bi bi-house-door me-1"></i>Alloggio #<?php echo $s["id_alloggio_segnalato"]; ?></span>
+                                        <span class="text-danger"><em class="bi bi-house-door me-1"></em>Alloggio #<?php echo $s["id_alloggio_segnalato"]; ?></span>
                                     <?php else: ?>
-                                        <span class="text-info"><i class="bi bi-person me-1"></i>Utente #<?php echo $s["id_utente_segnalato"]; ?></span>
+                                        <span class="text-info"><em class="bi bi-person me-1"></em>Utente #<?php echo $s["id_utente_segnalato"]; ?></span>
                                     <?php endif; ?>
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group btn-group-sm">
                                         <?php if($s["id_alloggio_segnalato"]): ?>
-                                            <a href="annuncio.php?id=<?php echo $s["id_alloggio_segnalato"]; ?>" class="btn btn-outline-primary" title="Vedi Annuncio"><i class="bi bi-eye"></i></a>
+                                            <a href="annuncio.php?id=<?php echo $s["id_alloggio_segnalato"]; ?>" class="btn btn-outline-primary" title="Vedi Annuncio"><em class="bi bi-eye"></em></a>
                                         <?php else: ?>
-                                            <a href="profilo-altro-utente.php?id=<?php echo $s["id_utente_segnalato"]; ?>" class="btn btn-outline-primary" title="Vedi Profilo"><i class="bi bi-eye"></i></a>
+                                            <a href="profilo-altro-utente.php?id=<?php echo $s["id_utente_segnalato"]; ?>" class="btn btn-outline-primary" title="Vedi Profilo"><em class="bi bi-eye"></em></a>
                                         <?php endif; ?>
                                         
                                         <a href="admin-index.php?action=delete&target=<?php echo $s['id_alloggio_segnalato'] ? 'alloggio' : 'utente'; ?>&id=<?php echo $s['id_alloggio_segnalato'] ?? $s['id_utente_segnalato']; ?>" 
                                             class="btn btn-outline-danger" 
                                             title="<?php echo $s['id_alloggio_segnalato'] ? 'Elimina annuncio' : 'Elimina profilo utente'; ?>" 
                                             onclick="return confirm('Sei sicuro di voler procedere con l\'eliminazione definitiva?')">
-                                            <i class="bi bi-trash"></i>
+                                            <em class="bi bi-trash"></em>
                                         </a>
                                         
                                         <a href="admin-index.php?action=ignore&id=<?php echo $s['id_segnalazione']; ?>" 
-                                           class="btn btn-outline-secondary" title="Ignora segnalazione"><i class="bi bi-x-circle"></i></a>
+                                           class="btn btn-outline-secondary" title="Ignora segnalazione"><em class="bi bi-x-circle"></em></a>
                                     </div>
                                 </td>
                             </tr>
@@ -107,8 +107,7 @@
                         <?php foreach($templateParams["alloggi_totali"] as $a): ?>
                             <tr>
                                 <td>
-                                    <img src="<?php echo UPLOAD_DIR . $a["foto_copertina"]; ?>" 
-                                        alt="" 
+                                    <img src="<?php echo UPLOAD_DIR . $a['foto_copertina']; ?>" alt="Anteprima dell'alloggio situato in <?php echo $a['indirizzo']; ?>" 
                                         style="width: 200px; height: 150px; object-fit: cover;" 
                                         class="rounded border shadow-sm">
                                 </td>
@@ -120,11 +119,11 @@
                                 <td><small><?php echo $a["email_proprietario"]; ?></small></td>
                                 <td class="text-center">
                                     <div class="btn-group btn-group-sm">
-                                        <a href="annuncio.php?id=<?php echo $a["id_alloggio"]; ?>" class="btn btn-outline-primary" title="Vedi"><i class="bi bi-eye"></i></a>
+                                        <a href="annuncio.php?id=<?php echo $a["id_alloggio"]; ?>" class="btn btn-outline-primary" title="Vedi"><em class="bi bi-eye"></em></a>
                                         <a href="admin-index.php?action=delete_alloggio&id=<?php echo $a["id_alloggio"]; ?>" 
                                             class="btn btn-outline-danger" title="Elimina annuncio"
                                             onclick="return confirm('Sei sicuro di voler eliminare definitivamente questo annuncio?')">
-                                            <i class="bi bi-trash"></i>
+                                            <em class="bi bi-trash"></em>
                                         </a>
                                     </div>
                                 </td>
@@ -135,24 +134,23 @@
                 </div>
             </div>
         </div>
-        <div class="tab-content" id="adminTabContent">
-    <div class="tab-pane fade" id="broadcast" role="tabpanel">
-    <div class="row">
-        <div class="col-md-7">
-            <div class="card shadow-sm border-0 p-4">
-                <h5 class="fw-bold mb-3"><i class="bi bi-megaphone me-2"></i>Nuovo Messaggio Broadcast</h5>
-                <form action="admin-index.php" method="POST">
-                    <div class="mb-3">
-                        <textarea class="form-control" name="testo_broadcast" rows="4" 
-                                  placeholder="Scrivi qui il messaggio che riceveranno tutti gli utenti (max 255 caratteri)..." 
-                                  maxlength="255" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-unibo-red w-100 fw-bold">Invia a tutti</button>
-                </form>
-            </div>
-        </div>
         
-        <div class="col-md-5">
+        <div class="tab-pane fade" id="broadcast" role="tabpanel">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="card shadow-sm border-0 p-4">
+                        <h5 class="fw-bold mb-3"><em class="bi bi-megaphone me-2"></em>Nuovo Messaggio Broadcast</h5>
+                        <form action="admin-index.php" method="POST">
+                            <div class="mb-3">
+                                <label for="testo_broadcast" class="fw-semibold mb-2">Testo del messaggio broadcast</label>
+                                <textarea class="form-control" id="testo_broadcast" name="testo_broadcast" rows="4" 
+                                    placeholder="Scrivi qui il messaggio che riceveranno tutti gli utenti (max 255 caratteri)..." maxlength="255" required></textarea></div>
+                                <button type="submit" class="btn btn-unibo-red w-100 fw-bold">Invia a tutti</button>
+                        </form>
+                    </div>
+                </div>
+        
+            <div class="col-md-5">
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-light fw-bold">Ultime comunicazioni inviate</div>
                 <div class="list-group list-group-flush">
@@ -165,6 +163,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </div>
 <script>
