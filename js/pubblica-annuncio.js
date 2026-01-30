@@ -39,14 +39,26 @@ function toggleStrings(id, s1, s2) {
 function changeVal(id, delta) {
     let el = document.getElementById(id);
     if (!el) return;
-    let newVal = (parseInt(el.value) || 0) + delta;
+
+    //parseFloat per supportare decimali 
+    let currentVal = parseFloat(el.value) || 0;
+    let newVal = currentVal + delta;
+
     if (newVal >= 0) {
-        el.value = newVal;
-        // Se cambia il numero di stanze principali, rigenera i blocchi
+        // se delta è un decimale, usiamo toFixed per arrotondare ad un decimale; altrimenti lo trattiamo come intero
+        el.value = (delta % 1 !== 0) ? newVal.toFixed(1) : newVal;
+
+        //se stanze rigenera blocchi stanze
         if (id === 'stanze') {
             generaBlocchiStanze();
         }
+
+        //se nr coinquilino rigenere i suoi campi genere e occupazione
+        if (id === 'current-coinq') {
+            updateRequiredFields(newVal);
+        }
     }
+    
     validateSidebar();
 }
 
@@ -177,6 +189,25 @@ function validateSidebar() {
             ? '<i class="bi bi-check-circle-fill text-success"></i>' 
             : '<i class="bi bi-exclamation-circle-fill text-danger"></i>';
     });
+}
+
+//funzione per far si che i campi opzionali degli inquilini una volta che si indica che sono presenti diventino obbligatori
+function updateRequiredFields(val) {
+    const isRequired = parseInt(val) > 0;
+    const inputs = document.querySelectorAll('input[name="genere-inq"], input[name="occ-inq"]');
+    const starGenere = document.getElementById('star-genere');
+    const starOcc = document.getElementById('star-occ');
+
+    inputs.forEach(input => {
+        input.required = isRequired;
+    });
+    if (isRequired) {
+        starGenere.classList.remove('d-none');
+        starOcc.classList.remove('d-none');
+    } else {
+        starGenere.classList.add('d-none');
+        starOcc.classList.add('d-none');
+    }
 }
 
 //inizializzazione
