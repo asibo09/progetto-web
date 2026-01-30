@@ -12,7 +12,7 @@
 <body class="d-flex flex-column min-vh-100">
 <?php 
     // Definiamo la home in base al ruolo
-    $homeUrl = (isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] == 'admin') ? "admin-index.php" : "index.php"; 
+    $homeUrl = (isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] == 'admin') ? "admin-index.php" : "index.php";
 ?>
 <!-- Desktop -->
 <header class="d-none d-lg-flex justify-content-between align-items-center p-3 bg-unibo-red shadow-sm text-white">
@@ -67,7 +67,7 @@
             <a <?php isActive("utente.php");?> href="utente.php"><i class="bi bi-person-circle fs-4 text-white"></i></a>
         <?php else: ?>
             <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold">Registrati</a>
-            <a href="login.php" class="btn btn-light btn-sm fw-bold">Login</a>
+            <a href="login.php" class="btn btn-light btn-sm fw-bold text-danger">Login</a>
         <?php endif; ?>
     </div>
 </header>
@@ -75,12 +75,16 @@
 <!-- Mobile -->
 <header class="d-flex d-md-none justify-content-between align-items-center p-3 bg-unibo-red shadow-sm text-white">
     <a href="<?php echo $homeUrl; ?>"><img src="upload/logoUnibo.png" alt="Logo" style="height: 45px;"></a>
-    <?php if(isUserLoggedInID()): ?>
-        <a <?php isActive("utente.php");?> href="utente.php"><i class="bi bi-person-circle fs-2 text-white"></i></a>
-    <?php else: ?>
-        <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold">Registrati</a>
-        <a href="login.php" class="text-white fw-bold text-decoration-none">Login</a>
-    <?php endif; ?> 
+    <div class="d-flex align-items-center gap-2"> 
+        <?php if(isUserLoggedInID()): ?>
+            <a <?php isActive("utente.php");?> href="utente.php">
+                <i class="bi bi-person-circle fs-2 text-white"></i>
+            </a>
+        <?php else: ?>
+            <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold">Registrati</a>
+            <a href="login.php" class="btn btn-light btn-sm fw-bold text-danger">Login</a>
+        <?php endif; ?> 
+    </div>
 </header>
 
 <main class="flex-grow-1 container-xl py-5">
