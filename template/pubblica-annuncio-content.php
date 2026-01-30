@@ -21,7 +21,7 @@
                 <button type="button" onclick="showSection('<?php echo $id; ?>')" 
                         class="list-group-item list-group-item-action py-3 d-flex justify-content-between align-items-center <?php echo $id == 'tipologia' ? 'active' : ''; ?>" 
                         id="btn-<?php echo $id; ?>">
-                    <?php echo $label; ?> <span id="status-<?php echo $id; ?>"><i class="bi bi-circle text-muted"></i></span>
+                    <?php echo $label; ?> <span id="status-<?php echo $id; ?>"><em class="bi bi-circle text-muted"></em></span>
                 </button>
                 <?php endforeach; ?>
             </div>
@@ -431,7 +431,7 @@
 
                             <div class="upload-box text-center p-5 border border-2 border-dashed rounded-4 bg-light cursor-pointer"
                                 onclick="document.getElementById('input-foto').click()">
-                                <i class="bi bi-plus-lg display-1 text-danger"></i>
+                                <em class="bi bi-plus-lg display-1 text-danger"></em>
                                 <p class="mt-3 fw-bold mb-0">Caricate: <span id="foto-count">0</span> su 20</p>
                                     <input type="file" id="input-foto" name="foto_alloggio[]" class="d-none" multiple accept="image/*" onchange="handleFiles(this)">                            
                                 </div>
@@ -462,14 +462,14 @@
 
                             <div class="alert alert-info border-0 rounded-4 d-flex align-items-center mb-4"
                                 role="alert">
-                                <i class="bi bi-info-circle-fill fs-4 me-3"></i>
+                                <em class="bi bi-info-circle-fill fs-4 me-3"></em>
                                 <div class="small">Controlla di aver inserito correttamente tutti i dati prima di
                                     procedere alla pubblicazione definitiva.</div>
                             </div>
 
                             <button type="submit"
                                 class="btn btn-unibo-red btn-lg w-100 rounded-pill fw-bold py-3 shadow border-0">
-                                <i class="bi bi-check2-circle me-2"></i> PUBBLICA ANNUNCIO ORA
+                                <em class="bi bi-check2-circle me-2"></em> PUBBLICA ANNUNCIO ORA
                             </button>
                         </div>
 

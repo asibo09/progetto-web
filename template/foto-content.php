@@ -8,7 +8,7 @@
     <div class="container-xl">
         <div class="d-flex align-items-center w-100 flex-wrap">
             <a href="annuncio.php?id=<?php echo $a['id_alloggio']; ?>" class="link-indietro text-decoration-none text-info fw-bold me-4 text-uppercase">
-                <i class="bi bi-chevron-left"></i> Indietro
+                <em class="bi bi-chevron-left"></em> Indietro
             </a>
             <div class="d-flex align-items-center border-end pe-3 me-3 price-container">
                 <img src="<?php echo $copertina; ?>" class="rounded-2 me-2" style="width: 45px; height: 45px; object-fit: cover;" alt="Thumbnail">
@@ -18,19 +18,19 @@
     </div>
 </nav>
 
-<main class="flex-grow-1 bg-white">
-    <div class="container-xl pb-5 mb-5">
-        <div class="row g-3 row-cols-2">
-            <?php foreach($foto as $f): ?>
-            <div class="col">
-                <div class="rounded-3 overflow-hidden shadow-sm bg-white border">
-                    <img src="upload/<?php echo $f['percorso_immagine']; ?>" class="w-100 img-gallery-full" style="cursor: pointer; object-fit: cover; height: 250px;" alt="Foto Alloggio" onclick="apriFoto(this.src)">
-                </div>
+
+<div class="container-xl pb-5 mb-5">
+    <div class="row g-3 row-cols-2">
+        <?php foreach($foto as $f): ?>
+        <div class="col">
+            <div class="rounded-3 overflow-hidden shadow-sm bg-white border">
+                <img src="upload/<?php echo $f['percorso_immagine']; ?>" class="w-100 img-gallery-full" style="cursor: pointer; object-fit: cover; height: 250px;" alt="Foto Alloggio" onclick="apriFoto(this.src)">
             </div>
-            <?php endforeach; ?>
         </div>
+        <?php endforeach; ?>
     </div>
-</main>
+</div>
+
 
 <div class="modal fade" id="fotoModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl modal-galleria">
