@@ -22,28 +22,28 @@
     <nav class="d-flex gap-5 fs-5 align-items-center">
         <?php if(isUserLoggedInID()): ?>
             <?php if($_SESSION["ruolo"] == 'studente'): ?>
-                <a <?php isActive("index.php");?> href="index.php">Home</a>
+                <a <?php isActive("index.php");?> href="index.php" aria-label="Home">Home</a>
                 <div class="vr bg-white" style="height: 30px; opacity: 1;"></div>
-                <a <?php isActive("preferiti.php");?> href="preferiti.php">Salvati</a>
+                <a <?php isActive("preferiti.php");?> href="preferiti.php" aria-label="Salvati">Salvati</a>
                 <div class="vr bg-white" style="height: 30px; opacity: 1;"></div>
-                <a <?php isActive("richiestaSubaffitto.php");?> href="richiestaSubaffitto.php">Richiedi</a>
+                <a <?php isActive("richiestaSubaffitto.php");?> href="richiestaSubaffitto.php" aria-label="Richiedi subaffitto">Richiedi</a>
                 <div class="vr bg-white" style="height: 30px; opacity: 1;"></div>
-                <a <?php isActive("prenotazioni.php");?> href="prenotazioni.php">Prenotazioni</a>
+                <a <?php isActive("prenotazioni.php");?> href="prenotazioni.php" aria-label="Le tue prenotazioni">Prenotazioni</a>
             <?php elseif($_SESSION["ruolo"] == 'proprietario'): ?>
-                <a <?php isActive("index.php");?> href="index.php">Home</a>
+                <a <?php isActive("index.php");?> href="index.php" aria-label="Home">Home</a>
                 <div class="vr bg-white" style="height: 30px; opacity: 1;"></div>
-                <a <?php isActive("preferiti.php");?> href="preferiti.php">Salvati</a>
+                <a <?php isActive("preferiti.php");?> href="preferiti.php" aria-label="Salvati">Salvati</a>
                 <div class="vr bg-white" style="height: 30px; opacity: 1;"></div>
-                <a <?php isActive("pubblica-annuncio.php");?> href="pubblica-annuncio.php">Pubblica</a>
+                <a <?php isActive("pubblica-annuncio.php");?> href="pubblica-annuncio.php" aria-label="Publlica annuncio">Pubblica</a>
                 <div class="vr bg-white" style="height: 30px; opacity: 1;"></div>
-                <a <?php isActive("iMieiAnnunci.php");?> href="iMieiAnnunci.php">Annunci</a>
+                <a <?php isActive("iMieiAnnunci.php");?> href="iMieiAnnunci.php" aria-label="I tuoi annunci">Annunci</a>
             <?php endif; ?>
         <?php endif; ?>
     </nav>
     <div class="d-flex align-items-center gap-3">
         <?php if(!isUserLoggedInID()): ?>
-            <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold">Registrati</a>
-            <a href="login.php" class="btn btn-light btn-sm fw-bold text-danger">Login</a>
+            <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold" aria-label="Registrati">Registrati</a>
+            <a href="login.php" class="btn btn-light btn-sm fw-bold text-danger" aria-label="Login">Login</a>
         <?php else: ?>
             <a <?php isActive("utente.php");?> href="utente.php" class="text-white" title="Vai al tuo profilo"><em class="bi bi-person-circle fs-2"></em></a>
         <?php endif; ?>
@@ -56,18 +56,18 @@
     <div class="d-flex gap-4 align-items-center">
         <?php if(isUserLoggedInID()): ?>
             <?php if($_SESSION["ruolo"] == 'studente'): ?>
-                <a <?php isActive("preferiti.php");?> href="preferiti.php"><em class="bi bi-heart fs-4"></em></a>
-                <a <?php isActive("richiestaSubaffitto.php");?> href="richiestaSubaffitto.php"><em class="bi bi-arrow-up-circle fs-4"></em></a>
-                <a <?php isActive("prenotazioni.php");?> href="prenotazioni.php"><em class="bi bi-calendar-event fs-4"></em></a>
+                <a <?php isActive("preferiti.php");?> href="preferiti.php" title="Salvati"><em class="bi bi-heart fs-4"></em></a>
+                <a <?php isActive("richiestaSubaffitto.php");?> href="richiestaSubaffitto.php" title="Richiedi subaffitto"><em class="bi bi-arrow-up-circle fs-4"></em></a>
+                <a <?php isActive("prenotazioni.php");?> href="prenotazioni.php" title="Le tue prenotazioni"><em class="bi bi-calendar-event fs-4"></em></a>
             <?php elseif($_SESSION["ruolo"] == 'proprietario'): ?>
-                <a <?php isActive("preferiti.php");?> href="preferiti.php"><em class="bi bi-heart fs-4"></em></a>
-                <a <?php isActive("pubblica-annuncio.php");?> href="pubblica-annuncio.php"><em class="bi bi-plus-circle fs-4"></em></a>
-                <a <?php isActive("iMieiAnnunci.php");?> href="iMieiAnnunci.php"><em class="bi bi-pin fs-4"></em></a>
+                <a <?php isActive("preferiti.php");?> href="preferiti.php" title="Salvati"><em class="bi bi-heart fs-4"></em></a>
+                <a <?php isActive("pubblica-annuncio.php");?> href="pubblica-annuncio.php" title="Pubblica annuncio"><em class="bi bi-plus-circle fs-4"></em></a>
+                <a <?php isActive("iMieiAnnunci.php");?> href="iMieiAnnunci.php" title="I tuoi annunci"><em class="bi bi-pin fs-4"></em></a>
             <?php endif; ?>
             <a <?php isActive("utente.php");?> href="utente.php" title="Vai al tuo profilo"><em class="bi bi-person-circle fs-4 text-white"></em></a>
         <?php else: ?>
-            <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold">Registrati</a>
-            <a href="login.php" class="btn btn-light btn-sm fw-bold text-danger">Login</a>
+            <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold" aria-label="Registrati">Registrati</a>
+            <a href="login.php" class="btn btn-light btn-sm fw-bold text-danger" aria-label="Login">Login</a>
         <?php endif; ?>
     </div>
 </header>
@@ -81,8 +81,8 @@
                 <em class="bi bi-person-circle fs-2 text-white"></em>
             </a>
         <?php else: ?>
-            <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold">Registrati</a>
-            <a href="login.php" class="btn btn-light btn-sm fw-bold text-danger">Login</a>
+            <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold" aria-label="Registrati">Registrati</a>
+            <a href="login.php" class="btn btn-light btn-sm fw-bold text-danger" aria-label="Login">Login</a>
         <?php endif; ?> 
     </div>
 </header>
@@ -95,34 +95,34 @@
     <?php if(isUserLoggedInID() && $_SESSION["ruolo"] != 'admin'): ?>
     <ul style="list-style: none; display: flex; justify-content: space-around; padding: 10px; margin: 0;">
         <li style="text-align: center;">
-            <a <?php isActive("index.php");?> href="index.php" class="text-dark text-decoration-none text-center d-block">
+            <a <?php isActive("index.php");?> href="index.php" class="text-dark text-decoration-none text-center d-block" aria-label="Home">
                 <em class="bi bi-house fs-4"></em><p class="m-0 small">Home</p>
             </a>
         </li>
         <li style="text-align: center;">
-            <a <?php isActive("preferiti.php");?> href="preferiti.php" class="text-dark text-decoration-none text-center d-block">
+            <a <?php isActive("preferiti.php");?> href="preferiti.php" class="text-dark text-decoration-none text-center d-block" aria-label="Salvati">
                 <em class="bi bi-heart fs-4"></em><p class="m-0 small">Salvati</p>
             </a>
         </li>
         <?php if($_SESSION["ruolo"] == 'studente'): ?>
             <li style="text-align: center;">
-                <a <?php isActive("richiestaSubaffitto.php");?> href="richiestaSubaffitto.php" class="text-dark text-decoration-none text-center d-block">
+                <a <?php isActive("richiestaSubaffitto.php");?> href="richiestaSubaffitto.php" class="text-dark text-decoration-none text-center d-block" aria-label="Richiedi subaffitto">
                     <em class="bi bi-plus-circle fs-4"></em><p class="m-0 small">Richiedi</p>
                 </a>
             </li>
             <li style="text-align: center;">
-                <a <?php isActive("prenotazioni.php");?> href="prenotazioni.php" class="text-dark text-decoration-none text-center d-block">
-                    <em class="bi bi-calendar-event fs-4"></em><p class="m-0 small">Prenota</p>
+                <a <?php isActive("prenotazioni.php");?> href="prenotazioni.php" class="text-dark text-decoration-none text-center d-block" aria-label="Le tue prenotazioni">
+                    <em class="bi bi-calendar-event fs-4"></em><p class="m-0 small">Prenotazioni</p>
                 </a>
             </li>
         <?php else: ?>
             <li style="text-align: center;">
-                <a <?php isActive("pubblica-annuncio.php");?> href="pubblica-annuncio.php" class="text-dark text-decoration-none text-center d-block">
+                <a <?php isActive("pubblica-annuncio.php");?> href="pubblica-annuncio.php" class="text-dark text-decoration-none text-center d-block" aria-label="Pubblica annuncio">
                     <em class="bi bi-plus-circle fs-4"></em><p class="m-0 small">Pubblica</p>
                 </a>
             </li>
             <li style="text-align: center;">
-                <a <?php isActive("iMieiAnnunci.php");?> href="iMieiAnnunci.php" class="text-dark text-decoration-none text-center d-block">
+                <a <?php isActive("iMieiAnnunci.php");?> href="iMieiAnnunci.php" class="text-dark text-decoration-none text-center d-block" aria-label="I tuoi annunci">
                     <em class="bi bi-pin fs-4"></em><p class="m-0 small">Annunci</p>
                 </a>
             </li>
