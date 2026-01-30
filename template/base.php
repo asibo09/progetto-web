@@ -17,7 +17,7 @@
 <!-- Desktop -->
 <header class="d-none d-lg-flex justify-content-between align-items-center p-3 bg-unibo-red shadow-sm text-white">
     <a href="<?php echo $homeUrl; ?>">
-        <img src="upload/logoUnibo.png" alt="Logo" style="height: 65px;">
+        <img src="upload/logoUnibo.png" alt="Logo Università di Bologna" style="height: 65px;">
     </a>
     <nav class="d-flex gap-5 fs-5 align-items-center">
         <?php if(isUserLoggedInID()): ?>

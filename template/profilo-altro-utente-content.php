@@ -62,7 +62,7 @@
                                     <?php foreach($foto as $idx => $f): ?>
                                     <div class="carousel-item <?php echo $idx === 0 ? 'active' : ''; ?> h-100">
                                         <a href="annuncio.php?id=<?php echo $annuncio["id_alloggio"]; ?>" class="d-block h-100">
-                                            <img src="upload/<?php echo $f['percorso_immagine']; ?>" class="img-fit" alt="Foto">
+                                            <img src="upload/<?php echo $f['percorso_immagine']; ?>" class="img-fit" alt="Anteprima di un <?php echo $annuncio['tipo_immobile']; ?> situato in <?php echo $annuncio['indirizzo']; ?>, <?php echo $annuncio['comune']; ?>">
                                         </a>
                                     </div>
                                     <?php endforeach; ?>

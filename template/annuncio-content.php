@@ -66,7 +66,7 @@
                             <div class="carousel-inner h-100">
                                 <?php foreach($foto as $idx => $f): ?>
                                 <div class="carousel-item <?php echo $idx == 0 ? 'active' : ''; ?> h-100">
-                                    <img src="upload/<?php echo $f['percorso_immagine']; ?>" alt="Foto <?php echo $idx + 1; ?>" class="img-fit h-100 w-100">
+                                    <img src="upload/<?php echo $f['percorso_immagine']; ?>" alt="Foto <?php echo $idx + 1; ?> dell'alloggio in <?php echo htmlspecialchars($templateParams['annuncio']['indirizzo']); ?>" class="img-fit h-100 w-100">
                                 </div>
                                 <?php endforeach; ?>
                             </div>
@@ -88,7 +88,7 @@
                         <div class="h-50 position-relative more-photos-trigger overflow-hidden">
                             <img src="<?php echo isset($foto[2]) ? 'upload/'.$foto[2]['percorso_immagine'] : $firstFoto; ?>" class="img-fit h-100 w-100" alt="Anteprima 2">
                             
-                            <a href="foto.php?id=<?php echo $a['id_alloggio']; ?>" class="more-photos-overlay text-decoration-none">
+                            <a href="foto.php?id=<?php echo $a['id_alloggio']; ?>" class="more-photos-overlay text-decoration-none" aria-label="Vedi gallery">
                                 <span class="fw-bold fs-4 text-center px-2">
                                     <?php 
                                     // Se ci sono più di 2 foto mostriamo il conteggio, altrimenti un testo generico

@@ -107,7 +107,7 @@
                         <?php foreach($templateParams["alloggi_totali"] as $a): ?>
                             <tr>
                                 <td>
-                                    <img src="<?php echo UPLOAD_DIR . $a['foto_copertina']; ?>" alt="Anteprima dell'alloggio situato in <?php echo $a['indirizzo']; ?>" 
+                                    <img src="<?php echo UPLOAD_DIR . $a['foto_copertina']; ?>" alt="Anteprima di un <?php echo $annuncio['tipo_immobile']; ?> situato in <?php echo $annuncio['indirizzo']; ?>, <?php echo $annuncio['comune']; ?>" 
                                         style="width: 200px; height: 150px; object-fit: cover;" 
                                         class="rounded border shadow-sm">
                                 </td>
