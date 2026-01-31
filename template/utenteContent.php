@@ -29,7 +29,7 @@
                         <i class="bi bi-heart fs-1 mb-2"></i>
                         <h3 class="h5 fw-bold">ANNUNCI SALVATI</h3>
                         <p class="text-muted small mb-0">Ritrova gli alloggi che hai aggiunto ai preferiti</p>
-                        <a href="#" class="stretched-link"></a>
+                        <a href="preferiti.php" class="stretched-link"></a>
                     </div>
                 </div>
 

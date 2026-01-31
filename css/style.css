@@ -92,9 +92,9 @@ body > main > form >
 
 /* STATO BASE: rosso e vuoto */
 .btn-cuore {
-  color: #d9534f !important; /* Rosso Unibo */
+  color: #d9534f !important;
   position: relative;
-  z-index: 100 !important; /* Valore altissimo per stare sopra tutto */
+  z-index: 100 !important;
   transition: transform 0.2s ease;
   text-decoration: none !important;
 }
@@ -127,6 +127,7 @@ body > main > form >
   background-color: #fdfdfd;
 }
 
+.card-annuncio-hover:hover h2,
 .card-annuncio-hover:hover h3 {
   text-decoration: underline !important;
 }
@@ -149,10 +150,6 @@ body > main > form >
 
 /* --- NUOVA GALLERIA ANNUNCIO.HTML --- */
 
-.img-fit {
-  object-fit: cover !important;
-}
-
 /* Overlay "+15 foto" */
 .more-photos-overlay {
   position: absolute;
@@ -166,7 +163,7 @@ body > main > form >
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  z-index: 5;
+  z-index: 10;
 }
 
 .more-photos-overlay:hover {
@@ -184,7 +181,7 @@ body > main > form >
 .main-photo-wrapper .custom-arrow.gallery-arrow {
   opacity: 0 !important; /* Invisibili di base */
   transition: opacity 0.3s ease !important;
-  z-index: 10 !important;
+  z-index: 20 !important;
   /* Centratura verticale manuale perché ora sono dentro la colonna */
   top: 50% !important;
   transform: translateY(-50%) !important;
@@ -212,7 +209,7 @@ body > main > form >
   bottom: 20px;
   right: 20px;
   background-color: rgba(33, 37, 41, 0.8) !important;
-  z-index: 15;
+  z-index: 20;
 }
 
 /* --- FIX NAV ANNUNCIO --- */
@@ -256,7 +253,7 @@ html {
 
 /* 1. La barra secondaria deve stare SOPRA a tutto */
 #nav-annuncio {
-  z-index: 1050 !important; /* Più alto della sidebar */
+  z-index: 101 !important; /* Più alto della sidebar */
   top: 0;
 }
 
@@ -264,7 +261,7 @@ html {
 .col-lg-4 .sticky-top {
   /* La barra è alta circa 70px + 20px di margine = 90px */
   top: 90px !important;
-  z-index: 1000 !important; /* Più basso della barra */
+  z-index: 100 !important; /* Più basso della barra */
 }
 
 /* --- STILE GALLERIA foto.html --- */
@@ -308,7 +305,7 @@ body.modal-open {
 /* per carousel */
 .custom-carousel-container {
   position: relative;
-  z-index: 5;
+  z-index: 10;
   height: 180px !important;
   overflow: hidden;
   background-color: #f8f9fa;
@@ -366,7 +363,7 @@ body.modal-open {
   color: white !important;
   padding: 3px 10px;
   font-size: 0.75rem;
-  z-index: 6;
+  z-index: 10;
 }
 
 /* --- PAGINA pubblica-annuncio --- */
@@ -426,18 +423,6 @@ input[type="number"] {
 .was-validated .form-control:invalid {
   border-color: #dc3545 !important;
   background-image: none; /* Rimuoviamo l'icona di default per pulizia */
-}
-
-/* --- CONFIGURAZIONE NAVBAR DESKTOP (Schermi grandi) --- */
-
-.custom-nav-annuncio .nav-link {
-  color: #495057 !important;
-  font-weight: 500;
-  /* Font generoso per Desktop */
-  font-size: 17px !important;
-  padding: 10px 20px !important;
-  border-radius: 50px;
-  transition: background-color 0.2s;
 }
 
 /* Prezzo su Desktop */

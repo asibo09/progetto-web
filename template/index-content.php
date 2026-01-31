@@ -1,3 +1,13 @@
+<?php if(isset($templateParams["messaggio_successo"])): ?>
+    <div class="container-xl mt-3">
+        <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 rounded-4" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            <strong>Fatto!</strong> <?php echo htmlspecialchars($templateParams["messaggio_successo"]); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+<?php endif; ?>
+
 <div class="mb-4 mt-5 text-left px-3">
             <h1 class="fw-bold"><?php echo $templateParams['titolo']; ?></h1>
         </div>
@@ -46,7 +56,7 @@
                                 <a href="annuncio.html" class="stretched-link text-decoration-none text-dark">
                                     <h3 class="h5 fw-bold mb-1"><?php echo $search["descrizione"]; ?></h3>
                                 </a>
-                                <p class="text-muted small mb-1"><i class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $search["nome_citta"]; ?></p>
+                                <p class="text-muted small mb-1"><i class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $search["comune"]; ?></p>
                                     </a>
                             </div>
                         </div>
