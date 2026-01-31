@@ -16,6 +16,7 @@ if(isUserLoggedIn() && $login_result[0]['ruolo'] == "admin"){
     exit();
 }
 
+
 if (isUserLoggedIn()) {
     header("Location: index.php");
     exit();

@@ -56,7 +56,7 @@
                                 <a href="annuncio.html" class="stretched-link text-decoration-none text-dark">
                                     <h3 class="h5 fw-bold mb-1"><?php echo $search["descrizione"]; ?></h3>
                                 </a>
-                                <p class="text-muted small mb-1"><i class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $search["nome_citta"]; ?></p>
+                                <p class="text-muted small mb-1"><i class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $search["comune"]; ?></p>
                                     </a>
                             </div>
                         </div>

@@ -21,13 +21,13 @@
                 <button type="button" onclick="showSection('<?php echo $id; ?>')" 
                         class="list-group-item list-group-item-action py-3 d-flex justify-content-between align-items-center <?php echo $id == 'tipologia' ? 'active' : ''; ?>" 
                         id="btn-<?php echo $id; ?>">
-                    <?php echo $label; ?> <span id="status-<?php echo $id; ?>"><i class="bi bi-circle text-muted"></i></span>
+                    <?php echo $label; ?> <span id="status-<?php echo $id; ?>"><em class="bi bi-circle text-muted"></em></span>
                 </button>
                 <?php endforeach; ?>
             </div>
 
             <div class="p-3 bg-light border-top">
-                <a href="miei-annunci.php" class="btn btn-outline-secondary btn-sm w-100 rounded-3 py-2 fw-semibold shadow-sm bg-white text-primary border-secondary-subtle">
+                <a href="iMieiAnnunci.php" class="btn btn-outline-secondary btn-sm w-100 rounded-3 py-2 fw-semibold shadow-sm bg-white text-primary border-secondary-subtle">
                     Vai ai tuoi annunci
                 </a>
             </div>
@@ -50,7 +50,7 @@
 
                             <div class="row mb-4 g-3">
                                 <div class="col-12 col-md-6">
-                                    <label class="form-label fw-semibold">Stanze in affitto</label>
+                                    <label for="stanze" class="form-label fw-semibold">Stanze in affitto</label>
                                     <div class="input-group">
                                         <button class="btn btn-outline-secondary" type="button" onclick="changeVal('stanze', -1)">-</button>
                                             <input type="number" id="stanze" name="stanze" class="form-control text-center fw-bold" value="1" min="1" required>
@@ -59,23 +59,23 @@
                                 </div>
 
                                 <div class="col-12 col-md-6">
-                                    <label class="form-label fw-semibold">Superficie totale (mq) *</label>
-                                    <input type="number" name="mq_totali" class="form-control rounded-3" placeholder="Es. 120" required>
+                                    <label for="mq_totali" class="form-label fw-semibold">Superficie totale (mq) *</label>
+                                    <input type="number" id="mq_totali" name="mq_totali" class="form-control rounded-3" placeholder="Es. 120" required>
                                 </div>
                             </div>
 
                             <div class="row g-4 mb-5">
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold">Totale Piani Edificio *</label>
-                                    <input type="number" name="tot_piani" class="form-control rounded-3" placeholder="Es. 4" required>
+                                    <label for="tot_piani" class="form-label fw-semibold">Totale Piani Edificio *</label>
+                                    <input type="number" id="tot_piani" name="tot_piani" class="form-control rounded-3" placeholder="Es. 4" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold">Piano dell'immobile *</label>
-                                    <input type="number" name="piano" class="form-control rounded-3" placeholder="Es. 0" required>
+                                    <label for="piano" class="form-label fw-semibold">Piano dell'immobile *</label>
+                                    <input type="number" id="piano" name="piano" class="form-control rounded-3" placeholder="Es. 0" required>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <label class="form-label fw-semibold d-block">Con Ascensore? *</label>
+                                <fieldset class="col-md-6">
+                                    <legend class="form-label fw-semibold d-block">Con Ascensore? *</legend>
                                     <div class="form-check form-check-inline mt-2">
                                         <input class="form-check-input" type="radio" name="ascensore" id="asc-si"
                                             required>
@@ -86,10 +86,10 @@
                                             required>
                                         <label class="form-check-label" for="asc-no">No</label>
                                     </div>
-                                </div>
+                                </fieldset>
 
-                                <div class="col-md-6">
-                                    <label class="form-label fw-semibold d-block">Riscaldamento *</label>
+                                <fieldset class="col-md-6">
+                                    <legend class="form-label fw-semibold d-block">Riscaldamento *</legend>
                                     <div class="d-flex gap-3 mt-2 flex-wrap">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="riscaldamento"
@@ -107,13 +107,13 @@
                                             <label class="form-check-label" for="risc-no">Assente</label>
                                         </div>
                                     </div>
-                                </div>
+                                </fieldset>
                             </div>
 
                             <h2 class="h4 fw-bold mb-4 mt-4">Composizione immobile</h2>
                             <div class="row g-4">
                                 <div class="col-6">
-                                    <label class="form-label small fw-semibold d-block">È presente la cucina?</label>
+                                    <label for="cucina" class="form-label small fw-semibold d-block">È presente la cucina?</label>
                                     <div class="input-group">
                                         <button class="btn btn-outline-secondary" type="button"
                                             onclick="toggleSiNo('cucina')">-</button>
@@ -125,7 +125,7 @@
                                 </div>
 
                                 <div class="col-6">
-                                    <label class="form-label small fw-semibold d-block">Nr. Camere letto</label>
+                                    <label for="camere" class="form-label small fw-semibold d-block">Nr. Camere letto</label>
                                     <div class="input-group">
                                         <button class="btn btn-outline-secondary" type="button"
                                             onclick="changeVal('camere', -1)">-</button>
@@ -137,7 +137,7 @@
                                 </div>
 
                                 <div class="col-6">
-                                    <label class="form-label small fw-semibold d-block">Nr. Locali totali</label>
+                                    <label for="locali" class="form-label small fw-semibold d-block">Nr. Locali totali</label>
                                     <div class="input-group">
                                         <button class="btn btn-outline-secondary" type="button"
                                             onclick="changeVal('locali', -1)">-</button>
@@ -149,7 +149,7 @@
                                 </div>
 
                                 <div class="col-6">
-                                    <label class="form-label small fw-semibold d-block">Nr. Bagni</label>
+                                    <label for="bagni" class="form-label small fw-semibold d-block">Nr. Bagni</label>
                                     <div class="input-group">
                                         <button class="btn btn-outline-secondary" type="button"
                                             onclick="changeVal('bagni', -1)">-</button>
@@ -211,25 +211,25 @@
 
                             <div class="row g-4">
                                 <div class="col-6">
-                                    <label class="form-label small fw-semibold d-block">Distanza dal Campus (km)</label>
+                                    <label for="dist-campus" class="form-label small fw-semibold d-block">Distanza dal Campus (km)</label>
                                     <div class="input-group">
                                         <button class="btn btn-outline-secondary" type="button"
-                                            onclick="changeVal('dist-campus', -1)">-</button>
+                                            onclick="changeVal('dist-campus', -0.1)">-</button>
                                         <input type="number" id="dist-campus" name="dist-campus" class="form-control text-center fw-bold"
-                                            value="0" min="0" required>
+                                            value="0" min="0" step="0.1" required>
                                         <button class="btn btn-outline-secondary" type="button"
-                                            onclick="changeVal('dist-campus', 1)">+</button>
+                                            onclick="changeVal('dist-campus', 0.1)">+</button>
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <label class="form-label small fw-semibold d-block">Distanza dal Centro (km)</label>
+                                    <label for="dist-centro" class="form-label small fw-semibold d-block">Distanza dal Centro (km)</label>
                                     <div class="input-group">
                                         <button class="btn btn-outline-secondary" type="button"
-                                            onclick="changeVal('dist-centro', -1)">-</button>
+                                            onclick="changeVal('dist-centro', -0.1)">-</button>
                                         <input type="number" id="dist-centro" name="dist-centro" class="form-control text-center fw-bold"
-                                            value="0" min="0" required>
+                                            value="0" min="0" step="0.1" required>
                                         <button class="btn btn-outline-secondary" type="button"
-                                            onclick="changeVal('dist-centro', 1)">+</button>
+                                            onclick="changeVal('dist-centro', 0.1)">+</button>
                                     </div>
                                 </div>
                             </div>
@@ -246,8 +246,7 @@
 
                             <div class="row g-4">
                                 <div class="col-6">
-                                    <label class="form-label small fw-semibold d-block">Disponibile per (nr.
-                                        persone)</label>
+                                    <label for="disp-persone" class="form-label small fw-semibold d-block">Disponibile per (nr. persone) *</label>
                                     <div class="input-group">
                                         <button class="btn btn-outline-secondary" type="button"
                                             onclick="changeVal('disp-persone', -1)">-</button>
@@ -258,20 +257,21 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <label class="form-label small fw-semibold d-block">Nr. attuale coinquilini</label>
+                                    <label for="current-coinq" class="form-label small fw-semibold d-block">Nr. attuale coinquilini *</label>
                                     <div class="input-group">
                                         <button class="btn btn-outline-secondary" type="button"
                                             onclick="changeVal('current-coinq', -1)">-</button>
                                         <input type="number" id="current-coinq" name="current_coinq" class="form-control text-center fw-bold"
-                                            value="0" min="0" required>
+                                            value="0" min="0" onchange="updateRequiredFields(this.value)" required>
                                         <button class="btn btn-outline-secondary" type="button"
                                             onclick="changeVal('current-coinq', 1)">+</button>
                                     </div>
                                 </div>
 
-                                <div class="col-6">
-                                    <label class="form-label small fw-semibold d-block mb-2">Genere inquilini attuale
-                                        *</label>
+                                <fieldset class="col-6">
+                                    <legend class="form-label small fw-semibold d-block mb-2">Genere inquilini attuale
+                                        <span id="star-genere" class="text-dark d-none">*</span>
+                                    </legend>
                                     <div class="d-flex flex-column gap-1">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="genere-inq" id="g-m">
@@ -286,10 +286,11 @@
                                             <label class="form-check-label small" for="g-e">Entrambi</label>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label small fw-semibold d-block mb-2">Occupazione inquilini
-                                        attuale *</label>
+                                </fieldset>
+                                <fieldset class="col-6">
+                                    <legend class="form-label small fw-semibold d-block mb-2">Occupazione inquilini attuale
+                                        <span id="star-occ" class="text-dark d-none">*</span>
+                                    </legend>
                                     <div class="d-flex flex-column gap-1">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="occ-inq" id="o-s">
@@ -304,11 +305,10 @@
                                             <label class="form-check-label small" for="o-e">Entrambi</label>
                                         </div>
                                     </div>
-                                </div>
+                                </fieldset>
 
                                 <div class="col-6">
-                                    <label class="form-label small fw-semibold d-block">Il proprietario vive in
-                                        casa?</label>
+                                    <label for="prop-casa" class="form-label small fw-semibold d-block">Il proprietario vive in casa?</label>
                                     <div class="input-group">
                                         <button class="btn btn-outline-secondary" type="button"
                                             onclick="toggleSiNo('prop-casa')">-</button>
@@ -402,8 +402,7 @@
                                 </div>
 
                                 <div class="col-6">
-                                    <label class="form-label small fw-semibold d-block">Permanenza minima (mesi)
-                                        *</label>
+                                    <label for="perm-min" class="form-label small fw-semibold d-block">Permanenza minima (mesi) *</label>
                                     <div class="input-group">
                                         <button class="btn btn-outline-secondary" type="button"
                                             onclick="changeVal('perm-min', -1)">-</button>
@@ -418,23 +417,23 @@
 
                         <!-- sezione descrizione -->
                         <div class="form-section d-none" id="sec-descrizione">
-                            <h2 class="h4 fw-bold mb-4">Descrizione</h2>
-                            <p class="small mb-2">Inserisci una descrizione *</p>
+                            <h2 class="h4 fw-bold mb-3">Descrizione</h2>
+                            <label for="descrizione" class="form-label fw-semibold mb-2">Inserisci una descrizione *</label>
                             <textarea class="form-control rounded-4" rows="6" id="descrizione" name="descrizione" placeholder="Descrivi l'immobile..."
                                 required></textarea>
                         </div>
 
                         <!-- sezione foto -->
                         <div class="form-section d-none" id="sec-foto">
-                            <h2 class="h4 fw-bold mb-4">Foto</h2>
-                            <p class="small mb-2">Inserisci almeno una foto *</p>
+                            <h2 class="h4 fw-bold mb-3">Foto</h2>
+                            <label for="input-foto" class="fw-semibold mb-2">Inserisci almeno una foto dell'alloggio *</label>
 
                             <div class="upload-box text-center p-5 border border-2 border-dashed rounded-4 bg-light cursor-pointer"
                                 onclick="document.getElementById('input-foto').click()">
-                                <i class="bi bi-plus-lg display-1 text-danger"></i>
+                                <em class="bi bi-plus-lg display-1 text-danger"></em>
                                 <p class="mt-3 fw-bold mb-0">Caricate: <span id="foto-count">0</span> su 20</p>
-                                    <input type="file" id="input-foto" name="foto_alloggio[]" class="d-none" multiple accept="image/*" onchange="handleFiles(this)">                            
-                                </div>
+                                <input type="file" id="input-foto" name="foto_alloggio[]" class="d-none" multiple accept="image/*" onchange="handleFiles(this)">                            
+                            </div>
                             <div id="preview-container" class="row g-2 mt-4">
                             </div>
                         </div>
@@ -462,14 +461,14 @@
 
                             <div class="alert alert-info border-0 rounded-4 d-flex align-items-center mb-4"
                                 role="alert">
-                                <i class="bi bi-info-circle-fill fs-4 me-3"></i>
+                                <em class="bi bi-info-circle-fill fs-4 me-3"></em>
                                 <div class="small">Controlla di aver inserito correttamente tutti i dati prima di
                                     procedere alla pubblicazione definitiva.</div>
                             </div>
 
                             <button type="submit"
                                 class="btn btn-unibo-red btn-lg w-100 rounded-pill fw-bold py-3 shadow border-0">
-                                <i class="bi bi-check2-circle me-2"></i> PUBBLICA ANNUNCIO ORA
+                                <em class="bi bi-check2-circle me-2"></em> PUBBLICA ANNUNCIO ORA
                             </button>
                         </div>
 

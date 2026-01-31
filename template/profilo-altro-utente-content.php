@@ -1,12 +1,17 @@
 <?php $u = $templateParams["utente"]; ?>
+<nav aria-label="breadcrumb" class="mb-3">
+    <a href="<?php echo $templateParams["back_link"]; ?>" class="link-lista large text-info fw-bold text-decoration-none">
+        <em class="bi bi-chevron-left"></em> Indietro
+    </a>
+</nav>
 <h1 class="fw-bold mb-5">Profilo utente di <?php echo $u["nome"]; ?></h1>
 
-<div class="row g-4">
-    <div class="col-12 col-lg-5">
+<div class="row g-4 <?php echo ($u["ruolo"] == 'studente') ? 'justify-content-center' : ''; ?>">
+    <div class="col-12 <?php echo ($u["ruolo"] == 'studente') ? 'col-lg-8' : 'col-lg-5'; ?>">
         <div class="d-flex flex-column gap-4">
             <div class="card shadow-sm border-0 p-4 rounded-3">
                 <h2 class="h4 fw-bold border-bottom pb-2 mb-3">
-                    <i class="bi bi-info-circle me-2 text-danger"></i>Informazioni personali
+                    <em class="bi bi-info-circle me-2 text-danger"></em>Informazioni personali
                 </h2>
                 <p class="mb-1"><strong>Nome:</strong> <?php echo $u["nome"]; ?></p>
                 <p class="mb-1"><strong>Cognome:</strong> <?php echo $u["cognome"]; ?></p>
@@ -17,24 +22,24 @@
 
             <div class="card shadow-sm border-0 p-4 rounded-3">
                 <h2 class="h4 fw-bold border-bottom pb-2 mb-3">
-                    <i class="bi bi-envelope-at me-2 text-danger"></i>Contatti
+                    <em class="bi bi-envelope-at me-2 text-danger"></em>Contatti
                 </h2>
                 <p class="mb-2">
-                    <i class="bi bi-envelope me-2"></i><strong>Email:</strong>
+                    <em class="bi bi-envelope me-2"></em><strong>Email:</strong>
                     <a href="mailto:<?php echo $u["email"]; ?>" class="text-dark text-decoration-none"><?php echo $u["email"]; ?></a>
                 </p>
                 <p class="mb-0">
-                    <i class="bi bi-telephone me-2"></i><strong>Telefono:</strong>
+                    <em class="bi bi-telephone me-2"></em><strong>Telefono:</strong>
                     <a href="tel:<?php echo $u["cellulare"]; ?>" class="text-dark text-decoration-none"><?php echo $u["cellulare"]; ?></a>
                 </p>
             </div>
         </div>
     </div>
-
+    <?php if($u["ruolo"] == 'proprietario'): ?>
     <div class="col-12 col-lg-7">
         <div class="card shadow-sm border-0 p-4 rounded-3 h-100">
             <h2 class="h4 fw-bold border-bottom pb-2 mb-3">
-                <i class="bi bi-house-door me-2 text-danger"></i>Annunci di <?php echo $u["nome"]; ?>
+                <em class="bi bi-house-door me-2 text-danger"></em>Annunci di <?php echo $u["nome"]; ?>
             </h2>
 
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -57,16 +62,16 @@
                                     <?php foreach($foto as $idx => $f): ?>
                                     <div class="carousel-item <?php echo $idx === 0 ? 'active' : ''; ?> h-100">
                                         <a href="annuncio.php?id=<?php echo $annuncio["id_alloggio"]; ?>" class="d-block h-100">
-                                            <img src="upload/<?php echo $f['percorso_immagine']; ?>" class="img-fit" alt="Foto">
+                                            <img src="upload/<?php echo $f['percorso_immagine']; ?>" class="img-fit" alt="Anteprima di un <?php echo $annuncio['tipo_immobile']; ?> situato in <?php echo $annuncio['indirizzo']; ?>, <?php echo $annuncio['comune']; ?>">
                                         </a>
                                     </div>
                                     <?php endforeach; ?>
                                 </div>
                                 <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#<?php echo $cID; ?>" data-bs-slide="prev">
-                                    <span class="arrow-circle"><i class="bi bi-chevron-left"></i></span>
+                                    <span class="arrow-circle"><em class="bi bi-chevron-left"></em></span>
                                 </button>
                                 <button class="carousel-control-next custom-arrow" type="button" data-bs-target="#<?php echo $cID; ?>" data-bs-slide="next">
-                                    <span class="arrow-circle"><i class="bi bi-chevron-right"></i></span>
+                                    <span class="arrow-circle"><em class="bi bi-chevron-right"></em></span>
                                 </button>
                             </div>
                         </div>
@@ -76,17 +81,43 @@
                                 <a href="annuncio.php?id=<?php echo $annuncio["id_alloggio"]; ?>" class="stretched-link text-decoration-none text-dark">
                                     <h3 class="h5 fw-bold mb-1"><?php echo $annuncio["tipo_immobile"]; ?></h3>
                                 </a>
-                                <p class="text-muted small mb-1"><i class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $annuncio["indirizzo"]; ?>, <?php echo $annuncio["civico"]; ?> - <?php echo $annuncio["comune"]; ?></p>
+                                <p class="text-muted small mb-1"><em class="bi bi-geo-alt-fill me-1 text-danger"></em><?php echo $annuncio["indirizzo"]; ?>, <?php echo $annuncio["civico"]; ?> - <?php echo $annuncio["comune"]; ?></p>
                                 <p class="small mb-3 text-secondary"><?php echo $annuncio["distanza_campus_km"]; ?> km dal Campus, <?php echo $annuncio["distanza_centro_km"]; ?> km dal centro</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-danger fw-bold fs-5"><?php echo (int)$annuncio["prezzo_mensile_alloggio"]; ?>€</span>
                                     <div class="d-flex gap-2 align-items-center" style="position: relative; z-index: 50;">
-                                        <a href="prenotazioni.php?id=<?php echo $annuncio["id_alloggio"]; ?>" class="btn btn-prenota text-info btn-outline-info rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold">
-                                            <i class="bi bi-calendar-check"></i><span>Prenota</span>
-                                        </a>
-                                        <button type="button" class="btn btn-link p-2 btn-cuore active" data-id="<?php echo $annuncio["id_alloggio"]; ?>">
-                                            <i class="bi heart-icon fs-4"></i>
-                                        </button>
+        
+                                        <?php 
+                                        $idLoggato = $_SESSION["id_utente"] ?? -1;
+                                        // 1. Controllo: Non mostrare il tasto prenota se l'alloggio è dell'utente stesso o è admin
+                                        if($annuncio["id_proprietario"] != $idLoggato && isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] != 'admin'):
+            
+                                            // 2. Controllo disponibilità stanze
+                                            if($annuncio["disponibile"]): ?>
+                                                <a href="javascript:void(0)" 
+                                                    class="btn btn-prenota text-info btn-outline-info rounded-pill px-3 py-1 d-flex align-items-center gap-2 fw-semibold btn-apri-prenota"
+                                                    data-id="<?php echo $annuncio["id_alloggio"]; ?>"
+                                                    data-bs-toggle="modal" 
+                                                    data-bs-target="#modalPrenotazione">
+                                                    <em class="bi bi-calendar-check"></em><span>Prenota</span>
+                                                </a>
+                                            <?php else: ?>
+                                                <button class="btn btn-secondary rounded-pill px-3 py-1 btn-sm fw-semibold opacity-50" disabled>
+                                                    <em class="bi bi-calendar-x me-2"></em>Esaurito
+                                                </button>
+                                            <?php endif; ?>
+
+                                        <?php endif; ?>
+
+                                        <?php if($annuncio["id_proprietario"] != $idLoggato && isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] != 'admin'): ?>
+                                            <?php $isFav = in_array($annuncio["id_alloggio"], $templateParams["preferiti_ids"]); ?>
+                                            <button type="button" 
+                                                class="btn btn-link p-2 btn-cuore <?php echo $isFav ? 'active' : ''; ?>" 
+                                                data-id="<?php echo $annuncio["id_alloggio"]; ?>">
+                                                <em class="bi <?php echo $isFav ? 'bi-heart-fill' : 'bi-heart'; ?> fs-4"></em>
+                                            </button>
+                                        <?php endif; ?>
+        
                                     </div>
                                 </div>
                             </div>
@@ -97,13 +128,16 @@
             </div>
         </div>
     </div>
+    <?php endif; ?>
 </div>
 
-<div class="text-left mt-4">
-    <a class="btn btn-warning fw-semibold py-2 px-4 rounded-3 shadow-sm" href="segnalazione.php?tipo=utente&id=<?php echo $u["id_utente"]; ?>" role="button">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i> Segnala Utente
-    </a>
-</div>
+<?php if(isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] != 'admin'): ?>
+    <div class="text-left mt-4">
+        <a class="btn btn-warning fw-semibold py-2 px-4 rounded-3 shadow-sm" href="segnalazione.php?tipo=utente&id=<?php echo $u["id_utente"]; ?>" role="button">
+            <em class="bi bi-exclamation-triangle-fill me-2"></em> Segnala Utente
+        </a>
+    </div>
+<?php endif; ?>
 
 <script>
     //contatore per ogni carousel

@@ -13,7 +13,7 @@ if ($idUtenteLoggato) {
 
 $templateParams["titolo"] = "Unibo Affitti - Home";
 $templateParams["nome"] = "template/index-content.php"; 
-require 'template/base.php';
+
 
 if(isset($_SESSION["email"])){
     $templateParams["lastSearches"] = $dbh->lastFourSearch($_SESSION["id_utente"]);

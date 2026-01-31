@@ -7,9 +7,9 @@ require_once("utils/functions.php");
 
 $dbh = new DatabaseHelper("localhost", "root", "", "GestioneAffitti", 3306);
 
-if (isUserLoggedIn()) {
+if (isUserLoggedInID()) {
 // Usa ?? null per evitare il Warning se la chiave non esiste
-    $idLoggato = $_SESSION["id_utente"] ?? 2; 
+    $idLoggato = $_SESSION["id_utente"]; 
 
     if ($idLoggato) {
         $templateParams["utente"] = $dbh->getUserById($idLoggato);

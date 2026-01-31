@@ -14,7 +14,10 @@ $idUtente = $_SESSION["id_utente"] ?? 3;
 if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'foto.php') === false) {
     $_SESSION['previous_list_page'] = $_SERVER['HTTP_REFERER'];
 }
-$backLink = $_SESSION['previous_list_page'] ?? "index.php";
+
+$defaultHome = (isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] == 'admin') ? "admin-index.php" : "index.php";
+$backLink = $_SESSION['previous_list_page'] ?? $defaultHome;
+$templateParams["back_link"] = $backLink;
 
 // Recupero dati dal DB
 $annuncio = $dbh->getFullAnnuncioById($id);
@@ -26,7 +29,6 @@ if (!$annuncio) {
     exit();
 }
 
-$templateParams["back_link"] = $backLink;
 $templateParams["titolo"] = "Annuncio - " . $annuncio["indirizzo"];
 $templateParams["nome"] = "template/annuncio-content.php";
 $templateParams["utente"] = $dbh->getUserById($idUtente);

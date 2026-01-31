@@ -3,7 +3,7 @@ require_once 'bootstrap.php';
 
 // solo i proprietari loggati possono accedere DA FARE!!!
 
-$idUtente = 2; //segui dopo il login usare $_SESSION["id_utente"];
+$idUtente = $_SESSION["id_utente"];
 $utente = $dbh->getUserById($idUtente);
 
 if (!$utente || strtolower($utente["ruolo"]) != "proprietario") {

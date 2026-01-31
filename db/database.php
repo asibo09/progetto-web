@@ -12,7 +12,7 @@ class DatabaseHelper
         }
     }
 
-    // Recupera l'utente per l'intestazione del profilo
+// Recupera l'utente per l'intestazione del profilo
 public function getUserById($idUtente) {
     $stmt = $this->db->prepare("SELECT * FROM Utente WHERE id_utente = ?");
     $stmt->bind_param("i", $idUtente);
@@ -110,44 +110,10 @@ public function inserisciAlloggio($idProprietario, $d) {
     $tipi = str_replace(' ', '', $tipi);
     
     $stmt->bind_param($tipi, 
-        $idProprietario,        
-        $d['tipo_immobile'],    
-        $d['superficie_totale'],
-        $d['totale_piani'],     
-        $d['piano'],            
-        $d['has_ascensore'],   
-        $d['riscaldamento'],    
-        $d['has_cucina'],      
-        $d['nr_camere'],        
-        $d['nr_locali'],        
-        $d['nr_bagni'],         
-        $d['comune'],           
-        $d['indirizzo'],       
-        $d['civico'],         
-        $d['z_campus'],         
-        $d['z_centro'],         
-        $d['z_stazione'],      
-        $d['z_altro'],          
-        $d['dist_campus'],     
-        $d['dist_centro'],      
-        $d['max_persone'],      
-        $d['coinquilini'],      
-        $d['genere'],           
-        $d['occupazione'],      
-        $d['vive_casa'],      
-        $d['animali'],          
-        $d['fumatori'],       
-        $d['coppie'],           
-        $d['prezzo_alloggio'],  
-        $d['cauzione'],         
-        $d['utenze_euro'],     
-        $d['data_dispo'],       
-        $d['perm_min'],         
-        $d['u_acqua'],          
-        $d['u_internet'],       
-        $d['u_gas'],           
-        $d['u_luce'],           
-        $d['descrizione']     
+        $idProprietario, $d['tipo_immobile'], $d['superficie_totale'], $d['totale_piani'], $d['piano'], $d['has_ascensore'], $d['riscaldamento'], $d['has_cucina'], $d['nr_camere'], $d['nr_locali'], $d['nr_bagni'],
+        $d['comune'], $d['indirizzo'], $d['civico'], $d['z_campus'], $d['z_centro'], $d['z_stazione'], $d['z_altro'], $d['dist_campus'], $d['dist_centro'],
+        $d['max_persone'], $d['coinquilini'], $d['genere'], $d['occupazione'], $d['vive_casa'], $d['animali'], $d['fumatori'], $d['coppie'],
+        $d['prezzo_alloggio'], $d['cauzione'], $d['utenze_euro'], $d['data_dispo'], $d['perm_min'], $d['u_acqua'], $d['u_internet'], $d['u_gas'], $d['u_luce'], $d['descrizione']     
     );
 
     if($stmt->execute()) return $stmt->insert_id;
@@ -187,7 +153,7 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
 
     public function lastFourSearch($id_studente)
     {
-        $query = "SELECT A.descrizione
+        $query = "SELECT A.descrizione, A.comune
                   FROM Ricerca_alloggio R JOIN Alloggio A ON R.id_alloggio = A.id_alloggio
                   WHERE R.id_studente = ?
                   ORDER BY R.data_ricerca DESC
@@ -442,6 +408,7 @@ public function getAllAnnunciAdmin() {
     $stmt->execute();
     return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 }
+
 public function inviaBroadcast($id_utente, $testo)
     {
         $query = "INSERT INTO Notifica (id_utente, testo, letta, data_invio) VALUES (?, ?, 0, CURRENT_TIMESTAMP)";
@@ -468,16 +435,17 @@ public function getStoricoBroadcast($limit = 5) {
 }
 
 public function getCoverByAlloggioId($idAlloggio) {
-    // Cerchiamo l'immagine che ha is_copertina = 1
+    // Cerca immagine con is_copertina = 1
     $stmt = $this->db->prepare("SELECT percorso_immagine FROM Foto WHERE id_alloggio = ? AND is_copertina = 1 LIMIT 1");
     $stmt->bind_param("i", $idAlloggio);
     $stmt->execute();
     $result = $stmt->get_result()->fetch_assoc();
     
     // Se non esiste una copertina, restituiamo un'immagine di default
-    return $result ? $result['percorso_immagine'] : "esempio_alloggio.png"; 
+    return $result ? $result['percorso_immagine'] : null;
 }
 
+// Elimina un alloggio
 public function eliminaAlloggio($idAlloggio) {
     $query = "DELETE FROM Alloggio WHERE id_alloggio = ?";
     $stmt = $this->db->prepare($query);
@@ -485,7 +453,7 @@ public function eliminaAlloggio($idAlloggio) {
     return $stmt->execute();
 }
 
-// Azione: Elimina Utente (cancella l'account e i suoi annunci se proprietario)
+// Elimina Utente (cancella l'account e i suoi annunci se proprietario)
 public function eliminaUtente($idUtente) {
     $query = "DELETE FROM Utente WHERE id_utente = ?";
     $stmt = $this->db->prepare($query);
@@ -493,12 +461,53 @@ public function eliminaUtente($idUtente) {
     return $stmt->execute();
 }
 
-// Ignora una segnalazione (la elimina dalla coda senza cancellare l'oggetto segnalato)
+// Ignora una segnalazione(la elimina dalla coda senza cancellare l'oggetto segnalato)
 public function eliminaSegnalazione($idSegnalazione) {
     $stmt = $this->db->prepare("DELETE FROM Segnalazione WHERE id_segnalazione = ?");
     $stmt->bind_param("i", $idSegnalazione);
     return $stmt->execute();
 }
+
+// Recupera solo le stanze disponibili per un determinato alloggio
+public function getStanzeDisponibiliByAlloggio($idAlloggio) {
+    $stmt = $this->db->prepare("SELECT * FROM Stanza WHERE id_alloggio = ? AND stato = 'Disponibile'");
+    $stmt->bind_param("i", $idAlloggio);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
+public function prenotaStanza($idUtente, $idStanza) {
+    $this->db->begin_transaction();
+    try {
+        //Inserisci la prenotazione
+        $stmt1 = $this->db->prepare("INSERT INTO Prenotazione (id_affittuario, id_stanza, stato) VALUES (?, ?, 'In attesa')");
+        $stmt1->bind_param("ii", $idUtente, $idStanza);
+        $stmt1->execute();
+
+        //Aggiorna stato della stanza
+        $stmt2 = $this->db->prepare("UPDATE Stanza SET stato = 'Non disponibile' WHERE id_stanza = ?");
+        $stmt2->bind_param("i", $idStanza);
+        $stmt2->execute();
+
+        $this->db->commit();
+        return true;
+    } catch (Exception $e) {
+        $this->db->rollback();
+        return false;
+    }
+}
+
+public function updateAlloggioAdmin($id, $tipo, $indirizzo, $civico, $comune, $dist_campus, $dist_centro, $prezzo, $desc) {
+    $query = "UPDATE alloggio SET 
+              tipo_immobile = ?, indirizzo = ?, civico = ?, comune = ?, 
+              distanza_campus_km = ?, distanza_centro_km = ?, 
+              prezzo_mensile_alloggio = ?, descrizione = ?
+              WHERE id_alloggio = ?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('ssisddisi', $tipo, $indirizzo, $civico, $comune, $dist_campus, $dist_centro, $prezzo, $desc, $id);
+    return $stmt->execute();
+}
+
 
 }
 
