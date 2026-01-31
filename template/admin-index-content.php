@@ -113,7 +113,7 @@
                                 </td>
                                 <td>#<?php echo $a["id_alloggio"]; ?></td>
                                 <td>
-                                    <div class="fw-bold"><?php echo $a["indirizzo"]; ?></div>
+                                    <div class="fw-bold"><?php echo $a["indirizzo"]; echo " "; echo $a["civico"] ?></div>
                                     <small class="text-muted"><?php echo $a["comune"]; ?></small>
                                 </td>
                                 <td><small><?php echo $a["email_proprietario"]; ?></small></td>

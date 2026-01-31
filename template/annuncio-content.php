@@ -178,8 +178,9 @@
                 <h2 class="h4 fw-bold border-bottom pb-2 mb-4">Convivenza</h2>
                 <div class="row row-cols-1 row-cols-md-2 g-3 small">
                     <div class="col"><strong>Disponibile per:</strong> <?php echo $a["max_persone"]; ?> Persone</div>
-                    <div class="col"><strong>Inquilini attuali:</strong> <?php echo $a["nr_coinquilini_attuali"]; ?> (<?php echo $a["occupazione_inquilini"]; ?>)</div>
-                    <div class="col"><strong>Genere preferito:</strong> <?php echo $a["genere_inquilini"]; ?></div>
+                    <div class="col"><strong>Inquilini attuali:</strong> <?php echo $a["nr_coinquilini_attuali"]; ?></div>
+                    <div class="col"><strong>Genere inquilini:</strong> <?php echo $a["genere_inquilini"]; ?></div>
+                    <div class="col"><strong>Occupazioni inquilini:</strong> <?php echo $a["occupazione_inquilini"]; ?></div>
                     <div class="col"><strong>Proprietario in casa:</strong> <?php echo $a["proprietario_vive_casa"] ? "Sì" : "No"; ?></div>
                     <div class="col"><strong>Fumatori:</strong> <?php echo $a["accetta_fumatori"] ? "Ammessi" : "Non ammessi"; ?></div>
                     <div class="col"><strong>Animali:</strong> <?php echo $a["accetta_animali"] ? "Ammessi" : "Da concordare"; ?></div>

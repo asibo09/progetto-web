@@ -442,7 +442,7 @@ public function getCoverByAlloggioId($idAlloggio) {
     $result = $stmt->get_result()->fetch_assoc();
     
     // Se non esiste una copertina, restituiamo un'immagine di default
-    return $result ? $result['percorso_immagine'] : "esempio_alloggio.png"; 
+    return $result ? $result['percorso_immagine'] : null;
 }
 
 // Elimina un alloggio
