@@ -6,7 +6,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif; ?>
-    <h2 class="mb-4 fw-bold text-unibo-red">Pannello di Amministrazione</h2>
+    <h1 class="mb-4 fw-bold text-unibo-red">Pannello di Amministrazione</h1>
 
     <ul class="nav nav-tabs mb-4" id="adminTab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -107,7 +107,7 @@
                         <?php foreach($templateParams["alloggi_totali"] as $a): ?>
                             <tr>
                                 <td>
-                                    <img src="<?php echo UPLOAD_DIR . $a['foto_copertina']; ?>" alt="Anteprima di un <?php echo $annuncio['tipo_immobile']; ?> situato in <?php echo $annuncio['indirizzo']; ?>, <?php echo $annuncio['comune']; ?>" 
+                                    <img src="<?php echo UPLOAD_DIR . $a['foto_copertina']; ?>" alt="Anteprima di un <?php echo $a['tipo_immobile']; ?> situato in <?php echo $a['indirizzo']; ?>, <?php echo $a['comune']; ?>" 
                                         style="width: 200px; height: 150px; object-fit: cover;" 
                                         class="rounded border shadow-sm">
                                 </td>
@@ -120,6 +120,9 @@
                                 <td class="text-center">
                                     <div class="btn-group btn-group-sm">
                                         <a href="annuncio.php?id=<?php echo $a["id_alloggio"]; ?>" class="btn btn-outline-primary" title="Vedi"><em class="bi bi-eye"></em></a>
+                                        <a href="admin-modifica-annuncio.php?id=<?php echo $a["id_alloggio"]; ?>" class="btn btn-outline-warning" title="Modifica">
+                                            <em class="bi bi-pencil"></em>
+                                        </a>
                                         <a href="admin-index.php?action=delete_alloggio&id=<?php echo $a["id_alloggio"]; ?>" 
                                             class="btn btn-outline-danger" title="Elimina annuncio"
                                             onclick="return confirm('Sei sicuro di voler eliminare definitivamente questo annuncio?')">
