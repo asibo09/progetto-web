@@ -1,6 +1,4 @@
 <?php
-
-//session_start();
 require_once("bootstrap.php");
 
 
@@ -13,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_richiesta'], $_POS
     header('Location: badgeNotifiche.php');
     exit();
 }
-// ...existing code...
+
 $templateParams['titolo'] = "Le tue notifiche";
 $templateParams['nome'] = "template/badgeNotifiche-content.php";
 

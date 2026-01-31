@@ -153,7 +153,7 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
 
     public function lastFourSearch($id_studente)
     {
-        $query = "SELECT A.descrizione, A.comune
+        $query = "SELECT A.id_alloggio, A.descrizione, A.comune, A.tipo_immobile, A.distanza_centro_km, A.distanza_campus_km
                   FROM Ricerca_alloggio R JOIN Alloggio A ON R.id_alloggio = A.id_alloggio
                   WHERE R.id_studente = ?
                   ORDER BY R.data_ricerca DESC
@@ -284,8 +284,9 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
 
     public function notifiche()
     {
-        $query = "SELECT N.*
-                  FROM Notifica N";
+        $query = "SELECT *
+                  FROM Notifica
+                  ORDER BY data_invio DESC";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();

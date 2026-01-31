@@ -17,10 +17,14 @@ $templateParams["nome"] = "template/index-content.php";
 
 if(isset($_SESSION["email"])){
     $templateParams["lastSearches"] = $dbh->lastFourSearch($_SESSION["id_utente"]);
-    $templateParams['isLogged'] = "Continua la Ricerca";
+    if(count($templateParams["lastSearches"]) > 0){
+        $templateParams['isLogged'] = "Continua la Ricerca";
+        foreach ($templateParams["lastSearches"] as $search) {
+            $idAlloggio = $search["id_alloggio"];
+            $templateParams["fotoAlloggio"][$idAlloggio] = $dbh->getFotoByAlloggioId($idAlloggio);
+        }
+    }
 }
-
-
 
 require_once("template/base.php");
 ?>
