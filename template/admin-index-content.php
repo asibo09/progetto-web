@@ -119,8 +119,8 @@
                                 <td><small><?php echo $a["email_proprietario"]; ?></small></td>
                                 <td class="text-center">
                                     <div class="btn-group btn-group-sm">
-                                        <a href="annuncio.php?id=<?php echo $a["id_alloggio"]; ?>" class="btn btn-outline-primary" title="Vedi"><em class="bi bi-eye"></em></a>
-                                        <a href="admin-modifica-annuncio.php?id=<?php echo $a["id_alloggio"]; ?>" class="btn btn-outline-warning" title="Modifica">
+                                        <a href="annuncio.php?id=<?php echo $a["id_alloggio"]; ?>" class="btn btn-outline-primary" title="Vedi annuncio"><em class="bi bi-eye"></em></a>
+                                        <a href="admin-modifica-annuncio.php?id=<?php echo $a["id_alloggio"]; ?>" class="btn btn-outline-warning" title="Modifica annuncio">
                                             <em class="bi bi-pencil"></em>
                                         </a>
                                         <a href="admin-index.php?action=delete_alloggio&id=<?php echo $a["id_alloggio"]; ?>" 

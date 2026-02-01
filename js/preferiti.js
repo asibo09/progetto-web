@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const alloggioId = this.getAttribute('data-id');
             const pulsante = this;
-            const icona = pulsante.querySelector('i'); // Recuperiamo l'icona interna
+            const icona = pulsante.querySelector('em'); // Recuperiamo l'icona interna
 
             const formData = new FormData();
             formData.append('id_alloggio', alloggioId);

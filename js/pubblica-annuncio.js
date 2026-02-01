@@ -143,7 +143,7 @@ function handleFiles(input) {
                     <img src="${e.target.result}" class="img-fit w-100 h-100" alt="Anteprima" style="object-fit: cover;">
                     <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0 m-1 p-0 d-flex align-items-center justify-content-center rounded-circle" 
                             style="width:22px; height:22px;" onclick="removePhoto(this)">
-                        <i class="bi bi-x fs-6"></i>
+                        <em class="bi bi-x fs-6"></em>
                     </button>
                 </div>
             `;
@@ -186,8 +186,8 @@ function validateSidebar() {
         }
 
         statusSpan.innerHTML = isComplete 
-            ? '<i class="bi bi-check-circle-fill text-success"></i>' 
-            : '<i class="bi bi-exclamation-circle-fill text-danger"></i>';
+            ? '<em class="bi bi-check-circle-fill text-success"></em>' 
+            : '<em class="bi bi-exclamation-circle-fill text-danger"></em>';
     });
 }
 
