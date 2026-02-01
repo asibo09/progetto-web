@@ -12,11 +12,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_richiesta'], $_POS
     exit();
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_prenotazione'], $_POST['action_prenotazione'])) {
+    $id_prenotazione = (int)$_POST['id_prenotazione'];
+    $action_prenotazione = trim($_POST['action_prenotazione']);
+
+    $dbh->modifica_stato_prenotazione($id_prenotazione, $action_prenotazione);
+
+    header('Location: badgeNotifiche.php');
+    exit();
+}
+
 $templateParams['titolo'] = "Le tue notifiche";
 $templateParams['nome'] = "template/badgeNotifiche-content.php";
 
 $templateParams['notifiche'] = $dbh->notifiche();
 $templateParams['richiesteSubaffitto'] = $dbh->richieste_subaffitto($_SESSION['email']);
+$templateParams['prenotazioni'] = $dbh->prenotazioni($_SESSION['email']);
 
 require_once("template/base.php");
 ?>
