@@ -367,7 +367,7 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
 
     public function myApartamentsRented($email)
     {
-        $query = "SELECT a.* 
+        $query = "SELECT a.* , p.*
                   FROM Utente u 
                   JOIN Prenotazione p ON u.id_utente = p.id_affittuario 
                   JOIN Stanza s ON p.id_stanza = s.id_stanza 
@@ -507,6 +507,8 @@ public function updateAlloggioAdmin($id, $tipo, $indirizzo, $civico, $comune, $d
     $stmt->bind_param('ssisddisi', $tipo, $indirizzo, $civico, $comune, $dist_campus, $dist_centro, $prezzo, $desc, $id);
     return $stmt->execute();
 }
+
+
 
 
 }

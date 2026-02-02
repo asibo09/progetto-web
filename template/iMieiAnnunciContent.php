@@ -4,7 +4,7 @@
 
     <!-- Toolbar: Sort & Add New -->
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-        <h2 class="fw-semibold fs-5 m-0"><?php ?>annunci pubblicati</h2>
+        <h2 class="fw-semibold fs-5 m-0"><?php echo $numeroAnnunci ?> annunci pubblicati</h2>
 
         <div class="d-flex align-items-center gap-5">
             <a class="btn btn-primary fw-bold py-2 px-3 rounded-pill d-flex align-items-center gap-2 text-nowrap"
