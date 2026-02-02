@@ -133,7 +133,7 @@
                                                         foreach ($fotos as $foto): 
                                                     ?>
                                                     <div class="carousel-item h-100 <?php if($isFirst) { echo 'active'; $isFirst = false; } ?>">
-                                                        <img src="<?php echo $foto['percorso_immagine']; ?>" class="img-fit" alt="Foto alloggio">
+                                                        <img src="<?php echo UPLOAD_DIR . $foto['percorso_immagine']; ?>" class="img-fit" alt="Foto alloggio">
                                                     </div>
                                                     <?php endforeach; ?>
                                                 </div>
@@ -159,6 +159,9 @@
                                                 </div>
                                                 <div class="d-flex align-items-center flex-wrap gap-3 mt-3">
                                                     <span class="fw-bold fs-4 text-primary"><?php echo $search['prezzo_mensile_alloggio']; ?>€/mese</span>
+                                                    <button type="button" class="btn btn-link p-2 btn-cuore active" data-id="<?php echo $annuncio["id_alloggio"]; ?>">
+                                                        <em class="bi heart-icon fs-4"></em>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>

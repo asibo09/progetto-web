@@ -11,7 +11,7 @@
                 <em class="bi bi-chevron-left"></em> Indietro
             </a>
             <div class="d-flex align-items-center border-end pe-3 me-3 price-container">
-                <img src="<?php echo $copertina; ?>" class="rounded-2 me-2" style="width: 45px; height: 45px; object-fit: cover;" alt="Thumbnail">
+                <img src="upload/<?php echo $copertina; ?>" class="rounded-2 me-2" style="width: 45px; height: 45px; object-fit: cover;" alt="Thumbnail">
                 <div class="fw-bold text-nowrap fs-5">€ <?php echo (int)$a["prezzo_mensile_alloggio"]; ?></div>
             </div>
         </div>
