@@ -49,12 +49,9 @@
                 <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold"
                     aria-label="Registrati">Registrati</a>
                 <a href="login.php" class="btn btn-light btn-sm fw-bold text-danger" aria-label="Login">Login</a>
-            <?php elseif (isUtente()): ?>
-                <a <?php isActive("utente.php"); ?> href="utente.php" class="text-white" title="Vai al tuo profilo"><em
+            <?php else: ?>
+                <a <?php isActive("selectUtente.php"); ?> href="selectUtente.php" class="text-white" title="Vai al tuo profilo"><em
                         class="bi bi-person-circle fs-2"></em></a>
-            <?php elseif (isProprietario()): ?>
-                <a <?php isActive("proprietario.php"); ?> href="proprietario.php" class="text-white"
-                    title="Vai al tuo profilo"><em class="bi bi-person-circle fs-2"></em></a>
             <?php endif; ?>
         </div>
     </header>
@@ -72,8 +69,6 @@
                         title="Richiedi subaffitto"><em class="bi bi-arrow-up-circle fs-4"></em></a>
                     <a <?php isActive("prenotazioni.php"); ?> href="prenotazioni.php" title="Le tue prenotazioni"><em
                             class="bi bi-calendar-event fs-4"></em></a>
-                    <a <?php isActive("utente.php"); ?> href="utente.php" class="text-white" title="Vai al tuo profilo"><em
-                            class="bi bi-person-circle fs-2"></em></a>
                 <?php elseif ($_SESSION["ruolo"] == 'proprietario'): ?>
                     <a <?php isActive("preferiti.php"); ?> href="preferiti.php" title="Salvati"><em
                             class="bi bi-heart fs-4"></em></a>
@@ -81,9 +76,9 @@
                             class="bi bi-plus-circle fs-4"></em></a>
                     <a <?php isActive("iMieiAnnunci.php"); ?> href="iMieiAnnunci.php" title="I tuoi annunci"><em
                             class="bi bi-pin fs-4"></em></a>
-                    <a <?php isActive("proprietario.php"); ?> href="proprietario.php" class="text-white"
-                        title="Vai al tuo profilo"><em class="bi bi-person-circle fs-2"></em></a>
                 <?php endif; ?>
+                <a <?php isActive("selectUtente.php"); ?> href="selectUtente.php" class="text-white"
+                        title="Vai al tuo profilo"><em class="bi bi-person-circle fs-2"></em></a>
             <?php else: ?>
                 <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold"
                     aria-label="Registrati">Registrati</a>
@@ -97,13 +92,8 @@
         <a href="<?php echo $homeUrl; ?>"><img src="upload/logoUnibo.png" alt="Logo" style="height: 45px;"></a>
         <div class="d-flex align-items-center gap-2">
             <?php if (isUserLoggedInID()): ?>
-                <?php if (isUtente()): ?>
-                    <a <?php isActive("utente.php"); ?> href="utente.php" class="text-white" title="Vai al tuo profilo"><em
-                            class="bi bi-person-circle fs-2"></em></a>
-                <?php elseif (isProprietario()): ?>
-                    <a <?php isActive("proprietario.php"); ?> href="proprietario.php" class="text-white" title="Vai al tuo
-                profilo"><em class="bi bi-person-circle fs-2"></em></a>
-                <?php endif; ?>
+                <a <?php isActive("selectUtente.php"); ?> href="selectUtente.php" class="text-white"
+                        title="Vai al tuo profilo"><em class="bi bi-person-circle fs-2"></em></a>
             <?php else: ?>
                 <a href="registrazione.php" class="btn btn-outline-light btn-sm fw-bold"
                     aria-label="Registrati">Registrati</a>
