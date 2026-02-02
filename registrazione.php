@@ -5,20 +5,28 @@ if (
     isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["email"]) && isset($_POST["password"])
     && isset($_POST["cellulare"]) && isset($_POST["eta"]) && isset($_POST["ruolo"])
 ) {
+    $nome = trim($_POST["nome"]);
+    $cognome = trim($_POST["cognome"]);
+    $email = trim($_POST["email"]);
+    $password = trim($_POST["password"]);
+    $cellulare = trim($_POST["cellulare"]);
+    $eta = trim($_POST["eta"]);
+    $ruolo = trim($_POST["ruolo"]);
+
     $insert_registrazione = $dbh->insertUser(
-        $_POST["nome"],
-        $_POST["cognome"],
-        $_POST["email"],
-        $_POST["password"],
-        $_POST["cellulare"],
-        $_POST["eta"],
-        $_POST["ruolo"] 
+        $nome,
+        $cognome,
+        $email,
+        $password,
+        $cellulare,
+        $eta,
+        $ruolo 
     );
     if (!$insert_registrazione) {
         //Registrazione fallita
         $templateParams["erroreRegistrazione"] = "Errore! Controllare i dati inseriti!";
     } else {
-        $logRegistedUser = $dbh->checkLogin($_POST["email"], $_POST["password"]);
+        $logRegistedUser = $dbh->checkLogin($email, $password);
         registerLoggedUser($logRegistedUser[0]);
     }
 }

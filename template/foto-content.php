@@ -1,7 +1,7 @@
 <?php 
     $a = $templateParams["annuncio"];
     $foto = $templateParams["foto"];
-    $copertina = count($foto) > 0 ? "upload/" . $foto[0]["percorso_immagine"] : "upload/default.png";
+    $copertina = count($foto) > 0 ? $foto[0]["percorso_immagine"] : "upload/default.png";
 ?>
 
 <nav id="nav-annuncio" class="navbar navbar-light bg-white border-bottom sticky-top shadow-sm mb-5 py-2">

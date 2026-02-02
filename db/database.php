@@ -153,7 +153,7 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
 
     public function lastFourSearch($id_studente)
     {
-        $query = "SELECT A.descrizione, A.comune
+        $query = "SELECT A.id_alloggio, A.descrizione, A.comune, A.tipo_immobile, A.distanza_centro_km, A.distanza_campus_km
                   FROM Ricerca_alloggio R JOIN Alloggio A ON R.id_alloggio = A.id_alloggio
                   WHERE R.id_studente = ?
                   ORDER BY R.data_ricerca DESC
@@ -284,8 +284,10 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
 
     public function notifiche()
     {
-        $query = "SELECT N.*
-                  FROM Notifica N";
+        $query = "SELECT *
+                  FROM Notifica
+                  GROUP BY testo
+                  ORDER BY data_invio DESC";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -299,11 +301,12 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
     }
 
     public function richieste_subaffitto($email){
-        $query = "SELECT R.id_richiesta, R.messaggio, S.id_stanza, A.tipo_immobile
+        $query = "SELECT R.messaggio, S.id_stanza, A.tipo_immobile, A.indirizzo, Af.nome, Af.cognome, Af.email, Af.cellulare
                   FROM Richiesta_Subaffitto R JOIN Stanza S ON S.id_stanza = R.id_stanza
                                 JOIN Alloggio A ON A.id_alloggio = S.id_alloggio 
-                                JOIN Utente U ON U.id_utente = A.id_proprietario
-                  WHERE U.email = ?
+                                JOIN Utente P ON P.id_utente = A.id_proprietario
+                                JOIN Utente Af ON Af.id_utente = R.id_mittente
+                  WHERE P.email = ?
                   AND R.stato = 'In attesa'";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $email);
@@ -316,6 +319,35 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
         }
         $stmt->close();
         return [];
+    }
+
+    public function prenotazioni($email) 
+    {
+        $query = "SELECT P.*
+                 FROM Utente U JOIN Prenotazione P ON U.id_utente = P.id_affittuario
+                  WHERE U.email = ?
+                  AND P.stato = 'In attesa'";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result !== false) {
+            $rows = $result->fetch_all(MYSQLI_ASSOC);
+            $stmt->close();
+            return $rows;
+        }
+        $stmt->close();
+        return [];
+    }
+
+    public function modifica_stato_prenotazione($id_prenotazione, $stato) {
+        $query = "UPDATE Prenotazione
+                  SET stato = ?
+                  WHERE id_prenotazione = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $stato, $id_prenotazione);
+        $stmt->execute();
     }
 
     public function modifica_stato_richiesta_subaffitto($id_richiesta, $stato){
