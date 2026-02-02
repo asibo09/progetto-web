@@ -13,7 +13,8 @@ if ($idUtenteLoggato) {
 
 $templateParams["titolo"] = "Unibo Affitti - Home";
 $templateParams["nome"] = "template/index-content.php"; 
-
+$templateParams['isLogged'] = "";
+$templateParams["lastSearches"] = "";
 
 if(isset($_SESSION["email"])){
     $templateParams["lastSearches"] = $dbh->lastFourSearch($_SESSION["id_utente"]);

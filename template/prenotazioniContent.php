@@ -24,8 +24,10 @@
                                 <?php $posizioneFoto = 0;
                                 foreach ($fotoAlloggio[$alloggio["id_alloggio"]] as $foto): ?>
                                     <div class="carousel-item <?php echo $posizioneFoto == 0 ? "active" : ""; ?>">
-                                        <img src="<?php echo UPLOAD_DIR . $foto["percorso_immagine"];
-                                        $posizioneFoto++; ?>" class="d-block w-100" alt="">
+                                        <div class="ratio ratio-4x3">
+                                            <img src="<?php echo UPLOAD_DIR . $foto["percorso_immagine"];
+                                            $posizioneFoto++; ?>" class="d-block w-100 object-fit-cover" alt="">
+                                        </div>
                                     </div>
                                 <?php endforeach; ?>
                             </div>
