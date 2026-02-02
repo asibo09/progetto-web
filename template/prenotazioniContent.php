@@ -52,20 +52,21 @@
                                     <h3 class="h5 fw-bold mb-2"><?php echo $alloggio["tipo_immobile"] ?></h3>
                                 </a>
                                 <span class="badge rounded-pill <?php
-                                    echo ($alloggio["stato"] == 'Confermata') ? 'bg-success' : 
-                                         (($alloggio["stato"] == 'In attesa') ? 'bg-warning text-dark' : 
-                                         (($alloggio["stato"] == 'Rifiutata') ? 'bg-danger' : 'bg-secondary'));
+                                echo ($alloggio["stato"] == 'Confermata') ? 'bg-success' :
+                                    (($alloggio["stato"] == 'In attesa') ? 'bg-warning text-dark' :
+                                        (($alloggio["stato"] == 'Rifiutata') ? 'bg-danger' : 'bg-secondary'));
                                 ?> px-3 py-2">
-                                    <i class="bi <?php 
-                                        echo ($alloggio["stato"] == 'Confermata') ? 'bi-check-circle-fill' : 
-                                             (($alloggio["stato"] == 'In attesa') ? 'bi-hourglass-split' : 
-                                             (($alloggio["stato"] == 'Rifiutata') ? 'bi-x-circle-fill' : 'bi-info-circle-fill'));
+                                    <i class="bi <?php
+                                    echo ($alloggio["stato"] == 'Confermata') ? 'bi-check-circle-fill' :
+                                        (($alloggio["stato"] == 'In attesa') ? 'bi-hourglass-split' :
+                                            (($alloggio["stato"] == 'Rifiutata') ? 'bi-x-circle-fill' : 'bi-info-circle-fill'));
                                     ?> me-1"></i>
                                     <?php echo $alloggio["stato"] ?>
                                 </span>
                             </div>
                             <p class="text-muted small mb-1">
-                                <i class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $alloggio["indirizzo"] . ", " . $alloggio["comune"] ?>
+                                <i
+                                    class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $alloggio["indirizzo"] . ", " . $alloggio["comune"] ?>
                             </p>
                             <p class="small text-secondary mb-1">
                                 <?php echo $alloggio["distanza_centro_km"] . " km distante dal centro" ?>
@@ -74,10 +75,12 @@
                                 <?php echo $alloggio["distanza_campus_km"] . " km distante dal campus" ?>
                             </p>
                             <div class="position-absolute bottom-0 end-0 m-3 z-3">
-                                <a href="richiestaSubaffitto.php?id=<?php echo $alloggio["id_alloggio"] ?>"
-                                    class="btn btn-outline-primary rounded-pill d-flex gap-2 align-items-center fw-semibold btn-sm px-3">
-                                    <i class="bi bi-arrow-left-right"></i> Subaffitta
-                                </a>
+                                <?php if ($alloggio["stato"] == 'Confermata'): ?>
+                                    <a href="richiestaSubaffitto.php?id=<?php echo $alloggio["id_alloggio"] ?>"
+                                        class="btn btn-outline-primary rounded-pill d-flex gap-2 align-items-center fw-semibold btn-sm px-3">
+                                        <i class="bi bi-arrow-left-right"></i> Subaffitta
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
