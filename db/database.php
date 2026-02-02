@@ -174,10 +174,10 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
         
     public function search($luogo, $nmesi, $npersone, $prezzo_max = null, $tipologia = [], $zona = [], $extra_filters = [])
     {
-        $query = "SELECT * FROM Alloggio WHERE comune LIKE ? AND permanenza_minima_mesi <= ? AND max_persone >= ?";
-        // Use CONCAT to allow partial matches for location
+        $query = "SELECT * FROM Alloggio WHERE (comune LIKE ? OR indirizzo LIKE ?) AND permanenza_minima_mesi <= ? AND max_persone <= ?";
+
         $luogo_param = "%" . $luogo . "%";
-        $params = ['sii', $luogo_param, $nmesi, $npersone];
+        $params = ['ssii', $luogo_param, $luogo_param, $nmesi, $npersone];
 
         if ($prezzo_max !== null && $prezzo_max > 0) {
             $query .= " AND prezzo_mensile_alloggio <= ?";
@@ -207,20 +207,28 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
             }
         }
 
-        // Add simple boolean filters from $extra_filters
         foreach ($extra_filters as $filter_name => $filter_value) {
-            // whitelist the allowed filter names to prevent SQL injection
-            if (in_array($filter_name, ['has_ascensore', 'accetta_animali', 'utenza_internet', 'utenza_acqua'])) {
+            
+            $booleans = ['has_ascensore', 'has_cucina', 'proprietario_vive_casa', 
+                         'accetta_animali', 'accetta_fumatori', 'accetta_coppie',
+                         'utenza_internet', 'utenza_acqua', 'utenza_gas', 'utenza_luce'];
+            
+            $strings = ['tipo_riscaldamento', 'genere_inquilini', 'occupazione_inquilini'];
+
+            if (in_array($filter_name, $booleans)) {
                 $query .= " AND $filter_name = ?";
                 $params[0] .= 'i';
                 $params[] = (int) $filter_value;
+            } elseif (in_array($filter_name, $strings)) {
+                $query .= " AND $filter_name = ?";
+                $params[0] .= 's';
+                $params[] = $filter_value;
             }
         }
 
 
         $stmt = $this->db->prepare($query);
 
-        // Remove the type definition string before binding
         $bind_params = array_slice($params, 1);
         $stmt->bind_param($params[0], ...$bind_params);
 
@@ -254,7 +262,7 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
 
     public function trova_stanze_utente_per_subaffitto($emailAffittuario)
     {
-        $query = "SELECT A.indirizzo, A.civico, S.id_stanza
+        $query = "SELECT A.tipo_immobile, A.indirizzo, A.civico, S.id_stanza
                   FROM Utente U JOIN Prenotazione P ON U.id_utente = P.id_affittuario 
                                 JOIN Stanza S ON P.id_stanza = S.id_stanza 
                                 JOIN Alloggio A on A.id_alloggio = S.id_alloggio

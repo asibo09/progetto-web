@@ -16,10 +16,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['stanza'], $_POST['mes
 }
 $templateParams['stanze'] = $dbh->trova_stanze_utente_per_subaffitto($_SESSION['email']);
 
-
-
 require_once("template/base.php");
-
-
-
 ?>
