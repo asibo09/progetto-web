@@ -2,13 +2,13 @@
     <h1 class="fw-bold"><?php echo $templateParams['titolo']; ?></h1>
 </div>
 
-<form action="#" method="POST" class="container-xl px-3">
+<form action="richiestaSubaffitto.php" method="POST" class="container-xl px-3">
     <div class="mb-2">
 
         <label for="stanza" class="form-label fw-semibold fs-5">Per quale stanza?</label>
         <select class="form-select" id="stanza" name="stanza" required>
             <?php foreach ($templateParams['stanze'] as $stanza): ?>
-                <option value=<?php echo $stanza['id_stanza']; ?>><?php echo $stanza['tipo_immobile'] . " - " . $stanza['id_stanza']; ?></option>
+                <option value=<?php echo $stanza['id_stanza']?>></option>
             <?php endforeach; ?>
         </select>
         <div class="mb-3">
@@ -23,3 +23,5 @@
 
     </div>
 </form>
+
+

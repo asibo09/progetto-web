@@ -78,7 +78,10 @@
                                         <div>
                                             <h2 class="h5 mb-1 fw-bold">Richiesta subaffitto</h2>
                                             <p class="mb-0 text-muted">Per appartamento in:
-                                                <?php echo $richiestaSubaffitto['indirizzo']; ?>. Stanza: <?php echo $richiestaSubaffitto['id_stanza']; ?>. Descrizione:<?php echo $richiestaSubaffitto['tipo_immobile']; ?>
+                                                <?php echo $richiestaSubaffitto['indirizzo']; echo " " . $richiestaSubaffitto['civico']; ?>. Stanza: <?php echo $richiestaSubaffitto['id_stanza']; ?>
+                                            </p>
+                                            <p class="mb-0 text-muted">Richiedente:
+                                                <?php echo $richiestaSubaffitto['nome']; ?> <?php echo $richiestaSubaffitto['cognome']; ?> Numero cellulare: <?php echo $richiestaSubaffitto['cellulare']; ?> Email: <?php echo $richiestaSubaffitto['email']; ?>
                                             </p>
                                         </div>
                                     </div>
@@ -124,35 +127,35 @@
                                 <header class="d-flex justify-content-between align-items-center mb-3">
                                     <div class="d-flex align-items-start gap-3">
                                         <div>
-                                            <h2 class="h5 mb-1 fw-bold">Richiesta subaffitto</h2>
-                                            <p class="mb-0 text-muted">Per stanza ID:
-                                                <?php echo $richiestaSubaffitto['id_stanza']; ?> in
-                                                <?php echo $richiestaSubaffitto['tipo_immobile']; ?>
+                                            <h2 class="h5 mb-1 fw-bold">Prenotazione</h2>
+                                            <p class="mb-0 text-muted">Per appartamento in:
+                                                <?php echo $prenotazione['indirizzo']; echo " " . $prenotazione['civico']; ?>. Stanza: <?php echo $prenotazione['id_stanza']; ?>
+                                            </p>
+                                            <p class="mb-0 text-muted">Richiedente:
+                                                <?php echo $prenotazione['nome']; ?> <?php echo $prenotazione['cognome']; ?> Numero cellulare: <?php echo $prenotazione['cellulare']; ?> Email: <?php echo $prenotazione['email']; ?>
                                             </p>
                                         </div>
                                     </div>
-                                    <span class="badge rounded-pill bg-warning text-dark d-flex align-items-center">
-                                        <i class="bi bi-envelope-exclamation-fill me-1"></i> Subaffitto
+                                    <span class="badge rounded-pill bg-info text-dark d-flex align-items-center">
+                                        <i class="bi bi-calendar-event me-1"></i> Prenotazione
                                     </span>
                                 </header>
 
-                                <div class="bg-light p-3 rounded-3 mb-3">
-                                    <p class="mb-0 fst-italic">"
-                                        <?php echo $richiestaSubaffitto['messaggio']; ?>"
-                                    </p>
-                                </div>
-
-                                <form action="badgeNotifiche.php" method="POST" class="d-flex gap-2 align-items-center">
-                                    <input type="hidden" name="id_richiesta"
-                                        value="<?php echo $richiestaSubaffitto['id_richiesta']; ?>">
-
-                                    <button type="submit" name="action" value="Confermata"
+                                <form action="badgeNotifiche.php" method="POST" class="d-flex gap-2 align-items-center mt-3">
+                                    <input type="hidden" name="id_prenotazione"
+                                        value="<?php echo $prenotazione['id_prenotazione']; ?>"> <!-- Assuming id_prenotazione is available, check DB query if needed. --> 
+                                        <!-- Wait, db query SELECT S.id_stanza... doesn't select id_prenotazione! I need to fix DB query too? -->
+                                        <!-- Let's check db/database.php again. The query is: -->
+                                        <!-- SELECT S.id_stanza, A.civico, A.indirizzo, Af.nome, Af.cognome, Af.email, Af.cellulare FROM Prenotazione Pr ... -->
+                                        <!-- It does NOT select Pr.id_prenotazione. -->
+                                    
+                                    <button type="submit" name="action_prenotazione" value="Confermata"
                                         class="btn btn-sm btn-success d-flex align-items-center fw-bold"
                                         aria-label="Accetta richiesta">
                                         <i class="bi bi-check2 me-1" aria-hidden="true"></i>Accetta
                                     </button>
 
-                                    <button type="submit" name="action" value="Rifiutata"
+                                    <button type="submit" name="action_prenotazione" value="Rifiutata"
                                         class="btn btn-sm btn-outline-danger d-flex align-items-center fw-bold"
                                         aria-label="Rifiuta richiesta">
                                         <i class="bi bi-x-lg me-1" aria-hidden="true"></i>Rifiuta

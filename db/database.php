@@ -254,8 +254,10 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
 
     public function trova_stanze_utente_per_subaffitto($emailAffittuario)
     {
-        $query = "SELECT A.id_alloggio, S.id_stanza
-                  FROM Utente U JOIN Prenotazione P ON U.id_utente = P.id_affittuario JOIN Stanza S ON P.id_stanza = S.id_stanza JOIN Alloggio A on A.id_alloggio = S.id_alloggio
+        $query = "SELECT A.indirizzo, A.civico, S.id_stanza
+                  FROM Utente U JOIN Prenotazione P ON U.id_utente = P.id_affittuario 
+                                JOIN Stanza S ON P.id_stanza = S.id_stanza 
+                                JOIN Alloggio A on A.id_alloggio = S.id_alloggio
                   WHERE U.email = ?
                   AND P.stato = 'Confermata'";
 
@@ -301,7 +303,7 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
     }
 
     public function richieste_subaffitto($email){
-        $query = "SELECT R.messaggio, S.id_stanza, A.tipo_immobile, A.indirizzo, Af.nome, Af.cognome, Af.email, Af.cellulare
+        $query = "SELECT R.messaggio, S.id_stanza, A.civico, A.indirizzo, Af.nome, Af.cognome, Af.email, Af.cellulare
                   FROM Richiesta_Subaffitto R JOIN Stanza S ON S.id_stanza = R.id_stanza
                                 JOIN Alloggio A ON A.id_alloggio = S.id_alloggio 
                                 JOIN Utente P ON P.id_utente = A.id_proprietario
@@ -323,10 +325,13 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
 
     public function prenotazioni($email) 
     {
-        $query = "SELECT P.*
-                 FROM Utente U JOIN Prenotazione P ON U.id_utente = P.id_affittuario
-                  WHERE U.email = ?
-                  AND P.stato = 'In attesa'";
+        $query = "SELECT Pr.id_prenotazione, S.id_stanza, A.civico, A.indirizzo, Af.nome, Af.cognome, Af.email, Af.cellulare
+                  FROM Prenotazione Pr JOIN Stanza S ON S.id_stanza = Pr.id_stanza
+                                JOIN Alloggio A ON A.id_alloggio = S.id_alloggio 
+                                JOIN Utente P ON P.id_utente = A.id_proprietario
+                                JOIN Utente Af ON Af.id_utente = Pr.id_affittuario
+                  WHERE P.email = ?
+                  AND Pr.stato = 'In attesa'";
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $email);
