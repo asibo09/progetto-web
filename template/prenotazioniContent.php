@@ -4,6 +4,11 @@
 
 <div class="bg-white shadow-sm border p-4 rounded-3 h-100">
 
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+        <h2 class="fw-semibold fs-5 m-0">
+            <?php echo $numeroAffitti ?> case affittate
+        </h2>
+    </div>
     <!-- Listings Container -->
     <div class="d-flex flex-column gap-3">
         <?php foreach ($prenotazioni as $alloggio): ?>
@@ -39,22 +44,37 @@
                     <!-- Details Column -->
                     <div class="col-12 col-md-8">
                         <div class="card-body p-4 d-flex flex-column h-100">
-                            <a href="annuncio.php?id=<?php echo $alloggio["id_alloggio"] ?>" class="stretched-link text-decoration-none text-dark">
-                                <h3 class="h5 fw-bold mb-2"><?php echo $alloggio["tipo_immobile"] ?></h3>
-                            </a>
+                            <div class="d-flex justify-content-between align-items-start">
+                                <a href="annuncio.php?id=<?php echo $alloggio["id_alloggio"] ?>"
+                                    class="stretched-link text-decoration-none text-dark">
+                                    <h3 class="h5 fw-bold mb-2"><?php echo $alloggio["tipo_immobile"] ?></h3>
+                                </a>
+                                <span class="badge rounded-pill <?php
+                                    echo ($alloggio["stato"] == 'Confermata') ? 'bg-success' : 
+                                         (($alloggio["stato"] == 'In attesa') ? 'bg-warning text-dark' : 
+                                         (($alloggio["stato"] == 'Rifiutata') ? 'bg-danger' : 'bg-secondary'));
+                                ?> px-3 py-2">
+                                    <i class="bi <?php 
+                                        echo ($alloggio["stato"] == 'Confermata') ? 'bi-check-circle-fill' : 
+                                             (($alloggio["stato"] == 'In attesa') ? 'bi-hourglass-split' : 
+                                             (($alloggio["stato"] == 'Rifiutata') ? 'bi-x-circle-fill' : 'bi-info-circle-fill'));
+                                    ?> me-1"></i>
+                                    <?php echo $alloggio["stato"] ?>
+                                </span>
+                            </div>
                             <p class="text-muted small mb-1">
-                                <i class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $alloggio["tipo_immobile"] ?>
+                                <i class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $alloggio["indirizzo"] . ", " . $alloggio["comune"] ?>
                             </p>
                             <p class="small text-secondary mb-1">
-                                <?php echo $alloggio["distanza_centro_km"] . "km distante dal centro" ?>
+                                <?php echo $alloggio["distanza_centro_km"] . " km distante dal centro" ?>
                             </p>
                             <p class="small text-secondary mb-1">
-                                <?php echo $alloggio["distanza_campus_km"] . "km distante dal campus" ?>
+                                <?php echo $alloggio["distanza_campus_km"] . " km distante dal campus" ?>
                             </p>
                             <div class="position-absolute bottom-0 end-0 m-3 z-3">
                                 <a href="richiestaSubaffitto.php?id=<?php echo $alloggio["id_alloggio"] ?>"
-                                    class="btn btn-outline-danger rounded-pill d-flex gap-2 align-items-center fw-semibold btn-sm px-3">
-                                    <i class="bi bi-trash"></i> Subaffitta
+                                    class="btn btn-outline-primary rounded-pill d-flex gap-2 align-items-center fw-semibold btn-sm px-3">
+                                    <i class="bi bi-arrow-left-right"></i> Subaffitta
                                 </a>
                             </div>
                         </div>

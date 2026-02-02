@@ -11,6 +11,8 @@ foreach ($iMieiAnnunciResult as $alloggio){
     $fotoAlloggio[$idAlloggio] = $dbh->getFotoByAlloggioId($idAlloggio);
 }
 
+$numeroAnnunci = count($iMieiAnnunciResult);
+
 require_once("template/base.php");
 
 ?>

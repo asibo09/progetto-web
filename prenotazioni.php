@@ -11,6 +11,7 @@ foreach ($prenotazioni as $alloggio){
     $fotoAlloggio[$idAlloggio] = $dbh->getFotoByAlloggioId($idAlloggio);
 }
 
+$numeroAffitti = count($prenotazioni);
 
 require_once("template/base.php");
 ?>
