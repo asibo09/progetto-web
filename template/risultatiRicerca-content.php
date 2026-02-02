@@ -39,25 +39,8 @@
                         <div class="mb-4">
                             <label for="prezzo-max" class="form-label fw-bold">Prezzo Massimo</label>
                             <div class="d-flex align-items-center">
-                                <input type="range" class="form-range" id="prezzo-max" name="prezzo_max" min="100" max="2000" step="50" oninput="this.nextElementSibling.value = this.value">
-                                <output class="ms-2 fw-bold">2000</output><span>€</span>
-                            </div>
-                        </div>
-
-                        <!-- Filtro Tipologia -->
-                        <div class="mb-4">
-                            <h6 class="fw-bold">Tipologia</h6>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="tipologia[]" value="appartamento" id="tipo-appartamento">
-                                <label class="form-check-label" for="tipo-appartamento">Appartamento</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="tipologia[]" value="stanza singola" id="tipo-stanza-singola">
-                                <label class="form-check-label" for="tipo-stanza-singola">Stanza Singola</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="tipologia[]" value="stanza doppia" id="tipo-stanza-doppia">
-                                <label class="form-check-label" for="tipo-stanza-doppia">Stanza Doppia</label>
+                                <input type="range" class="form-range" id="prezzo-max" name="prezzo_max" min="100" max="2000" step="50" oninput="this.nextElementSibling.value = this.value" value="<?php echo htmlspecialchars($_GET['prezzo_max'] ?? '2000'); ?>">
+                                <output class="ms-2 fw-bold"><?php echo htmlspecialchars($_GET['prezzo_max'] ?? '2000'); ?></output><span>€</span>
                             </div>
                         </div>
 
@@ -65,29 +48,86 @@
                         <div class="mb-4">
                             <h6 class="fw-bold">Zona</h6>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="zona[]" value="isZonaCampus" id="zona-campus">
+                                <input class="form-check-input" type="checkbox" name="zona[]" value="isZonaCampus" id="zona-campus" <?php echo (in_array('isZonaCampus', $_GET['zona'] ?? []) ? 'checked' : ''); ?>>
                                 <label class="form-check-label" for="zona-campus">Vicino al Campus</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="zona[]" value="isZonaCentro" id="zona-centro">
+                                <input class="form-check-input" type="checkbox" name="zona[]" value="isZonaCentro" id="zona-centro" <?php echo (in_array('isZonaCentro', $_GET['zona'] ?? []) ? 'checked' : ''); ?>>
                                 <label class="form-check-label" for="zona-centro">In Centro</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="zona[]" value="isZonaStazione" id="zona-stazione">
+                                <input class="form-check-input" type="checkbox" name="zona[]" value="isZonaStazione" id="zona-stazione" <?php echo (in_array('isZonaStazione', $_GET['zona'] ?? []) ? 'checked' : ''); ?>>
                                 <label class="form-check-label" for="zona-stazione">Vicino alla Stazione</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="zona[]" value="isZonaAltro" id="zona-altro" <?php echo (in_array('isZonaAltro', $_GET['zona'] ?? []) ? 'checked' : ''); ?>>
+                                <label class="form-check-label" for="zona-altro">Altro</label>
                             </div>
                         </div>
 
-                        <!-- Filtro Caratteristiche -->
+                        <!-- Filtro Caratteristiche Avanzate -->
                         <div class="mb-4">
-                            <h6 class="fw-bold">Caratteristiche</h6>
+                            <h6 class="fw-bold">Dettagli</h6>
+                            
+                            <div class="mb-2">
+                                <label for="tipo_riscaldamento" class="form-label small">Riscaldamento</label>
+                                <select class="form-select form-select-sm" name="tipo_riscaldamento" id="tipo_riscaldamento">
+                                    <option value="">Qualsiasi</option>
+                                    <option value="Autonomo" <?php echo (($_GET['tipo_riscaldamento'] ?? '') == 'Autonomo' ? 'selected' : ''); ?>>Autonomo</option>
+                                    <option value="Centralizzato" <?php echo (($_GET['tipo_riscaldamento'] ?? '') == 'Centralizzato' ? 'selected' : ''); ?>>Centralizzato</option>
+                                    <option value="Assente" <?php echo (($_GET['tipo_riscaldamento'] ?? '') == 'Assente' ? 'selected' : ''); ?>>Assente</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-2">
+                                <label for="genere_inquilini" class="form-label small">Genere Inquilini</label>
+                                <select class="form-select form-select-sm" name="genere_inquilini" id="genere_inquilini">
+                                    <option value="">Qualsiasi</option>
+                                    <option value="Maschile" <?php echo (($_GET['genere_inquilini'] ?? '') == 'Maschile' ? 'selected' : ''); ?>>Maschile</option>
+                                    <option value="Femminile" <?php echo (($_GET['genere_inquilini'] ?? '') == 'Femminile' ? 'selected' : ''); ?>>Femminile</option>
+                                    <option value="Entrambi" <?php echo (($_GET['genere_inquilini'] ?? '') == 'Entrambi' ? 'selected' : ''); ?>>Entrambi</option>
+                                    <option value="Non presenti" <?php echo (($_GET['genere_inquilini'] ?? '') == 'Non presenti' ? 'selected' : ''); ?>>Non presenti</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="occupazione_inquilini" class="form-label small">Occupazione</label>
+                                <select class="form-select form-select-sm" name="occupazione_inquilini" id="occupazione_inquilini">
+                                    <option value="">Qualsiasi</option>
+                                    <option value="Studenti" <?php echo (($_GET['occupazione_inquilini'] ?? '') == 'Studenti' ? 'selected' : ''); ?>>Studenti</option>
+                                    <option value="Lavoratori" <?php echo (($_GET['occupazione_inquilini'] ?? '') == 'Lavoratori' ? 'selected' : ''); ?>>Lavoratori</option>
+                                    <option value="Entrambi" <?php echo (($_GET['occupazione_inquilini'] ?? '') == 'Entrambi' ? 'selected' : ''); ?>>Entrambi</option>
+                                    <option value="Non presenti" <?php echo (($_GET['occupazione_inquilini'] ?? '') == 'Non presenti' ? 'selected' : ''); ?>>Non presenti</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Filtro Servizi e Regole -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold">Servizi e Regole</h6>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" name="has_ascensore" value="1" id="check-ascensore">
+                                <input class="form-check-input" type="checkbox" name="has_ascensore" value="1" id="check-ascensore" <?php echo (isset($_GET['has_ascensore']) ? 'checked' : ''); ?>>
                                 <label class="form-check-label" for="check-ascensore">Ascensore</label>
                             </div>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" name="accetta_animali" value="1" id="check-animali">
+                                <input class="form-check-input" type="checkbox" name="has_cucina" value="1" id="check-cucina" <?php echo (isset($_GET['has_cucina']) ? 'checked' : ''); ?>>
+                                <label class="form-check-label" for="check-cucina">Cucina</label>
+                            </div>
+                             <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="proprietario_vive_casa" value="1" id="check-proprietario" <?php echo (isset($_GET['proprietario_vive_casa']) ? 'checked' : ''); ?>>
+                                <label class="form-check-label" for="check-proprietario">Proprietario in casa</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="accetta_animali" value="1" id="check-animali" <?php echo (isset($_GET['accetta_animali']) ? 'checked' : ''); ?>>
                                 <label class="form-check-label" for="check-animali">Animali ammessi</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="accetta_fumatori" value="1" id="check-fumatori" <?php echo (isset($_GET['accetta_fumatori']) ? 'checked' : ''); ?>>
+                                <label class="form-check-label" for="check-fumatori">Fumatori ammessi</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="accetta_coppie" value="1" id="check-coppie" <?php echo (isset($_GET['accetta_coppie']) ? 'checked' : ''); ?>>
+                                <label class="form-check-label" for="check-coppie">Coppie ammesse</label>
                             </div>
                         </div>
 
@@ -95,16 +135,24 @@
                         <div class="mb-4">
                             <h6 class="fw-bold">Utenze Incluse</h6>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="utenza_internet" value="1" id="check-internet">
+                                <input class="form-check-input" type="checkbox" name="utenza_internet" value="1" id="check-internet" <?php echo (isset($_GET['utenza_internet']) ? 'checked' : ''); ?>>
                                 <label class="form-check-label" for="check-internet">Internet</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="utenza_acqua" value="1" id="check-acqua">
+                                <input class="form-check-input" type="checkbox" name="utenza_acqua" value="1" id="check-acqua" <?php echo (isset($_GET['utenza_acqua']) ? 'checked' : ''); ?>>
                                 <label class="form-check-label" for="check-acqua">Acqua</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="utenza_gas" value="1" id="check-gas" <?php echo (isset($_GET['utenza_gas']) ? 'checked' : ''); ?>>
+                                <label class="form-check-label" for="check-gas">Gas</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="utenza_luce" value="1" id="check-luce" <?php echo (isset($_GET['utenza_luce']) ? 'checked' : ''); ?>>
+                                <label class="form-check-label" for="check-luce">Luce</label>
                             </div>
                         </div>
                         
-                        <button type="submit" class="btn bg-unibo-red w-100">Applica Filtri</button>
+                        <button type="submit" class="btn bg-unibo-red w-100 fw-bold">Seleziona</button>
                     </form>
                 </div>
             </div>
@@ -124,16 +172,18 @@
                                 <div class="card rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover border-0 bg-light-subtle">
                                     <div class="row g-0 align-items-stretch">
                                         <!-- Carousel Column -->
-                                        <div class="col-12 col-md-4 border-end position-relative custom-carousel-container" style="min-height: 220px; height: auto !important;">
-                                             <div id="carousel-<?php echo $search['id_alloggio']; ?>" class="carousel slide position-absolute top-0 start-0 w-100 h-100" data-bs-ride="false">
-                                                <div class="carousel-inner h-100">
+                                        <div class="col-12 col-md-4 border-end position-relative custom-carousel-container">
+                                             <div id="carousel-<?php echo $search['id_alloggio']; ?>" class="carousel slide" data-bs-ride="false">
+                                                <div class="carousel-inner">
                                                     <?php 
                                                         $fotos = $dbh->fotoAlloggio($search['id_alloggio']);    
                                                         $isFirst = true;
                                                         foreach ($fotos as $foto): 
                                                     ?>
-                                                    <div class="carousel-item h-100 <?php if($isFirst) { echo 'active'; $isFirst = false; } ?>">
-                                                        <img src="<?php echo UPLOAD_DIR . $foto['percorso_immagine']; ?>" class="img-fit" alt="Foto alloggio">
+                                                    <div class="carousel-item <?php if($isFirst) { echo 'active'; $isFirst = false; } ?>">
+                                                        <div class="ratio ratio-4x3">
+                                                            <img src="<?php echo UPLOAD_DIR . $foto['percorso_immagine']; ?>" class="object-fit-cover" alt="Foto alloggio">
+                                                        </div>
                                                     </div>
                                                     <?php endforeach; ?>
                                                 </div>
@@ -157,7 +207,7 @@
                                                     </p>
                                                     <p class="small text-secondary mb-3">Distanza dal campus: <?php echo $search['distanza_campus_km']; ?> km</p>
                                                 </div>
-                                                <div class="d-flex align-items-center flex-wrap gap-3 mt-3">
+                                                <div class="d-flex align-items-center justify-content-between mt-3">
                                                     <span class="fw-bold fs-4 text-primary"><?php echo $search['prezzo_mensile_alloggio']; ?>€/mese</span>
                                                     <button type="button" class="btn btn-link p-2 btn-cuore active" data-id="<?php echo $annuncio["id_alloggio"]; ?>">
                                                         <em class="bi heart-icon fs-4"></em>

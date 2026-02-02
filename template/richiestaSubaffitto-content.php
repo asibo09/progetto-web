@@ -9,7 +9,7 @@
         <select class="form-select" id="stanza" name="stanza" required>
             <?php foreach ($templateParams['stanze'] as $stanza): ?>
                 <option value=<?php echo $stanza['id_stanza']?>>
-                    <?php echo $stanza['id_stanza']?>
+                    <?php echo $stanza['tipo_immobile']; ?>, <?php echo $stanza['indirizzo']; ?>, <?php echo $stanza['civico']; ?>. Stanza: <?php echo $stanza['id_stanza']?>
                 </option>
             <?php endforeach; ?>
         </select>

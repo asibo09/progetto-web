@@ -19,21 +19,28 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['luogo'])) {
 
     // Recupero i filtri avanzati
     $prezzo_max = !empty($_GET['prezzo_max']) ? (int)$_GET['prezzo_max'] : null;
-    $tipologia = isset($_GET['tipologia']) && is_array($_GET['tipologia']) ? $_GET['tipologia'] : [];
     $zona = isset($_GET['zona']) && is_array($_GET['zona']) ? $_GET['zona'] : [];
 
-    // Recupero filtri extra (booleani/switch)
+    // Recupero filtri extra (booleani, switch ed enum semplici)
     $extra_filters = [];
-    $allowed_extras = ['has_ascensore', 'accetta_animali', 'utenza_internet', 'utenza_acqua'];
+    $allowed_extras = [
+        // Booleans
+        'has_ascensore', 'has_cucina', 'proprietario_vive_casa', 
+        'accetta_animali', 'accetta_fumatori', 'accetta_coppie',
+        'utenza_internet', 'utenza_acqua', 'utenza_gas', 'utenza_luce',
+        // Enums (Exact match)
+        'tipo_riscaldamento', 'genere_inquilini', 'occupazione_inquilini'
+    ];
+
     foreach ($allowed_extras as $extra) {
         if (!empty($_GET[$extra])) {
-            $extra_filters[$extra] = 1;
+            $extra_filters[$extra] = $_GET[$extra];
         }
     }
 
     // Solo se abbiamo la città, chiamiamo la ricerca
     if (!empty($citta)) {
-        $templateParams['SearchResults'] = $dbh->search($citta, $nmesi, $npersone, $prezzo_max, $tipologia, $zona, $extra_filters);
+        $templateParams['SearchResults'] = $dbh->search($citta, $nmesi, $npersone, $prezzo_max, $zona, $extra_filters);
     }
 }
 
