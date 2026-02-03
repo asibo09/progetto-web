@@ -31,7 +31,7 @@
                                     foreach ($fotoAlloggio[$alloggio["id_alloggio"]] as $foto): ?>
                                         <div class="carousel-item <?php echo $posizioneFoto == 0 ? "active" : ""; ?>">
                                             <div class="ratio ratio-4x3">
-                                                <img src="<?php echo $foto["percorso_immagine"];
+                                                <img src="<?php echo UPLOAD_DIR . $foto["percorso_immagine"];
                                                 $posizioneFoto++; ?>" class="d-block w-100 object-fit-cover" alt="">
                                             </div>
                                         </div>
@@ -58,7 +58,7 @@
                                 </a>
                                 <p class="text-muted small mb-1">
                                     <em
-                                        class="bi bi-geo-alt-fill me-1 text-danger"></em><?php echo $alloggio["tipo_immobile"] ?>
+                                        class="bi bi-geo-alt-fill me-1 text-danger"></em><?php echo $alloggio["indirizzo"] . " " . $alloggio["civico"] . ", " . $alloggio["comune"] ?>
                                 </p>
                                 <p class="small text-secondary mb-1">
                                     <?php echo $alloggio["distanza_centro_km"] . "km distante dal centro" ?>
