@@ -174,7 +174,7 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
         
     public function search($luogo, $nmesi, $npersone, $prezzo_max = null, $tipologia = [], $zona = [], $extra_filters = [])
     {
-        $query = "SELECT * FROM Alloggio WHERE (comune LIKE ? OR indirizzo LIKE ?) AND permanenza_minima_mesi <= ? AND max_persone <= ?";
+        $query = "SELECT * FROM Alloggio WHERE (comune LIKE ? OR indirizzo LIKE ?) AND permanenza_minima_mesi <= ? AND max_persone >= ?";
 
         $luogo_param = "%" . $luogo . "%";
         $params = ['ssii', $luogo_param, $luogo_param, $nmesi, $npersone];
@@ -262,7 +262,7 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
 
     public function trova_stanze_utente_per_subaffitto($emailAffittuario)
     {
-        $query = "SELECT A.tipo_immobile, A.indirizzo, A.civico, S.id_stanza
+        $query = "SELECT A.tipo_immobile, A.indirizzo, A.civico, S.id_stanza, A.id_alloggio
                   FROM Utente U JOIN Prenotazione P ON U.id_utente = P.id_affittuario 
                                 JOIN Stanza S ON P.id_stanza = S.id_stanza 
                                 JOIN Alloggio A on A.id_alloggio = S.id_alloggio
@@ -370,6 +370,14 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("si", $stato, $id_richiesta);
         $stmt->execute();
+
+        //Se richiesta accettata, la stanza torna disponibile
+        if($stato == 'Confermata') {
+        $queryStanza = "UPDATE Stanza SET stato = 'Disponibile' WHERE id_stanza = ?";
+        $stmtStanza = $this->db->prepare($queryStanza);
+        $stmtStanza->bind_param("i", $id_richiesta);
+        $stmtStanza->execute();
+    }
     }
     public function insertUser($nome, $cognome, $email, $password, $cellulare, $eta, $ruolo)
     {

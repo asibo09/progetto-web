@@ -8,7 +8,13 @@
         <label for="stanza" class="form-label fw-semibold fs-5">Per quale stanza?</label>
         <select class="form-select" id="stanza" name="stanza" required>
             <?php foreach ($templateParams['stanze'] as $stanza): ?>
-                <option value=<?php echo $stanza['id_stanza']?>>
+                <option value="<?php echo $stanza['id_stanza']; ?>"
+                    <?php 
+                        //Se id_stanza è nell'URL e coincide la seleziona automaticamente
+                        if(isset($_GET["id"]) && $_GET["id"] == $stanza['id_alloggio']) {
+                        echo "selected";
+                        }
+                    ?>>
                     <?php echo $stanza['tipo_immobile']; ?>, <?php echo $stanza['indirizzo']; ?>, <?php echo $stanza['civico']; ?>. Stanza: <?php echo $stanza['id_stanza']?>
                 </option>
             <?php endforeach; ?>

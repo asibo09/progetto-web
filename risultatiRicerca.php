@@ -43,8 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['luogo'])) {
         $templateParams['SearchResults'] = $dbh->search($citta, $nmesi, $npersone, $prezzo_max, $zona, $extra_filters);
     }
 }
-
-
+//Recupero dei preferiti dell'utente loggato
+$idUtenteLoggato = $_SESSION["id_utente"];
+$preferitiUtente = $dbh->getPreferitiByUserId($idUtenteLoggato);
+$templateParams["preferiti_ids"] = array_column($preferitiUtente, 'id_alloggio');
 
 
 

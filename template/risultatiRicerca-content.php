@@ -209,8 +209,11 @@
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between mt-3">
                                                     <span class="fw-bold fs-4 text-primary"><?php echo $search['prezzo_mensile_alloggio']; ?>€/mese</span>
-                                                    <button type="button" class="btn btn-link p-2 btn-cuore active" data-id="<?php echo $annuncio["id_alloggio"]; ?>">
-                                                        <em class="bi heart-icon fs-4"></em>
+                                                    <?php $isFav = in_array($search["id_alloggio"], $templateParams["preferiti_ids"]); ?>
+                                                    <button type="button" 
+                                                        class="btn btn-link p-2 btn-cuore <?php echo $isFav ? 'active' : ''; ?>" 
+                                                        data-id="<?php echo $search["id_alloggio"]; ?>">
+                                                        <em class="bi <?php echo $isFav ? 'bi-heart-fill' : 'bi-heart'; ?> fs-4"></em>
                                                     </button>
                                                 </div>
                                             </div>
