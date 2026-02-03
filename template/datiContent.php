@@ -2,13 +2,13 @@
     <div class="col-12 col-lg-8">
         
         <!-- Card: Flex Container Principale -->
-        <div class="card border shadow-sm rounded-4 overflow-hidden">
+        <section class="card border shadow-sm rounded-4 overflow-hidden">
 
             <!-- Intestazione: Flex Column per allineamento centrale verticale -->
             <div class="card-header bg-white border-0 pt-5 pb-0 d-flex flex-column align-items-center">
                 <!-- Icona Container -->
                 <div class="bg-light rounded-circle p-4 mb-3 d-flex align-items-center justify-content-center">
-                    <i class="bi bi-person-circle text-danger display-3 lh-1"></i>
+                    <em class="bi bi-person-circle text-danger display-3 lh-1"></em>
                 </div>
                 <h1 class="h2 fw-bold mb-1">I Tuoi Dati</h1>
                 <p class="text-muted">Riepilogo delle informazioni del tuo profilo</p>
@@ -76,6 +76,6 @@
 
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 </div>
