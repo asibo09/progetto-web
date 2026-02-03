@@ -4,63 +4,65 @@
 
     <div class="row justify-content-center">
         <div class="col-lg-10 p-4 p-md-5 border rounded-4 bg-light">
-            <div class="row row-cols-1 row-cols-md-2 g-4 text-dark">
-                
-                <div class="col">
-                    <div class="card h-100 p-4 shadow-sm card-menu-hover position-relative rounded-3">
-                        <i class="bi bi-person-vcard fs-1 mb-2"></i>
-                        <h3 class="h5 fw-bold">I TUOI DATI</h3>
-                        <p class="text-muted small mb-0">Gestisci le tue informazioni personali e di contatto</p>
-                        <a href="dati.php" class="stretched-link"></a>
-                    </div>
-                </div>
+            <nav title="Navigazione profilo utente">
+                <ul class="row row-cols-1 row-cols-md-2 g-4 text-dark list-unstyled p-0 m-0">
+                    
+                    <li class="col">
+                        <div class="card h-100 p-4 shadow-sm card-menu-hover position-relative rounded-3">
+                            <em class="bi bi-person-vcard fs-1 mb-2"></em>
+                            <h2 class="h5 fw-bold">I TUOI DATI</h2>
+                            <p class="text-muted small mb-0">Gestisci le tue informazioni personali e di contatto</p>
+                            <a href="dati.php" title="I tuoi dati" class="stretched-link"></a>
+                        </div>
+                    </li>
 
-                <div class="col">
-                    <div class="card h-100 p-4 shadow-sm card-menu-hover position-relative rounded-3">
-                        <i class="bi bi-calendar-check fs-1 mb-2"></i>
-                        <h3 class="h5 fw-bold">LE TUE PRENOTAZIONI</h3>
-                        <p class="text-muted small mb-0">Controlla lo stato dei tuoi affitti e prenotazioni</p>
-                        <a href="prenotazioni.php" class="stretched-link"></a>
-                    </div>
-                </div>
+                    <li class="col">
+                        <div class="card h-100 p-4 shadow-sm card-menu-hover position-relative rounded-3">
+                            <em class="bi bi-calendar-check fs-1 mb-2"></em>
+                            <h2 class="h5 fw-bold">LE TUE PRENOTAZIONI</h2>
+                            <p class="text-muted small mb-0">Controlla lo stato dei tuoi affitti e prenotazioni</p>
+                            <a href="prenotazioni.php" title="Le tue prenotazioni" class="stretched-link"></a>
+                        </div>
+                    </li>
 
-                <div class="col">
-                    <div class="card h-100 p-4 shadow-sm card-menu-hover position-relative rounded-3">
-                        <i class="bi bi-heart fs-1 mb-2"></i>
-                        <h3 class="h5 fw-bold">ANNUNCI SALVATI</h3>
-                        <p class="text-muted small mb-0">Ritrova gli alloggi che hai aggiunto ai preferiti</p>
-                        <a href="preferiti.php" class="stretched-link"></a>
-                    </div>
-                </div>
+                    <li class="col">
+                        <div class="card h-100 p-4 shadow-sm card-menu-hover position-relative rounded-3">
+                            <em class="bi bi-heart fs-1 mb-2"></em>
+                            <h2 class="h5 fw-bold">ANNUNCI SALVATI</h2>
+                            <p class="text-muted small mb-0">Ritrova gli alloggi che hai aggiunto ai preferiti</p>
+                            <a href="preferiti.php" title="Annunci salvati" class="stretched-link"></a>
+                        </div>
+                    </li>
 
-                <div class="col">
-                    <div class="card h-100 p-4 shadow-sm card-menu-hover position-relative rounded-3">
-                        <i class="bi bi-bell fs-1 mb-2"></i>
-                        <h3 class="h5 fw-bold">NOTIFICHE</h3>
-                        <p class="text-muted small mb-0">Rimani aggiornato su messaggi e novità</p>
-                        <a href="badgeNotifiche.php" class="stretched-link"></a>
-                    </div>
-                </div>
+                    <li class="col">
+                        <div class="card h-100 p-4 shadow-sm card-menu-hover position-relative rounded-3">
+                            <em class="bi bi-bell fs-1 mb-2"></em>
+                            <h2 class="h5 fw-bold">NOTIFICHE</h2>
+                            <p class="text-muted small mb-0">Rimani aggiornato su messaggi e novità</p>
+                            <a href="badgeNotifiche.php" title="Le tue Notifiche" class="stretched-link"></a>
+                        </div>
+                    </li>
 
-                <div class="col">
-                    <div class="card h-100 p-4 shadow-sm card-menu-hover position-relative rounded-3">
-                        <i class="bi bi-arrow-left-right fs-1 mb-2"></i>
-                        <h3 class="h5 fw-bold">RICHIESTE SUBAFFITTO</h3>
-                        <p class="text-muted small mb-0">Gestisci le proposte di subaffitto ricevute</p>
-                        <a href="richiestaSubaffitto.php" class="stretched-link"></a>
-                    </div>
-                </div>
+                    <li class="col">
+                        <div class="card h-100 p-4 shadow-sm card-menu-hover position-relative rounded-3">
+                            <em class="bi bi-arrow-left-right fs-1 mb-2"></em>
+                            <h2 class="h5 fw-bold">RICHIESTE SUBAFFITTO</h2>
+                            <p class="text-muted small mb-0">Gestisci le proposte di subaffitto ricevute</p>
+                            <a href="richiestaSubaffitto.php" title="Richieste di subaffitto" class="stretched-link"></a>
+                        </div>
+                    </li>
 
-                <div class="col">
-                    <div class="card h-100 p-4 shadow-sm card-menu-hover position-relative rounded-3">
-                        <i class="bi bi-box-arrow-right fs-1 mb-2"></i>
-                        <h3 class="h5 fw-bold">ESCI</h3>
-                        <p class="text-muted small mb-0">Termina la tua sessione di lavoro</p>
-                        <a href="logout.php" class="stretched-link"></a>
-                    </div>
-                </div>
+                    <li class="col">
+                        <div class="card h-100 p-4 shadow-sm card-menu-hover position-relative rounded-3">
+                            <em class="bi bi-box-arrow-right fs-1 mb-2"></em>
+                            <h2 class="h5 fw-bold">ESCI</h2>
+                            <p class="text-muted small mb-0">Termina la tua sessione di lavoro</p>
+                            <a href="logout.php" title="Esci" class="stretched-link"></a>
+                        </div>
+                    </li>
 
-            </div>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
