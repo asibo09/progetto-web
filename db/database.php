@@ -149,6 +149,28 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
     return $stmt->execute();
 }
 
+public function salvaRicerca($idStudente, $idAlloggio) {
+    //Controlla se l'utente ha già visualizzato questo alloggio di recente
+    $checkQuery = "SELECT id_ricerca FROM Ricerca_alloggio WHERE id_studente = ? AND id_alloggio = ?";
+    $stmtCheck = $this->db->prepare($checkQuery);
+    $stmtCheck->bind_param("ii", $idStudente, $idAlloggio);
+    $stmtCheck->execute();
+    $result = $stmtCheck->get_result();
+
+    if ($result->num_rows > 0) {
+        //Se esiste, aggiorna solo con la data attuale
+        $updateQuery = "UPDATE Ricerca_alloggio SET data_ricerca = CURRENT_TIMESTAMP WHERE id_studente = ? AND id_alloggio = ?";
+        $stmtUpdate = $this->db->prepare($updateQuery);
+        $stmtUpdate->bind_param("ii", $idStudente, $idAlloggio);
+        return $stmtUpdate->execute();
+    } else {
+        //Se non esiste, crea nuovo
+        $insertQuery = "INSERT INTO Ricerca_alloggio (id_studente, id_alloggio) VALUES (?, ?)";
+        $stmtInsert = $this->db->prepare($insertQuery);
+        $stmtInsert->bind_param("ii", $idStudente, $idAlloggio);
+        return $stmtInsert->execute();
+    }
+}
 
 
     public function lastFourSearch($id_studente)

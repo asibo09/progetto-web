@@ -70,17 +70,14 @@
     <?php if (!empty($templateParams["lastSearches"])): ?>
     <div class="container-xl px-3 mt-5">
         <h2 class="fw-bold mb-3">Le tue ultime ricerche</h2>
-        <div class="row g-4">
-            </div>
-    </div>
-    <?php endif; ?>
+        <div class="row g-4"></div>
 
     <div class="row g-4 mt-3">
         <?php foreach ($templateParams["lastSearches"] as $i => $alloggio): ?>
             <div class="col-12 col-lg-6">
                 <!-- Single Card Item -->
                 <div
-                    class="card rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover border-0 bg-light-subtle h-100">
+                    class="card card-alloggio rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover border-0 bg-light-subtle h-100"  data-id="<?php echo $alloggio['id_alloggio']; ?>">
                     <div class="row g-0 align-items-stretch h-100">
 
                         <!-- Carousel Column -->
@@ -154,4 +151,6 @@
             </div>
         <?php endforeach; ?>
     </div>
+    </div>
+    <?php endif; ?>
 </div>

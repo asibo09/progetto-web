@@ -16,7 +16,7 @@
                     $cID = "carouselFav" . $annuncio["id_alloggio"];
                     $foto = $annuncio["lista_foto"];
                 ?>
-                <div class="card border rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover">
+                <div class="card card-alloggio border rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover" data-id="<?php echo $annuncio['id_alloggio']; ?>">>
                     <div class="row g-0 align-items-stretch">
                         
                         <div class="col-4 col-md-3 border-end position-relative custom-carousel-container">
