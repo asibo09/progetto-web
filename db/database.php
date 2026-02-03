@@ -174,7 +174,7 @@ public function insertSegnalazione($id_segnalatore, $id_alloggio, $id_utente_tar
         
     public function search($luogo, $nmesi, $npersone, $prezzo_max = null, $tipologia = [], $zona = [], $extra_filters = [])
     {
-        $query = "SELECT * FROM Alloggio WHERE (comune LIKE ? OR indirizzo LIKE ?) AND permanenza_minima_mesi <= ? AND max_persone <= ?";
+        $query = "SELECT * FROM Alloggio WHERE (comune LIKE ? OR indirizzo LIKE ?) AND permanenza_minima_mesi <= ? AND max_persone >= ?";
 
         $luogo_param = "%" . $luogo . "%";
         $params = ['ssii', $luogo_param, $luogo_param, $nmesi, $npersone];
