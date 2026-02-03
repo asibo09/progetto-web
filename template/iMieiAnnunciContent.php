@@ -55,7 +55,7 @@
                                 <h3 class="h5 fw-bold mb-2"><?php echo $alloggio["tipo_immobile"] ?></h3>
                             </a>
                             <p class="text-muted small mb-1">
-                                <i class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $alloggio["tipo_immobile"] ?>
+                                <i class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $alloggio["comune"] ?>
                             </p>
                             <p class="small text-secondary mb-1">
                                 <?php echo $alloggio["distanza_centro_km"] . "km distante dal centro" ?>
