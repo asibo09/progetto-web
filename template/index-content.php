@@ -18,7 +18,7 @@
         <div class="mb-3">
             <div id="luogoHelp" class="form-text">Città o zona</div>
             <label for="luogo" class="form-label visually-hidden">Luogo</label>
-            <input type="text" class="form-control-lg" id="luogo" name="luogo" placeholder="Dove?"
+            <input type="text" class="form-control form-control-lg" id="luogo" name="luogo" placeholder="Dove?"
                 aria-describedby="luogoHelp" required>
         </div>
 
