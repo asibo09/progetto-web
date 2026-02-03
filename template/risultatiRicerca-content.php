@@ -4,13 +4,13 @@
         <!-- Pulsante per Offcanvas (visibile solo su schermi piccoli) -->
         <div class="d-lg-none mb-3 text-center">
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#filtriOffcanvas" aria-controls="filtriOffcanvas">
-                <i class="bi bi-funnel-fill"></i> Mostra Filtri
+                <em class="bi bi-funnel-fill"></em> Mostra Filtri
             </button>
         </div>
 
         <!-- Sidebar dei Filtri (Offcanvas su schermi piccoli) -->
         <div class="col-lg-3">
-            <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="filtriOffcanvas" aria-labelledby="filtriOffcanvasLabel">
+            <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="filtriOffcanvas" aria-labelledby="filtriOffcanvasLabel" role="dialog" aria-modal="false">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="filtriOffcanvasLabel">Filtri di Ricerca</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#filtriOffcanvas" aria-label="Close"></button>
@@ -165,7 +165,7 @@
                         Nessun risultato trovato per la tua ricerca. Prova a modificare i filtri.
                     </div>
                 <?php else: ?>
-                    <ul class="row g-3 list-unstyled" role="list" aria-label="Risultati della ricerca">
+                    <ul class="row g-3 list-unstyled" aria-label="Risultati della ricerca">
                         <?php foreach ($templateParams['SearchResults'] as $search): ?>
                             <li class="col-12 list-unstyled">
                                 <!-- Contenuto della Card (come prima) -->
@@ -188,10 +188,10 @@
                                                     <?php endforeach; ?>
                                                 </div>
                                                 <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#carousel-<?php echo $search['id_alloggio']; ?>" data-bs-slide="prev">
-                                                    <span class="arrow-circle bg-white text-dark rounded-circle p-1 shadow-sm"><i class="bi bi-chevron-left"></i></span>
+                                                    <span class="arrow-circle bg-white text-dark rounded-circle p-1 shadow-sm"><em class="bi bi-chevron-left"></em></span>
                                                 </button>
                                                 <button class="carousel-control-next custom-arrow" type="button" data-bs-target="#carousel-<?php echo $search['id_alloggio']; ?>" data-bs-slide="next">
-                                                    <span class="arrow-circle bg-white text-dark rounded-circle p-1 shadow-sm"><i class="bi bi-chevron-right"></i></span>
+                                                    <span class="arrow-circle bg-white text-dark rounded-circle p-1 shadow-sm"><em class="bi bi-chevron-right"></em></span>
                                                 </button>
                                             </div>
                                         </div>
@@ -203,7 +203,7 @@
                                                         <h3 class="h5 fw-bold mb-2"><?php echo $search['tipo_immobile']; ?></h3>
                                                     </a>
                                                     <p class="text-muted small mb-1">
-                                                        <i class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $search['indirizzo']; ?>
+                                                        <em class="bi bi-geo-alt-fill me-1 text-danger"></em><?php echo $search['indirizzo']; ?>
                                                     </p>
                                                     <p class="small text-secondary mb-3">Distanza dal campus: <?php echo $search['distanza_campus_km']; ?> km</p>
                                                 </div>

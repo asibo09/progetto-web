@@ -1,5 +1,5 @@
 <div class="mb-4 mt-5 text-left px-3">
-    <h1 class="fw-bold"><i class="bi bi-chat-left-text fs-2"></i> <?php echo $templateParams['titolo']; ?></h1>
+    <h1 class="fw-bold"><em class="bi bi-chat-left-text fs-2"></em> <?php echo $templateParams['titolo']; ?></h1>
 </div>
 
 <div class="container-xl px-3">
@@ -43,18 +43,18 @@
                 <div class="tab-pane fade show active" id="notifiche" role="tabpanel" aria-labelledby="notifiche-tab">
                     <?php if (empty($templateParams['notifiche'])): ?>
                         <div class="alert alert-info" role="alert">
-                            <i class="bi bi-info-circle-fill me-2"></i> Nessuna notifica presente.
+                            <em class="bi bi-info-circle-fill me-2"></em> Nessuna notifica presente.
                         </div>
                     <?php else: ?>
                         <?php foreach ($templateParams['notifiche'] as $notifica): ?>
                             <article class="bg-white border p-4 mb-4 rounded-3 shadow">
                                 <header class="d-flex justify-content-between align-items-center mb-2">
                                     <div class="d-flex align-items-center gap-2">
-                                        <i class="bi bi-clock text-muted"></i>
+                                        <em class="bi bi-clock text-muted"></em>
                                         <h2 class="h6 mb-0 text-muted"><?php echo $notifica['data_invio']; ?></h2>
                                     </div>
                                     <span class="badge rounded-pill bg-unibo-red text-white d-flex align-items-center">
-                                        <i class="bi bi-bell-fill me-1"></i> Notifica
+                                        <em class="bi bi-bell-fill me-1"></em> Notifica
                                     </span>
                                 </header>
                                 <section>
@@ -71,7 +71,7 @@
                     <div class="tab-pane fade" id="richieste" role="tabpanel" aria-labelledby="richieste-tab">
                         <?php if (empty($templateParams['richiesteSubaffitto'])): ?>
                             <div class="alert alert-info" role="alert">
-                                <i class="bi bi-info-circle-fill me-2"></i> Nessuna richiesta di subaffitto presente.
+                                <em class="bi bi-info-circle-fill me-2"></em> Nessuna richiesta di subaffitto presente.
                             </div>
                         <?php else: ?>
                             <?php foreach ($templateParams['richiesteSubaffitto'] as $richiestaSubaffitto): ?>
@@ -81,15 +81,15 @@
                                             <div>
                                                 <h2 class="h5 mb-1 fw-bold">Richiesta subaffitto</h2>
                                                 <p class="mb-0 text-muted">Per appartamento in:
-                                                    <?php echo $richiestaSubaffitto['indirizzo']; echo " " . $richiestaSubaffitto['civico']; ?>. Stanza: <?php echo $richiestaSubaffitto['id_stanza']; ?>
+                                                    <?php echo $richiestaSubaffitto['indirizzo']; echo " " . $richiestaSubaffitto['civico']; ?>. ID Stanza: <?php echo $richiestaSubaffitto['id_stanza']; ?>
                                                 </p>
                                                 <p class="mb-0 text-muted">Richiedente:
-                                                    <?php echo $richiestaSubaffitto['nome']; ?> <?php echo $richiestaSubaffitto['cognome']; ?> Numero cellulare: <?php echo $richiestaSubaffitto['cellulare']; ?> Email: <?php echo $richiestaSubaffitto['email']; ?>
+                                                    <?php echo $richiestaSubaffitto['nome']; ?> <?php echo $richiestaSubaffitto['cognome']; ?> <br> Numero cellulare: <?php echo $richiestaSubaffitto['cellulare']; ?> <br> Email: <?php echo $richiestaSubaffitto['email']; ?>
                                                 </p>
                                             </div>
                                         </div>
                                         <span class="badge rounded-pill bg-warning text-dark d-flex align-items-center">
-                                            <i class="bi bi-envelope-exclamation-fill me-1"></i> Subaffitto
+                                            <em class="bi bi-envelope-exclamation-fill me-1"></em> Subaffitto
                                         </span>
                                     </header>
 
@@ -104,13 +104,13 @@
                                         <button type="submit" name="action" value="Confermata"
                                             class="btn btn-sm btn-success d-flex align-items-center fw-bold"
                                             aria-label="Accetta richiesta">
-                                            <i class="bi bi-check2 me-1" aria-hidden="true"></i>Accetta
+                                            <em class="bi bi-check2 me-1" aria-hidden="true"></em>Accetta
                                         </button>
 
                                         <button type="submit" name="action" value="Rifiutata"
                                             class="btn btn-sm btn-outline-danger d-flex align-items-center fw-bold"
                                             aria-label="Rifiuta richiesta">
-                                            <i class="bi bi-x-lg me-1" aria-hidden="true"></i>Rifiuta
+                                            <em class="bi bi-x-lg me-1" aria-hidden="true"></em>Rifiuta
                                         </button>
                                     </form>
                                 </article>
@@ -122,7 +122,7 @@
                     <div class="tab-pane fade" id="Prenotazioni" role="tabpanel" aria-labelledby="prenotazioni-tab">
                         <?php if (empty($templateParams['prenotazioni'])): ?>
                             <div class="alert alert-info" role="alert">
-                                <i class="bi bi-info-circle-fill me-2"></i> Nessuna prenotazione richiesta.
+                                <em class="bi bi-info-circle-fill me-2"></em> Nessuna prenotazione richiesta.
                             </div>
                         <?php else: ?>
                             <?php foreach ($templateParams['prenotazioni'] as $prenotazione): ?>
@@ -132,15 +132,15 @@
                                             <div>
                                                 <h2 class="h5 mb-1 fw-bold">Prenotazione</h2>
                                                 <p class="mb-0 text-muted">Per appartamento in:
-                                                    <?php echo $prenotazione['indirizzo']; echo " " . $prenotazione['civico']; ?>. Stanza: <?php echo $prenotazione['id_stanza']; ?>
+                                                    <?php echo $prenotazione['indirizzo']; echo " " . $prenotazione['civico']; ?>. ID Stanza: <?php echo $prenotazione['id_stanza']; ?>
                                                 </p>
                                                 <p class="mb-0 text-muted">Richiedente:
-                                                    <?php echo $prenotazione['nome']; ?> <?php echo $prenotazione['cognome']; ?> Numero cellulare: <?php echo $prenotazione['cellulare']; ?> Email: <?php echo $prenotazione['email']; ?>
+                                                    <?php echo $richiestaSubaffitto['nome']; ?> <?php echo $richiestaSubaffitto['cognome']; ?> <br> Numero cellulare: <?php echo $richiestaSubaffitto['cellulare']; ?> <br> Email: <?php echo $richiestaSubaffitto['email']; ?>
                                                 </p>
                                             </div>
                                         </div>
                                         <span class="badge rounded-pill bg-info text-dark d-flex align-items-center">
-                                            <i class="bi bi-calendar-event me-1"></i> Prenotazione
+                                            <em class="bi bi-calendar-event me-1"></em> Prenotazione
                                         </span>
                                     </header>
 
@@ -151,13 +151,13 @@
                                         <button type="submit" name="action_prenotazione" value="Confermata"
                                             class="btn btn-sm btn-success d-flex align-items-center fw-bold"
                                             aria-label="Accetta richiesta">
-                                            <i class="bi bi-check2 me-1" aria-hidden="true"></i>Accetta
+                                            <em class="bi bi-check2 me-1" aria-hidden="true"></em>Accetta
                                         </button>
 
                                         <button type="submit" name="action_prenotazione" value="Rifiutata"
                                             class="btn btn-sm btn-outline-danger d-flex align-items-center fw-bold"
                                             aria-label="Rifiuta richiesta">
-                                            <i class="bi bi-x-lg me-1" aria-hidden="true"></i>Rifiuta
+                                            <em class="bi bi-x-lg me-1" aria-hidden="true"></em>Rifiuta
                                         </button>
                                     </form>
                                 </article>

@@ -7,6 +7,7 @@
 
         <label for="stanza" class="form-label fw-semibold fs-5">Per quale stanza?</label>
         <select class="form-select" id="stanza" name="stanza" required>
+            <option value="" disabled <?php echo !isset($_GET["id"]) ? 'selected' : ''; ?>>Seleziona una stanza...</option>
             <?php foreach ($templateParams['stanze'] as $stanza): ?>
                 <option value="<?php echo $stanza['id_stanza']; ?>"
                     <?php 
@@ -26,7 +27,7 @@
                 placeholder="Scrivi qui il tuo messaggio..." required>
         </div>
         <button type="submit" class="btn bg-unibo-red w-100 py-3 rounded-3 shadow-sm fw-bold fs-5">
-            <i class="bi bi-send-fill me-2"></i> INVIA
+            <em class="bi bi-send-fill me-2"></em> INVIA
         </button>
 
     </div>

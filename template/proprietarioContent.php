@@ -17,7 +17,7 @@
 
                 <div class="col">
                     <div class="card h-100 p-4 shadow-sm card-menu-hover position-relative rounded-3">
-                        <i class="bi bi-heart fs-1 mb-2"></i>
+                        <i class="bi bi-pin fs-1 mb-2"></i>
                         <h3 class="h5 fw-bold">I MIEI ANNUNCI</h3>
                         <p class="text-muted small mb-0">Ritrova gli alloggi che hai messo in affitto</p>
                         <a href="iMieiAnnunci.php" class="stretched-link"></a>

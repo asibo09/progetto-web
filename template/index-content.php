@@ -1,7 +1,7 @@
 <?php if (isset($templateParams["messaggio_successo"])): ?>
     <div class="container-xl mt-3">
         <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 rounded-4" role="alert">
-            <i class="bi bi-check-circle-fill me-2"></i>
+            <em class="bi bi-check-circle-fill me-2"></em>
             <strong>Fatto!</strong> <?php echo htmlspecialchars($templateParams["messaggio_successo"]); ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -28,13 +28,13 @@
             <div class="input-group">
                 <button class="btn btn-outline-secondary" type="button"
                     onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                    <i class="bi bi-dash"></i>
+                    <em class="bi bi-dash"></em>
                 </button>
                 <input name="nmesi" id="nmesi" class="form-control text-center" type="number" min="1" max="60"
                     placeholder="N. mesi" aria-label="Numero mesi" required>
                 <button class="btn btn-outline-secondary" type="button"
                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                    <i class="bi bi-plus"></i>
+                    <em class="bi bi-plus"></em>
                 </button>
             </div>
             
@@ -46,20 +46,20 @@
             <div class="input-group">
                 <button class="btn btn-outline-secondary" type="button"
                     onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                    <i class="bi bi-dash"></i>
+                    <em class="bi bi-dash"></em>
                 </button>
                 <input type="number" class="form-control text-center" id="npersone" name="npersone" min="1" max="8"
                     placeholder="Persone" aria-describedby="personeHelp" required>
                 <button class="btn btn-outline-secondary" type="button"
                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                    <i class="bi bi-plus"></i>
+                    <em class="bi bi-plus"></em>
                 </button>
             </div>
             
         </div>
 
         <button type="submit" class="btn bg-unibo-red w-100 py-3 rounded-3 shadow-sm fw-bold fs-5">
-            <i class="bi bi-send-fill me-2"></i> CERCA
+            <em class="bi bi-send-fill me-2"></em> CERCA
         </button>
 
     </div>
@@ -67,9 +67,15 @@
 
 <div class="container-xl px-3 mt-5">
 
-    <h2 class="fw-bold mb-3"><?php echo $templateParams['isLogged']; ?></h2>
+    <?php if (!empty($templateParams["lastSearches"])): ?>
+    <div class="container-xl px-3 mt-5">
+        <h2 class="fw-bold mb-3">Le tue ultime ricerche</h2>
+        <div class="row g-4">
+            </div>
+    </div>
+    <?php endif; ?>
 
-    <div class="row g-4">
+    <div class="row g-4 mt-3">
         <?php foreach ($templateParams["lastSearches"] as $i => $alloggio): ?>
             <div class="col-12 col-lg-6">
                 <!-- Single Card Item -->
@@ -133,7 +139,7 @@
                                     <h3 class="h5 fw-bold mb-2"><?php echo $alloggio["tipo_immobile"]; ?></h3>
                                 </a>
                                 <p class="text-muted small mb-1">
-                                    <i class="bi bi-geo-alt-fill me-1 text-danger"></i><?php echo $alloggio["comune"]; ?>
+                                    <em class="bi bi-geo-alt-fill me-1 text-danger"></em><?php echo $alloggio["comune"]; ?>
                                 </p>
                                 <p class="small text-secondary mb-1">
                                     <?php echo $alloggio["distanza_centro_km"] . "km distante dal centro"; ?>
@@ -148,6 +154,4 @@
             </div>
         <?php endforeach; ?>
     </div>
-</div>
-
 </div>
