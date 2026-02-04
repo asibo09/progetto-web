@@ -81,10 +81,17 @@
                                             <div>
                                                 <h2 class="h5 mb-1 fw-bold">Richiesta subaffitto</h2>
                                                 <p class="mb-0 text-muted">Per appartamento in:
-                                                    <?php echo $richiestaSubaffitto['indirizzo']; echo " " . $richiestaSubaffitto['civico']; ?>. ID Stanza: <?php echo $richiestaSubaffitto['id_stanza']; ?>
+                                                    <a href="annuncio.php?id=<?php echo $richiestaSubaffitto['id_alloggio']; ?>" class="text-muted">
+                                                        <?php echo $richiestaSubaffitto['indirizzo'] . " " . $richiestaSubaffitto['civico'] . ", " . $richiestaSubaffitto['comune'];?>
+                                                    </a>. 
+                                                    ID Stanza: <?php echo $richiestaSubaffitto['id_stanza']; ?>
                                                 </p>
                                                 <p class="mb-0 text-muted">Richiedente:
-                                                    <?php echo $richiestaSubaffitto['nome']; ?> <?php echo $richiestaSubaffitto['cognome']; ?> <br> Numero cellulare: <?php echo $richiestaSubaffitto['cellulare']; ?> <br> Email: <?php echo $richiestaSubaffitto['email']; ?>
+                                                    <a href="profilo-altro-utente.php?id=<?php echo $richiestaSubaffitto['id_richiedente']; ?>" class="text-muted">
+                                                        <?php echo $richiestaSubaffitto['nome']; ?> <?php echo $richiestaSubaffitto['cognome']; ?>
+                                                    </a>
+                                                    <br> Numero cellulare: <?php echo $richiestaSubaffitto['cellulare']; ?> 
+                                                    <br> Email: <?php echo $richiestaSubaffitto['email']; ?>
                                                 </p>
                                             </div>
                                         </div>
@@ -132,10 +139,17 @@
                                             <div>
                                                 <h2 class="h5 mb-1 fw-bold">Prenotazione</h2>
                                                 <p class="mb-0 text-muted">Per appartamento in:
-                                                    <?php echo $prenotazione['indirizzo']; echo " " . $prenotazione['civico']; ?>. ID Stanza: <?php echo $prenotazione['id_stanza']; ?>
+                                                    <a href="annuncio.php?id=<?php echo $prenotazione['id_alloggio']; ?>" class="text-muted">
+                                                        <?php echo $prenotazione['indirizzo'] . " " . $prenotazione['civico'] . ", " . $prenotazione['comune'];?>
+                                                    </a>. 
+                                                    ID Stanza: <?php echo $prenotazione['id_stanza']; ?>
                                                 </p>
                                                 <p class="mb-0 text-muted">Richiedente:
-                                                    <?php echo $prenotazione['nome']; ?> <?php echo $prenotazione['cognome']; ?> <br> Numero cellulare: <?php echo $prenotazione['cellulare']; ?> <br> Email: <?php echo $prenotazione['email']; ?>
+                                                    <a href="profilo-altro-utente.php?id=<?php echo $prenotazione['id_richiedente']; ?>" class="text-muted">
+                                                        <?php echo $prenotazione['nome']; ?> <?php echo $prenotazione['cognome']; ?>
+                                                    </a>
+                                                    <br> Numero cellulare: <?php echo $prenotazione['cellulare']; ?> 
+                                                    <br> Email: <?php echo $prenotazione['email']; ?>
                                                 </p>
                                             </div>
                                         </div>

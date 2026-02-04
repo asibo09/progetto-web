@@ -341,7 +341,7 @@ public function salvaRicerca($idStudente, $idAlloggio) {
     }
 
     public function richieste_subaffitto($email){
-        $query = "SELECT R.messaggio, S.id_stanza, A.civico, A.indirizzo, Af.nome, Af.cognome, Af.email, Af.cellulare, R.id_richiesta
+        $query = "SELECT R.messaggio, S.id_stanza, A.civico, A.comune, A.indirizzo, A.id_alloggio, Af.nome, Af.cognome, Af.email, Af.cellulare, Af.id_utente AS id_richiedente, R.id_richiesta
                   FROM Richiesta_Subaffitto R JOIN Stanza S ON S.id_stanza = R.id_stanza
                                 JOIN Alloggio A ON A.id_alloggio = S.id_alloggio 
                                 JOIN Utente P ON P.id_utente = A.id_proprietario
@@ -363,7 +363,7 @@ public function salvaRicerca($idStudente, $idAlloggio) {
 
     public function prenotazioni($email) 
     {
-        $query = "SELECT Pr.id_prenotazione, S.id_stanza, A.civico, A.indirizzo, Af.nome, Af.cognome, Af.email, Af.cellulare
+        $query = "SELECT Pr.id_prenotazione, S.id_stanza, A.civico, A.comune, A.indirizzo, A.id_alloggio, Af.nome, Af.cognome, Af.email, Af.cellulare, Af.id_utente AS id_richiedente
                   FROM Prenotazione Pr JOIN Stanza S ON S.id_stanza = Pr.id_stanza
                                 JOIN Alloggio A ON A.id_alloggio = S.id_alloggio 
                                 JOIN Utente P ON P.id_utente = A.id_proprietario

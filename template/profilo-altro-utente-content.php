@@ -6,8 +6,40 @@
 </nav>
 <h1 class="fw-bold mb-5">Profilo utente di <?php echo $u["nome"]; ?></h1>
 
-<div class="row g-4 <?php echo ($u["ruolo"] == 'studente') ? 'justify-content-center' : ''; ?>">
-    <div class="col-12 <?php echo ($u["ruolo"] == 'studente') ? 'col-lg-8' : 'col-lg-5'; ?>">
+<?php if($u["ruolo"] == 'studente'): ?>
+    <div class="row g-4">
+        <div class="col-12 col-md-6">
+            <div class="card shadow-sm border-0 p-4 rounded-3 h-100">
+                <h2 class="h4 fw-bold border-bottom pb-2 mb-3">
+                    <em class="bi bi-info-circle me-2 text-danger"></em>Informazioni personali
+                </h2>
+                <p class="mb-1"><strong>Nome:</strong> <?php echo $u["nome"]; ?></p>
+                <p class="mb-1"><strong>Cognome:</strong> <?php echo $u["cognome"]; ?></p>
+                <p class="mb-1"><strong>Età:</strong> <?php echo $u["eta"]; ?></p>
+                <p class="mb-1"><strong>Registrato il:</strong> <?php echo date("d/m/Y", strtotime($u["data_registrazione"])); ?></p>
+                <p class="mb-0 text-danger fw-bold">Ruolo: <?php echo ucfirst($u["ruolo"]); ?></p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="card shadow-sm border-0 p-4 rounded-3 h-100">
+                <h2 class="h4 fw-bold border-bottom pb-2 mb-3">
+                    <em class="bi bi-envelope-at me-2 text-danger"></em>Contatti
+                </h2>
+                <p class="mb-2">
+                    <em class="bi bi-envelope me-2"></em><strong>Email:</strong>
+                    <a href="mailto:<?php echo $u["email"]; ?>" class="text-dark text-decoration-none"><?php echo $u["email"]; ?></a>
+                </p>
+                <p class="mb-0">
+                    <em class="bi bi-telephone me-2"></em><strong>Telefono:</strong>
+                    <a href="tel:<?php echo $u["cellulare"]; ?>" class="text-dark text-decoration-none"><?php echo $u["cellulare"]; ?></a>
+                </p>
+            </div>
+        </div>
+    </div>
+<?php else: ?>
+<div class="row g-4" >
+    <div class="col-12 col-lg-5">
         <div class="d-flex flex-column gap-4">
             <div class="card shadow-sm border-0 p-4 rounded-3">
                 <h2 class="h4 fw-bold border-bottom pb-2 mb-3">
@@ -35,7 +67,6 @@
             </div>
         </div>
     </div>
-    <?php if($u["ruolo"] == 'proprietario'): ?>
     <div class="col-12 col-lg-7">
         <div class="card shadow-sm border-0 p-4 rounded-3 h-100">
             <h2 class="h4 fw-bold border-bottom pb-2 mb-3">
