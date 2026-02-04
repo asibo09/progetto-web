@@ -169,7 +169,7 @@
                         <?php foreach ($templateParams['SearchResults'] as $search): ?>
                             <li class="col-12 list-unstyled">
                                 <!-- Contenuto della Card (come prima) -->
-                                <div class="card card-alloggio rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover border-0 bg-light-subtle" data-id="<?php echo $search['id_alloggio']; ?>">>
+                                <div class="card card-alloggio rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover border-0 bg-light-subtle" data-id="<?php echo $search['id_alloggio']; ?>">
                                     <div class="row g-0 align-items-stretch">
                                         <!-- Carousel Column -->
                                         <div class="col-12 col-md-4 border-end position-relative custom-carousel-container">

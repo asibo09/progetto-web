@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_prenotazione'], $_
     exit();
 }
 
-$templateParams['titolo'] = "Le tue notifiche";
+$templateParams['titolo'] = "Le mie notifiche";
 $templateParams['nome'] = "template/badgeNotifiche-content.php";
 
 $templateParams['notifiche'] = $dbh->notifiche();

@@ -1,7 +1,7 @@
 <?php
 require_once("bootstrap.php");
 
-$templateParams["titolo"] = "I miei appartamenti affittati";
+$templateParams["titolo"] = "Le mie prenotazioni";
 $templateParams["nome"] = "template/prenotazioniContent.php";
 $fotoAlloggio = [];
 

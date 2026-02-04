@@ -196,7 +196,15 @@ public function salvaRicerca($idStudente, $idAlloggio) {
         
     public function search($luogo, $nmesi, $npersone, $prezzo_max = null, $tipologia = [], $zona = [], $extra_filters = [])
     {
-        $query = "SELECT * FROM Alloggio WHERE (comune LIKE ? OR indirizzo LIKE ?) AND permanenza_minima_mesi <= ? AND max_persone >= ?";
+        $query = "SELECT * FROM Alloggio A 
+              WHERE EXISTS (
+                  SELECT 1 FROM Stanza S 
+                  WHERE S.id_alloggio = A.id_alloggio 
+                  AND S.stato = 'Disponibile'
+              ) 
+              AND (A.comune LIKE ? OR A.indirizzo LIKE ?) 
+              AND A.permanenza_minima_mesi <= ? 
+              AND A.max_persone >= ?";
 
         $luogo_param = "%" . $luogo . "%";
         $params = ['ssii', $luogo_param, $luogo_param, $nmesi, $npersone];
