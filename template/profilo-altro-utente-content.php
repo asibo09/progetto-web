@@ -36,7 +36,7 @@
                 </p>
             </div>
         </div>
-    </div>
+    
 <?php else: ?>
 <div class="row g-4" >
     <div class="col-12 col-lg-5">
@@ -82,7 +82,7 @@
                     $cID = "carouselProp" . $annuncio["id_alloggio"]; 
                     $foto = $annuncio["lista_foto"];
                 ?>
-                <div class="card card-alloggio border rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover" data-id="<?php echo $annuncio['id_alloggio']; ?>">>
+                <div class="card card-alloggio border rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover" data-id="<?php echo $annuncio['id_alloggio']; ?>">
                     <div class="row g-0 align-items-stretch">
                         <div class="col-4 border-end position-relative custom-carousel-container">
                             <div id="<?php echo $cID; ?>" class="carousel slide h-100" data-bs-ride="false">
@@ -160,7 +160,7 @@
         </div>
     </div>
     <?php endif; ?>
-</div>
+
 
 <?php if(isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] != 'admin'): ?>
     <div class="text-left mt-4">
@@ -169,6 +169,7 @@
         </a>
     </div>
 <?php endif; ?>
+</div>
 
 <script>
     //contatore per ogni carousel
