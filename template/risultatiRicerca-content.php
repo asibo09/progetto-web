@@ -203,9 +203,13 @@
                                                         <h3 class="h5 fw-bold mb-2"><?php echo $search['tipo_immobile']; ?></h3>
                                                     </a>
                                                     <p class="text-muted small mb-1">
-                                                        <em class="bi bi-geo-alt-fill me-1 text-danger"></em><?php echo $search['indirizzo']; ?>
+                                                        <em class="bi bi-geo-alt-fill me-1 text-danger"></em><?php echo $search['indirizzo'] . ", " . $search['civico'] . " - " . $search['comune']; ?>
                                                     </p>
-                                                    <p class="small text-secondary mb-3">Distanza dal campus: <?php echo $search['distanza_campus_km']; ?> km</p>
+                                                    <p class="small text-secondary mb-3">
+                                                        Distanza dal campus: <?php echo $search['distanza_campus_km']; ?> km
+                                                        <br>Distanza dal centro: <?php echo $search['distanza_centro_km']; ?> km
+                                                    </p>
+                                                    
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between mt-3">
                                                     <span class="fw-bold fs-4 text-primary"><?php echo $search['prezzo_mensile_alloggio']; ?>€/mese</span>
