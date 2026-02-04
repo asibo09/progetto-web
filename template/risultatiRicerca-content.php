@@ -168,10 +168,10 @@
                     <ul class="row g-3 list-unstyled" aria-label="Risultati della ricerca">
                         <?php foreach ($templateParams['SearchResults'] as $search): ?>
                             <li class="col-12 list-unstyled">
-                                <!-- Contenuto della Card (come prima) -->
+                                <!-- Contenuto della Card -->
                                 <div class="card card-alloggio rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover border-0 bg-light-subtle" data-id="<?php echo $search['id_alloggio']; ?>">
                                     <div class="row g-0 align-items-stretch">
-                                        <!-- Carousel Column -->
+                                        <!-- Colonna del Carosello -->
                                         <div class="col-12 col-md-4 border-end position-relative custom-carousel-container">
                                              <div id="carousel-<?php echo $search['id_alloggio']; ?>" class="carousel slide" data-bs-ride="false">
                                                 <div class="carousel-inner">
@@ -195,7 +195,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <!-- Details Column -->
+                                        <!-- Colonna dei Dettagli -->
                                         <div class="col-12 col-md-8">
                                             <div class="card-body p-4 d-flex flex-column h-100">
                                                 <div class="mb-auto">

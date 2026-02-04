@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
 
-            <!-- Tabs Navigation -->
+            <!-- Navigazione Tabs -->
             <ul class="nav nav-tabs mb-4" id="notificheTabs" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active fw-bold text-dark" id="notifiche-tab" data-bs-toggle="tab"
@@ -36,10 +36,10 @@
                 <?php endif; ?>
             </ul>
 
-            <!-- Tabs Content -->
+            <!-- Contenuto Tabs -->
             <div class="tab-content" id="notificheTabsContent">
 
-                <!-- Notifiche Pane -->
+                <!-- Pannello Notifiche -->
                 <div class="tab-pane fade show active" id="notifiche" role="tabpanel" aria-labelledby="notifiche-tab">
                     <?php if (empty($templateParams['notifiche'])): ?>
                         <div class="alert alert-info" role="alert">
@@ -67,7 +67,7 @@
                 </div>
 
                 <?php if ($_SESSION["ruolo"] == 'proprietario'): ?>
-                    <!-- Richieste Subaffitto Pane -->
+                    <!-- Pannello Richieste Subaffitto -->
                     <div class="tab-pane fade" id="richieste" role="tabpanel" aria-labelledby="richieste-tab">
                         <?php if (empty($templateParams['richiesteSubaffitto'])): ?>
                             <div class="alert alert-info" role="alert">
@@ -125,7 +125,7 @@
                         <?php endif; ?>
                     </div>
 
-                    <!-- Prenotazioni Pane -->
+                    <!-- Pannello Prenotazioni -->
                     <div class="tab-pane fade" id="Prenotazioni" role="tabpanel" aria-labelledby="prenotazioni-tab">
                         <?php if (empty($templateParams['prenotazioni'])): ?>
                             <div class="alert alert-info" role="alert">
