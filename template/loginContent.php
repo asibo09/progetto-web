@@ -7,7 +7,7 @@
         <?php echo $templateParams["errorelogin"]; ?>
     </p>
 <?php endif; ?>
-<form action="" method="POST">
+<form action="#" method="POST">
     <div class="mb-4">
         <label for="email" class="form-label fw-semibold fs-5">Email</label>
         <input class="form-control" type="email" id="email" name="email"

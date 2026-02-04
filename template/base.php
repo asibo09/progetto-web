@@ -50,7 +50,7 @@
                     aria-label="Registrati">Registrati</a>
                 <a href="login.php" class="btn btn-light btn-sm fw-bold text-danger" aria-label="Login">Login</a>
             <?php else: ?>
-                <a <?php isActive("selectUtente.php"); ?> href="selectUtente.php" class="text-white" title="Vai al tuo profilo"><em
+                <a <?php isActive("selectUtente.php"); ?> href="selectUtente.php" class="text-white" title="Vai al tuo profilo" aria-label="Vai al tuo profilo"><em
                         class="bi bi-person-circle fs-2"></em></a>
             <?php endif; ?>
         </div>
@@ -189,7 +189,7 @@
 
     <footer class="bg-unibo-red py-3 mt-auto">
         <div class="container text-center text-white d-flex flex-column gap-1">
-            <p class="fw-bold mb-0" style="font-size: 14px;">Campus Housing - Università di Bologna</p>
+            <p class="fw-bold mb-0" style="font-size: 14px;">Unibo Affitti - Università di Bologna</p>
             <p class="mb-0" style="font-size: 13px;">Alma Mater Studiorum - Campus di Cesena</p>
             <p class="mb-0 opacity-75" style="font-size: 12px;">© A.A. 2025-2026 Tecnologie Web - Aresu Marco, Fronzi
                 Andrea, Siboni Pietro</p>

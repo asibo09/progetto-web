@@ -98,10 +98,10 @@
                                     </div>
                                     <?php endforeach; ?>
                                 </div>
-                                <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#<?php echo $cID; ?>" data-bs-slide="prev">
+                                <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#<?php echo $cID; ?>" data-bs-slide="prev" aria-label="prev image">
                                     <span class="arrow-circle"><em class="bi bi-chevron-left"></em></span>
                                 </button>
-                                <button class="carousel-control-next custom-arrow" type="button" data-bs-target="#<?php echo $cID; ?>" data-bs-slide="next">
+                                <button class="carousel-control-next custom-arrow" type="button" data-bs-target="#<?php echo $cID; ?>" data-bs-slide="next" aria-label="next image">
                                     <span class="arrow-circle"><em class="bi bi-chevron-right"></em></span>
                                 </button>
                             </div>
@@ -142,7 +142,7 @@
 
                                         <?php if($annuncio["id_proprietario"] != $idLoggato && isset($_SESSION["ruolo"]) && $_SESSION["ruolo"] != 'admin'): ?>
                                             <?php $isFav = in_array($annuncio["id_alloggio"], $templateParams["preferiti_ids"]); ?>
-                                            <button type="button" 
+                                            <button type="button"  aria-label="Preferiti"
                                                 class="btn btn-link p-2 btn-cuore <?php echo $isFav ? 'active' : ''; ?>" 
                                                 data-id="<?php echo $annuncio["id_alloggio"]; ?>">
                                                 <em class="bi <?php echo $isFav ? 'bi-heart-fill' : 'bi-heart'; ?> fs-4"></em>

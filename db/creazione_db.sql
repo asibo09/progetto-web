@@ -1,130 +1,184 @@
-Table "Utente" {
-  "id_utente" INT [pk, increment]
-  "nome" VARCHAR(50) [not null]
-  "cognome" VARCHAR(50) [not null]
-  "email" VARCHAR(100) [unique, not null]
-  "cellulare" VARCHAR(20) [not null]
-  "password" VARCHAR(255) [not null]
-  "eta" INT
-  "ruolo" Utente_ruolo_enum [default: 'studente']
-  "data_registrazione" DATETIME [default: `CURRENT_TIMESTAMP`]
-}
+-- Creazione del Database
+CREATE DATABASE IF NOT EXISTS GestioneAffitti;
+USE GestioneAffitti;
 
-Table "Alloggio" {
-  "id_alloggio" INT [pk, increment]
-  "id_proprietario" INT [not null]
-  "tipo_immobile" Alloggio_tipo_immobile_enum [not null]
-  "superficie_totale" INT [not null]
-  "totale_piani_edificio" INT
-  "piano_alloggio" INT
-  "has_ascensore" BOOLEAN [default: 0]
-  "tipo_riscaldamento" Alloggio_tipo_riscaldamento_enum [not null]
-  "has_cucina" BOOLEAN [default: 0]
-  "nr_camere_letto" INT [default: 1]
-  "nr_locali_totali" INT [default: 1]
-  "nr_bagni_totali" INT [default: 1]
-  "comune" VARCHAR(50) [not null]
-  "indirizzo" VARCHAR(255) [not null]
-  "civico" INT [not null]
-  "isZonaCampus" BOOLEAN [default: 0]
-  "isZonaCentro" BOOLEAN [default: 0]
-  "isZonaStazione" BOOLEAN [default: 0]
-  "isZonaAltro" BOOLEAN [default: 0]
-  "distanza_campus_km" DECIMAL(5,2)
-  "distanza_centro_km" DECIMAL(5,2)
-  "max_persone" INT [default: 1]
-  "nr_coinquilini_attuali" INT [default: 0]
-  "genere_inquilini" Alloggio_genere_inquilini_enum [default: 'Non presenti']
-  "occupazione_inquilini" Alloggio_occupazione_inquilini_enum [default: 'Non presenti']
-  "proprietario_vive_casa" BOOLEAN [default: 0]
-  "accetta_animali" BOOLEAN [default: 0]
-  "accetta_fumatori" BOOLEAN [default: 0]
-  "accetta_coppie" BOOLEAN [default: 0]
-  "prezzo_mensile_alloggio" DECIMAL(10,2) [not null]
-  "cauzione" DECIMAL(10,2)
-  "costo_utenze_mensile" DECIMAL(10,2)
-  "disponibile_dal" DATE
-  "permanenza_minima_mesi" INT [default: 12]
-  "utenza_acqua" BOOLEAN [default: 0]
-  "utenza_internet" BOOLEAN [default: 0]
-  "utenza_gas" BOOLEAN [default: 0]
-  "utenza_luce" BOOLEAN [default: 0]
-  "descrizione" TEXT
-  "data_pubblicazione" DATETIME [default: `CURRENT_TIMESTAMP`]
-}
+-- ==========================================
+-- 1. GESTIONE UTENTI
+-- ==========================================
 
-Table "Stanza" {
-  "id_stanza" INT [pk, increment]
-  "id_alloggio" INT [not null]
-  "metratura_stanza" INT [not null]
-  "nr_letti_singoli" INT [default: 0]
-  "nr_letti_matrimoniali" INT [default: 0]
-  "tipo_bagno" Stanza_tipo_bagno_enum [default: 'Privato']
-  "has_balcone" BOOLEAN [default: 0]
-  "prezzo_stanza" DECIMAL(10,2) [not null]
-  "stato" Stanza_stato_enum [default: 'Disponibile']
-}
+CREATE TABLE Utente (
+    id_utente INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    cognome VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    cellulare VARCHAR(20) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    eta INT,
+    ruolo ENUM('studente', 'proprietario', 'admin') DEFAULT 'studente',
+    data_registrazione DATETIME DEFAULT CURRENT_TIMESTAMP
+);
 
-Table "Foto" {
-  "id_foto" INT [pk, increment]
-  "id_alloggio" INT [not null]
-  "percorso_immagine" VARCHAR(255) [not null]
-  "is_copertina" BOOLEAN [default: 0]
-}
+-- ==========================================
+-- 2. GESTIONE ALLOGGI
+-- ==========================================
 
-Table "Preferiti" {
-  "id_utente" INT [not null]
-  "id_alloggio" INT [not null]
-  "data_preferito" DATETIME [default: `CURRENT_TIMESTAMP`]
+CREATE TABLE Alloggio (
+    id_alloggio INT AUTO_INCREMENT PRIMARY KEY,
+    id_proprietario INT NOT NULL,
+    
+    -- Sezione: Tipologia e caratteristiche immobile
+    tipo_immobile VARCHAR(50) NOT NULL,
+    superficie_totale INT NOT NULL,
+    totale_piani_edificio INT,
+    piano_alloggio INT,
+    has_ascensore BOOLEAN DEFAULT 0,
+    tipo_riscaldamento ENUM('Autonomo', 'Centralizzato', 'Assente') NOT NULL,
+    
+    -- Sezione: Composizione
+    has_cucina BOOLEAN DEFAULT 0,
+    nr_camere_letto INT DEFAULT 1,
+    nr_locali_totali INT DEFAULT 1,
+    nr_bagni_totali INT DEFAULT 1,
 
-  Indexes {
-    (id_utente, id_alloggio) [pk]
-  }
-}
+    -- Sezione: Località
+    comune VARCHAR(50) NOT NULL,
+    indirizzo VARCHAR(255) NOT NULL,
+    civico INT NOT NULL,
+    isZonaCampus BOOLEAN DEFAULT 0,
+    isZonaCentro BOOLEAN DEFAULT 0,
+    isZonaStazione BOOLEAN DEFAULT 0,
+    isZonaAltro BOOLEAN DEFAULT 0,
+    distanza_campus_km DECIMAL(5,2),
+    distanza_centro_km DECIMAL(5,2),
 
-Table "Prenotazione" {
-  "id_prenotazione" INT [pk, increment]
-  "id_affittuario" INT [not null]
-  "id_stanza" INT [not null]
-  "data_richiesta" DATETIME [default: `CURRENT_TIMESTAMP`]
-  "stato" Prenotazione_stato_enum [default: 'In attesa']
-}
+    -- Sezione: Convivenza
+    max_persone INT DEFAULT 1,
+    nr_coinquilini_attuali INT DEFAULT 0,
+    genere_inquilini ENUM('Maschile', 'Femminile', 'Entrambi', 'Non presenti') DEFAULT 'Non presenti',
+    occupazione_inquilini ENUM('Studenti', 'Lavoratori', 'Entrambi', 'Non presenti') DEFAULT 'Non presenti',
+    proprietario_vive_casa BOOLEAN DEFAULT 0,
+    accetta_animali BOOLEAN DEFAULT 0,
+    accetta_fumatori BOOLEAN DEFAULT 0,
+    accetta_coppie BOOLEAN DEFAULT 0,
+    
+    -- Sezione Prezzo e costi:
+    prezzo_mensile_alloggio DECIMAL(10, 2) NOT NULL,
+    cauzione DECIMAL(10, 2),
+    costo_utenze_mensile DECIMAL(10, 2), -- Costo se non incluse
+    disponibile_dal DATE,
+    permanenza_minima_mesi INT DEFAULT 12,
+    -- Utenze incluse
+    utenza_acqua BOOLEAN DEFAULT 0,
+    utenza_internet BOOLEAN DEFAULT 0,
+    utenza_gas BOOLEAN DEFAULT 0,
+    utenza_luce BOOLEAN DEFAULT 0,
 
-Table "Richiesta_Subaffitto" {
-  "id_richiesta" INT [pk, increment]
-  "id_mittente" INT [not null]
-  "id_stanza" INT [not null]
-  "messaggio" TEXT
-  "stato" Richiesta_Subaffitto_stato_enum [default: 'In attesa']
-}
+    -- Sezione: Descrizione
+    descrizione TEXT,
+    data_pubblicazione DATETIME DEFAULT CURRENT_TIMESTAMP,
 
-Table "Notifica" {
-  "id_notifica" INT [pk, increment]
-  "id_utente" INT [not null]
-  "testo" VARCHAR(255) [not null]
-  "letta" BOOLEAN [default: 0]
-  "data_invio" DATETIME [default: `CURRENT_TIMESTAMP`]
-}
+    FOREIGN KEY (id_proprietario) REFERENCES Utente(id_utente) ON DELETE CASCADE
+);
 
-Table "Segnalazione" {
-  "id_segnalazione" INT [pk, increment]
-  "id_utente_segnalatore" INT [not null]
-  "id_alloggio_segnalato" INT [default: NULL]
-  "id_utente_segnalato" INT [default: NULL]
-  "categoria" Segnalazione_categoria_enum
-  "descrizione" TEXT [not null]
-  "stato" Segnalazione_stato_enum [default: 'Aperta']
-  "data_segnalazione" DATETIME [default: `CURRENT_TIMESTAMP`]
+-- ==========================================
+-- 3. GESTIONE STANZE
+-- ==========================================
 
-  Checks {
-    `(id_alloggio_segnalato IS NOT NULL AND id_utente_segnalato IS NULL) OR
-        (id_alloggio_segnalato IS NULL AND id_utente_segnalato IS NOT NULL)` [name: 'check_bersaglio_segnalazione']
-  }
-}
+-- Ogni alloggio può avere una o più stanze con prezzi diversi
+CREATE TABLE Stanza (
+    id_stanza INT AUTO_INCREMENT PRIMARY KEY,
+    id_alloggio INT NOT NULL,
+    metratura_stanza INT NOT NULL,
+    nr_letti_singoli INT DEFAULT 0,
+    nr_letti_matrimoniali INT DEFAULT 0,
+    tipo_bagno ENUM('Privato', 'Condiviso') DEFAULT 'Privato',
+    has_balcone BOOLEAN DEFAULT 0,
+    prezzo_stanza DECIMAL(10, 2) NOT NULL,
+	stato ENUM('Disponibile', 'Non disponibile') DEFAULT 'Disponibile',
+    FOREIGN KEY (id_alloggio) REFERENCES Alloggio(id_alloggio) ON DELETE CASCADE
+);
 
-Table "Ricerca_alloggio" {
-  "id_ricerca" INT [pk, increment]
-  "id_studente" INT [not null]
-  "id_alloggio" INT [not null]
-  "data_ricerca" DATETIME [default: `CURRENT_TIMESTAMP`]
-}
+-- ==========================================
+-- 4. FOTO, PREFERITI E OPERAZIONI
+-- ==========================================
+
+-- Foto degli alloggi (fino a 20 per annuncio)
+CREATE TABLE Foto (
+    id_foto INT AUTO_INCREMENT PRIMARY KEY,
+    id_alloggio INT NOT NULL,
+    percorso_immagine VARCHAR(255) NOT NULL,
+    is_copertina BOOLEAN DEFAULT 0,
+    FOREIGN KEY (id_alloggio) REFERENCES Alloggio(id_alloggio) ON DELETE CASCADE
+);
+
+CREATE TABLE Preferiti (
+    id_utente INT NOT NULL,
+    id_alloggio INT NOT NULL,
+    data_preferito DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_utente, id_alloggio),
+    FOREIGN KEY (id_utente) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    FOREIGN KEY (id_alloggio) REFERENCES Alloggio(id_alloggio) ON DELETE CASCADE
+);
+
+CREATE TABLE Prenotazione (
+    id_prenotazione INT AUTO_INCREMENT PRIMARY KEY,
+    id_affittuario INT NOT NULL,
+    id_stanza INT NOT NULL,
+    data_richiesta DATETIME DEFAULT CURRENT_TIMESTAMP,
+    stato ENUM('In attesa', 'Confermata', 'Rifiutata') DEFAULT 'In attesa',
+    FOREIGN KEY (id_affittuario) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    FOREIGN KEY (id_stanza) REFERENCES Stanza(id_stanza) ON DELETE CASCADE
+);
+
+CREATE TABLE Richiesta_Subaffitto (
+    id_richiesta INT AUTO_INCREMENT PRIMARY KEY,
+    id_mittente INT NOT NULL, 
+    id_stanza INT NOT NULL,
+    messaggio TEXT,
+    stato ENUM('In attesa', 'Confermata', 'Rifiutata') DEFAULT 'In attesa',
+    FOREIGN KEY (id_mittente) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    FOREIGN KEY (id_stanza) REFERENCES Stanza(id_stanza) ON DELETE CASCADE
+);
+
+CREATE TABLE Notifica (
+    id_notifica INT AUTO_INCREMENT PRIMARY KEY,
+    id_utente INT NOT NULL,
+    testo VARCHAR(255) NOT NULL,
+    letta BOOLEAN DEFAULT 0,
+    data_invio DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_utente) REFERENCES Utente(id_utente) ON DELETE CASCADE
+);
+
+CREATE TABLE Segnalazione (
+    id_segnalazione INT AUTO_INCREMENT PRIMARY KEY,
+    id_utente_segnalatore INT NOT NULL,
+    
+    -- Riferimenti opzionali: entrambi possono essere NULL, ma il vincolo sotto ne obbliga uno
+    id_alloggio_segnalato INT DEFAULT NULL, 
+    id_utente_segnalato INT DEFAULT NULL,   
+    
+    categoria ENUM('Contenuto inappropriato', 'Sospetto truffa', 'Comportamento scorretto', 'Altro'),
+    descrizione TEXT NOT NULL,
+    stato ENUM('Aperta', 'In revisione', 'Risolta') DEFAULT 'Aperta',
+    data_segnalazione DATETIME DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (id_utente_segnalatore) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    FOREIGN KEY (id_alloggio_segnalato) REFERENCES Alloggio(id_alloggio) ON DELETE CASCADE,
+    FOREIGN KEY (id_utente_segnalato) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    
+    -- VINCOLO FONDAMENTALE: Obbliga a segnalare O un alloggio O un utente (non entrambi e non nessuno)
+    CONSTRAINT check_bersaglio_segnalazione CHECK (
+        (id_alloggio_segnalato IS NOT NULL AND id_utente_segnalato IS NULL) OR
+        (id_alloggio_segnalato IS NULL AND id_utente_segnalato IS NOT NULL)
+    )
+);
+
+CREATE TABLE Ricerca_alloggio (
+    id_ricerca INT AUTO_INCREMENT PRIMARY KEY,
+    id_studente INT NOT NULL,
+    id_alloggio INT NOT NULL,
+    data_ricerca DATETIME DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (id_studente) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    FOREIGN KEY (id_alloggio) REFERENCES Alloggio(id_alloggio) ON DELETE CASCADE
+);

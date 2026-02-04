@@ -16,7 +16,7 @@
                     $cID = "carouselFav" . $annuncio["id_alloggio"];
                     $foto = $annuncio["lista_foto"];
                 ?>
-                <div class="card card-alloggio border rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover" data-id="<?php echo $annuncio['id_alloggio']; ?>">>
+                <div class="card card-alloggio border rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover" data-id="<?php echo $annuncio['id_alloggio']; ?>">
                     <div class="row g-0 align-items-stretch">
                         
                         <div class="col-4 col-md-3 border-end position-relative custom-carousel-container">
@@ -33,10 +33,10 @@
                                     </div>
                                     <?php endforeach; ?>
                                 </div>
-                                <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#<?php echo $cID; ?>" data-bs-slide="prev">
+                                <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#<?php echo $cID; ?>" data-bs-slide="prev" aria-label="prev image">
                                     <span class="arrow-circle"><em class="bi bi-chevron-left"></em></span>
                                 </button>
-                                <button class="carousel-control-next custom-arrow" type="button" data-bs-target="#<?php echo $cID; ?>" data-bs-slide="next">
+                                <button class="carousel-control-next custom-arrow" type="button" data-bs-target="#<?php echo $cID; ?>" data-bs-slide="next" aria-label="next image">
                                     <span class="arrow-circle"><em class="bi bi-chevron-right"></em></span>
                                 </button>
                             </div>
@@ -71,16 +71,16 @@
                                                     data-id="<?php echo $annuncio["id_alloggio"]; ?>"
                                                     data-bs-toggle="modal" 
                                                     data-bs-target="#modalPrenotazione">
-                                                    <em class="bi bi-calendar-check"></em><span>Prenota</span>
+                                                    <em class="bi bi-calendar-check"></em><span aria-label="Prenota">Prenota</span>
                                                 </a>
                                             <?php else: ?>
-                                            <button class="btn btn-secondary rounded-pill px-3 py-1 btn-sm fw-semibold opacity-50" disabled>
+                                            <button class="btn btn-secondary rounded-pill px-3 py-1 btn-sm fw-semibold opacity-50" aria-label="Esaurito" disabled>
                                                 <em class="bi bi-calendar-x me-2"></em>Esaurito
                                             </button>
                                             <?php endif; ?>
 
                                         <?php endif; ?>
-                                        <button type="button" class="btn btn-link p-2 btn-cuore active" data-id="<?php echo $annuncio["id_alloggio"]; ?>">
+                                        <button type="button" class="btn btn-link p-2 btn-cuore active" data-id="<?php echo $annuncio["id_alloggio"]; ?>" aria-label="Bottone preferiti">
                                             <em class="bi heart-icon fs-4"></em>
                                         </button>
                                     </div>
