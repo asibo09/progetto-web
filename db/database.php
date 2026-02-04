@@ -394,20 +394,28 @@ public function salvaRicerca($idStudente, $idAlloggio) {
     }
 
     public function modifica_stato_richiesta_subaffitto($id_richiesta, $stato){
-        $query = "UPDATE Richiesta_Subaffitto
-                  SET stato = ?
-                  WHERE id_stanza = ?";
+        $query = "UPDATE Richiesta_Subaffitto SET stato = ? WHERE id_richiesta = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("si", $stato, $id_richiesta);
         $stmt->execute();
 
-        //Se richiesta accettata, la stanza torna disponibile
+        // Se confermata, dobbiamo trovare l'ID della stanza associata a questa richiesta per liberarla
         if($stato == 'Confermata') {
-        $queryStanza = "UPDATE Stanza SET stato = 'Disponibile' WHERE id_stanza = ?";
-        $stmtStanza = $this->db->prepare($queryStanza);
-        $stmtStanza->bind_param("i", $id_richiesta);
-        $stmtStanza->execute();
-    }
+            // Recuperiamo l'id_stanza associato a questa richiesta
+            $queryGetStanza = "SELECT id_stanza FROM Richiesta_Subaffitto WHERE id_richiesta = ?";
+            $stmtGet = $this->db->prepare($queryGetStanza);
+            $stmtGet->bind_param("i", $id_richiesta);
+            $stmtGet->execute();
+            $res = $stmtGet->get_result()->fetch_assoc();
+        
+            if($res) {
+                $id_stanza = $res['id_stanza'];
+                $queryStanza = "UPDATE Stanza SET stato = 'Disponibile' WHERE id_stanza = ?";
+                $stmtStanza = $this->db->prepare($queryStanza);
+                $stmtStanza->bind_param("i", $id_stanza);
+                $stmtStanza->execute();
+            }
+        }
     }
     public function insertUser($nome, $cognome, $email, $password, $cellulare, $eta, $ruolo)
     {

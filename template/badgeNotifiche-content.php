@@ -135,7 +135,7 @@
                                                     <?php echo $prenotazione['indirizzo']; echo " " . $prenotazione['civico']; ?>. ID Stanza: <?php echo $prenotazione['id_stanza']; ?>
                                                 </p>
                                                 <p class="mb-0 text-muted">Richiedente:
-                                                    <?php echo $richiestaSubaffitto['nome']; ?> <?php echo $richiestaSubaffitto['cognome']; ?> <br> Numero cellulare: <?php echo $richiestaSubaffitto['cellulare']; ?> <br> Email: <?php echo $richiestaSubaffitto['email']; ?>
+                                                    <?php echo $prenotazione['nome']; ?> <?php echo $prenotazione['cognome']; ?> <br> Numero cellulare: <?php echo $prenotazione['cellulare']; ?> <br> Email: <?php echo $prenotazione['email']; ?>
                                                 </p>
                                             </div>
                                         </div>
