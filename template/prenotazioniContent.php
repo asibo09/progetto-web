@@ -9,16 +9,16 @@
             <?php echo $numeroAffitti ?> case affittate
         </h2>
     </div>
-    <!-- Listings Container -->
+
     <ul class="d-flex flex-column gap-3 list-unstyled p-0 m-0">
         <?php foreach ($prenotazioni as $alloggio): ?>
-            <!-- Single Card Item -->
+            <!-- Articolo -->
             <li>
                 <article
                     class="card rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover border-0 bg-light-subtle">
                     <div class="row g-0 align-items-stretch">
 
-                        <!-- Carousel Column -->
+                        <!-- Carosello delle foto -->
                         <div class="col-12 col-md-4 position-relative z-2">
                             <div id="<?php echo $alloggio["id_alloggio"] ?>" class="carousel slide" data-bs-ride="true">
                                 <div class="carousel-inner">
@@ -44,7 +44,7 @@
                                 </button>
                             </div>
                         </div>
-                        <!-- Details Column -->
+                        <!-- Colonna  dei dettagli -->
                         <div class="col-12 col-md-8">
                             <div class="card-body p-4 d-flex flex-column h-100">
                                 <div class="d-flex justify-content-between align-items-start">

@@ -2,7 +2,6 @@
 
 <div class="bg-white shadow-sm border p-4 rounded-3 h-100">
 
-    <!-- Toolbar: Sort & Add New -->
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
         <h2 class="fw-semibold fs-5 m-0"><?php echo $numeroAnnunci ?> annunci pubblicati</h2>
 
@@ -14,16 +13,14 @@
         </div>
     </div>
 
-    <!-- Listings Container -->
     <ul class="d-flex flex-column gap-3 list-unstyled p-0 m-0">
         <?php foreach ($iMieiAnnunciResult as $alloggio): ?>
-            <!-- Single Card Item -->
+            <!-- articolo -->
             <li>
                 <article
                     class="card rounded-3 overflow-hidden shadow-sm position-relative card-annuncio-hover border-0 bg-light-subtle">
                     <div class="row g-0 align-items-stretch">
-
-                        <!-- Carousel Column -->
+                        <!-- Carosello delle foto -->
                         <div class="col-12 col-md-4 position-relative z-2">
                             <div id="<?php echo $alloggio["id_alloggio"] ?>" class="carousel slide" data-bs-ride="true">
                                 <div class="carousel-inner">
@@ -49,7 +46,7 @@
                                 </button>
                             </div>
                         </div>
-                        <!-- Details Column -->
+                        <!-- Colonna  dei dettagli -->
                         <div class="col-12 col-md-8">
                             <div class="card-body p-4 d-flex flex-column h-100">
                                 <a href="annuncio.php?id=<?php echo $alloggio["id_alloggio"] ?>"
@@ -79,5 +76,4 @@
             </li>
         <?php endforeach; ?>
     </ul>
-    <!-- End Single Card Item -->
 </div>
