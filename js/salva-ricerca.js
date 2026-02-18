@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const formData = new FormData();
                 formData.append('id_alloggio', idAlloggio);
                 
-                // navigator.sendBeacon garantisce l'invio anche se cambiamo pagina [cite: 84]
+                // navigator.sendBeacon garantisce invio anche se cambiamo pagina
                 navigator.sendBeacon('salva-ricerca.php', formData);
             }
         });

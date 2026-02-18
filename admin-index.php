@@ -1,7 +1,10 @@
 <?php
 require_once 'bootstrap.php';
 
-// All'inizio di admin-index.php, dopo il checkAdmin()
+if(!isUserLoggedInID() || $_SESSION["ruolo"] != 'admin'){
+    header("location: login.php");
+    exit();
+}
 
 if (isset($_GET["action"]) && isset($_GET["id"])) {
     $id = intval($_GET["id"]);
