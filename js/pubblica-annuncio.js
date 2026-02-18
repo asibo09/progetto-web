@@ -64,7 +64,7 @@ function changeVal(id, delta) {
 
 function generaBlocchiStanze() {
     const container = document.getElementById('stanze-dinamiche-container');
-    const inputStanze = document.getElementById('stanze'); // CORRETTO: era stanze_input
+    const inputStanze = document.getElementById('stanze');
     if (!container || !inputStanze) return;
 
     const numeroStanze = parseInt(inputStanze.value) || 1;
